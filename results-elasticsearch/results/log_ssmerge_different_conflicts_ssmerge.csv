@@ -1,0 +1,448 @@
+file;ssmergeConf
+/home/paper219/Desktop/analysis/fullsample/projects/elasticsearch-river-mongodb/revisions/rev_3ca5723_c520223/rev_3ca5723-c520223/src/main/java/org/elasticsearch/river/mongodb/MongoDBRiver.java;<<<<<<< MINE
+=======
+@SuppressWarnings({ "unchecked" })
+		private BSONTimestamp processBlockingQueue(
+				final BulkRequestBuilder bulk, QueueEntry entry) {
+			if (entry.getData().get(MONGODB_ID_FIELD) == null
+					&& !entry.getOperation().equals(
+							OPLOG_COMMAND_OPERATION)) {
+				logger.warn(
+						"Cannot get object id. Skip the current item: [{}]",
+						entry.getData());
+				return null;
+			}
+
+			BSONTimestamp lastTimestamp = entry.getOplogTimestamp();
+			String operation = entry.getOperation();
+			if (OPLOG_COMMAND_OPERATION.equals(operation)) {
+				try {
+					updateBulkRequest(bulk, entry.getData(), null, operation, 
+							definition.getIndexName(),
+							definition.getTypeName(), null, null);
+				} catch (IOException ioEx) {
+					logger.error("Update bulk failed.", ioEx);
+				}
+				return lastTimestamp;
+			}
+
+			String objectId = "";
+			if (entry.getData().get(MONGODB_ID_FIELD) != null) {
+				objectId = entry.getData().get(MONGODB_ID_FIELD).toString();
+			}
+
+			// TODO: Should the river support script filter,
+			// advanced_transformation, include_collection for GridFS?
+			if (entry.isAttachment()) {
+				try {
+					updateBulkRequest(bulk, entry.getData(), objectId,
+							operation, definition.getIndexName(),
+							definition.getTypeName(), null, null);
+				} catch (IOException ioEx) {
+					logger.error("Update bulk failed.", ioEx);
+				}
+				return lastTimestamp;
+			}
+			
+			if (scriptExecutable != null
+					&& definition.isAdvancedTransformation()) {
+				return applyAdvancedTransformation(bulk, entry);
+			}
+
+			if (logger.isDebugEnabled()) {
+				logger.debug("updateBulkRequest for id: [{}], operation: [{}]",
+						objectId, operation);
+			}
+
+			if (!definition.getIncludeCollection().isEmpty()) {
+				logger.trace(
+						"About to include collection. set attribute {} / {} ",
+						definition.getIncludeCollection(),
+						definition.getMongoCollection());
+				entry.getData().put(definition.getIncludeCollection(),
+						definition.getMongoCollection());
+			}
+
+			Map<String, Object> ctx = null;
+			try {
+				ctx = XContentFactory.xContent(XContentType.JSON)
+						.createParser("{}").mapAndClose();
+			} catch (IOException e) {
+				logger.warn("failed to parse {}", e);
+			}
+			Map<String, Object> data = entry.getData().toMap();
+			if (scriptExecutable != null) {
+				if (ctx != null) {
+					ctx.put("document", entry.getData());
+					ctx.put("operation", operation);
+					if (!objectId.isEmpty()) {
+						ctx.put("id", objectId);
+					}
+					if (logger.isDebugEnabled()) {
+						logger.debug("Script to be executed: {}",
+								scriptExecutable);
+						logger.debug("Context before script executed: {}", ctx);
+					}
+					scriptExecutable.setNextVar("ctx", ctx);
+					try {
+						scriptExecutable.run();
+						// we need to unwrap the context object...
+						ctx = (Map<String, Object>) scriptExecutable
+								.unwrap(ctx);
+					} catch (Exception e) {
+						logger.warn("failed to script process {}, ignoring", e,
+								ctx);
+					}
+					if (logger.isDebugEnabled()) {
+						logger.debug("Context after script executed: {}", ctx);
+					}
+					if (ctx.containsKey("ignore")
+							&& ctx.get("ignore").equals(Boolean.TRUE)) {
+						logger.debug("From script ignore document id: {}",
+								objectId);
+						// ignore document
+						return lastTimestamp;
+					}
+					if (ctx.containsKey("deleted")
+							&& ctx.get("deleted").equals(Boolean.TRUE)) {
+						ctx.put("operation", OPLOG_DELETE_OPERATION);
+					}
+					if (ctx.containsKey("document")) {
+						data = (Map<String, Object>) ctx.get("document");
+						logger.debug("From script document: {}", data);
+					}
+					if (ctx.containsKey("operation")) {
+						operation = ctx.get("operation").toString();
+						logger.debug("From script operation: {}", operation);
+					}
+				}
+			}
+
+			try {
+				String index = extractIndex(ctx);
+				String type = extractType(ctx);
+				String parent = extractParent(ctx);
+				String routing = extractRouting(ctx);
+				objectId = extractObjectId(ctx, objectId);
+				updateBulkRequest(bulk, new BasicDBObject(data), objectId, operation, index, type,
+						routing, parent);
+			} catch (IOException e) {
+				logger.warn("failed to parse {}", e, entry.getData());
+			}
+			return lastTimestamp;
+		}
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/elasticsearch-river-mongodb/revisions/rev_3ca5723_c520223/rev_3ca5723-c520223/src/main/java/org/elasticsearch/river/mongodb/MongoDBRiver.java;<<<<<<< MINE
+=======
+@SuppressWarnings("unchecked")
+		private BSONTimestamp applyAdvancedTransformation(
+				final BulkRequestBuilder bulk, QueueEntry entry) {
+
+			BSONTimestamp lastTimestamp = entry.getOplogTimestamp();
+			String operation = entry.getOperation();
+			String objectId = "";
+			if (entry.getData().get(MONGODB_ID_FIELD) != null) {
+				objectId = entry.getData().get(MONGODB_ID_FIELD).toString();
+			}
+			if (logger.isDebugEnabled()) {
+				logger.debug(
+						"advancedUpdateBulkRequest for id: [{}], operation: [{}]",
+						objectId, operation);
+			}
+
+			if (!definition.getIncludeCollection().isEmpty()) {
+				logger.trace(
+						"About to include collection. set attribute {} / {} ",
+						definition.getIncludeCollection(),
+						definition.getMongoCollection());
+				entry.getData().put(definition.getIncludeCollection(),
+						definition.getMongoCollection());
+			}
+			Map<String, Object> ctx = null;
+			try {
+				ctx = XContentFactory.xContent(XContentType.JSON)
+						.createParser("{}").mapAndClose();
+			} catch (Exception e) {
+			}
+
+			List<Object> documents = new ArrayList<Object>();
+			Map<String, Object> document = new HashMap<String, Object>();
+
+			if (scriptExecutable != null) {
+				if (ctx != null && documents != null) {
+
+					document.put("data", entry.getData().toMap());
+					if (!objectId.isEmpty()) {
+						document.put("id", objectId);
+					}
+					document.put("_index", definition.getIndexName());
+					document.put("_type", definition.getTypeName());
+					document.put("operation", operation);
+
+					documents.add(document);
+
+					ctx.put("documents", documents);
+					if (logger.isDebugEnabled()) {
+						logger.debug("Script to be executed: {}",
+								scriptExecutable);
+						logger.debug("Context before script executed: {}", ctx);
+					}
+					scriptExecutable.setNextVar("ctx", ctx);
+					try {
+						scriptExecutable.run();
+						// we need to unwrap the context object...
+						ctx = (Map<String, Object>) scriptExecutable
+								.unwrap(ctx);
+					} catch (Exception e) {
+						logger.warn("failed to script process {}, ignoring", e,
+								ctx);
+					}
+					if (logger.isDebugEnabled()) {
+						logger.debug("Context after script executed: {}", ctx);
+					}
+					if (ctx.containsKey("documents")
+							&& ctx.get("documents") instanceof List<?>) {
+						documents = (List<Object>) ctx.get("documents");
+						for (Object object : documents) {
+							if (object instanceof Map<?, ?>) {
+								Map<String, Object> item = (Map<String, Object>) object;
+								logger.trace("item: {}", item);
+								if (item.containsKey("deleted")
+										&& item.get("deleted").equals(
+												Boolean.TRUE)) {
+									item.put("operation",
+											OPLOG_DELETE_OPERATION);
+								}
+
+								String index = extractIndex(item);
+								String type = extractType(item);
+								String parent = extractParent(item);
+								String routing = extractRouting(item);
+								String action = extractOperation(item);
+								boolean ignore = isDocumentIgnored(item);
+								Map<String, Object> _data = (Map<String, Object>) item
+										.get("data");
+								objectId = extractObjectId(_data, objectId);
+								if (logger.isDebugEnabled()) {
+									logger.debug(
+											"Id: {} - operation: {} - ignore: {} - index: {} - type: {} - routing: {} - parent: {}",
+											objectId, action, ignore, index,
+											type, routing, parent);
+								}
+								if (ignore) {
+									continue;
+								}
+								try {
+									updateBulkRequest(bulk, new BasicDBObject(_data), objectId,
+											operation, index, type, routing,
+											parent);
+								} catch (IOException ioEx) {
+									logger.error("Update bulk failed.", ioEx);
+								}
+							}
+						}
+					}
+				}
+			}
+
+			return lastTimestamp;
+		}
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/elasticsearch-river-mongodb/revisions/rev_3ca5723_c520223/rev_3ca5723-c520223/src/main/java/org/elasticsearch/river/mongodb/MongoDBRiver.java;<<<<<<< MINE
+=======
+@Override
+		public void run() {
+			while (active) {
+				try {
+					if (!assignCollections()) {
+						break;	// failed to assign oplogCollection or
+								// slurpedCollection
+					}
+
+					DBCursor cursor = null;
+
+					BSONTimestamp startTimestamp = null;
+
+					// Do an initial sync the same way MongoDB does
+					// https://groups.google.com/forum/?fromgroups=#!topic/mongodb-user/sOKlhD_E2ns
+					// TODO: support GridFS
+					BSONTimestamp lastIndexedTimestamp = getLastTimestamp(mongoOplogNamespace);
+					if (lastIndexedTimestamp == null) {
+						// TODO: ensure the index type is empty
+						logger.info("MongoDBRiver is beginning initial import of "
+							+ slurpedCollection.getFullName());
+						startTimestamp = getCurrentOplogTimestamp();
+						try {
+							if (!definition.isMongoGridFS()) {
+								cursor = slurpedCollection.find();
+								while (cursor.hasNext()) {
+									DBObject object = cursor.next();
+									addToStream(OPLOG_INSERT_OPERATION, null, applyFieldFilter(object));
+								}	
+							} else {
+								// TODO: To be optimized. https://github.com/mongodb/mongo-java-driver/pull/48#issuecomment-25241988
+								// possible option: Get the object id list from .fs collection then call GriDFS.findOne
+								GridFS grid = new GridFS(mongo.getDB(definition.getMongoDb()),
+										definition.getMongoCollection());
+								cursor = grid.getFileList();
+								while (cursor.hasNext()) {
+									DBObject object = cursor.next();
+									if (object instanceof GridFSDBFile) {
+										GridFSDBFile file = grid.findOne(new ObjectId(object.get(MONGODB_ID_FIELD).toString()));
+										addToStream(OPLOG_INSERT_OPERATION, null, file);
+									}
+								}
+							}
+						} finally {
+							if (cursor != null) {
+								logger.trace("Closing initial import cursor");
+								cursor.close();
+							}
+						}
+					}
+
+					// Slurp from oplog
+					try {
+						cursor = oplogCursor(startTimestamp);
+						if (cursor == null) {
+							cursor = processFullOplog();
+						}
+						while (cursor.hasNext()) {
+							DBObject item = cursor.next();
+							processOplogEntry(item);
+						}
+						Thread.sleep(500);
+					} finally {
+						if (cursor != null) {
+							logger.trace("Closing oplog cursor");
+							cursor.close();
+						}
+					}
+				} catch (MongoInterruptedException mIEx) {
+					logger.warn("Mongo driver has been interrupted");
+					if (mongo != null) {
+						mongo.close();
+						mongo = null;
+					}
+					break;
+				} catch (MongoException mEx) {
+					logger.error("Mongo gave an exception", mEx);
+				} catch (NoSuchElementException nEx) {
+					logger.warn("A mongoDB cursor bug ?", nEx);
+				} catch (InterruptedException e) {
+					if (logger.isDebugEnabled()) {
+						logger.debug("river-mongodb slurper interrupted");
+					}
+					Thread.currentThread().interrupt();
+					break;
+				}
+			}
+		}
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/elasticsearch-river-mongodb/revisions/rev_3ca5723_c520223/rev_3ca5723-c520223/src/main/java/org/elasticsearch/river/mongodb/MongoDBRiver.java;<<<<<<< MINE
+=======
+private void processOplogEntry(final DBObject entry)
+				throws InterruptedException {
+			String operation = entry.get(OPLOG_OPERATION).toString();
+			String namespace = entry.get(OPLOG_NAMESPACE).toString();
+			BSONTimestamp oplogTimestamp = (BSONTimestamp) entry
+					.get(OPLOG_TIMESTAMP);
+			DBObject object = (DBObject) entry.get(OPLOG_OBJECT);
+
+			if (logger.isTraceEnabled()) {
+				logger.trace("MongoDB object deserialized: {}",
+						object.toString());
+			}
+
+			// Initial support for sharded collection -
+			// https://jira.mongodb.org/browse/SERVER-4333
+			// Not interested in operation from migration or sharding
+			if (entry.containsField(OPLOG_FROM_MIGRATE)
+					&& ((BasicBSONObject) entry).getBoolean(OPLOG_FROM_MIGRATE)) {
+				logger.debug(
+						"From migration or sharding operation. Can be ignored. {}",
+						entry);
+				return;
+			}
+			// Not interested by chunks - skip all
+			if (namespace.endsWith(GRIDFS_CHUNKS_SUFFIX)) {
+				return;
+			}
+
+			if (logger.isTraceEnabled()) {
+				logger.trace("oplog entry - namespace [{}], operation [{}]",
+						namespace, operation);
+				logger.trace("oplog processing item {}", entry);
+			}
+
+			String objectId = getObjectIdFromOplogEntry(entry);
+			if (definition.isMongoGridFS()
+					&& namespace.endsWith(GRIDFS_FILES_SUFFIX)
+					&& (OPLOG_INSERT_OPERATION.equals(operation) || OPLOG_UPDATE_OPERATION
+							.equals(operation))) {
+				if (objectId == null) {
+					throw new NullPointerException(MONGODB_ID_FIELD);
+				}
+				GridFS grid = new GridFS(mongo.getDB(definition.getMongoDb()),
+						definition.getMongoCollection());
+				GridFSDBFile file = grid.findOne(new ObjectId(objectId));
+				if (file != null) {
+					logger.info("Caught file: {} - {}", file.getId(),
+							file.getFilename());
+					object = file;
+				} else {
+					logger.warn("Cannot find file from id: {}", objectId);
+				}
+			}
+
+			if (object instanceof GridFSDBFile) {
+				if (objectId == null) {
+					throw new NullPointerException(MONGODB_ID_FIELD);
+				}
+				logger.info("Add attachment: {}", objectId);
+				addToStream(operation, oplogTimestamp, applyFieldFilter(object));
+			} else {
+				if (OPLOG_UPDATE_OPERATION.equals(operation)) {
+					DBObject update = (DBObject) entry.get(OPLOG_UPDATE);
+					logger.debug("Updated item: {}", update);
+					addQueryToStream(operation, oplogTimestamp, update);
+				} else {
+					addToStream(operation, oplogTimestamp, applyFieldFilter(object));
+				}
+			}
+		}
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/elasticsearch-river-mongodb/revisions/rev_3ca5723_c520223/rev_3ca5723-c520223/src/main/java/org/elasticsearch/river/mongodb/MongoDBRiver.java;<<<<<<< MINE
+=======
+private DBObject applyFieldFilter(DBObject object) {
+			if (object instanceof GridFSFile) {
+				GridFSFile file = (GridFSFile) object;
+				DBObject metadata = file.getMetaData();
+				if (metadata != null) {
+					file.setMetaData(applyFieldFilter(metadata));
+				}
+			} else {
+				object = MongoDBHelper.applyExcludeFields(object,
+						definition.getExcludeFields());
+				object = MongoDBHelper.applyIncludeFields(object,
+						definition.getIncludeFields());
+			}
+			return object;
+		}
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/elasticsearch-river-mongodb/revisions/rev_3ca5723_c520223/rev_3ca5723-c520223/src/main/java/org/elasticsearch/river/mongodb/MongoDBRiver.java;<<<<<<< MINE
+=======
+private void addQueryToStream(final String operation,
+				final BSONTimestamp currentTimestamp, final DBObject update)
+				throws InterruptedException {
+			if (logger.isDebugEnabled()) {
+				logger.debug(
+						"addQueryToStream - operation [{}], currentTimestamp [{}], update [{}]",
+						operation, currentTimestamp, update);
+			}
+
+			for (DBObject item : slurpedCollection.find(update, findKeys)) {
+				addToStream(operation, currentTimestamp, item);
+			}
+		}
+>>>>>>> YOURS

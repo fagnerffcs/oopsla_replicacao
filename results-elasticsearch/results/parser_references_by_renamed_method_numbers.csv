@@ -1,0 +1,2 @@
+revision;file;methodSignature;references
+/home/paper219/Desktop/analysis/fullsample//projects/elasticsearch-river-mongodb/revisions/rev_3ca5723_c520223/rev_3ca5723-c520223;/src/main/java/org/elasticsearch/river/mongodb/MongoDBRiver;addQueryToStream(String,BSONTimestamp,DBObject);;0

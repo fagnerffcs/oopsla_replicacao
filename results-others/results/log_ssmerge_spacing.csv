@@ -1,0 +1,2792 @@
+revision;file;methodsignature;leftbody;basebody;rightbody
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f2ec67e_28fb91a/rev_f2ec67e-28fb91a;/src/test/java/org/junit/tests/running/methods/TestMethodTest;ignoreRunner();;;		assertEquals(1, result.getRunCount());
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/main/java/org/junit/internal/runners/JUnit38ClassRunner;getEffectiveClass(Test);;;@SuppressWarnings("unchecked")
+		private Class<? extends Test> getEffectiveClass(Test test) {
+			// TODO (Feb 23, 2009 11:45:54 PM): Think hard about this.
+			if ("warning".equals(getName(test)))
+				try {
+					return (Class<? extends Test>) Class.forName(fTest.toString());
+				} catch (ClassNotFoundException e) {
+					return test.getClass();
+				}
+			return test.getClass();
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/main/java/org/junit/runner/manipulation/Filter;matchMethodDescription(Description);;;public static Filter matchMethodDescription(final Description desiredDescription) {
+		return new Filter() {
+			@Override
+			public boolean shouldRun(Description description) {
+				if (description.isTest())
+					return desiredDescription.equals(description);
+				
+				// explicitly check if any children want to run
+				for (Description each : description.getChildren())
+					if (shouldRun(each))
+						return true;
+				return false;					
+			}
+
+			@Override
+			public String describe() {
+				return String.format("Method %s", desiredDescription.getDisplayName());
+			}
+		};
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/main/java/org/junit/experimental/ParallelComputer;ParallelComputer(boolean,boolean);;;public ParallelComputer(boolean classes, boolean methods) {
+		fClasses= classes;
+		fMethods= methods;
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/main/java/org/junit/experimental/ParallelComputer;classes();;;public static Computer classes() {
+		return new ParallelComputer(true, false);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/main/java/org/junit/experimental/ParallelComputer;ParallelSuite(RunnerBuilder,Class<?>[]);;;public ParallelSuite(RunnerBuilder builder, Class<?>[] classes) throws InitializationError {
+			super(builder, classes);
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/main/java/org/junit/experimental/ParallelComputer;runChild(Runner,RunNotifier);;;@Override
+		protected void runChild(final Runner runner, final RunNotifier notifier) {
+			Callable<Object> callable= new Callable<Object>() {
+				public Object call() throws Exception {
+					superRunChild(runner, notifier);
+					return null;
+				}
+			};
+			fResults.add(fService.submit(callable));
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/main/java/org/junit/experimental/ParallelComputer;superRunChild(Runner,RunNotifier);;;protected void superRunChild(Runner runner, RunNotifier notifier) {
+			super.runChild(runner, notifier);
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/main/java/org/junit/experimental/ParallelComputer;run(RunNotifier);;;@Override
+		public void run(RunNotifier notifier) {
+			super.run(notifier);
+			for (Future<Object> each : fResults)
+				try {
+					each.get(2000, TimeUnit.MILLISECONDS);
+				} catch (Exception e) {
+					e.printStackTrace();
+				} 
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/main/java/org/junit/experimental/ParallelComputer;ParallelRunner(Class<?>);;;public ParallelRunner(Class<?> klass) throws InitializationError {
+			super(klass);
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/main/java/org/junit/experimental/ParallelComputer;runChild(FrameworkMethod,RunNotifier);;;@Override
+		protected void runChild(final FrameworkMethod method, final RunNotifier notifier) {
+			Callable<Object> callable= new Callable<Object>() {
+				public Object call() throws Exception {
+					superRunChild(method, notifier);
+					return null;
+				}
+			};
+			fResults.add(fService.submit(callable));
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/main/java/org/junit/experimental/ParallelComputer;superRunChild(FrameworkMethod,RunNotifier);;;protected void superRunChild(FrameworkMethod method, RunNotifier notifier) {
+			super.runChild(method, notifier);
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/main/java/org/junit/experimental/ParallelComputer;run(RunNotifier);;;@Override
+		public void run(RunNotifier notifier) {
+			super.run(notifier);
+			for (Future<Object> each : fResults)
+				try {
+					each.get(2000, TimeUnit.MILLISECONDS); // TODO(parallel) what should this really be?
+				} catch (Exception e) {
+					e.printStackTrace();
+				} 
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/main/java/org/junit/experimental/ParallelComputer;getSuite(RunnerBuilder,java.lang.Class<?>[]);;;@Override
+	public Suite getSuite(RunnerBuilder builder, java.lang.Class<?>[] classes) throws InitializationError {
+		return fClasses
+			? new ParallelSuite(builder, classes)
+			: super.getSuite(builder, classes);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/main/java/org/junit/experimental/ParallelComputer;getRunner(RunnerBuilder,Class<?>);;;@Override
+	protected Runner getRunner(RunnerBuilder builder, Class<?> testClass)
+			throws Throwable {
+		return fMethods
+			? new ParallelRunner(testClass)
+			: super.getRunner(builder, testClass);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/main/java/org/junit/experimental/ParallelComputer;methods();;;public static Computer methods() {
+		return new ParallelComputer(false, true);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/main/java/org/junit/experimental/max/MaxCore;storedLocally(File);;;public static MaxCore storedLocally(File storedResults) {
+		return new MaxCore(storedResults);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/main/java/org/junit/experimental/max/MaxCore;MaxCore(File);;;public MaxCore(File storedResults) {
+		fHistory = MaxHistory.forFolder(storedResults);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/main/java/org/junit/experimental/max/MaxCore;run(Class<?>);;;public Result run(Class<?> testClass) {
+		return run(Request.aClass(testClass));
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/main/java/org/junit/experimental/max/MaxHistory;forFolder(File);;;public static MaxHistory forFolder(File storedResults) {
+		try {
+			if (storedResults.exists())
+				return readHistory(storedResults);
+		} catch (CouldNotReadCoreException e) {
+			e.printStackTrace();
+			storedResults.delete();
+		}
+		return new MaxHistory(storedResults);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/main/java/org/junit/experimental/max/MaxHistory;readHistory(File);;;private static MaxHistory readHistory(File storedResults) throws CouldNotReadCoreException {
+		// TODO: rule of three
+		// TODO: Really?
+		ObjectInputStream stream;
+		try {
+			stream= new ObjectInputStream(new FileInputStream(storedResults));
+		} catch (IOException e) {
+			throw new CouldNotReadCoreException(e);
+		}
+		try {
+			return (MaxHistory) stream.readObject();
+		} catch (Exception e) {
+			throw new CouldNotReadCoreException(e); //TODO think about what we can do better here
+		} finally {
+			try {
+				stream.close();
+			} catch (IOException e) {
+				throw new CouldNotReadCoreException(e);
+			}
+		}
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/main/java/org/junit/experimental/max/MaxHistory;MaxHistory(File);;;public MaxHistory(File storedResults) {
+		fFolder= storedResults;
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/main/java/org/junit/experimental/max/MaxHistory;getFile();;;public File getFile() {
+		return fFolder;
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/main/java/org/junit/experimental/max/MaxHistory;save();;;public void save() throws IOException {
+		ObjectOutputStream stream= new ObjectOutputStream(new FileOutputStream(
+				fFolder));
+		stream.writeObject(this);
+		stream.close();
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/main/java/org/junit/experimental/max/MaxHistory;getFailureTimestamp(Description);;;Long getFailureTimestamp(Description key) {
+		return fFailureTimestamps.get(key.toString());
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/main/java/org/junit/experimental/max/MaxHistory;putTestFailureTimestamp(Description,long);;;void putTestFailureTimestamp(Description key, long end) {
+		fFailureTimestamps.put(key.toString(), end);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/main/java/org/junit/experimental/max/MaxHistory;isNewTest(Description);;;boolean isNewTest(Description key) {
+		return !fDurations.containsKey(key.toString());
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/main/java/org/junit/experimental/max/MaxHistory;getTestDuration(Description);;;Long getTestDuration(Description key) {
+		return fDurations.get(key.toString());
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/main/java/org/junit/experimental/max/MaxHistory;putTestDuration(Description,long);;;void putTestDuration(Description description, long duration) {
+		fDurations.put(description.toString(), duration);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/main/java/org/junit/experimental/max/MaxHistory;testStarted(Description);;;@Override
+		public void testStarted(Description description) throws Exception {
+			starts.put(description, System.nanoTime()); // Get most accurate
+														// possible time
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/main/java/org/junit/experimental/max/MaxHistory;testFinished(Description);;;@Override
+		public void testFinished(Description description) throws Exception {
+			long end= System.nanoTime();
+			long start= starts.get(description);
+			putTestDuration(description, end - start);
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/main/java/org/junit/experimental/max/MaxHistory;testFailure(Failure);;;@Override
+		public void testFailure(Failure failure) throws Exception {
+			putTestFailureTimestamp(failure.getDescription(), overallStart);
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/main/java/org/junit/experimental/max/MaxHistory;compare(Description,Description);;;public int compare(Description o1, Description o2) {
+			// Always prefer new tests
+			if (isNewTest(o1))
+				return -1;
+			if (isNewTest(o2))
+				return 1;
+			// Then most recently failed first
+			int result= getFailure(o2).compareTo(getFailure(o1)); 
+			return result != 0
+				? result
+				// Then shorter tests first
+				: getTestDuration(o1).compareTo(getTestDuration(o2));
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/main/java/org/junit/experimental/max/MaxHistory;getFailure(Description);;;private Long getFailure(Description key) {
+			Long result= getFailureTimestamp(key);
+			if (result == null) 
+				return 0L; // 0 = "never failed (that I know about)"
+			return result;
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/main/java/org/junit/experimental/max/MaxHistory;listener();;;public RememberingListener listener() {
+		return new RememberingListener();
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/main/java/org/junit/experimental/max/MaxHistory;testComparator();;;public Comparator<Description> testComparator() {
+		return new TestComparator();
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/test/java/org/junit/tests/experimental/parallel/ParallelMethodTest;testsRunInParallel();		Result result= JUnitCore.runClasses(ParallelComputer.methods(), Example.class);;;		Result result= JUnitCore.runClasses(ParallelComputer.methods(),
+				Example.class);
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/test/java/org/junit/tests/experimental/parallel/ParallelMethodTest;betweenInclusive(long,long);;;private Matcher<Long> betweenInclusive(final long min, final long max) {
+		return new TypeSafeMatcher<Long>() {
+			@Override
+			public boolean matchesSafely(Long item) {
+				return item >= min && item <= max;
+			}
+
+			public void describeTo(Description description) {
+				description.appendText("between " + min + " and " + max);
+			}
+		};
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/test/java/org/junit/tests/experimental/max/MaxStarterTest;slow();;;			fail();
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/test/java/org/junit/tests/experimental/max/MaxStarterTest;fast();;;			fail();
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/test/java/org/junit/tests/experimental/max/MaxStarterTest;rememberOldRuns();;;@Test
+	public void rememberOldRuns() {
+		fMax.run(TwoUnEqualTests.class);
+
+		MaxCore reincarnation= MaxCore.storedLocally(fMaxFile);
+		List<Failure> failures= reincarnation.run(TwoUnEqualTests.class)
+				.getFailures();
+		assertEquals("fast", failures.get(0).getDescription().getMethodName());
+		assertEquals("slow", failures.get(1).getDescription().getMethodName());
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/test/java/org/junit/tests/experimental/max/MaxStarterTest;MalformedJUnit38Test();;;private MalformedJUnit38Test() {
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/test/java/org/junit/tests/experimental/max/MaxStarterTest;testSucceeds();;;public void testSucceeds() {
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/test/java/org/junit/tests/experimental/max/MaxStarterTest;maxShouldSkipMalformedJUnit38Classes();;;@Test
+	public void maxShouldSkipMalformedJUnit38Classes() {
+		Request request= Request.aClass(MalformedJUnit38Test.class);
+		fMax.run(request);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/test/java/org/junit/tests/experimental/max/MaxStarterTest;testNothing();;;@SuppressWarnings("unused")
+		private void testNothing() {
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/test/java/org/junit/tests/experimental/max/MaxStarterTest;correctErrorFromMalformedTest();;;@Test
+	public void correctErrorFromMalformedTest() {
+		Request request= Request.aClass(MalformedJUnit38TestMethod.class);
+		JUnitCore core= new JUnitCore();
+		Request sorted= fMax.sortRequest(request);
+		Runner runner= sorted.getRunner();
+		Result result= core.run(runner);
+		Failure failure= result.getFailures().get(0);
+
+		assertThat(failure.toString(),
+				containsString("MalformedJUnit38TestMethod"));
+		assertThat(failure.toString(), containsString("testNothing"));
+		assertThat(failure.toString(), containsString("isn't public"));
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/test/java/org/junit/tests/experimental/max/MaxStarterTest;testSomething();;;public void testSomething() {
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/test/java/org/junit/tests/experimental/max/MaxStarterTest;testNothing();;;@SuppressWarnings("unused")
+		private void testNothing() {
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/test/java/org/junit/tests/experimental/max/MaxStarterTest;halfMalformed();;;@Test
+	public void halfMalformed() {
+		assertThat(JUnitCore.runClasses(HalfMalformedJUnit38TestMethod.class)
+				.getFailureCount(), is(1));
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/test/java/org/junit/tests/experimental/max/MaxComputerTest;getRunner(RunnerBuilder,Class<?>);;;@Override
+		protected Runner getRunner(RunnerBuilder builder, Class<?> testClass)
+				throws Throwable {
+			Runner junit3Runner= new JUnit3Builder().runnerForClass(testClass);
+			if (junit3Runner != null)
+				return junit3Runner;
+			return new MaxRunner(testClass, fMax);
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/test/java/org/junit/tests/experimental/max/MaxComputerTest;MaxRunner(Class<?>,MaxHistory);;;public MaxRunner(Class<?> klass, MaxHistory max)
+				throws InitializationError {
+			super(klass);
+			fMax= max;
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/test/java/org/junit/tests/experimental/max/MaxComputerTest;runChild(FrameworkMethod,RunNotifier);;;@Override
+		protected void runChild(FrameworkMethod method, RunNotifier notifier) {
+			methods.add(method);
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/test/java/org/junit/tests/experimental/max/MaxComputerTest;run(RunNotifier);;;@Override
+		public void run(RunNotifier notifier) {
+			notifier.addListener(fMax.listener());
+			super.run(notifier);
+			sortMethods();
+			for (FrameworkMethod each : methods) {
+				super.runChild(each, notifier);
+			}
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/test/java/org/junit/tests/experimental/max/MaxComputerTest;sortMethods();;;private void sortMethods() {
+			Collections.sort(methods, new Comparator<FrameworkMethod>() {
+				public int compare(FrameworkMethod o1, FrameworkMethod o2) {
+					return fMax.testComparator().compare(describe(o1),
+							describe(o2));
+				}
+
+				private Description describe(FrameworkMethod o1) {
+					return Description.createTestDescription(o1.getMethod()
+							.getDeclaringClass(), o1.getName());
+				}
+			});
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/test/java/org/junit/tests/experimental/max/MaxComputerTest;succeed();;;@Test
+		public void succeed() {
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/test/java/org/junit/tests/experimental/max/MaxComputerTest;dontSucceed();;;@Test
+		public void dontSucceed() {
+			fail();
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/test/java/org/junit/tests/experimental/max/MaxComputerTest;twoTestsNotRunComeBackInRandomOrder();;;@Test
+	public void twoTestsNotRunComeBackInRandomOrder() {
+		Result result= new JUnitCore().run(new MaxComputer(), TwoTests.class);
+		assertEquals(2, result.getRunCount());
+		assertEquals(1, result.getFailureCount());
+		assertEquals("dontSucceed", result.getFailures().get(0)
+				.getDescription().getMethodName());
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/test/java/org/junit/tests/experimental/max/MaxComputerTest;failedTestFirstOnSecondRun();;;@Test
+	public void failedTestFirstOnSecondRun() {
+		MaxComputer computer= new MaxComputer();
+		new JUnitCore().run(computer, TwoTests.class);
+		JUnitCore core= new JUnitCore();
+		final List<Description> testOrder= new ArrayList<Description>();
+		core.addListener(new RunListener() {
+			@Override
+			public void testStarted(Description description) throws Exception {
+				testOrder.add(description);
+			}
+		});
+		core.run(computer, TwoTests.class);
+		assertEquals("dontSucceed", testOrder.get(0).getMethodName());
+		assertEquals(2, testOrder.size());
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/test/java/org/junit/tests/experimental/max/MaxComputerTest;testSucceed();;;public void testSucceed() {
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/test/java/org/junit/tests/experimental/max/MaxComputerTest;testDontSucceed();;;public void testDontSucceed() {
+			fail();
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/test/java/org/junit/tests/experimental/max/MaxComputerTest;junit3TestsAreRunOnce();;;@Test
+	public void junit3TestsAreRunOnce() throws Exception {
+		Result result= new JUnitCore().run(new MaxComputer(), TwoOldTests.class);
+		assertEquals(2, result.getRunCount());
+		assertEquals(1, result.getFailureCount());
+		assertEquals("testDontSucceed", result.getFailures().get(0)
+				.getDescription().getMethodName());
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52;/src/test/java/org/junit/tests/junit3compatibility/OldTestClassAdaptingListenerTest;addFailureDelegatesToNotifier();;;		TestListener adaptingListener= new JUnit38ClassRunner(testCase)
+				.createAdaptingListener(notifier);
+/home/paper219/Desktop/analysis/fullsample//projects/jeromq/revisions/rev_422e861_d89fa27/rev_422e861-d89fa27;/src/test/java/org/jeromq/TestZLoop;testZLoop();;;        loop.pollerEnd(poll_input);
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_e4ee2c0_f454880/rev_e4ee2c0-f454880;/src/test/java/redis/clients/jedis/tests/JedisPoolTest;checkConnections();		Jedis jedis = pool.getResource(200);
+		jedis.auth("foobared");
+		jedis.set("foo", "bar");
+		assertEquals("bar", jedis.get("foo"));
+		pool.returnResource(jedis);
+		pool.destroy();
+	};	Jedis jedis = pool.getResource(200);
+	jedis.auth("foobared");
+	jedis.set("foo", "bar");
+	assertEquals("bar", jedis.get("foo"));
+	pool.returnResource(jedis);
+	pool.destroy();
+    };	Jedis jedis = pool.getResource(200);
+	jedis.set("foo", "bar");
+	assertEquals("bar", jedis.get("foo"));
+	pool.returnResource(jedis);
+	pool.destroy();
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_e4ee2c0_f454880/rev_e4ee2c0-f454880;/src/test/java/redis/clients/jedis/tests/JedisPoolTest;checkConnectionWithDefaultPort();		Jedis jedis = pool.getResource(200);
+		jedis.auth("foobared");
+		jedis.set("foo", "bar");
+		assertEquals("bar", jedis.get("foo"));
+		pool.returnResource(jedis);
+		pool.destroy();
+	};	Jedis jedis = pool.getResource(200);
+	jedis.auth("foobared");
+	jedis.set("foo", "bar");
+	assertEquals("bar", jedis.get("foo"));
+	pool.returnResource(jedis);
+	pool.destroy();
+    };	Jedis jedis = pool.getResource(200);
+	jedis.set("foo", "bar");
+	assertEquals("bar", jedis.get("foo"));
+	pool.returnResource(jedis);
+	pool.destroy();
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_e4ee2c0_f454880/rev_e4ee2c0-f454880;/src/test/java/redis/clients/jedis/tests/JedisPoolTest;checkJedisIsReusedWhenReturned();		Jedis jedis = pool.getResource(200);
+		jedis.auth("foobared");
+		jedis.set("foo", "0");
+		pool.returnResource(jedis);;	Jedis jedis = pool.getResource(200);
+	jedis.auth("foobared");
+	jedis.set("foo", "0");
+	pool.returnResource(jedis);;	Jedis jedis = pool.getResource(200);
+	jedis.set("foo", "0");
+	pool.returnResource(jedis);
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_e4ee2c0_f454880/rev_e4ee2c0-f454880;/src/test/java/redis/clients/jedis/tests/JedisPoolTest;checkJedisIsReusedWhenReturned();		jedis = pool.getResource(200);
+		jedis.auth("foobared");
+		jedis.incr("foo");
+		pool.returnResource(jedis);
+		pool.destroy();
+	};	jedis = pool.getResource(200);
+	jedis.auth("foobared");
+	jedis.incr("foo");
+	pool.returnResource(jedis);
+	pool.destroy();
+    };	jedis = pool.getResource(200);
+	jedis.incr("foo");
+	pool.returnResource(jedis);
+	pool.destroy();
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_e4ee2c0_f454880/rev_e4ee2c0-f454880;/src/test/java/redis/clients/jedis/tests/JedisPoolTest;checkPoolRepairedWhenJedisIsBroken();		Jedis jedis = pool.getResource(200);
+		jedis.auth("foobared");
+		jedis.quit();
+		pool.returnBrokenResource(jedis);;	Jedis jedis = pool.getResource(200);
+	jedis.auth("foobared");
+	jedis.quit();
+	pool.returnBrokenResource(jedis);;	Jedis jedis = pool.getResource(200);
+	jedis.quit();
+	pool.returnBrokenResource(jedis);
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_e4ee2c0_f454880/rev_e4ee2c0-f454880;/src/test/java/redis/clients/jedis/tests/JedisPoolTest;checkPoolRepairedWhenJedisIsBroken();		jedis = pool.getResource(200);
+		jedis.auth("foobared");
+		jedis.incr("foo");
+		pool.returnResource(jedis);
+		pool.destroy();
+	};	jedis = pool.getResource(200);
+	jedis.auth("foobared");
+	jedis.incr("foo");
+	pool.returnResource(jedis);
+	pool.destroy();
+    };	jedis = pool.getResource(200);
+	jedis.incr("foo");
+	pool.returnResource(jedis);
+	pool.destroy();
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_e4ee2c0_f454880/rev_e4ee2c0-f454880;/src/test/java/redis/clients/jedis/tests/JedisPoolTest;checkPoolOverflow();		Jedis jedis = pool.getResource(200);
+		jedis.auth("foobared");
+		jedis.set("foo", "0");;	Jedis jedis = pool.getResource(200);
+	jedis.auth("foobared");
+	jedis.set("foo", "0");;	Jedis jedis = pool.getResource(200);
+	jedis.set("foo", "0");
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_e4ee2c0_f454880/rev_e4ee2c0-f454880;/src/test/java/redis/clients/jedis/tests/JedisPoolTest;checkPoolOverflow();		Jedis newJedis = pool.getResource(200);
+		newJedis.auth("foobared");
+		newJedis.incr("foo");
+	};	Jedis newJedis = pool.getResource(200);
+	newJedis.auth("foobared");
+	newJedis.incr("foo");
+    };	Jedis newJedis = pool.getResource(200);
+	newJedis.incr("foo");
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_e980c59_1bb1eaf/rev_e980c59-1bb1eaf;/src/main/java/org/junit/Assert;assertArrayEquals(String,float[],float[],float);;;public static void assertArrayEquals(String message, float[] expecteds,
+			float[] actuals, float delta) throws ArrayComparisonFailure {
+		new InexactComparisonCriteria(delta).internalArrayEquals(message, expecteds, actuals);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_e980c59_1bb1eaf/rev_e980c59-1bb1eaf;/src/main/java/org/junit/Assert;assertArrayEquals(float[],float[],float);;;public static void assertArrayEquals(float[] expecteds, float[] actuals, float delta) {
+		assertArrayEquals(null, expecteds, actuals, delta);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_e980c59_1bb1eaf/rev_e980c59-1bb1eaf;/src/main/java/org/junit/experimental/max/MaxCore;forFolder(String);;;public static MaxCore forFolder(String fileName) {
+		return storedLocally(new File(fileName));
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_e980c59_1bb1eaf/rev_e980c59-1bb1eaf;/src/test/java/org/junit/tests/assertion/AssertionTest;oneDimensionalPrimitiveArraysAreEqual();;;		// TODO (Mar 10, 2009 10:47:34 AM): Import
+		Assert.assertArrayEquals(new float[] {1.0f}, new float[] {1.0f}, 1.0f);
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_e980c59_1bb1eaf/rev_e980c59-1bb1eaf;/src/test/java/org/junit/tests/assertion/AssertionTest;oneDimensionalFloatArraysAreNotEqual();;;@Test(expected=AssertionError.class)
+	public void oneDimensionalFloatArraysAreNotEqual() {
+		assertArrayEquals(new float[] {1.0f}, new float[] {2.5f}, 1.0f);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_592bc69_330135e/rev_592bc69-330135e;/src/main/java/redis/clients/jedis/JedisPool;JedisPool(JedisShardInfo);;;public JedisPool(JedisShardInfo shardInfo) {
+	this.host = shardInfo.getHost();
+	this.port = shardInfo.getPort();
+	this.timeout = shardInfo.getTimeout();
+	this.password = shardInfo.getPassword();
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_592bc69_330135e/rev_592bc69-330135e;/src/main/java/redis/clients/jedis/ShardedJedis;ShardedJedis(List<JedisShardInfo>);;;public ShardedJedis(List<JedisShardInfo> shards) {
+	super(shards);
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_592bc69_330135e/rev_592bc69-330135e;/src/main/java/redis/clients/jedis/ShardedJedis;ShardedJedis(List<JedisShardInfo>,Hashing);;;public ShardedJedis(List<JedisShardInfo> shards, Hashing algo) {
+	super(shards, algo);
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_592bc69_330135e/rev_592bc69-330135e;/src/main/java/redis/clients/jedis/ShardedJedis;create(JedisShardInfo);;;protected Jedis create(JedisShardInfo shard) {
+	return new Jedis(shard);
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_592bc69_330135e/rev_592bc69-330135e;/src/main/java/redis/clients/jedis/Jedis;Jedis(JedisShardInfo);;;public Jedis(JedisShardInfo shardInfo) {
+	client = new Client(shardInfo.getHost(), shardInfo.getPort());
+	client.setTimeout(shardInfo.getTimeout());
+	if (shardInfo.getPassword() != null) {
+	    this.auth(shardInfo.getPassword());
+	}
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_592bc69_330135e/rev_592bc69-330135e;/src/main/java/redis/clients/jedis/JedisShardInfo;toString();;;@Override
+    public String toString() {
+        return "JedisShardInfo [host=" + host + ", port=" + port + ", weight="
+                + getWeight() + "]";
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_592bc69_330135e/rev_592bc69-330135e;/src/main/java/redis/clients/jedis/JedisShardInfo;getHost();;;public String getHost() {
+        return host;
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_592bc69_330135e/rev_592bc69-330135e;/src/main/java/redis/clients/jedis/JedisShardInfo;getPort();;;public int getPort() {
+        return port;
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_592bc69_330135e/rev_592bc69-330135e;/src/main/java/redis/clients/jedis/JedisShardInfo;JedisShardInfo(String);;;public JedisShardInfo(String host) {
+        this(host, Protocol.DEFAULT_PORT);
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_592bc69_330135e/rev_592bc69-330135e;/src/main/java/redis/clients/jedis/JedisShardInfo;JedisShardInfo(String,int);;;public JedisShardInfo(String host, int port) {
+        this(host, port, 2000);
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_592bc69_330135e/rev_592bc69-330135e;/src/main/java/redis/clients/jedis/JedisShardInfo;JedisShardInfo(String,int,int);;;public JedisShardInfo(String host, int port, int timeout) {
+        this(host, port, timeout, Sharded.DEFAULT_WEIGHT);
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_592bc69_330135e/rev_592bc69-330135e;/src/main/java/redis/clients/jedis/JedisShardInfo;JedisShardInfo(String,int,int,int);;;public JedisShardInfo(String host, int port, int timeout, int weight) {
+        super(weight);
+        this.host = host;
+        this.port = port;
+        this.timeout = timeout;
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_592bc69_330135e/rev_592bc69-330135e;/src/main/java/redis/clients/jedis/JedisShardInfo;getPassword();;;public String getPassword() {
+        return password;
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_592bc69_330135e/rev_592bc69-330135e;/src/main/java/redis/clients/jedis/JedisShardInfo;setPassword(String);;;public void setPassword(String auth) {
+        this.password = auth;
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_592bc69_330135e/rev_592bc69-330135e;/src/main/java/redis/clients/jedis/JedisShardInfo;getTimeout();;;public int getTimeout() {
+        return timeout;
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_592bc69_330135e/rev_592bc69-330135e;/src/main/java/redis/clients/jedis/JedisShardInfo;setTimeout(int);;;public void setTimeout(int timeout) {
+        this.timeout = timeout;
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_592bc69_330135e/rev_592bc69-330135e;/src/main/java/redis/clients/jedis/JedisShardInfo;createResource();;;@Override
+    public Jedis createResource() {
+        return new Jedis(this);
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_592bc69_330135e/rev_592bc69-330135e;/src/main/java/redis/clients/jedis/Connection;sendCommand(String,String);	try {
+	    connect();
+	} catch (UnknownHostException e) {
+	    throw new JedisException("Could not connect to redis-server", e);
+	} catch (IOException e) {
+	    throw new JedisException("Could not connect to redis-server", e);
+	};;		try {
+			connect();
+		} catch (UnknownHostException e) {
+			throw new JedisException("Could not connect to redis-server", e);
+		} catch (IOException e) {
+			throw new JedisException("Could not connect to redis-server", e);
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_592bc69_330135e/rev_592bc69-330135e;/src/main/java/redis/clients/util/Sharded;Sharded(List<S>);;;public Sharded(List<S> shards) {
+        this(shards, Hashing.MURMUR_HASH); // MD5 is really not good as we works with 64-bits not 128
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_592bc69_330135e/rev_592bc69-330135e;/src/main/java/redis/clients/util/Sharded;Sharded(List<S>,Hashing);;;public Sharded(List<S> shards, Hashing algo) {
+        this.algo = algo;
+        initialize(shards);
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_592bc69_330135e/rev_592bc69-330135e;/src/main/java/redis/clients/util/Sharded;initialize(List<S>);;;private void initialize(List<S> shards) {
+        nodes = new TreeMap<Long, S>();
+
+        int totalWeight = 0;
+
+        for (ShardInfo shard : shards) {
+            totalWeight += shard.getWeight();
+        }
+
+        long oneForthOfStep = (1L << 62) / totalWeight; // 62 vs 64 to normalize math in Long
+
+        long floor = Long.MIN_VALUE;
+        for (int i = 0; i != shards.size(); ++i) {
+            final S shardInfo = shards.get(i);
+            shardInfo.initResource();
+            nodes.put(floor, shardInfo);
+            floor += 4 * oneForthOfStep * shardInfo.getWeight(); // *4 to compensate 62 vs 64
+        }
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_592bc69_330135e/rev_592bc69-330135e;/src/main/java/redis/clients/util/ShardInfo;ShardInfo();;;public ShardInfo() {
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_592bc69_330135e/rev_592bc69-330135e;/src/main/java/redis/clients/util/ShardInfo;ShardInfo(int);;;public ShardInfo(int weight) {
+        this.weight = weight;
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_592bc69_330135e/rev_592bc69-330135e;/src/main/java/redis/clients/util/ShardInfo;getWeight();	return this.weight;;;        return this.weight;
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_592bc69_330135e/rev_592bc69-330135e;/src/main/java/redis/clients/util/ShardInfo;getResource();;;public T getResource() {
+        return resource;
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_592bc69_330135e/rev_592bc69-330135e;/src/main/java/redis/clients/util/ShardInfo;initResource();;;public void initResource () {
+        resource = createResource();
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_592bc69_330135e/rev_592bc69-330135e;/src/main/java/redis/clients/util/ShardInfo;createResource();;;protected abstract T createResource();
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_1708730_912e94c/rev_1708730-912e94c;/src/main/java/org/junit/internal/runners/statements/FailOnTimeout;evaluate();;;					fFinished= true;
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_28d40d9_6c942ae/rev_28d40d9-6c942ae;/src/main/java/org/junit/experimental/interceptor/Interceptors;Interceptors(Class<?>);;;public Interceptors(Class<?> klass) throws InitializationError {
+		super(klass);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_28d40d9_6c942ae/rev_28d40d9-6c942ae;/src/main/java/org/junit/experimental/interceptor/Interceptors;withAfters(FrameworkMethod,Object,Statement);;;@Override
+	protected Statement withAfters(FrameworkMethod method, Object target,
+			Statement statement) {
+		// TODO Auto-generated method stub
+		// TODO (Apr 28, 2009 10:55:21 PM): parameter clump?
+		return super.withAfters(method, target, intercept(statement, target, method));
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_28d40d9_6c942ae/rev_28d40d9-6c942ae;/src/main/java/org/junit/experimental/interceptor/Interceptors;intercept(Statement,Object,FrameworkMethod);;;private Statement intercept(Statement statement, Object target, FrameworkMethod method) {
+		Class<?> javaClass= getTestClass().getJavaClass();
+		Field[] fields= javaClass.getFields();
+		Statement result= statement;
+		for (Field each : fields) {
+			if (each.getAnnotation(Interceptor.class) != null) {
+				try {
+					StatementInterceptor interceptor= (StatementInterceptor) each
+							.get(target);
+					result= interceptor.intercept(result, method);
+				} catch (IllegalAccessException e) {
+					throw new RuntimeException(
+							"How did getFields return a field we couldn't access?");
+				}
+			}
+		}
+		return result;
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_28d40d9_6c942ae/rev_28d40d9-6c942ae;/src/main/java/org/junit/experimental/interceptor/StatementInterceptor;intercept(Statement,FrameworkMethod);;;Statement intercept(Statement base, FrameworkMethod method);
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_28d40d9_6c942ae/rev_28d40d9-6c942ae;/src/main/java/org/junit/experimental/interceptor/TestWatchman;intercept(Statement,FrameworkMethod);;;public Statement intercept(final Statement base,
+			final FrameworkMethod method) {
+		return new Statement() {
+			@Override
+			public void evaluate() throws Throwable {
+				try {
+					base.evaluate();
+					succeeded(method);
+				} catch (Throwable t) {
+					failed(t, method);
+					throw t;
+				}
+			}
+		};
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_28d40d9_6c942ae/rev_28d40d9-6c942ae;/src/main/java/org/junit/experimental/interceptor/TestWatchman;succeeded(FrameworkMethod);;;public void succeeded(FrameworkMethod method) {
+		return;
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_28d40d9_6c942ae/rev_28d40d9-6c942ae;/src/main/java/org/junit/experimental/interceptor/TestWatchman;failed(Throwable,FrameworkMethod);;;public void failed(Throwable e, FrameworkMethod method) {
+		return;
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_28d40d9_6c942ae/rev_28d40d9-6c942ae;/src/test/java/org/junit/tests/experimental/InterceptorTest;nothing();;;@Test
+		public void nothing() {
+
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_28d40d9_6c942ae/rev_28d40d9-6c942ae;/src/test/java/org/junit/tests/experimental/InterceptorTest;interceptorIsIntroducedAnEvaluated();;;@Test
+	public void interceptorIsIntroducedAnEvaluated() {
+		wasRun= false;
+		JUnitCore.runClasses(ExampleTest.class);
+		assertTrue(wasRun);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_28d40d9_6c942ae/rev_28d40d9-6c942ae;/src/test/java/org/junit/tests/experimental/InterceptorTest;intercept(Statement,FrameworkMethod);;;public Statement intercept(final Statement base,
+					FrameworkMethod method) {
+				return new Statement() {
+					@Override
+					public void evaluate() throws Throwable {
+						runCount++;
+						base.evaluate();
+					};
+				};
+			}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_28d40d9_6c942ae/rev_28d40d9-6c942ae;/src/test/java/org/junit/tests/experimental/InterceptorTest;nothing();;;@Test
+		public void nothing() {
+
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_28d40d9_6c942ae/rev_28d40d9-6c942ae;/src/test/java/org/junit/tests/experimental/InterceptorTest;multipleInterceptorsAreRun();;;@Test
+	public void multipleInterceptorsAreRun() {
+		runCount= 0;
+		JUnitCore.runClasses(MultipleInterceptorTest.class);
+		assertEquals(2, runCount);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_28d40d9_6c942ae/rev_28d40d9-6c942ae;/src/test/java/org/junit/tests/experimental/InterceptorTest;nothing();;;@Test
+		public void nothing() {
+
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_28d40d9_6c942ae/rev_28d40d9-6c942ae;/src/test/java/org/junit/tests/experimental/InterceptorTest;ignoreNonInterceptors();;;@Test
+	public void ignoreNonInterceptors() {
+		Result result= JUnitCore.runClasses(NoInterceptorsTest.class);
+		assertEquals(0, result.getFailureCount());
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_28d40d9_6c942ae/rev_28d40d9-6c942ae;/src/test/java/org/junit/tests/experimental/InterceptorTest;nothing();;;@Test
+		public void nothing() {
+			fail();
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_28d40d9_6c942ae/rev_28d40d9-6c942ae;/src/test/java/org/junit/tests/experimental/InterceptorTest;onFailure();;;@Test
+	public void onFailure() {
+		log= "";
+		Result result= JUnitCore.runClasses(OnFailureTest.class);
+		assertEquals("nothing AssertionError", log);
+		assertEquals(1, result.getFailureCount());
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_28d40d9_6c942ae/rev_28d40d9-6c942ae;/src/test/java/org/junit/tests/experimental/InterceptorTest;fails();;;@Test
+		public void fails() {
+			fail();
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_28d40d9_6c942ae/rev_28d40d9-6c942ae;/src/test/java/org/junit/tests/experimental/InterceptorTest;succeeds();;;@Test
+		public void succeeds() {
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_28d40d9_6c942ae/rev_28d40d9-6c942ae;/src/test/java/org/junit/tests/experimental/InterceptorTest;succeeded();;;@Test
+	public void succeeded() {
+		WatchmanTest.watchedLog= "";
+		JUnitCore.runClasses(WatchmanTest.class);
+		assertThat(WatchmanTest.watchedLog, containsString("fails AssertionError"));
+		assertThat(WatchmanTest.watchedLog, containsString("succeeds success!"));
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_28d40d9_6c942ae/rev_28d40d9-6c942ae;/src/test/java/org/junit/tests/running/classes/SuiteTest;ensureInheritedTestIsRun();;;@Test public void ensureInheritedTestIsRun() {
+		JUnitCore core= new JUnitCore();
+		Result result= core.run(InheritsAll.class);
+		assertEquals(2, result.getRunCount());
+		assertEquals(1, result.getFailureCount());
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_219beb3_b77d9de/rev_219beb3-b77d9de;/src/main/java/org/junit/internal/ExactComparisonCriteria;assertElementsEqual(Object,Object);;;@Override
+	protected void assertElementsEqual(Object expected, Object actual) {
+		Assert.assertEquals(expected, actual);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_219beb3_b77d9de/rev_219beb3-b77d9de;/src/main/java/org/junit/internal/ComparisonCriteria;arrayEquals(String,Object,Object);;;public void arrayEquals(String message, Object expecteds,
+			Object actuals) throws ArrayComparisonFailure {
+		// TODO: DUP above
+		// TODO (Sep 8, 2008 4:32:50 PM): Test that this fails sometimes
+		// TODO (Sep 8, 2008 4:33:04 PM): Update javadoc
+		
+		if (expecteds == actuals)
+			return;
+		String header= message == null ? "" : message + ": ";
+		
+		int expectedsLength= Assert.assertArraysAreSameLength(expecteds, actuals,
+				header);
+
+		for (int i= 0; i < expectedsLength; i++) {
+			Object expected= Array.get(expecteds, i);
+			Object actual= Array.get(actuals, i);
+			
+			if (Assert.isArray(expected) && Assert.isArray(actual)) {
+				try {
+					arrayEquals(message, expected, actual);
+				} catch (ArrayComparisonFailure e) {
+					e.addDimension(i);
+					throw e;
+				}
+			} else
+				try {
+					assertElementsEqual(expected, actual);
+				} catch (AssertionError e) {
+					throw new ArrayComparisonFailure(header, e, i);
+				}
+		}
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_219beb3_b77d9de/rev_219beb3-b77d9de;/src/main/java/org/junit/internal/ComparisonCriteria;assertElementsEqual(Object,Object);;;protected abstract void assertElementsEqual(Object expected, Object actual);
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_219beb3_b77d9de/rev_219beb3-b77d9de;/src/main/java/org/junit/internal/InexactComparisonCriteria;assertElementsEqual(Object,Object);;;@Override
+	protected void assertElementsEqual(Object expected, Object actual) {
+		if (expected instanceof Double)
+			Assert.assertEquals((Double)expected, (Double)actual, fDelta);
+		else
+			Assert.assertEquals((Float)expected, (Float)actual, fDelta);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_2527d9a_2386579/rev_2527d9a-2386579;/src/main/java/org/junit/runners/ParentRunner;internalGetChildren();;;public List<T> internalGetChildren() {
+		return getChildren();
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_2527d9a_2386579/rev_2527d9a-2386579;/src/main/java/org/junit/runners/ParentRunner;internalDescribeChild(T);;;public Description internalDescribeChild(T child) {
+		return describeChild(child);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_2527d9a_2386579/rev_2527d9a-2386579;/src/main/java/org/junit/runners/ParentRunner;internalRunChild(T,RunNotifier);;;public void internalRunChild(T child, RunNotifier notifier) {
+		runChild(child, notifier);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_2527d9a_2386579/rev_2527d9a-2386579;/src/main/java/org/junit/experimental/ParallelComputer;parallelize(ParentRunner<T>);;;private static <T> Runner parallelize(ParentRunner<T> runner)
+			throws InitializationError {
+		return new ParallelParentRunner<T>(runner);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_2527d9a_2386579/rev_2527d9a-2386579;/src/main/java/org/junit/experimental/ParallelComputer;ParallelParentRunner(ParentRunner<T>);;;public ParallelParentRunner(ParentRunner<T> delegate)
+				throws InitializationError {
+			super(delegate.getTestClass().getJavaClass());
+			fDelegate= delegate;
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_2527d9a_2386579/rev_2527d9a-2386579;/src/main/java/org/junit/experimental/ParallelComputer;describeChild(T);;;@Override
+		public Description describeChild(T child) {
+			// TODO (May 4, 2009 4:34:05 PM): How to do this for real?
+			return fDelegate.internalDescribeChild(child);
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_2527d9a_2386579/rev_2527d9a-2386579;/src/main/java/org/junit/experimental/ParallelComputer;getChildren();;;@Override
+		public List<T> getChildren() {
+			return fDelegate.internalGetChildren();
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_2527d9a_2386579/rev_2527d9a-2386579;/src/main/java/org/junit/experimental/ParallelComputer;runChild(T,RunNotifier);;;@Override
+		public void runChild(final T child, final RunNotifier notifier) {
+			fResults.add(fService.submit(new Callable<Object>() {
+				public Object call() throws Exception {
+					fDelegate.internalRunChild(child, notifier);
+					return null;
+				}
+			}));
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_2527d9a_2386579/rev_2527d9a-2386579;/src/main/java/org/junit/experimental/ParallelComputer;run(RunNotifier);;;@Override
+		public void run(RunNotifier notifier) {
+			super.run(notifier);
+			for (Future<Object> each : fResults)
+				try {
+					each.get();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_2527d9a_2386579/rev_2527d9a-2386579;/src/main/java/org/junit/experimental/interceptor/Interceptors;withBefores(FrameworkMethod,Object,Statement);;;@Override
+	protected Statement withBefores(FrameworkMethod method, Object target,
+			Statement statement) {
+		// TODO (Apr 28, 2009 10:55:21 PM): parameter clump?
+		return super.withBefores(method, target, intercept(statement, target, method));
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_2527d9a_2386579/rev_2527d9a-2386579;/src/main/java/org/junit/experimental/interceptor/Timeout;Timeout(int);;;public Timeout(int millis) {
+		fMillis= millis;
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_2527d9a_2386579/rev_2527d9a-2386579;/src/main/java/org/junit/experimental/interceptor/Timeout;intercept(Statement,FrameworkMethod);;;public Statement intercept(Statement base, FrameworkMethod method) {
+		return new FailOnTimeout(base, fMillis);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_2527d9a_2386579/rev_2527d9a-2386579;/src/main/java/org/junit/experimental/interceptor/TestWatchman;intercept(Statement,FrameworkMethod);;;				starting(method);
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_2527d9a_2386579/rev_2527d9a-2386579;/src/main/java/org/junit/experimental/interceptor/TestWatchman;intercept(Statement,FrameworkMethod);;;				} finally {
+					finished(method);
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_2527d9a_2386579/rev_2527d9a-2386579;/src/main/java/org/junit/experimental/interceptor/TestWatchman;finished(FrameworkMethod);;;public void finished(FrameworkMethod method) {
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_2527d9a_2386579/rev_2527d9a-2386579;/src/test/java/org/junit/tests/experimental/InterceptorTest;before();;;@Before public void before() {
+			watchedLog+= "before ";
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_2527d9a_2386579/rev_2527d9a-2386579;/src/test/java/org/junit/tests/experimental/InterceptorTest;after();;;@After public void after() {
+			watchedLog+= "after ";
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_2527d9a_2386579/rev_2527d9a-2386579;/src/test/java/org/junit/tests/experimental/InterceptorTest;succeeds();;;@Test
+		public void succeeds() {
+			watchedLog+= "test ";
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_2527d9a_2386579/rev_2527d9a-2386579;/src/test/java/org/junit/tests/experimental/InterceptorTest;beforesAndAfters();;;@Test
+	public void beforesAndAfters() {
+		BeforesAndAfters.watchedLog= "";
+		JUnitCore.runClasses(BeforesAndAfters.class);
+		assertThat(BeforesAndAfters.watchedLog, is("before starting test succeeded finished after "));
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_2527d9a_2386579/rev_2527d9a-2386579;/src/test/java/org/junit/tests/experimental/TimeoutInterceptorTest;testInfiniteLoop1();;;@Test public void testInfiniteLoop1() {
+			log+= "ran1";
+			for(;;) {}
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_2527d9a_2386579/rev_2527d9a-2386579;/src/test/java/org/junit/tests/experimental/TimeoutInterceptorTest;testInfiniteLoop2();;;@Test public void testInfiniteLoop2() {
+			log+= "ran2";
+			for(;;) {}
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_2527d9a_2386579/rev_2527d9a-2386579;/src/test/java/org/junit/tests/experimental/TimeoutInterceptorTest;globalTimeoutAvoidsInfiniteLoop();;;@Test(timeout=100) public void globalTimeoutAvoidsInfiniteLoop() {
+		HasGlobalTimeout.log = "";
+		Result result= JUnitCore.runClasses(HasGlobalTimeout.class);
+		assertEquals(2, result.getFailureCount());
+		assertThat(HasGlobalTimeout.log, containsString("ran1"));
+		assertThat(HasGlobalTimeout.log, containsString("ran2"));
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_b3ee106_5eaf0fb/rev_b3ee106-5eaf0fb;/src/main/java/org/junit/runners/BlockJUnit4ClassRunner;withAfters(FrameworkMethod,Object,Statement);;;		// TODO (May 11, 2009 11:28:21 PM):
+		// withBefores/withAfters/withBeforeClass/withAfterClass is a lot of
+		// duplication.
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_b3ee106_5eaf0fb/rev_b3ee106-5eaf0fb;/src/main/java/org/junit/experimental/interceptor/TestName;starting(FrameworkMethod);;;@Override
+	public void starting(FrameworkMethod method) throws Exception {
+		fName = method.getName();
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_b3ee106_5eaf0fb/rev_b3ee106-5eaf0fb;/src/main/java/org/junit/experimental/interceptor/TestName;getMethodName();;;public String getMethodName() {
+		return fName;
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_b3ee106_5eaf0fb/rev_b3ee106-5eaf0fb;/src/test/java/org/junit/tests/experimental/interceptor/InterceptorTest;nothing();;;@Test
+		public void nothing() {
+
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_b3ee106_5eaf0fb/rev_b3ee106-5eaf0fb;/src/test/java/org/junit/tests/experimental/interceptor/InterceptorTest;interceptorIsIntroducedAndEvaluated();;;@Test
+	public void interceptorIsIntroducedAndEvaluated() {
+		wasRun= false;
+		JUnitCore.runClasses(ExampleTest.class);
+		assertTrue(wasRun);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_b3ee106_5eaf0fb/rev_b3ee106-5eaf0fb;/src/test/java/org/junit/tests/experimental/interceptor/InterceptorTest;intercept(Statement,FrameworkMethod);;;public Statement intercept(final Statement base,
+					FrameworkMethod method) {
+				return new Statement() {
+					@Override
+					public void evaluate() throws Throwable {
+						runCount++;
+						base.evaluate();
+					};
+				};
+			}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_b3ee106_5eaf0fb/rev_b3ee106-5eaf0fb;/src/test/java/org/junit/tests/experimental/interceptor/InterceptorTest;nothing();;;@Test
+		public void nothing() {
+
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_b3ee106_5eaf0fb/rev_b3ee106-5eaf0fb;/src/test/java/org/junit/tests/experimental/interceptor/InterceptorTest;multipleInterceptorsAreRun();;;@Test
+	public void multipleInterceptorsAreRun() {
+		runCount= 0;
+		JUnitCore.runClasses(MultipleInterceptorTest.class);
+		assertEquals(2, runCount);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_b3ee106_5eaf0fb/rev_b3ee106-5eaf0fb;/src/test/java/org/junit/tests/experimental/interceptor/InterceptorTest;nothing();;;@Test
+		public void nothing() {
+
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_b3ee106_5eaf0fb/rev_b3ee106-5eaf0fb;/src/test/java/org/junit/tests/experimental/interceptor/InterceptorTest;ignoreNonInterceptors();;;@Test
+	public void ignoreNonInterceptors() {
+		Result result= JUnitCore.runClasses(NoInterceptorsTest.class);
+		assertEquals(0, result.getFailureCount());
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_b3ee106_5eaf0fb/rev_b3ee106-5eaf0fb;/src/test/java/org/junit/tests/experimental/interceptor/InterceptorTest;nothing();;;@Test
+		public void nothing() {
+			fail();
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_b3ee106_5eaf0fb/rev_b3ee106-5eaf0fb;/src/test/java/org/junit/tests/experimental/interceptor/InterceptorTest;onFailure();;;@Test
+	public void onFailure() {
+		log= "";
+		Result result= JUnitCore.runClasses(OnFailureTest.class);
+		assertEquals("nothing AssertionError", log);
+		assertEquals(1, result.getFailureCount());
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_b3ee106_5eaf0fb/rev_b3ee106-5eaf0fb;/src/test/java/org/junit/tests/experimental/interceptor/InterceptorTest;fails();;;@Test
+		public void fails() {
+			fail();
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_b3ee106_5eaf0fb/rev_b3ee106-5eaf0fb;/src/test/java/org/junit/tests/experimental/interceptor/InterceptorTest;succeeds();;;@Test
+		public void succeeds() {
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_b3ee106_5eaf0fb/rev_b3ee106-5eaf0fb;/src/test/java/org/junit/tests/experimental/interceptor/InterceptorTest;succeeded();;;@Test
+	public void succeeded() {
+		WatchmanTest.watchedLog= "";
+		JUnitCore.runClasses(WatchmanTest.class);
+		assertThat(WatchmanTest.watchedLog, containsString("fails AssertionError"));
+		assertThat(WatchmanTest.watchedLog, containsString("succeeds success!"));
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_b3ee106_5eaf0fb/rev_b3ee106-5eaf0fb;/src/test/java/org/junit/tests/experimental/interceptor/InterceptorTest;before();;;@Before public void before() {
+			watchedLog+= "before ";
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_b3ee106_5eaf0fb/rev_b3ee106-5eaf0fb;/src/test/java/org/junit/tests/experimental/interceptor/InterceptorTest;after();;;@After public void after() {
+			watchedLog+= "after ";
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_b3ee106_5eaf0fb/rev_b3ee106-5eaf0fb;/src/test/java/org/junit/tests/experimental/interceptor/InterceptorTest;succeeds();;;@Test
+		public void succeeds() {
+			watchedLog+= "test ";
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_b3ee106_5eaf0fb/rev_b3ee106-5eaf0fb;/src/test/java/org/junit/tests/experimental/interceptor/InterceptorTest;beforesAndAfters();;;@Test
+	public void beforesAndAfters() {
+		BeforesAndAfters.watchedLog= "";
+		JUnitCore.runClasses(BeforesAndAfters.class);
+		assertThat(BeforesAndAfters.watchedLog, is("before starting test succeeded finished after "));
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_b3ee106_5eaf0fb/rev_b3ee106-5eaf0fb;/src/test/java/org/junit/tests/experimental/interceptor/TimeoutInterceptorTest;testInfiniteLoop1();;;@Test public void testInfiniteLoop1() {
+			log+= "ran1";
+			for(;;) {}
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_b3ee106_5eaf0fb/rev_b3ee106-5eaf0fb;/src/test/java/org/junit/tests/experimental/interceptor/TimeoutInterceptorTest;testInfiniteLoop2();;;@Test public void testInfiniteLoop2() {
+			log+= "ran2";
+			for(;;) {}
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_b3ee106_5eaf0fb/rev_b3ee106-5eaf0fb;/src/test/java/org/junit/tests/experimental/interceptor/TimeoutInterceptorTest;globalTimeoutAvoidsInfiniteLoop();;;@Ignore("For gump, for now")
+	@Test(timeout=100) public void globalTimeoutAvoidsInfiniteLoop() {
+		HasGlobalTimeout.log = "";
+		Result result= JUnitCore.runClasses(HasGlobalTimeout.class);
+		assertEquals(2, result.getFailureCount());
+		assertThat(HasGlobalTimeout.log, containsString("ran1"));
+		assertThat(HasGlobalTimeout.log, containsString("ran2"));
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_b3ee106_5eaf0fb/rev_b3ee106-5eaf0fb;/src/test/java/org/junit/tests/experimental/interceptor/NameInterceptorTest;testA();;;@Test public void testA() {
+		assertEquals("testA", name.getMethodName());
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_b3ee106_5eaf0fb/rev_b3ee106-5eaf0fb;/src/test/java/org/junit/tests/experimental/interceptor/NameInterceptorTest;testB();;;@Test public void testB() {
+		assertEquals("testB", name.getMethodName());
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/main/java/org/junit/runners/BlockJUnit4ClassRunner;collectInitializationErrors(List<Throwable>);;;		validateFields(errors);
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/main/java/org/junit/runners/BlockJUnit4ClassRunner;validateZeroArgConstructor(List<Throwable>);;;		// TODO (May 26, 2009 10:48:26 PM): don't override this
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/main/java/org/junit/runners/BlockJUnit4ClassRunner;validateFields(List<Throwable>);;;protected void validateFields(List<Throwable> errors) {
+		for (FrameworkField each : interceptorFields())
+			validateInterceptorField(each.getField(), errors);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/main/java/org/junit/runners/BlockJUnit4ClassRunner;validateInterceptorField(Field,List<Throwable>);;;private void validateInterceptorField(Field field, List<Throwable> errors) {
+		if (!StatementInterceptor.class.isAssignableFrom(field.getType()))
+			errors.add(new Exception("Field " + field.getName()
+					+ " must implement StatementInterceptor"));
+		if (!Modifier.isPublic(field.getModifiers()))
+			errors.add(new Exception("Field " + field.getName()
+					+ " must be public"));
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/main/java/org/junit/runners/BlockJUnit4ClassRunner;methodBlock(FrameworkMethod);;;		statement= withInterceptors(method, test, statement);
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/main/java/org/junit/runners/BlockJUnit4ClassRunner;withInterceptors(FrameworkMethod,Object,Statement);;;protected Statement withInterceptors(FrameworkMethod method, Object test,
+			Statement statement) {
+		// TODO (May 26, 2009 11:16:13 PM): outsource to a class?
+		Statement result= statement;
+		for (FrameworkField each : interceptorFields())
+			try {
+				StatementInterceptor interceptor= (StatementInterceptor) each
+						.get(test);
+				result= interceptor.intercept(result, method);
+			} catch (IllegalAccessException e) {
+				throw new RuntimeException(
+						"How did getFields return a field we couldn't access?");
+			}
+		return result;
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/main/java/org/junit/runners/BlockJUnit4ClassRunner;interceptorFields();;;private List<FrameworkField> interceptorFields() {
+		return getTestClass().getAnnotatedFields(Interceptor.class);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/main/java/org/junit/runners/model/FrameworkMember;getAnnotations();;;public Annotation[] getAnnotations();
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/main/java/org/junit/runners/model/FrameworkMember;isShadowedBy(T);;;public boolean isShadowedBy(T otherMember);
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/main/java/org/junit/runners/model/TestClass;addToAnnotationLists(T,Map<Class<?>,List<T>>);;;private <T extends FrameworkMember<T>> void addToAnnotationLists(T member, Map<Class<?>, List<T>> map) {
+		for (Annotation each : member.getAnnotations()) {
+			Class<? extends Annotation> type= each.annotationType();
+			ensureKey(map, type);
+			List<T> members= map.get(type);
+			if (isShadowedBy(member, members))
+				return;
+			if (runsTopToBottom(type))
+				members.add(0, member);
+			else
+				members.add(member);
+		}
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/main/java/org/junit/runners/model/TestClass;isShadowedBy(T,List<T>);;;private <T extends FrameworkMember<T>> boolean isShadowedBy(T member, List<T> members) {
+		for (T each : members)
+			if (member.isShadowedBy(each))
+				return true;
+		return false;
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/main/java/org/junit/runners/model/TestClass;ensureKey(Map<Class<?>,List<T>>,Class<?>);;;private <T> void ensureKey(Map<Class<?>, List<T>> map, Class<?> annotation) {
+		if (!map.containsKey(annotation))
+			map.put(annotation, new ArrayList<T>());
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/main/java/org/junit/runners/model/TestClass;getAnnotatedFields(Class<?extendsAnnotation>);;;public List<FrameworkField> getAnnotatedFields(Class<? extends Annotation> annotationClass) {
+		// TODO (May 25, 2009 10:02:46 PM): DUP
+		ensureKey(fFieldsForAnnotations, annotationClass);
+		return fFieldsForAnnotations.get(annotationClass);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/main/java/org/junit/runners/model/FrameworkField;FrameworkField(Field);;;public FrameworkField(Field field) {
+		fField= field;
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/main/java/org/junit/runners/model/FrameworkField;getAnnotations();;;public Annotation[] getAnnotations() {
+		return fField.getAnnotations();
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/main/java/org/junit/runners/model/FrameworkField;isShadowedBy(FrameworkField);;;public boolean isShadowedBy(FrameworkField otherMember) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/main/java/org/junit/runners/model/FrameworkField;getField();;;public Field getField() {
+		return fField;
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/main/java/org/junit/runners/model/FrameworkField;get(Object);;;public Object get(Object target) throws IllegalArgumentException, IllegalAccessException {
+		return fField.get(target);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/main/java/org/junit/experimental/ParallelComputer;parallelize(Runner);;;private static <T> Runner parallelize(Runner runner) {
+		if (runner instanceof ParentRunner<?>) {
+			((ParentRunner<?>) runner).setRunnerInterceptor(new RunnerInterceptor() {
+				private final List<Future<Object>> fResults= new ArrayList<Future<Object>>();
+
+				private final ExecutorService fService= Executors
+						.newCachedThreadPool();
+
+				public void runChild(final Runnable childStatement) {
+					fResults.add(fService.submit(new Callable<Object>() {
+						public Object call() throws Exception {
+							childStatement.run();
+							return null;
+						}
+					}));
+				}
+
+				public void finished() {
+					for (Future<Object> each : fResults)
+						try {
+							each.get();
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+				}
+			});
+		}
+		return runner;
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/main/java/org/junit/experimental/interceptor/ExpectedException;intercept(Statement,FrameworkMethod);;;public Statement intercept(Statement base, FrameworkMethod method) {
+		return new ExpectedExceptionStatement(base);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/main/java/org/junit/experimental/interceptor/ExpectedException;expect(Class<?extendsThrowable>);;;public void expect(Class<? extends Throwable> type) {
+		fType= type;
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/main/java/org/junit/experimental/interceptor/ExpectedException;expectMessage(String);;;public void expectMessage(String message) {
+		fMessage= message;
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/main/java/org/junit/experimental/interceptor/ExpectedException;noExpectedException();;;private boolean noExpectedException() {
+		return fType == null && fMessage == null;
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/main/java/org/junit/experimental/interceptor/ExpectedException;ExpectedExceptionStatement(Statement);;;public ExpectedExceptionStatement(Statement base) {
+			fNext= base;
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/main/java/org/junit/experimental/interceptor/ExpectedException;evaluate();;;@Override
+		public void evaluate() throws Throwable {
+			boolean complete = false;
+			try {
+				fNext.evaluate();
+				complete = true;
+			} catch (Throwable e) {
+				if (noExpectedException())
+					throw e;
+				// TODO (May 26, 2009 11:46:31 PM): isInstance?
+				if (fType != null && !fType.isAssignableFrom(e.getClass())) {
+					String message= "Unexpected exception, expected<"
+								+ fType.getName() + "> but was<"
+								+ e.getClass().getName() + ">";
+					throw new Exception(message, e);
+				}
+				if (fMessage != null && !getMessage(e).contains(fMessage)) {
+					String message= "Unexpected exception message, expected<"
+								+ fMessage + "> but was<"
+								+ getMessage(e) + ">";
+					throw new Exception(message, e);
+				}
+			}
+			// TODO (May 26, 2009 11:54:22 PM): do I need complete
+			if (complete && !noExpectedException()) {
+				if (fType != null)
+					throw new AssertionError("Expected exception: "
+							+ fType.getName());
+				else if (fMessage != null)
+					throw new AssertionError("Expected exception with message: "
+							+ fMessage);
+				else
+					throw new RuntimeException("How'd we get here?");
+			}
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/main/java/org/junit/experimental/interceptor/ExpectedException;getMessage(Throwable);;;private String getMessage(Throwable e) {
+			return e.getMessage() == null ? "" : e.getMessage();
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/test/java/org/junit/tests/experimental/interceptor/InterceptorTest;foo();;;@Test public void foo() {}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/test/java/org/junit/tests/experimental/interceptor/InterceptorTest;validateWrongTypedField();;;@Test public void validateWrongTypedField() {
+		assertThat(testResult(WrongTypedField.class), 
+				hasSingleFailureContaining("must implement StatementInterceptor"));
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/test/java/org/junit/tests/experimental/interceptor/InterceptorTest;validateWrongTypedFieldInSuperclass();;;@Test public void validateWrongTypedFieldInSuperclass() {
+		assertThat(testResult(SonOfWrongTypedField.class), 
+				hasSingleFailureContaining("must implement StatementInterceptor"));
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/test/java/org/junit/tests/experimental/interceptor/InterceptorTest;foo();;;@Test public void foo() {}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/test/java/org/junit/tests/experimental/interceptor/InterceptorTest;validatePrivateInterceptor();;;@Test public void validatePrivateInterceptor() {
+		assertThat(testResult(PrivateInterceptor.class), 
+				hasSingleFailureContaining("must be public"));
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/test/java/org/junit/tests/experimental/interceptor/ExpectedExceptionInterceptorTest;throwsNothing();;;@Test
+		public void throwsNothing() {
+
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/test/java/org/junit/tests/experimental/interceptor/ExpectedExceptionInterceptorTest;throwsNullPointerException();;;@Test
+		public void throwsNullPointerException() {
+			thrown.expect(NullPointerException.class);
+			throw new NullPointerException();
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/test/java/org/junit/tests/experimental/interceptor/ExpectedExceptionInterceptorTest;throwsNullPointerExceptionWithMessage();;;@Test
+		public void throwsNullPointerExceptionWithMessage() {
+			thrown.expect(NullPointerException.class);
+			thrown.expectMessage("happened?");
+			throw new NullPointerException("What happened?");
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/test/java/org/junit/tests/experimental/interceptor/ExpectedExceptionInterceptorTest;expectedExceptionPasses();;;@Test
+	public void expectedExceptionPasses() {
+		assertThat(testResult(HasExpectedException.class), isSuccessful());
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/test/java/org/junit/tests/experimental/interceptor/ExpectedExceptionInterceptorTest;throwsNullPointerException();;;@Test
+		public void throwsNullPointerException() {
+			thrown.expect(NullPointerException.class);
+			throw new IllegalArgumentException();
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/test/java/org/junit/tests/experimental/interceptor/ExpectedExceptionInterceptorTest;unExpectedExceptionFails();;;@Test
+	public void unExpectedExceptionFails() {
+		assertThat(
+				testResult(HasWrongExpectedException.class),
+				hasSingleFailureContaining("Unexpected exception, expected<java.lang.NullPointerException> but was<java.lang.IllegalArgumentException>"));
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/test/java/org/junit/tests/experimental/interceptor/ExpectedExceptionInterceptorTest;throwsNullPointerException();;;@Test
+		public void throwsNullPointerException() {
+			thrown.expectMessage("expectedMessage");
+			throw new IllegalArgumentException("actualMessage");
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/test/java/org/junit/tests/experimental/interceptor/ExpectedExceptionInterceptorTest;wrongMessageFails();;;@Test
+	public void wrongMessageFails() {
+		assertThat(
+				testResult(HasWrongMessage.class),
+				hasSingleFailureContaining("Unexpected exception message, expected<expectedMessage> but was<actualMessage>"));
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/test/java/org/junit/tests/experimental/interceptor/ExpectedExceptionInterceptorTest;doesntThrowNullPointerException();;;@Test
+		public void doesntThrowNullPointerException() {
+			thrown.expect(NullPointerException.class);
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/test/java/org/junit/tests/experimental/interceptor/ExpectedExceptionInterceptorTest;failsIfExceptionNeverComes();;;@Test
+	public void failsIfExceptionNeverComes() {
+		assertThat(
+				testResult(WronglyExpectsException.class),
+				hasSingleFailureContaining("Expected exception: java.lang.NullPointerException"));
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/test/java/org/junit/tests/experimental/interceptor/ExpectedExceptionInterceptorTest;doesntThrowAnything();;;@Test
+		public void doesntThrowAnything() {
+			thrown.expectMessage("anything!");
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/test/java/org/junit/tests/experimental/interceptor/ExpectedExceptionInterceptorTest;failsIfExceptionMessageNeverComes();;;@Test
+	public void failsIfExceptionMessageNeverComes() {
+		assertThat(
+				testResult(WronglyExpectsExceptionMessage.class),
+				hasSingleFailureContaining("Expected exception with message: anything!"));
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/test/java/org/junit/tests/experimental/interceptor/ExpectedExceptionInterceptorTest;throwsMore();;;@Test
+		public void throwsMore() {
+			thrown.expectMessage("anything!");
+			throw new NullPointerException(
+					"This could throw anything! (as long as it has the right substring)");
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/test/java/org/junit/tests/experimental/interceptor/ExpectedExceptionInterceptorTest;passesWithSubstringMethod();;;@Test
+	public void passesWithSubstringMethod() {
+		assertThat(testResult(ExpectsSubstring.class), isSuccessful());
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/test/java/org/junit/tests/experimental/interceptor/ExpectedExceptionInterceptorTest;throwsMore();;;@Test
+		public void throwsMore() {
+			thrown.expectMessage("anything!");
+			throw new NullPointerException();
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910;/src/test/java/org/junit/tests/experimental/interceptor/ExpectedExceptionInterceptorTest;failsWithNullExceptionMessage();;;@Test
+	public void failsWithNullExceptionMessage() {
+		assertThat(
+				testResult(ExpectsSubstringNullMessage.class),
+				hasSingleFailureContaining("Unexpected exception message, expected<anything!> but was<>"));
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5;/src/main/java/org/junit/internal/matchers/IsCollectionContaining;IsCollectionContaining(Matcher<?superT>);;;private IsCollectionContaining(Matcher<? super T> elementMatcher) {
+		super(elementMatcher);
+		// TODO Auto-generated constructor stub
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5;/src/main/java/org/junit/internal/matchers/CombinableMatcher;CombinableMatcher(Matcher<?superT>);;;private CombinableMatcher(Matcher<? super T> matcher) {
+		super(matcher);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5;/src/main/java/org/junit/matchers/JUnitMatchers;hasItem(Matcher<?superT>);;;@Deprecated
+    public static <T> Matcher<Iterable<? super T>> hasItem(Matcher<? super T> elementMatcher) {
+		return CoreMatchers.hasItem(elementMatcher);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5;/src/main/java/org/junit/matchers/JUnitMatchers;hasItems(Matcher<?superT>);;;@Deprecated
+	public static <T> Matcher<Iterable<T>> hasItems(Matcher<? super T>... elementMatchers) {
+		return CoreMatchers.hasItems(elementMatchers);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5;/src/main/java/org/junit/matchers/JUnitMatchers;both(Matcher<?superT>);;;@Deprecated
+	public static <T> CombinableMatcher<T> both(Matcher<? super T> matcher) {
+		return CoreMatchers.both(matcher);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5;/src/main/java/org/junit/matchers/JUnitMatchers;either(Matcher<?superT>);;;@Deprecated
+	public static <T> CombinableMatcher<T> either(Matcher<? super T> matcher) {
+		return CoreMatchers.either(matcher);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_a402014_3f05aac/rev_a402014-3f05aac;/src/main/java/org/junit/matchers/JUnitMatchers;each(Matcher<T>);;;@Deprecated
+	public static <T> Matcher<Iterable<T>> each(final Matcher<T> elementMatcher) {
+		return CoreMatchers.everyItem(elementMatcher);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_a402014_3f05aac/rev_a402014-3f05aac;/src/main/java/org/junit/matchers/JUnitMatchers;both(Matcher<T>);;;public static <T> CombinableMatcher<T> both(Matcher<T> matcher) {
+		return CoreMatchers.both(matcher);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_a402014_3f05aac/rev_a402014-3f05aac;/src/main/java/org/junit/matchers/JUnitMatchers;either(Matcher<T>);;;public static <T> CombinableMatcher<T> either(Matcher<T> matcher) {
+		return CoreMatchers.either(matcher);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_a402014_3f05aac/rev_a402014-3f05aac;/src/main/java/org/junit/matchers/JUnitMatchers;matches(Matcher<?>);;;@SuppressWarnings("unchecked")
+	public static <T> Matcher<T> matches(Matcher<?> matcher) {
+		return (Matcher<T>)matcher;
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_a402014_3f05aac/rev_a402014-3f05aac;/src/test/java/org/junit/tests/assertion/AssertionTest;assertThatIncludesAdvancedMismatch();;;@Test public void assertThatIncludesAdvancedMismatch() {
+        String expectedMessage = "identifier\nExpected: is an instance of java.lang.Integer\n     but: \"actual\" is a java.lang.String";
+        
+        try {
+            assertThat("identifier", "actual", matches(is(Integer.class)));
+        } catch (AssertionError e) {
+            assertEquals(expectedMessage, e.getMessage());
+        }
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_a402014_3f05aac/rev_a402014-3f05aac;/src/test/java/org/junit/tests/assertion/BothTest;isOneOfPasses();;;@SuppressWarnings("unchecked")
+	@Test
+	public void isOneOfPasses() {
+		assertThat(3, isOneOf(3, 4));
+		assertThat(Arrays.asList("a"), isOneOf(Arrays.asList("a"), Arrays
+				.asList("b")));
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_a402014_3f05aac/rev_a402014-3f05aac;/src/test/java/org/junit/tests/assertion/BothTest;superclassesAreOkInSecondPositionOnly();;;@Test
+	public void superclassesAreOkInSecondPositionOnly() {
+		assertThat("a", both(containsString("a")).and(is(String.class)));
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_20dd074_2e9a239/rev_20dd074-2e9a239;/src/main/java/org/junit/experimental/interceptor/ExpectedException;expect(Matcher<?>);;;public void expect(Matcher<?> matcher) {
+		if (fMatcher == null)
+			fMatcher = matcher;
+		else
+			fMatcher = both(fMatcher).and(matches(matcher));
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_20dd074_2e9a239/rev_20dd074-2e9a239;/src/main/java/org/junit/experimental/interceptor/ExpectedException;expectMessage(Matcher<String>);;;public void expectMessage(Matcher<String> matcher) {
+		expect(hasMessage(matcher));
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_20dd074_2e9a239/rev_20dd074-2e9a239;/src/main/java/org/junit/experimental/interceptor/ExpectedException;evaluate();;;			if (fMatcher != null)
+				throw new AssertionError("Expected test to throw "
+						+ StringDescription.toString(fMatcher));
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_20dd074_2e9a239/rev_20dd074-2e9a239;/src/main/java/org/junit/experimental/interceptor/ExpectedException;hasMessage(Matcher<String>);;;private Matcher<Throwable> hasMessage(Matcher<String> matcher) {
+		return new FeatureMatcher<Throwable, String>(matcher,
+				"exception with message", "getMessage()") {
+			@Override
+			protected String featureValueOf(Throwable actual) {
+				return actual.getMessage();
+			}
+		};
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_20dd074_2e9a239/rev_20dd074-2e9a239;/src/test/java/org/junit/tests/experimental/interceptor/ExpectedExceptionInterceptorTest;throwsMore();;;@Test
+		public void throwsMore() {
+			thrown.expectMessage(startsWith("Ack"));
+			throw new NullPointerException("Ack!");
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_20dd074_2e9a239/rev_20dd074-2e9a239;/src/test/java/org/junit/tests/experimental/interceptor/ExpectedExceptionInterceptorTest;succeedsWithMessageMatcher();;;@Test
+	public void succeedsWithMessageMatcher() {
+		assertThat(testResult(ExpectsMessageMatcher.class), isSuccessful());
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_20dd074_2e9a239/rev_20dd074-2e9a239;/src/test/java/org/junit/tests/experimental/interceptor/ExpectedExceptionInterceptorTest;throwsMore();;;@Test
+		public void throwsMore() {
+			thrown.expectMessage(startsWith("Wrong start"));
+			throw new NullPointerException("Back!");
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_20dd074_2e9a239/rev_20dd074-2e9a239;/src/test/java/org/junit/tests/experimental/interceptor/ExpectedExceptionInterceptorTest;failsWithMatcher();;;@Test
+	public void failsWithMatcher() {
+		assertThat(testResult(ExpectedMessageMatcherFails.class),
+				hasSingleFailureContaining("Wrong start"));
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_20dd074_2e9a239/rev_20dd074-2e9a239;/src/test/java/org/junit/tests/experimental/interceptor/ExpectedExceptionInterceptorTest;throwsMore();;;@Test
+		public void throwsMore() {
+			thrown.expect(any(Throwable.class));
+			throw new NullPointerException("Ack!");
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_20dd074_2e9a239/rev_20dd074-2e9a239;/src/test/java/org/junit/tests/experimental/interceptor/ExpectedExceptionInterceptorTest;succeedsWithMatcher();;;@Test
+	public void succeedsWithMatcher() {
+		assertThat(testResult(ExpectsMatcher.class), isSuccessful());
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_20dd074_2e9a239/rev_20dd074-2e9a239;/src/test/java/org/junit/tests/experimental/interceptor/ExpectedExceptionInterceptorTest;throwsMore();;;@Test
+		public void throwsMore() {
+			thrown.expect(IllegalArgumentException.class);
+			thrown.expectMessage("Ack!");
+			throw new NullPointerException("Ack!");
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_20dd074_2e9a239/rev_20dd074-2e9a239;/src/test/java/org/junit/tests/experimental/interceptor/ExpectedExceptionInterceptorTest;failsWithMultipleMatchers();;;@Test
+	public void failsWithMultipleMatchers() {
+		assertThat(testResult(ExpectsMultipleMatchers.class),
+				hasSingleFailureContaining("IllegalArgumentException"));
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737;/src/main/java/org/junit/internal/ComparisonCriteria;arrayEquals(String,Object,Object);		
+		int expectedsLength= Assert.assertArraysAreSameLength(expecteds, actuals,
+				header);;;
+		int expectedsLength= Assert.assertArraysAreSameLength(expecteds,
+				actuals, header);
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737;/src/main/java/org/junit/internal/ComparisonCriteria;arrayEquals(String,Object,Object);			;;
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737;/src/main/java/org/junit/internal/runners/model/MultipleFailureException;assertEmpty(List<Throwable>);;;public static void assertEmpty(List<Throwable> errors) throws Throwable {
+		if (errors.isEmpty())
+			return;
+		if (errors.size() == 1)
+			throw errors.get(0);
+		throw new MultipleFailureException(errors);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_4a678cd_46036e7/rev_4a678cd-46036e7;/src/main/java/org/junit/runners/model/InitializationError;InitializationError(Throwable);;;public InitializationError(Throwable error) {
+		this(Arrays.asList(error));
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_b33b4b0_c3873cf/rev_b33b4b0-c3873cf;/src/main/java/junit/framework/JUnit4TestAdapter;removeIgnored();;;private Filter removeIgnored() {
+		return new Filter() {			
+			@Override
+			public boolean shouldRun(Description description) {
+				return !isIgnored(description);
+			}
+			
+			@Override
+			public String describe() {
+				return "not ignored";
+			}
+		};
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_b33b4b0_c3873cf/rev_b33b4b0-c3873cf;/src/main/java/org/junit/runners/ParentRunner;validatePublicVoidNoArgMethods(Class<?extendsAnnotation>,boolean,List<Throwable>);protected void validatePublicVoidNoArgMethods(Class<? extends Annotation> annotation,
+			boolean isStatic, List<Throwable> errors) {
+		List<FrameworkMethod> methods= getTestClass().getAnnotatedMethods(annotation);;;protected void validatePublicVoidNoArgMethods(
+			Class<? extends Annotation> annotation, boolean isStatic,
+			List<Throwable> errors) {
+		List<FrameworkMethod> methods= getTestClass().getAnnotatedMethods(
+				annotation);
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_b33b4b0_c3873cf/rev_b33b4b0-c3873cf;/src/main/java/org/junit/runners/ParentRunner;withBeforeClasses(Statement);		return befores.isEmpty() ? statement :
+			new RunBefores(statement, befores, null);;;		return befores.isEmpty() ? statement : new RunBefores(statement,
+				befores, null);
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_b33b4b0_c3873cf/rev_b33b4b0-c3873cf;/src/main/java/org/junit/runners/ParentRunner;withAfterClasses(Statement);		return afters.isEmpty() ? statement : 
+			new RunAfters(statement, afters, null);;;		return afters.isEmpty() ? statement : new RunAfters(statement, afters,
+				null);
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_b33b4b0_c3873cf/rev_b33b4b0-c3873cf;/src/main/java/org/junit/runners/ParentRunner;comparator(Sorter);;;private Comparator<? super T> comparator(final Sorter sorter) {
+		return new Comparator<T>() {
+			public int compare(T o1, T o2) {
+				return sorter.compare(describeChild(o1), describeChild(o2));
+			}
+		};
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_b33b4b0_c3873cf/rev_b33b4b0-c3873cf;/src/main/java/org/junit/runners/ParentRunner;setScheduler(RunnerScheduler);		this.fScheduler = scheduler;;;		this.fScheduler= scheduler;
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_b33b4b0_c3873cf/rev_b33b4b0-c3873cf;/src/main/java/org/junit/runner/Runner;getPlan();;;public Plan getPlan() {
+		return Plan.fromDescription(getDescription());
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_25fa1d5_2de4d6f/rev_25fa1d5-2de4d6f;/src/main/java/junit/framework/TestSuite;createTest(Class<?>,String);;;static public Test createTest(Class<?> theClass, String name) {
+		Constructor<?> constructor;
+		try {
+			constructor= getTestConstructor(theClass);
+		} catch (NoSuchMethodException e) {
+			return warning("Class "+theClass.getName()+" has no public constructor TestCase(String name) or TestCase()");
+		}
+		Object test;
+		try {
+			if (constructor.getParameterTypes().length == 0) {
+				test= constructor.newInstance(new Object[0]);
+				if (test instanceof TestCase)
+					((TestCase) test).setName(name);
+			} else {
+				test= constructor.newInstance(new Object[]{name});
+			}
+		} catch (InstantiationException e) {
+			return(warning("Cannot instantiate test case: "+name+" ("+exceptionToString(e)+")"));
+		} catch (InvocationTargetException e) {
+			return(warning("Exception in constructor: "+name+" ("+exceptionToString(e.getTargetException())+")"));
+		} catch (IllegalAccessException e) {
+			return(warning("Cannot access test case: "+name+" ("+exceptionToString(e)+")"));
+		}
+		return (Test) test;
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_25fa1d5_2de4d6f/rev_25fa1d5-2de4d6f;/src/main/java/junit/framework/TestSuite;getTestConstructor(Class<?>);;;public static Constructor<?> getTestConstructor(Class<?> theClass) throws NoSuchMethodException {
+		try {
+			return theClass.getConstructor(String.class);	
+		} catch (NoSuchMethodException e) {
+			// fall through
+		}
+		return theClass.getConstructor(new Class[0]);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_25fa1d5_2de4d6f/rev_25fa1d5-2de4d6f;/src/main/java/junit/framework/TestSuite;addTestsFromTestCase(Class<?>);;;private void addTestsFromTestCase(final Class<?> theClass) {
+		fName= theClass.getName();
+		try {
+			getTestConstructor(theClass); // Avoid generating multiple error messages
+		} catch (NoSuchMethodException e) {
+			addTest(warning("Class "+theClass.getName()+" has no public constructor TestCase(String name) or TestCase()"));
+			return;
+		}
+
+		if (!Modifier.isPublic(theClass.getModifiers())) {
+			addTest(warning("Class "+theClass.getName()+" is not public"));
+			return;
+		}
+
+		Class<?> superClass= theClass;
+		List<String> names= new ArrayList<String>();
+		while (Test.class.isAssignableFrom(superClass)) {
+			for (Method each : superClass.getDeclaredMethods())
+				addTestMethod(each, names, theClass);
+			superClass= superClass.getSuperclass();
+		}
+		if (fTests.size() == 0)
+			addTest(warning("No tests found in "+theClass.getName()));
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_25fa1d5_2de4d6f/rev_25fa1d5-2de4d6f;/src/main/java/junit/framework/TestSuite;testCaseForClass(Class<?>);;;private Test testCaseForClass(Class<?> each) {
+		if (TestCase.class.isAssignableFrom(each))
+			return new TestSuite(each.asSubclass(TestCase.class));
+		else
+			return warning(each.getCanonicalName() + " does not extend TestCase");
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_25fa1d5_2de4d6f/rev_25fa1d5-2de4d6f;/src/main/java/junit/framework/TestSuite;addTestMethod(Method,List<String>,Class<?>);;;private void addTestMethod(Method m, List<String> names, Class<?> theClass) {
+		String name= m.getName();
+		if (names.contains(name))
+			return;
+		if (! isPublicTestMethod(m)) {
+			if (isTestMethod(m))
+				addTest(warning("Test method isn't public: "+ m.getName() + "(" + theClass.getCanonicalName() + ")"));
+			return;
+		}
+		names.add(name);
+		addTest(createTest(theClass, name));
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_25fa1d5_2de4d6f/rev_25fa1d5-2de4d6f;/src/test/java/junit/tests/framework/ThreeTestCases;testCase();;;public void testCase() {
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_25fa1d5_2de4d6f/rev_25fa1d5-2de4d6f;/src/test/java/junit/tests/framework/ThreeTestCases;testCase2();;;public void testCase2() {
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_25fa1d5_2de4d6f/rev_25fa1d5-2de4d6f;/src/test/java/junit/tests/framework/ThreeTestCases;testCase3thisTimeItsPersonal();;;public void testCase3thisTimeItsPersonal() {
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_25fa1d5_2de4d6f/rev_25fa1d5-2de4d6f;/src/test/java/junit/tests/framework/SuiteTest;suite();;;		suite.addTest(new SuiteTest("testOneTestCaseEclipseSeesSameStructureAs381"));		
+		suite.addTest(new SuiteTest("testNoTestCaseClass"));
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_25fa1d5_2de4d6f/rev_25fa1d5-2de4d6f;/src/test/java/junit/tests/framework/SuiteTest;testNoTestCaseClass();;;public void testNoTestCaseClass() {
+		Test t= new TestSuite(NoTestCaseClass.class);
+		t.run(fResult);
+		assertEquals(1, fResult.runCount());  // warning test
+		assertTrue(! fResult.wasSuccessful());
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_25fa1d5_2de4d6f/rev_25fa1d5-2de4d6f;/src/test/java/junit/tests/framework/SuiteTest;testOneTestCaseEclipseSeesSameStructureAs381();;;public void testOneTestCaseEclipseSeesSameStructureAs381() {
+		TestSuite t= new TestSuite(ThreeTestCases 	.class);
+		assertEquals(3, Collections.list(t.tests()).size());
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/main/java/junit/framework/JUnit4TestAdapterCache;asTest(Description);;;public Test asTest(Description description) {
+		if (description.isSuite())
+			return createTest(description);
+		else {
+			if (!containsKey(description))
+				put(description, createTest(description));
+			return get(description);
+		}
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/main/java/junit/framework/JUnit4TestAdapterCache;createTest(Description);;;Test createTest(Description description) {
+		if (description.isTest())
+			return new JUnit4TestCaseFacade(description);
+		else {
+			TestSuite suite = new TestSuite(description.getDisplayName());
+			for (Description child : description.getChildren())
+				suite.addTest(asTest(child));
+			return suite;
+		}
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/main/java/junit/framework/JUnit4TestAdapterCache;getNotifier(TestResult,JUnit4TestAdapter);		RunNotifier notifier= new RunNotifier();;;		RunNotifier notifier = new RunNotifier();
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/main/java/junit/framework/JUnit4TestAdapterCache;asTestList(Description);;;public List<Test> asTestList(Description description) {
+		if (description.isTest())
+			return Arrays.asList(asTest(description));
+		else {
+			List<Test> returnThis = new ArrayList<Test>();
+			for (Description child : description.getChildren()) {
+				returnThis.add(asTest(child));
+			}
+			return returnThis;
+		}
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/main/java/junit/framework/JUnit4TestAdapter;removeIgnored(Description);;;private Description removeIgnored(Description description) {
+		if (isIgnored(description))
+			return Description.EMPTY;
+		Description result = description.childlessCopy();
+		for (Description each : description.getChildren()) {
+			Description child= removeIgnored(each);
+			if (! child.isEmpty())
+				result.addChild(child);
+		}
+		return result;
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/main/java/junit/framework/TestSuite;createTest(Class<?>,String);;;static public Test createTest(Class<?> theClass, String name) {
+		Constructor<?> constructor;
+		try {
+			constructor= getTestConstructor(theClass);
+		} catch (NoSuchMethodException e) {
+			return warning("Class "+theClass.getName()+" has no public constructor TestCase(String name) or TestCase()");
+		}
+		Object test;
+		try {
+			if (constructor.getParameterTypes().length == 0) {
+				test= constructor.newInstance(new Object[0]);
+				if (test instanceof TestCase)
+					((TestCase) test).setName(name);
+			} else {
+				test= constructor.newInstance(new Object[]{name});
+			}
+		} catch (InstantiationException e) {
+			return(warning("Cannot instantiate test case: "+name+" ("+exceptionToString(e)+")"));
+		} catch (InvocationTargetException e) {
+			return(warning("Exception in constructor: "+name+" ("+exceptionToString(e.getTargetException())+")"));
+		} catch (IllegalAccessException e) {
+			return(warning("Cannot access test case: "+name+" ("+exceptionToString(e)+")"));
+		}
+		return (Test) test;
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/main/java/junit/framework/TestSuite;getTestConstructor(Class<?>);;;public static Constructor<?> getTestConstructor(Class<?> theClass) throws NoSuchMethodException {
+		try {
+			return theClass.getConstructor(String.class);	
+		} catch (NoSuchMethodException e) {
+			// fall through
+		}
+		return theClass.getConstructor(new Class[0]);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/main/java/junit/framework/TestSuite;addTestsFromTestCase(Class<?>);;;private void addTestsFromTestCase(final Class<?> theClass) {
+		fName= theClass.getName();
+		try {
+			getTestConstructor(theClass); // Avoid generating multiple error messages
+		} catch (NoSuchMethodException e) {
+			addTest(warning("Class "+theClass.getName()+" has no public constructor TestCase(String name) or TestCase()"));
+			return;
+		}
+
+		if (!Modifier.isPublic(theClass.getModifiers())) {
+			addTest(warning("Class "+theClass.getName()+" is not public"));
+			return;
+		}
+
+		Class<?> superClass= theClass;
+		List<String> names= new ArrayList<String>();
+		while (Test.class.isAssignableFrom(superClass)) {
+			for (Method each : superClass.getDeclaredMethods())
+				addTestMethod(each, names, theClass);
+			superClass= superClass.getSuperclass();
+		}
+		if (fTests.size() == 0)
+			addTest(warning("No tests found in "+theClass.getName()));
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/main/java/junit/framework/TestSuite;testCaseForClass(Class<?>);;;private Test testCaseForClass(Class<?> each) {
+		if (TestCase.class.isAssignableFrom(each))
+			return new TestSuite(each.asSubclass(TestCase.class));
+		else
+			return warning(each.getCanonicalName() + " does not extend TestCase");
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/main/java/junit/framework/TestSuite;addTestMethod(Method,List<String>,Class<?>);;;private void addTestMethod(Method m, List<String> names, Class<?> theClass) {
+		String name= m.getName();
+		if (names.contains(name))
+			return;
+		if (! isPublicTestMethod(m)) {
+			if (isTestMethod(m))
+				addTest(warning("Test method isn't public: "+ m.getName() + "(" + theClass.getCanonicalName() + ")"));
+			return;
+		}
+		names.add(name);
+		addTest(createTest(theClass, name));
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/main/java/org/junit/runners/ParentRunner;validatePublicVoidNoArgMethods(Class<?extendsAnnotation>,boolean,List<Throwable>);protected void validatePublicVoidNoArgMethods(
+			Class<? extends Annotation> annotation, boolean isStatic,
+			List<Throwable> errors) {
+		List<FrameworkMethod> methods= getTestClass().getAnnotatedMethods(
+				annotation);;;protected void validatePublicVoidNoArgMethods(Class<? extends Annotation> annotation,
+			boolean isStatic, List<Throwable> errors) {
+		List<FrameworkMethod> methods= getTestClass().getAnnotatedMethods(annotation);
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/main/java/org/junit/runners/ParentRunner;getFilteredChildren();;;private List<T> getFilteredChildren() {
+		ArrayList<T> filtered= new ArrayList<T>();
+		for (T each : getChildren())
+			if (shouldRun(each))
+				try {
+					filterChild(each);
+					sortChild(each);
+					filtered.add(each);
+				} catch (NoTestsRemainException e) {
+					// don't add it
+				}
+		Collections.sort(filtered, comparator());
+		return filtered;
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/main/java/org/junit/runners/ParentRunner;sortChild(T);;;private void sortChild(T child) {
+		fSorter.apply(child);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/main/java/org/junit/runners/ParentRunner;filterChild(T);;;private void filterChild(T child) throws NoTestsRemainException {
+		if (fFilter != null)
+			fFilter.apply(child);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/main/java/org/junit/runners/ParentRunner;shouldRun(T);;;private boolean shouldRun(T each) {
+		return fFilter == null || fFilter.shouldRun(describeChild(each));
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/main/java/org/junit/runners/ParentRunner;comparator();;;private Comparator<? super T> comparator() {
+		return new Comparator<T>() {
+			public int compare(T o1, T o2) {
+				return fSorter.compare(describeChild(o1), describeChild(o2));
+			}
+		};
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/main/java/org/junit/runners/ParentRunner;setScheduler(RunnerScheduler);		this.fScheduler= scheduler;;;		this.fScheduler = scheduler;
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/main/java/org/junit/experimental/max/MaxCore;findLeaves(Description,Description,List<Description>);;;private void findLeaves(Description parent, Description description, List<Description> results) {
+		if (description.getChildren().isEmpty())
+			if (description.toString().equals("warning(junit.framework.TestSuite$1)"))
+				results.add(Description.createSuiteDescription(MALFORMED_JUNIT_3_TEST_CLASS_PREFIX + parent));
+			else
+				results.add(description);
+		else
+			for (Description each : description.getChildren())
+				findLeaves(description, each, results);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/main/java/org/junit/experimental/theories/Theories;TheoryAnchor(FrameworkMethod,TestClass);;;public TheoryAnchor(FrameworkMethod method, TestClass testClass) {
+			fTestMethod= method;
+            fTestClass= testClass;
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/main/java/org/junit/experimental/theories/Theories;getTestClass();;;private TestClass getTestClass() {
+            return fTestClass;
+        }
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/test/java/junit/tests/framework/ThreeTestCases;testCase();;;public void testCase() {
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/test/java/junit/tests/framework/ThreeTestCases;testCase2();;;public void testCase2() {
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/test/java/junit/tests/framework/ThreeTestCases;testCase3thisTimeItsPersonal();;;public void testCase3thisTimeItsPersonal() {
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/test/java/junit/tests/framework/SuiteTest;suite();;;		suite.addTest(new SuiteTest("testOneTestCaseEclipseSeesSameStructureAs381"));		
+		suite.addTest(new SuiteTest("testNoTestCaseClass"));
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/test/java/junit/tests/framework/SuiteTest;testNoTestCaseClass();;;public void testNoTestCaseClass() {
+		Test t= new TestSuite(NoTestCaseClass.class);
+		t.run(fResult);
+		assertEquals(1, fResult.runCount());  // warning test
+		assertTrue(! fResult.wasSuccessful());
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/test/java/junit/tests/framework/SuiteTest;testOneTestCaseEclipseSeesSameStructureAs381();;;public void testOneTestCaseEclipseSeesSameStructureAs381() {
+		TestSuite t= new TestSuite(ThreeTestCases 	.class);
+		assertEquals(3, Collections.list(t.tests()).size());
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/test/java/org/junit/tests/experimental/max/MaxStarterTest;testCountsMatchUp();;;@Test
+	public void testCountsMatchUp() {
+		JUnitCore core= new JUnitCore();
+		Request filtered= Request.aClass(AllTests.class).filterWith(
+				new Filter() {
+					@Override
+					public boolean shouldRun(Description description) {
+						return !description.toString().contains("Max");
+					}
+
+					@Override
+					public String describe() {
+						return "Avoid infinite recursion";
+					}
+				});
+		int maxCount= fMax.run(filtered, core).getRunCount();
+		int coreCount= core.run(filtered).getRunCount();
+		assertEquals(coreCount, maxCount);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/test/java/org/junit/tests/experimental/theories/runner/UnsuccessfulWithDataPointFields;theoriesMustBePublic();		assertThat(testResult(TheoriesMustBePublic.class),;;		assertThat(
+				testResult(TheoriesMustBePublic.class),
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/test/java/org/junit/tests/experimental/theories/extendingwithstubs/StubbedTheories;StubbedTheoryAnchor(FrameworkMethod,TestClass);;;public StubbedTheoryAnchor(FrameworkMethod method, TestClass testClass) {
+			super(method, testClass);
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/test/java/org/junit/tests/experimental/categories/CategoryTest;noCategory();@Test
+		public void noCategory() {
+		};;@Test public void noCategory() {}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/test/java/org/junit/tests/experimental/categories/CategoryTest;justCategory1();@Category(Category1.class)
+		@Test
+		public void justCategory1() {
+		};;@Category(Category1.class) @Test public void justCategory1() {}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/test/java/org/junit/tests/experimental/categories/CategoryTest;justCategory2();@Category(Category2.class)
+		@Test
+		public void justCategory2() {
+		};;@Category(Category2.class) @Test public void justCategory2() {}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/test/java/org/junit/tests/experimental/categories/CategoryTest;both();@Category( { Category1.class, Category2.class })
+		@Test
+		public void both() {
+		};;@Category({Category1.class, Category2.class}) @Test public void both() {}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/test/java/org/junit/tests/experimental/categories/CategoryTest;bothReversed();@Category( { Category2.class, Category1.class })
+		@Test
+		public void bothReversed() {
+		};;@Category({Category2.class, Category1.class}) @Test public void bothReversed() {}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/test/java/org/junit/tests/experimental/categories/CategoryTest;a();@Category( { FastTests.class, SlowTests.class });;@Category({FastTests.class, SlowTests.class})
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/test/java/org/junit/tests/experimental/categories/CategoryTest;runMethodWithTwoCategories();@Test
+	public void runMethodWithTwoCategories() {;;@Test public void runMethodWithTwoCategories() {
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/test/java/org/junit/tests/experimental/categories/CategoryTest;subclassesOfIncludedCategoriesAreRun();@Test
+	public void subclassesOfIncludedCategoriesAreRun() {;;@Test public void subclassesOfIncludedCategoriesAreRun() {
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/test/java/org/junit/tests/experimental/categories/CategoryTest;a();@Category(ClassAsCategory.class)
+		@Test
+		public void a() {
+		};;@Category(ClassAsCategory.class) @Test public void a() {}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/test/java/org/junit/tests/experimental/categories/CategoryTest;classesCanBeCategories();@Test
+	public void classesCanBeCategories() {;;@Test public void classesCanBeCategories() {
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/test/java/org/junit/tests/junit3compatibility/SuiteMethodTest;makeSureSuiteIsCalled();@Test
+	public void makeSureSuiteIsCalled() {;;@Test public void makeSureSuiteIsCalled() {
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/test/java/org/junit/tests/junit3compatibility/SuiteMethodTest;sample();@Test
+		public void sample() {;;@Test public void sample() {
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/test/java/org/junit/tests/junit3compatibility/SuiteMethodTest;makeSureSuiteWorksWithJUnit4Classes();@Test
+	public void makeSureSuiteWorksWithJUnit4Classes() {;;@Test public void makeSureSuiteWorksWithJUnit4Classes() {
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/test/java/org/junit/tests/junit3compatibility/SuiteMethodTest;ignored();@Ignore
+		@Test;;@Ignore	@Test
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/test/java/org/junit/tests/junit3compatibility/SuiteMethodTest;sample();@Test
+		public void sample() {;;@Test public void sample() {
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/test/java/org/junit/tests/junit3compatibility/SuiteMethodTest;suiteIsUsedWithJUnit4Classes();@Test
+	public void suiteIsUsedWithJUnit4Classes() {;;@Test public void suiteIsUsedWithJUnit4Classes() {
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/test/java/org/junit/tests/junit3compatibility/SuiteMethodTest;sample();@Test
+		public void sample() {;;@Test public void sample() {
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/test/java/org/junit/tests/junit3compatibility/SuiteMethodTest;ignore();@Ignore
+		@Test
+		public void ignore() {;;@Ignore @Test public void ignore() {
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469;/src/test/java/org/junit/tests/junit3compatibility/SuiteMethodTest;makeSureSuiteNotUsedWithJUnit4Classes2();@Test
+	public void makeSureSuiteNotUsedWithJUnit4Classes2() {;;@Test public void makeSureSuiteNotUsedWithJUnit4Classes2() {
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_28ef5cb_74bb7d8/rev_28ef5cb-74bb7d8;/src/main/java/org/junit/rules/ClassRule;apply(Statement,TestClass);;;Statement apply(Statement base, TestClass testClass);
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_28ef5cb_74bb7d8/rev_28ef5cb-74bb7d8;/src/main/java/org/junit/runners/ParentRunner;classBlock(RunNotifier);;;		statement= withClassRules(statement);
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_28ef5cb_74bb7d8/rev_28ef5cb-74bb7d8;/src/main/java/org/junit/runners/ParentRunner;withClassRules(Statement);;;private Statement withClassRules(Statement statement) {
+		final List<ClassRule> classRules= classRules();
+		if (classRules.isEmpty()) {
+			return statement;
+		}
+		Statement next = statement;
+		for (final ClassRule classRule : classRules) {
+			next = classRule.apply(next, fTestClass);
+		}
+		return next;
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_28ef5cb_74bb7d8/rev_28ef5cb-74bb7d8;/src/main/java/org/junit/runners/ParentRunner;classRules();;;protected List<ClassRule> classRules() {
+		final List<ClassRule> results= new ArrayList<ClassRule>();
+		for (FrameworkField field : ruleFields()) {
+			if (ClassRule.class.isAssignableFrom(field.getType())) {
+				results.add(getClassRule(field));
+			}
+		}
+		return results;
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_28ef5cb_74bb7d8/rev_28ef5cb-74bb7d8;/src/main/java/org/junit/runners/ParentRunner;getClassRule(FrameworkField);;;private ClassRule getClassRule(final FrameworkField field) {
+		try {
+			return (ClassRule) field.get(null);
+		} catch (IllegalAccessException e) {
+			throw new RuntimeException(
+					"How did getAnnotatedFields return a field we couldn't access?");
+		}
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_28ef5cb_74bb7d8/rev_28ef5cb-74bb7d8;/src/main/java/org/junit/runners/ParentRunner;ruleFields();;;protected List<FrameworkField> ruleFields() {
+		return fTestClass.getAnnotatedFields(Rule.class);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_28ef5cb_74bb7d8/rev_28ef5cb-74bb7d8;/src/main/java/org/junit/runners/ParentRunner;runChildren(RunNotifier);			fScheduler.schedule(new Runnable() {			;; 			fScheduler.schedule(new Runnable() {			
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_28ef5cb_74bb7d8/rev_28ef5cb-74bb7d8;/src/main/java/org/junit/runners/BlockJUnit4ClassRunner;validateRuleField(Field,List<Throwable>);;;		if (!MethodRule.class.isAssignableFrom(field.getType())) {
+			if (ClassRule.class.isAssignableFrom(field.getType())) {
+				if (!Modifier.isStatic(field.getModifiers())) {
+					errors.add(new Exception("Field " + field.getName()
+							+ " must be static"));
+				}
+			} else {
+				errors.add(new Exception("Field " + field.getName()
+						+ " must implement MethodRule or ClassRule"));
+			}
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_28ef5cb_74bb7d8/rev_28ef5cb-74bb7d8;/src/main/java/org/junit/runners/model/FrameworkField;getType();;;public Class<?> getType() {
+		return fField.getType();
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_28ef5cb_74bb7d8/rev_28ef5cb-74bb7d8;/src/test/java/org/junit/tests/experimental/rules/ClassRulesTest;firstTest();;;@Test
+		public void firstTest() {
+			assertFalse("ClassRule was not applied!", runCount == 0);
+			assertFalse("ClassRule was applied more than once!", runCount > 1);
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_28ef5cb_74bb7d8/rev_28ef5cb-74bb7d8;/src/test/java/org/junit/tests/experimental/rules/ClassRulesTest;secondTest();;;@Test
+		public void secondTest() {
+			assertFalse("ClassRule was not applied!", runCount == 0);
+			assertFalse("ClassRule was applied more than once!", runCount > 1);
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_28ef5cb_74bb7d8/rev_28ef5cb-74bb7d8;/src/test/java/org/junit/tests/experimental/rules/ClassRulesTest;ruleIsAppliedOnce();;;@Test
+	public void ruleIsAppliedOnce() {
+		runCount= 0;
+		JUnitCore.runClasses(ExampleTestWithClassRule.class);
+		assertFalse("ClassRule was not applied!", runCount == 0);
+		assertFalse("ClassRule was applied more than once!", runCount > 1);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_28ef5cb_74bb7d8/rev_28ef5cb-74bb7d8;/src/test/java/org/junit/tests/experimental/rules/ClassRulesTest;ruleIsIntroducedAndEvaluatedOnSubclass();;;@Test
+	public void ruleIsIntroducedAndEvaluatedOnSubclass() {
+		runCount= 0;
+		JUnitCore.runClasses(SubclassOfTestWithClassRule.class);
+		assertFalse("ClassRule was not applied!", runCount == 0);
+		assertFalse("ClassRule was applied more than once!", runCount > 1);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_fb723db_72ca494/rev_fb723db-72ca494;/src/test/java/redis/clients/jedis/tests/PipeliningTest;pipelineResponseWithData();;;@Test
+    public void pipelineResponseWithData() {
+        jedis.zadd("zset", 1, "foo");
+        
+        Pipeline p = jedis.pipelined();
+        Response<Double> score = p.zscore("zset", "foo");
+        p.sync();
+
+        assertNotNull(score.get());    
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_fb723db_72ca494/rev_fb723db-72ca494;/src/test/java/redis/clients/jedis/tests/PipeliningTest;pipelineResponseWithoutData();;;@Test
+    public void pipelineResponseWithoutData() {
+        jedis.zadd("zset", 1, "foo");
+        
+        Pipeline p = jedis.pipelined();
+        Response<Double> score = p.zscore("zset", "bar");
+        p.sync();
+
+        assertNull(score.get());
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_3da2f2d_dd88c51/rev_3da2f2d-dd88c51;/src/main/java/redis/clients/jedis/BinaryJedis;hdel(byte[],byte[]);public Long hdel(final byte[] key, final byte[] field) {
+	checkIsInMulti();
+	client.hdel(key, field);
+	return client.getIntegerReply();;public Long hdel(final byte[] key, final byte[] field) {
+        checkIsInMulti();
+        client.hdel(key, field);
+        return client.getIntegerReply();;public Long hdel(final byte[] key, final byte[]... fields) {
+        checkIsInMulti();
+        client.hdel(key, fields);
+        return client.getIntegerReply();
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_3da2f2d_dd88c51/rev_3da2f2d-dd88c51;/src/main/java/redis/clients/jedis/BinaryJedis;sadd(byte[],byte[]);public Long sadd(final byte[] key, final byte[] member) {
+	checkIsInMulti();
+	client.sadd(key, member);
+	return client.getIntegerReply();;public Long sadd(final byte[] key, final byte[] member) {
+        checkIsInMulti();
+        client.sadd(key, member);
+        return client.getIntegerReply();;public Long sadd(final byte[] key, final byte[]... members) {
+        checkIsInMulti();
+        client.sadd(key, members);
+        return client.getIntegerReply();
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_3da2f2d_dd88c51/rev_3da2f2d-dd88c51;/src/main/java/redis/clients/jedis/BinaryJedis;srem(byte[],byte[]);public Long srem(final byte[] key, final byte[] member) {
+	checkIsInMulti();
+	client.srem(key, member);
+	return client.getIntegerReply();;public Long srem(final byte[] key, final byte[] member) {
+        checkIsInMulti();
+        client.srem(key, member);
+        return client.getIntegerReply();;public Long srem(final byte[] key, final byte[]... member) {
+        checkIsInMulti();
+        client.srem(key, member);
+        return client.getIntegerReply();
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_3da2f2d_dd88c51/rev_3da2f2d-dd88c51;/src/main/java/redis/clients/jedis/BinaryJedis;zrem(byte[],byte[]);public Long zrem(final byte[] key, final byte[] member) {
+	checkIsInMulti();
+	client.zrem(key, member);
+	return client.getIntegerReply();;public Long zrem(final byte[] key, final byte[] member) {
+        checkIsInMulti();
+        client.zrem(key, member);
+        return client.getIntegerReply();;public Long zrem(final byte[] key, final byte[]... members) {
+        checkIsInMulti();
+        client.zrem(key, members);
+        return client.getIntegerReply();
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_3da2f2d_dd88c51/rev_3da2f2d-dd88c51;/src/main/java/redis/clients/jedis/BinaryClient;hdel(byte[],byte[]);public void hdel(final byte[] key, final byte[] field) {
+	sendCommand(HDEL, key, field);;public void hdel(final byte[] key, final byte[] field) {
+        sendCommand(HDEL, key, field);;public void hdel(final byte[] key, final byte[]... fields) {
+        sendCommand(HDEL, joinParameters(key, fields));
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_3da2f2d_dd88c51/rev_3da2f2d-dd88c51;/src/main/java/redis/clients/jedis/BinaryClient;sadd(byte[],byte[]);public void sadd(final byte[] key, final byte[] member) {
+	sendCommand(SADD, key, member);;public void sadd(final byte[] key, final byte[] member) {
+        sendCommand(SADD, key, member);;public void sadd(final byte[] key, final byte[]... members) {
+        sendCommand(SADD, joinParameters(key, members));
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_3da2f2d_dd88c51/rev_3da2f2d-dd88c51;/src/main/java/redis/clients/jedis/BinaryClient;srem(byte[],byte[]);public void srem(final byte[] key, final byte[] member) {
+	sendCommand(SREM, key, member);;public void srem(final byte[] key, final byte[] member) {
+        sendCommand(SREM, key, member);;public void srem(final byte[] key, final byte[]... members) {
+        sendCommand(SREM, joinParameters(key, members));
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_3da2f2d_dd88c51/rev_3da2f2d-dd88c51;/src/main/java/redis/clients/jedis/BinaryClient;zrem(byte[],byte[]);public void zrem(final byte[] key, final byte[] member) {
+	sendCommand(ZREM, key, member);;public void zrem(final byte[] key, final byte[] member) {
+        sendCommand(ZREM, key, member);;public void zrem(final byte[] key, final byte[]... members) {
+        sendCommand(ZREM, joinParameters( key, members));
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_3da2f2d_dd88c51/rev_3da2f2d-dd88c51;/src/main/java/redis/clients/jedis/Jedis;hdel(String,String);public Long hdel(final String key, final String field) {
+	checkIsInMulti();
+	client.hdel(key, field);
+	return client.getIntegerReply();;public Long hdel(final String key, final String field) {
+        checkIsInMulti();
+        client.hdel(key, field);
+        return client.getIntegerReply();;public Long hdel(final String key, final String... fields) {
+        checkIsInMulti();
+        client.hdel(key, fields);
+        return client.getIntegerReply();
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_3da2f2d_dd88c51/rev_3da2f2d-dd88c51;/src/main/java/redis/clients/jedis/Jedis;sadd(String,String);public Long sadd(final String key, final String member) {
+	checkIsInMulti();
+	client.sadd(key, member);
+	return client.getIntegerReply();;public Long sadd(final String key, final String member) {
+        checkIsInMulti();
+        client.sadd(key, member);
+        return client.getIntegerReply();;public Long sadd(final String key, final String... members) {
+        checkIsInMulti();
+        client.sadd(key, members);
+        return client.getIntegerReply();
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_3da2f2d_dd88c51/rev_3da2f2d-dd88c51;/src/main/java/redis/clients/jedis/Jedis;srem(String,String);public Long srem(final String key, final String member) {
+	checkIsInMulti();
+	client.srem(key, member);
+	return client.getIntegerReply();;public Long srem(final String key, final String member) {
+        checkIsInMulti();
+        client.srem(key, member);
+        return client.getIntegerReply();;public Long srem(final String key, final String... members) {
+        checkIsInMulti();
+        client.srem(key, members);
+        return client.getIntegerReply();
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_3da2f2d_dd88c51/rev_3da2f2d-dd88c51;/src/main/java/redis/clients/jedis/Jedis;zrem(String,String);public Long zrem(final String key, final String member) {
+	checkIsInMulti();
+	client.zrem(key, member);
+	return client.getIntegerReply();;public Long zrem(final String key, final String member) {
+        checkIsInMulti();
+        client.zrem(key, member);
+        return client.getIntegerReply();;public Long zrem(final String key, final String... members) {
+        checkIsInMulti();
+        client.zrem(key, members);
+        return client.getIntegerReply();
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_bbb8677_7e1a1a7/rev_bbb8677-7e1a1a7;/src/test/java/redis/clients/jedis/tests/JedisSentinelPoolTest;setUp();	// set up master and slaves
+	masterJedis = new Jedis(master.host, master.port);
+	masterJedis.auth("foobared");
+	masterJedis.slaveofNoOne();
+
+	slaveJedis1 = new Jedis(slave1.host, slave1.port);
+	slaveJedis1.auth("foobared");
+	slaveJedis1.slaveof(master.host, master.port);
+	slaveCount++;
+
+	slaveJedis2 = new Jedis(slave2.host, slave2.port);
+	slaveJedis2.auth("foobared");
+	slaveJedis2.slaveof(master.host, master.port);
+	slaveCount++;
+
+	sentinels.add(sentinel1.toString());
+	sentinels.add(sentinel2.toString());
+
+	// FIXME: The following allows the master/slave relationship to
+	// be established, and let sentinels know about this relationship.
+	// We can do this more elegantly.
+	Thread.sleep(10000);
+    };	// set up master and slaves
+	masterJedis = new Jedis(master.host, master.port);
+	masterJedis.auth("foobared");
+	masterJedis.slaveofNoOne();
+
+	slaveJedis1 = new Jedis(slave1.host, slave1.port);
+	slaveJedis1.auth("foobared");
+	slaveJedis1.slaveof(master.host, master.port);
+	slaveCount++;
+	
+	slaveJedis2 = new Jedis(slave2.host, slave2.port);
+	slaveJedis2.auth("foobared");
+	slaveJedis2.slaveof(master.host, master.port);
+	slaveCount++;
+
+	sentinels.add(sentinel1.toString());
+	sentinels.add(sentinel2.toString());
+
+	// FIXME: The following allows the master/slave relationship to
+	// be established, and let sentinels know about this relationship. 
+	// We can do this more elegantly.
+	Thread.sleep(10000);
+    };		// set up master and slaves
+		masterJedis = new Jedis(master.getHost(), master.getPort());
+		masterJedis.auth("foobared");
+		masterJedis.slaveofNoOne();
+
+		slaveJedis1 = new Jedis(slave1.getHost(), slave1.getPort());
+		slaveJedis1.auth("foobared");
+		slaveJedis1.slaveof(master.getHost(), master.getPort());
+
+		slaveJedis2 = new Jedis(slave2.getHost(), slave2.getPort());
+		slaveJedis2.auth("foobared");
+		slaveJedis2.slaveof(master.getHost(), master.getPort());
+
+		sentinels.add(sentinel1.toString());
+		sentinels.add(sentinel2.toString());
+
+		List<HostAndPort> slaves = new ArrayList<HostAndPort>();
+		slaves.add(slave1);
+		slaves.add(slave2);
+
+		JedisSentinelTestUtil.waitForSentinelRecognizeRedisReplication(sentinel1, 
+				MASTER_NAME, master, slaves);
+		JedisSentinelTestUtil.waitForSentinelRecognizeRedisReplication(sentinel2, 
+				MASTER_NAME, master, slaves);
+		
+		// No need to wait for sentinels to recognize each other
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_bbb8677_7e1a1a7/rev_bbb8677-7e1a1a7;/src/test/java/redis/clients/jedis/tests/JedisSentinelPoolTest;doSegFaultMaster(JedisSentinelPool);private void doSegFaultMaster(JedisSentinelPool pool)
+	    throws InterruptedException {
+	// jedis connection should be master
+	Jedis jedis = pool.getResource();
+	assertEquals("PONG", jedis.ping());;private void doSegFaultMaster(JedisSentinelPool pool) throws InterruptedException {
+    	// jedis connection should be master
+    	Jedis jedis = pool.getResource();
+    	assertEquals("PONG", jedis.ping());;private void doSegFaultMaster(JedisSentinelPool pool) throws InterruptedException {
+		HostAndPort oldMaster = pool.getCurrentHostMaster();
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_bbb8677_7e1a1a7/rev_bbb8677-7e1a1a7;/src/test/java/redis/clients/jedis/tests/JedisSentinelPoolTest;doSegFaultMaster(JedisSentinelPool);	try {
+	    jedis.debug(DebugParams.SEGFAULT());
+	} catch (Exception e) {
+	};    	try {
+    		jedis.debug(DebugParams.SEGFAULT());
+    	} catch (Exception e) {
+    	};		// jedis connection should be master
+		Jedis jedis = pool.getResource();
+		assertEquals("PONG", jedis.ping());
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_bbb8677_7e1a1a7/rev_bbb8677-7e1a1a7;/src/test/java/redis/clients/jedis/tests/JedisSentinelPoolTest;doSegFaultMaster(JedisSentinelPool);	// wait for the sentinel to promote a master
+	// FIXME: we can query the sentinel and sleep
+	// right until the master is promoted
+	Thread.sleep(35000);;    	// wait for the sentinel to promote a master
+    	// FIXME: we can query the sentinel and sleep
+    	// right until the master is promoted
+    	Thread.sleep(35000);;		try {
+			jedis.debug(DebugParams.SEGFAULT());
+		} catch (Exception e) {
+		}
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_bbb8677_7e1a1a7/rev_bbb8677-7e1a1a7;/src/test/java/redis/clients/jedis/tests/JedisSentinelPoolTest;doSegFaultMaster(JedisSentinelPool);	jedis = pool.getResource();
+	assertEquals("PONG", jedis.ping());
+	assertEquals("foobared", jedis.configGet("requirepass").get(1));
+	assertEquals(2, jedis.getDB().intValue());
+    };    	jedis = pool.getResource();
+    	assertEquals("PONG", jedis.ping());
+    	assertEquals("foobared", jedis.configGet("requirepass").get(1));
+    	assertEquals(2, jedis.getDB().intValue());
+    };		waitForFailover(pool, oldMaster);
+
+		jedis = pool.getResource();
+		assertEquals("PONG", jedis.ping());
+		assertEquals("foobared", jedis.configGet("requirepass").get(1));
+		assertEquals(2, jedis.getDB().intValue());
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_bbb8677_7e1a1a7/rev_bbb8677-7e1a1a7;/src/test/java/redis/clients/jedis/tests/JedisPoolTest;checkConnections();	JedisPool pool = new JedisPool(new JedisPoolConfig(), hnp.host,
+		hnp.port, 2000);
+	Jedis jedis = pool.getResource();
+	jedis.auth("foobared");
+	jedis.set("foo", "bar");
+	assertEquals("bar", jedis.get("foo"));
+	pool.returnResource(jedis);
+	pool.destroy();;        JedisPool pool = new JedisPool(new JedisPoolConfig(), hnp.host,
+                hnp.port, 2000);
+        Jedis jedis = pool.getResource();
+        jedis.auth("foobared");
+        jedis.set("foo", "bar");
+        assertEquals("bar", jedis.get("foo"));
+        pool.returnResource(jedis);
+        pool.destroy();;        JedisPool pool = new JedisPool(new JedisPoolConfig(), hnp.getHost(), 
+        		hnp.getPort(), 2000);
+        Jedis jedis = pool.getResource();
+        jedis.auth("foobared");
+        jedis.set("foo", "bar");
+        assertEquals("bar", jedis.get("foo"));
+        pool.returnResource(jedis);
+        pool.destroy();
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_bbb8677_7e1a1a7/rev_bbb8677-7e1a1a7;/src/test/java/redis/clients/jedis/tests/JedisPoolTest;checkConnectionWithDefaultPort();	JedisPool pool = new JedisPool(new JedisPoolConfig(), hnp.host,
+		hnp.port);
+	Jedis jedis = pool.getResource();
+	jedis.auth("foobared");
+	jedis.set("foo", "bar");
+	assertEquals("bar", jedis.get("foo"));
+	pool.returnResource(jedis);
+	pool.destroy();;        JedisPool pool = new JedisPool(new JedisPoolConfig(), hnp.host,
+                hnp.port);
+        Jedis jedis = pool.getResource();
+        jedis.auth("foobared");
+        jedis.set("foo", "bar");
+        assertEquals("bar", jedis.get("foo"));
+        pool.returnResource(jedis);
+        pool.destroy();;        JedisPool pool = new JedisPool(new JedisPoolConfig(), hnp.getHost(), 
+        		hnp.getPort());
+        Jedis jedis = pool.getResource();
+        jedis.auth("foobared");
+        jedis.set("foo", "bar");
+        assertEquals("bar", jedis.get("foo"));
+        pool.returnResource(jedis);
+        pool.destroy();
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_bbb8677_7e1a1a7/rev_bbb8677-7e1a1a7;/src/test/java/redis/clients/jedis/tests/JedisPoolTest;checkJedisIsReusedWhenReturned();	JedisPool pool = new JedisPool(new JedisPoolConfig(), hnp.host,
+		hnp.port);
+	Jedis jedis = pool.getResource();
+	jedis.auth("foobared");
+	jedis.set("foo", "0");
+	pool.returnResource(jedis);;        JedisPool pool = new JedisPool(new JedisPoolConfig(), hnp.host,
+                hnp.port);
+        Jedis jedis = pool.getResource();
+        jedis.auth("foobared");
+        jedis.set("foo", "0");
+        pool.returnResource(jedis);;    	JedisPool pool = new JedisPool(new JedisPoolConfig(), hnp.getHost(), 
+        		hnp.getPort());
+        Jedis jedis = pool.getResource();
+        jedis.auth("foobared");
+        jedis.set("foo", "0");
+        pool.returnResource(jedis);
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_bbb8677_7e1a1a7/rev_bbb8677-7e1a1a7;/src/test/java/redis/clients/jedis/tests/JedisPoolTest;checkPoolRepairedWhenJedisIsBroken();	JedisPool pool = new JedisPool(new JedisPoolConfig(), hnp.host,
+		hnp.port);
+	Jedis jedis = pool.getResource();
+	jedis.auth("foobared");
+	jedis.quit();
+	pool.returnBrokenResource(jedis);;        JedisPool pool = new JedisPool(new JedisPoolConfig(), hnp.host,
+                hnp.port);
+        Jedis jedis = pool.getResource();
+        jedis.auth("foobared");
+        jedis.quit();
+        pool.returnBrokenResource(jedis);;    	JedisPool pool = new JedisPool(new JedisPoolConfig(), hnp.getHost(), 
+        		hnp.getPort());
+        Jedis jedis = pool.getResource();
+        jedis.auth("foobared");
+        jedis.quit();
+        pool.returnBrokenResource(jedis);
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_bbb8677_7e1a1a7/rev_bbb8677-7e1a1a7;/src/test/java/redis/clients/jedis/tests/JedisPoolTest;securePool();	JedisPoolConfig config = new JedisPoolConfig();
+	config.setTestOnBorrow(true);
+	JedisPool pool = new JedisPool(config, hnp.host, hnp.port, 2000,
+		"foobared");
+	Jedis jedis = pool.getResource();
+	jedis.set("foo", "bar");
+	pool.returnResource(jedis);
+	pool.destroy();;        JedisPoolConfig config = new JedisPoolConfig();
+        config.setTestOnBorrow(true);
+        JedisPool pool = new JedisPool(config, hnp.host, hnp.port, 2000, "foobared");
+        Jedis jedis = pool.getResource();
+        jedis.set("foo", "bar");
+        pool.returnResource(jedis);
+        pool.destroy();;        JedisPoolConfig config = new JedisPoolConfig();
+        config.setTestOnBorrow(true);
+        JedisPool pool = new JedisPool(config, hnp.getHost(), hnp.getPort(), 
+        		2000, "foobared");
+        Jedis jedis = pool.getResource();
+        jedis.set("foo", "bar");
+        pool.returnResource(jedis);
+        pool.destroy();
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_bbb8677_7e1a1a7/rev_bbb8677-7e1a1a7;/src/test/java/redis/clients/jedis/tests/JedisPoolTest;nonDefaultDatabase();	JedisPool pool0 = new JedisPool(new JedisPoolConfig(), hnp.host,
+		hnp.port, 2000, "foobared");
+	Jedis jedis0 = pool0.getResource();
+	jedis0.set("foo", "bar");
+	assertEquals("bar", jedis0.get("foo"));
+	pool0.returnResource(jedis0);
+	pool0.destroy();;        JedisPool pool0 = new JedisPool(new JedisPoolConfig(), hnp.host,
+                hnp.port, 2000, "foobared");
+        Jedis jedis0 = pool0.getResource();
+        jedis0.set("foo", "bar");
+        assertEquals( "bar", jedis0.get("foo") );
+        pool0.returnResource(jedis0);
+        pool0.destroy();;        JedisPool pool0 = new JedisPool(new JedisPoolConfig(), hnp.getHost(), 
+        		hnp.getPort(), 2000, "foobared");
+        Jedis jedis0 = pool0.getResource();
+        jedis0.set("foo", "bar");
+        assertEquals( "bar", jedis0.get("foo") );
+        pool0.returnResource(jedis0);
+        pool0.destroy();
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_d7c5823_f11c162/rev_d7c5823-f11c162;/src/main/java/redis/clients/jedis/Connection;getObjectMultiBulkReply();@SuppressWarnings("unchecked")
+    public List<Object> getObjectMultiBulkReply() {
+	flush();
+	pipelinedCommands--;
+	return (List<Object>) Protocol.read(inputStream);;@SuppressWarnings("unchecked")
+    public List<Object> getObjectMultiBulkReply() {
+        flush();
+        pipelinedCommands--;
+        return (List<Object>) Protocol.read(inputStream);;public List<Object> getObjectMultiBulkReply() {
+        flush();
+        pipelinedCommands--;
+        return getRawObjectMultiBulkReply();
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_319a241_8fef62e/rev_319a241-8fef62e;/src/main/java/redis/clients/jedis/Jedis;asking();	checkIsInMulti();
+    	client.asking();
+    	return client.getStatusCodeReply();
+    };		checkIsInMulti();
+    	client.asking();
+    	return client.getStatusCodeReply();
+	};	checkIsInMulti();
+	client.asking();
+	return client.getStatusCodeReply();
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_8fef62e_10c131b/rev_8fef62e-10c131b;/src/main/java/redis/clients/jedis/BinaryJedis;blpop(byte[]);public List<byte[]> blpop(byte[] arg) {
+	checkIsInMulti();
+	byte[][] args = new byte[1][];
+	args[0] = arg;
+	client.blpop(args);
+	client.setTimeoutInfinite();
+	final List<byte[]> multiBulkReply = client.getBinaryMultiBulkReply();
+	client.rollbackTimeout();
+	return multiBulkReply;;public List<byte[]> blpop(byte[] arg) {
+        checkIsInMulti();
+        byte[][] args = new byte[1][];
+        args[0] = arg;
+        client.blpop(args);
+        client.setTimeoutInfinite();
+        final List<byte[]> multiBulkReply = client.getBinaryMultiBulkReply();
+        client.rollbackTimeout();
+        return multiBulkReply;;public List<byte[]> blpop(byte[]... args) {
+        checkIsInMulti();
+        client.blpop(args);
+        client.setTimeoutInfinite();
+        final List<byte[]> multiBulkReply = client.getBinaryMultiBulkReply();
+        client.rollbackTimeout();
+        return multiBulkReply;
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_8fef62e_10c131b/rev_8fef62e-10c131b;/src/main/java/redis/clients/jedis/BinaryJedis;brpop(byte[]);public List<byte[]> brpop(byte[] arg) {
+	checkIsInMulti();
+	byte[][] args = new byte[1][];
+	args[0] = arg;
+	client.brpop(args);
+	client.setTimeoutInfinite();
+	final List<byte[]> multiBulkReply = client.getBinaryMultiBulkReply();
+	client.rollbackTimeout();
+	return multiBulkReply;;public List<byte[]> brpop(byte[] arg) {
+        checkIsInMulti();
+        byte[][] args = new byte[1][];
+        args[0] = arg;
+        client.brpop(args);
+        client.setTimeoutInfinite();
+        final List<byte[]> multiBulkReply = client.getBinaryMultiBulkReply();
+        client.rollbackTimeout();
+        return multiBulkReply;;public List<byte[]> brpop(byte[]... args) {
+        checkIsInMulti();
+        client.brpop(args);
+        client.setTimeoutInfinite();
+        final List<byte[]> multiBulkReply = client.getBinaryMultiBulkReply();
+        client.rollbackTimeout();
+        return multiBulkReply;
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_4fb85d0_51a4bf9/rev_4fb85d0-51a4bf9;/src/main/java/redis/clients/jedis/Jedis;getEvalResult();	return evalResult(client.getOne());;	Object result = client.getOne();
+	
+	if (result instanceof byte[])
+	    return SafeEncoder.encode((byte[]) result);
+
+	if (result instanceof List<?>) {
+	    List<?> list = (List<?>) result;
+	    List<String> listResult = new ArrayList<String>(list.size());
+	    for (Object bin : list) {
+		listResult.add((bin == null ? null : SafeEncoder
+			.encode((byte[]) bin)));
+	    }
+
+	    return listResult;
+	}
+
+	return result;;	Object result = client.getOne();
+
+	if (result instanceof byte[])
+	    return SafeEncoder.encode((byte[]) result);
+
+	if (result instanceof List<?>) {
+	    List<?> list = (List<?>) result;
+	    List<String> listResult = new ArrayList<String>(list.size());
+	    for (Object bin : list) {
+		listResult.add((bin == null ? null : SafeEncoder
+			.encode((byte[]) bin)));
+	    }
+
+	    return listResult;
+	}
+
+	return result;
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_4fb85d0_51a4bf9/rev_4fb85d0-51a4bf9;/src/test/java/redis/clients/jedis/tests/commands/ScriptingCommandsTest;scriptEvalReturnNullValues();    public void scriptEvalReturnNullValues() {
+	String script = "return {KEYS[1],KEYS[2],ARGV[1],ARGV[2]}";
+	List<String> results = (List<String>) jedis.eval(script, 2, "key1", "key2", "1", "2");
+	assertEquals("key1", results.get(0));
+	assertEquals("key2", results.get(1));
+	assertEquals("1", results.get(2));
+	assertEquals("2", results.get(3));
+    };	public void scriptEvalReturnNullValues() {
+		String script = "return {KEYS[1],KEYS[2],ARGV[1],ARGV[2]}";
+		List<String> results = (List<String>) jedis.eval(script, 2, "key1", "key2", "1", "2");
+		assertEquals(results.get(0), "key1");
+		assertEquals(results.get(1), "key2");
+		assertEquals(results.get(2), "1");
+		assertEquals(results.get(3), "2");
+	};    public void scriptEvalReturnNullValues() {
+	String script = "return {KEYS[1],KEYS[2],ARGV[1],ARGV[2]}";
+	List<String> results = (List<String>) jedis.eval(script, 2, "key1",
+		"key2", "1", "2");
+	assertEquals(results.get(0), "key1");
+	assertEquals(results.get(1), "key2");
+	assertEquals(results.get(2), "1");
+	assertEquals(results.get(3), "2");
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_4fb85d0_51a4bf9/rev_4fb85d0-51a4bf9;/src/test/java/redis/clients/jedis/tests/commands/ScriptingCommandsTest;scriptEvalShaReturnNullValues();    public void scriptEvalShaReturnNullValues() {
+	String script = "return {KEYS[1],KEYS[2],ARGV[1],ARGV[2]}";
+	String sha = jedis.scriptLoad(script);
+	List<String> results = (List<String>) jedis.evalsha(sha, 2, "key1", "key2", "1", "2");
+	assertEquals("key1", results.get(0));
+	assertEquals("key2", results.get(1));
+	assertEquals("1", results.get(2));
+	assertEquals("2", results.get(3));
+    };	public void scriptEvalShaReturnNullValues() {
+		String script = "return {KEYS[1],KEYS[2],ARGV[1],ARGV[2]}";
+		String sha = jedis.scriptLoad(script);
+		List<String> results = (List<String>) jedis.evalsha(sha, 2, "key1", "key2", "1", "2");
+		assertEquals(results.get(0), "key1");
+		assertEquals(results.get(1), "key2");
+		assertEquals(results.get(2), "1");
+		assertEquals(results.get(3), "2");
+
+	};    public void scriptEvalShaReturnNullValues() {
+	String script = "return {KEYS[1],KEYS[2],ARGV[1],ARGV[2]}";
+	String sha = jedis.scriptLoad(script);
+	List<String> results = (List<String>) jedis.evalsha(sha, 2, "key1",
+		"key2", "1", "2");
+	assertEquals(results.get(0), "key1");
+	assertEquals(results.get(1), "key2");
+	assertEquals(results.get(2), "1");
+	assertEquals(results.get(3), "2");
+
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_c7f5669_9f30584/rev_c7f5669-9f30584;/src/main/java/org/junit/Assert;assertEquals(String,float,float,float);;;static public void assertEquals(String message, float expected,
+			float actual, float delta) {
+		if (Float.compare(expected, actual) == 0)
+		{
+			return;
+		}
+		if (!(Math.abs(expected - actual) <= delta))
+		{
+			failNotEquals(message, new Float(expected), new Float(actual));
+		}
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_c7f5669_9f30584/rev_c7f5669-9f30584;/src/main/java/org/junit/Assert;assertEquals(float,float,float);;;static public void assertEquals(float expected, float actual, float delta) {
+		assertEquals(null, expected, actual, delta);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_c7f5669_9f30584/rev_c7f5669-9f30584;/src/main/java/org/junit/internal/InexactComparisonCriteria;InexactComparisonCriteria(float);;;public InexactComparisonCriteria(float delta){
+		fDelta = delta;
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_c7f5669_9f30584/rev_c7f5669-9f30584;/src/test/java/org/junit/tests/assertion/AssertionTest;floatsNotDoublesInArrays();;;@Test
+	 public void floatsNotDoublesInArrays()
+	{
+		float delta = 4.444f;
+		float[] f1 = new float[] {1.111f};
+		float[] f2 = new float[] {5.555f};
+		Assert.assertArrayEquals(f1, f2, delta);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_0d5062c_6af41cd/rev_0d5062c-6af41cd;/src/main/java/redis/clients/jedis/BinaryJedis;blpop(byte[]);public List<byte[]> blpop(byte[] arg) {
+	checkIsInMulti();
+	byte[][] args = new byte[1][];
+	args[0] = arg;
+	client.blpop(args);
+	client.setTimeoutInfinite();
+	final List<byte[]> multiBulkReply = client.getBinaryMultiBulkReply();
+	client.rollbackTimeout();
+	return multiBulkReply;;public List<byte[]> blpop(byte[] arg) {
+        checkIsInMulti();
+        byte[][] args = new byte[1][];
+        args[0] = arg;
+        client.blpop(args);
+        client.setTimeoutInfinite();
+        final List<byte[]> multiBulkReply = client.getBinaryMultiBulkReply();
+        client.rollbackTimeout();
+        return multiBulkReply;;public List<byte[]> blpop(byte[]... args) {
+        checkIsInMulti();
+        client.blpop(args);
+        client.setTimeoutInfinite();
+        final List<byte[]> multiBulkReply = client.getBinaryMultiBulkReply();
+        client.rollbackTimeout();
+        return multiBulkReply;
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_0d5062c_6af41cd/rev_0d5062c-6af41cd;/src/main/java/redis/clients/jedis/BinaryJedis;brpop(byte[]);public List<byte[]> brpop(byte[] arg) {
+	checkIsInMulti();
+	byte[][] args = new byte[1][];
+	args[0] = arg;
+	client.brpop(args);
+	client.setTimeoutInfinite();
+	final List<byte[]> multiBulkReply = client.getBinaryMultiBulkReply();
+	client.rollbackTimeout();
+	return multiBulkReply;;public List<byte[]> brpop(byte[] arg) {
+        checkIsInMulti();
+        byte[][] args = new byte[1][];
+        args[0] = arg;
+        client.brpop(args);
+        client.setTimeoutInfinite();
+        final List<byte[]> multiBulkReply = client.getBinaryMultiBulkReply();
+        client.rollbackTimeout();
+        return multiBulkReply;;public List<byte[]> brpop(byte[]... args) {
+        checkIsInMulti();
+        client.brpop(args);
+        client.setTimeoutInfinite();
+        final List<byte[]> multiBulkReply = client.getBinaryMultiBulkReply();
+        client.rollbackTimeout();
+        return multiBulkReply;
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_0d5062c_6af41cd/rev_0d5062c-6af41cd;/src/main/java/redis/clients/jedis/Jedis;blpop(String);public List<String> blpop(String... args) {
+	client.blpop(args);
+	client.setTimeoutInfinite();
+	final List<String> multiBulkReply = client.getMultiBulkReply();
+	client.rollbackTimeout();
+	return multiBulkReply;;public List<String> blpop(String... args) {
+        client.blpop(args);
+        client.setTimeoutInfinite();
+        final List<String> multiBulkReply = client.getMultiBulkReply();
+        client.rollbackTimeout();
+        return multiBulkReply;;public List<String> blpop(String arg) {
+        String[] args = new String[1];
+        args[0] = arg;
+        client.blpop(args);
+        client.setTimeoutInfinite();
+        final List<String> multiBulkReply = client.getMultiBulkReply();
+        client.rollbackTimeout();
+        return multiBulkReply;
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_0d5062c_6af41cd/rev_0d5062c-6af41cd;/src/main/java/redis/clients/jedis/Jedis;brpop(String);public List<String> brpop(String... args) {
+	client.brpop(args);
+	client.setTimeoutInfinite();
+	final List<String> multiBulkReply = client.getMultiBulkReply();
+	client.rollbackTimeout();
+	return multiBulkReply;;public List<String> brpop(String... args) {
+        client.brpop(args);
+        client.setTimeoutInfinite();
+        final List<String> multiBulkReply = client.getMultiBulkReply();
+        client.rollbackTimeout();
+        return multiBulkReply;;public List<String> brpop(String arg) {
+        String[] args = new String[1];
+        args[0] = arg;
+        client.brpop(args);
+        client.setTimeoutInfinite();
+        final List<String> multiBulkReply = client.getMultiBulkReply();
+        client.rollbackTimeout();
+        return multiBulkReply;
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_6c68624_74b527d/rev_6c68624-74b527d;/src/main/java/redis/clients/jedis/JedisClusterConnectionHandler;discoverClusterNodesAndSlots(Jedis);	    HostAndPort node = getHostAndPortFromNodeLine(nodeInfo, jedis);
+        setNodeIfNotExist(node);
+
+	    JedisPool nodePool = nodes.get(getNodeKey(node));
+	    populateNodeSlots(nodeInfo, nodePool);;	    HostAndPort node = getHostAndPortFromNodeLine(nodeInfo, jedis);
+	    setNodeIfNotExist(node);
+	    
+	    JedisPool nodePool = nodes.get(getNodeKey(node));
+	    populateNodeSlots(nodeInfo, nodePool);;	    ClusterNodeInformation clusterNodeInfo = nodeInfoParser.parse(
+		    nodeInfo, new HostAndPort(jedis.getClient().getHost(),
+			    jedis.getClient().getPort()));
+
+	    HostAndPort targetNode = clusterNodeInfo.getNode();
+	    setNodeIfNotExist(targetNode);
+	    assignSlotsToNode(clusterNodeInfo.getAvailableSlots(), targetNode);
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_6c68624_74b527d/rev_6c68624-74b527d;/src/main/java/redis/clients/jedis/JedisClusterConnectionHandler;setNodeIfNotExist(HostAndPort);	
+	JedisPool nodePool = new JedisPool(poolConfig, node.getHost(), node.getPort());;	
+	JedisPool nodePool = new JedisPool(node.getHost(), node.getPort());;
+	JedisPool nodePool = new JedisPool(node.getHost(), node.getPort());
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_360e25e_03c0af2/rev_360e25e-03c0af2;/src/main/java/redis/clients/jedis/Pipeline;sync();    	List<Object> unformatted = client.getMany(getPipelinedResponseLength());
+    	
+    	for (Object resp : unformatted)
+    		generateResponse(resp);;        List<Object> unformatted = client.getAll();
+        for (Object o : unformatted) {
+            generateResponse(o);
+        };	List<Object> unformatted = client.getAll();
+	for (Object o : unformatted) {
+	    generateResponse(o);
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_360e25e_03c0af2/rev_360e25e-03c0af2;/src/main/java/redis/clients/jedis/Pipeline;syncAndReturnAll();    	List<Object> unformatted = client.getMany(getPipelinedResponseLength());
+        List<Object> formatted = new ArrayList<Object>();
+        
+    	for (Object resp : unformatted)
+    		formatted.add(generateResponse(resp).get());
+        
+        return formatted;;        List<Object> unformatted = client.getAll();
+        List<Object> formatted = new ArrayList<Object>();
+        
+        for (Object o : unformatted) {
+            try {
+            	formatted.add(generateResponse(o).get());
+            } catch (JedisDataException e) {
+                formatted.add(e);
+            }
+        }
+        return formatted;;	List<Object> unformatted = client.getAll();
+	List<Object> formatted = new ArrayList<Object>();
+
+	for (Object o : unformatted) {
+	    try {
+		formatted.add(generateResponse(o).get());
+	    } catch (JedisDataException e) {
+		formatted.add(e);
+	    }
+	}
+	return formatted;
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_360e25e_03c0af2/rev_360e25e-03c0af2;/src/main/java/redis/clients/jedis/Transaction;exec();    	// Discard QUEUED or ERROR
+    	client.getMany(getPipelinedResponseLength());
+    	
+        client.exec();;        client.exec();
+        client.getAll(1); // Discard all but the last reply;	client.exec();
+	client.getAll(1); // Discard all but the last reply
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_360e25e_03c0af2/rev_360e25e-03c0af2;/src/main/java/redis/clients/jedis/Transaction;execGetResponse();    	// Discard QUEUED or ERROR
+    	client.getMany(getPipelinedResponseLength());
+    	
+        client.exec();;        client.exec();
+        client.getAll(1); // Discard all but the last reply;	client.exec();
+	client.getAll(1); // Discard all but the last reply
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_360e25e_03c0af2/rev_360e25e-03c0af2;/src/main/java/redis/clients/jedis/Transaction;discard();    	client.getMany(getPipelinedResponseLength());
+        client.discard();
+        inTransaction = false;
+        clean();
+        return client.getStatusCodeReply();;        client.discard();
+        client.getAll(1); // Discard all but the last reply
+        inTransaction = false;
+        clean();
+        return client.getStatusCodeReply();;	client.discard();
+	client.getAll(1); // Discard all but the last reply
+	inTransaction = false;
+	clean();
+	return client.getStatusCodeReply();
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_360e25e_03c0af2/rev_360e25e-03c0af2;/src/main/java/redis/clients/jedis/TransactionBlock;setClient(Client);	    super.setClient(client);;	    this.client = client;;	this.client = client;
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_bbacbd9_2f879b9/rev_bbacbd9-2f879b9;/src/main/java/org/junit/runners/BlockJUnit4ClassRunner;getMethodRules(Object);private List<org.junit.rules.MethodRule> getMethodRules(Object target) {
+		return rules(target);
+	};@SuppressWarnings("deprecation")
+	private List<org.junit.rules.MethodRule> getMethodRules(Object target) {
+		return rules(target);
+	};@SuppressWarnings("deprecation")
+    private List<org.junit.rules.MethodRule> getMethodRules(Object target) {
+        return rules(target);
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_bbacbd9_2f879b9/rev_bbacbd9-2f879b9;/src/main/java/org/junit/runners/BlockJUnit4ClassRunner;rules(Object);protected List<org.junit.rules.MethodRule> rules(Object target) {
+		return getTestClass().getAnnotatedFieldValues(target, Rule.class,
+				org.junit.rules.MethodRule.class);
+	};@Deprecated
+	protected List<org.junit.rules.MethodRule> rules(Object target) {
+		return getTestClass().getAnnotatedFieldValues(target, Rule.class,
+				org.junit.rules.MethodRule.class);
+	};@Deprecated
+    protected List<org.junit.rules.MethodRule> rules(Object target) {
+        return getTestClass().getAnnotatedFieldValues(target, Rule.class,
+                org.junit.rules.MethodRule.class);
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_6fb53a7_2f879b9/rev_6fb53a7-2f879b9;/src/main/java/org/junit/rules/TestWatcher;apply(Statement,Description);				startingQuietly(description, errors);
+				try {
+					base.evaluate();
+					succeededQuietly(description, errors);
+				} catch (AssumptionViolatedException e) {
+					errors.add(e);
+					skippedQuietly(e, description, errors);
+				} catch (Throwable t) {
+					errors.add(t);
+					failedQuietly(t, description, errors);
+				} finally {
+					finishedQuietly(description, errors);
+				}
+				
+				MultipleFailureException.assertEmpty(errors);
+			}
+		};
+	};				startingQuietly(description, errors);
+				try {
+					base.evaluate();
+					succeededQuietly(description, errors);
+				} catch (AssumptionViolatedException e) {
+					skipped(e, description);
+					throw e;
+				} catch (Throwable t) {
+					errors.add(t);
+					failedQuietly(t, description, errors);
+				} finally {
+					finishedQuietly(description, errors);
+				}
+				
+				MultipleFailureException.assertEmpty(errors);
+			}
+		};
+	};                startingQuietly(description, errors);
+                try {
+                    base.evaluate();
+                    succeededQuietly(description, errors);
+                } catch (AssumptionViolatedException e) {
+                    skipped(e, description);
+                    throw e;
+                } catch (Throwable t) {
+                    errors.add(t);
+                    failedQuietly(t, description, errors);
+                } finally {
+                    finishedQuietly(description, errors);
+                }
+
+                MultipleFailureException.assertEmpty(errors);
+            }
+        };
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_6fb53a7_2f879b9/rev_6fb53a7-2f879b9;/src/main/java/org/junit/rules/TestWatcher;startingQuietly(Description,List<Throwable>);private void startingQuietly(Description description,
+			List<Throwable> errors) {
+		try {
+			starting(description);
+		} catch (Throwable t) {
+			errors.add(t);
+		}
+	};private void startingQuietly(Description description, 
+			List<Throwable> errors) {
+		try {
+			starting(description);
+		} catch (Throwable t) {
+			errors.add(t);
+		}
+	};private void startingQuietly(Description description,
+            List<Throwable> errors) {
+        try {
+            starting(description);
+        } catch (Throwable t) {
+            errors.add(t);
+        }
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_6766336_b04c86a/rev_6766336-b04c86a;/src/test/java/org/junit/internal/MethodSorterTest;testDefaultMethodSorter();;;@Test
+    public void testDefaultMethodSorter() {
+        List<String> expected = Arrays.asList(new String[]{EPSILON, BETA, ALPHA, DELTA, GAMMA_VOID, GAMMA_BOOLEAN});
+        List<String> actual = getDeclaredFilteredMethods(DummySortWithDefault.class, expected);
+        assertEquals(expected, actual);
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_36810df_15ab934/rev_36810df-15ab934;/src/main/java/redis/clients/jedis/Jedis;clusterSlots();;;@Override
+    public List<Object> clusterSlots() {
+	checkIsInMulti();
+	client.clusterSlots();
+	return client.getObjectMultiBulkReply();
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_36810df_15ab934/rev_36810df-15ab934;/src/main/java/redis/clients/jedis/Client;clusterSlots();;;public void clusterSlots() {
+	cluster(Protocol.CLUSTER_SLOTS);
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_36810df_15ab934/rev_36810df-15ab934;/src/main/java/redis/clients/jedis/ClusterCommands;clusterSlots();;;List<Object> clusterSlots();
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_36810df_15ab934/rev_36810df-15ab934;/src/test/java/redis/clients/jedis/tests/commands/ClusterCommandsTest;removeSlots();;;	node1.clusterDelSlots(3000, 3001, 3002);
+	node2.clusterDelSlots(4000, 4001, 4002);
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_36810df_15ab934/rev_36810df-15ab934;/src/test/java/redis/clients/jedis/tests/commands/ClusterCommandsTest;clusterSlots();;;@Test
+    public void clusterSlots() {
+	// please see cluster slot output format from below commit
+	// @see:
+	// https://github.com/antirez/redis/commit/e14829de3025ffb0d3294e5e5a1553afd9f10b60
+	String status = node1.clusterAddSlots(3000, 3001, 3002);
+	assertEquals("OK", status);
+	status = node2.clusterAddSlots(4000, 4001, 4002);
+	assertEquals("OK", status);
+
+	List<Object> slots = node1.clusterSlots();
+	assertNotNull(slots);
+	assertTrue(slots.size() > 0);
+
+	for (Object slotInfoObj : slots) {
+	    List<Object> slotInfo = (List<Object>) slotInfoObj;
+	    assertNotNull(slots);
+	    assertTrue(slots.size() >= 2);
+
+	    assertTrue(slotInfo.get(0) instanceof Long);
+	    assertTrue(slotInfo.get(1) instanceof Long);
+
+	    if (slots.size() > 2) {
+		// assigned slots
+		assertTrue(slotInfo.get(2) instanceof List);
+	    }
+	}
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_53c9344_ab2f43b/rev_53c9344-ab2f43b;/src/main/java/redis/clients/jedis/JedisSentinelPool;JedisSentinelPool(String,Set<String>,GenericObjectPoolConfig,int,String,int);	    final GenericObjectPoolConfig poolConfig, int timeout,
+	    final String password, final int database) {
+
+	this.poolConfig = poolConfig;
+	this.timeout = timeout;
+	this.password = password;
+	this.database = database;;	    final GenericObjectPoolConfig poolConfig, int timeout,
+	    final String password, final int database) {
+	this.poolConfig = poolConfig;
+	this.timeout = timeout;
+	this.password = password;
+	this.database = database;;			final GenericObjectPoolConfig poolConfig, int timeout,
+			final String password, final int database) {
+		this.poolConfig = poolConfig;
+		this.timeout = timeout;
+		this.password = password;
+		this.database = database;
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_53c9344_ab2f43b/rev_53c9344-ab2f43b;/src/test/java/redis/clients/jedis/tests/JedisSentinelPoolTest;setUp();    public void setUp() throws Exception {
+	sentinels.add(sentinel1.toString());
+	sentinels.add(sentinel2.toString());;    public void setUp() throws Exception {
+	sentinels.add(sentinel1.toString());;	public void setUp() throws Exception {
+		sentinels.add(sentinel1.toString());
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_53c9344_ab2f43b/rev_53c9344-ab2f43b;/src/test/java/redis/clients/jedis/tests/JedisSentinelPoolTest;setUp();	sentinelJedis1 = new Jedis(sentinel1.getHost(), sentinel1.getPort());
+	sentinelJedis2 = new Jedis(sentinel2.getHost(), sentinel2.getPort());
+    };	sentinelJedis1 = new Jedis(sentinel1.getHost(), sentinel1.getPort());
+    };		sentinelJedis1 = new Jedis(sentinel1.getHost(), sentinel1.getPort());
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_53c9344_ab2f43b/rev_53c9344-ab2f43b;/src/test/java/redis/clients/jedis/tests/JedisSentinelPoolTest;ensureSafeTwiceFailover();	forceFailover(pool);
+	// after failover sentinel needs a bit of time to stabilize before a new failover
+	Thread.sleep(100);
+	forceFailover(pool);;	forceFailover(pool);
+	forceFailover(pool);;		forceFailover(pool);
+		forceFailover(pool);
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_53c9344_ab2f43b/rev_53c9344-ab2f43b;/src/test/java/redis/clients/jedis/tests/JedisSentinelPoolTest;forceFailover(JedisSentinelPool);	// jedis connection should be master
+	Jedis beforeFailoverJedis = pool.getResource();
+	assertEquals("PONG", beforeFailoverJedis.ping());;	// jedis connection should be master
+	Jedis jedis = pool.getResource();
+	assertEquals("PONG", jedis.ping());;		// jedis connection should be master
+		Jedis jedis = pool.getResource();
+		assertEquals("PONG", jedis.ping());
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_53c9344_ab2f43b/rev_53c9344-ab2f43b;/src/test/java/redis/clients/jedis/tests/JedisSentinelPoolTest;forceFailover(JedisSentinelPool);	waitForFailover(pool, oldMaster);
+
+	Jedis afterFailoverJedis = pool.getResource();
+	assertEquals("PONG", afterFailoverJedis.ping());
+	assertEquals("foobared", afterFailoverJedis.configGet("requirepass").get(1));
+	assertEquals(2, afterFailoverJedis.getDB().intValue());
+	
+	// returning both connections to the pool should not throw
+	beforeFailoverJedis.close();
+	afterFailoverJedis.close();
+    };	// It can throw JedisDataException while there's no slave to promote
+	// There's nothing we can do, so we just pass Exception to make test
+	// fail fast
+	sentinelJedis1.sentinelFailover(MASTER_NAME);
+	
+	waitForFailover(pool, oldMaster);
+	// JedisSentinelPool recognize master but may not changed internal pool
+	// yet
+	Thread.sleep(100);
+	
+	jedis = pool.getResource();
+	assertEquals("PONG", jedis.ping());
+	assertEquals("foobared", jedis.configGet("requirepass").get(1));
+	assertEquals(2, jedis.getDB().intValue());
+    };		// It can throw JedisDataException while there's no slave to promote
+		// There's nothing we can do, so we just pass Exception to make test
+		// fail fast
+		sentinelJedis1.sentinelFailover(MASTER_NAME);
+
+		waitForFailover(pool, oldMaster);
+		// JedisSentinelPool recognize master but may not changed internal pool
+		// yet
+		Thread.sleep(100);
+
+		jedis = pool.getResource();
+		assertEquals("PONG", jedis.ping());
+		assertEquals("foobared", jedis.configGet("requirepass").get(1));
+		assertEquals(2, jedis.getDB().intValue());
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_53c9344_ab2f43b/rev_53c9344-ab2f43b;/src/test/java/redis/clients/jedis/tests/JedisSentinelPoolTest;waitForFailover(JedisSentinelPool,HostAndPort);	    throws InterruptedException {
+	HostAndPort newMaster = JedisSentinelTestUtil
+		.waitForNewPromotedMaster(MASTER_NAME, sentinelJedis1, sentinelJedis2);;	    throws InterruptedException {
+	HostAndPort newMaster = JedisSentinelTestUtil
+		.waitForNewPromotedMaster(sentinelJedis1);;			throws InterruptedException {
+		HostAndPort newMaster = JedisSentinelTestUtil
+				.waitForNewPromotedMaster(sentinelJedis1);
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_53c9344_ab2f43b/rev_53c9344-ab2f43b;/src/test/java/redis/clients/jedis/tests/JedisSentinelPoolTest;waitForJedisSentinelPoolRecognizeNewMaster(JedisSentinelPool,HostAndPort);	while (true) {
+	    HostAndPort currentHostMaster = pool.getCurrentHostMaster();;	while (true) {
+	    String host = pool.getCurrentHostMaster().getHost();
+	    int port = pool.getCurrentHostMaster().getPort();;		while (true) {
+			String host = pool.getCurrentHostMaster().getHost();
+			int port = pool.getCurrentHostMaster().getPort();
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_53c9344_ab2f43b/rev_53c9344-ab2f43b;/src/test/java/redis/clients/jedis/tests/JedisSentinelPoolTest;waitForJedisSentinelPoolRecognizeNewMaster(JedisSentinelPool,HostAndPort);	    if (newMaster.equals(currentHostMaster))
+		break;;	    if (host.equals(newMaster.getHost()) && port == newMaster.getPort())
+		break;;			if (host.equals(newMaster.getHost()) && port == newMaster.getPort())
+				break;
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_8b0d35b_067ed0a/rev_8b0d35b-067ed0a;/src/main/java/junit/runner/Version;Version();        // don't instantiate
+    };;		// don't instantiate
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_8b0d35b_067ed0a/rev_8b0d35b-067ed0a;/src/main/java/junit/runner/Version;main(String[]);        System.out.println(id());
+    };;		System.out.println(id());
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_53e7dc2_d33bd40/rev_53e7dc2-d33bd40;/src/main/java/redis/clients/jedis/JedisCluster;JedisCluster(Set<HostAndPort>,GenericObjectPoolConfig);public JedisCluster(Set<HostAndPort> nodes,
+        final GenericObjectPoolConfig poolConfig) {
+	this(nodes, DEFAULT_TIMEOUT, DEFAULT_MAX_REDIRECTIONS, poolConfig);
+    };public JedisCluster(Set<HostAndPort> nodes,
+        final GenericObjectPoolConfig poolConfig) {
+    this(nodes, DEFAULT_TIMEOUT, DEFAULT_MAX_REDIRECTIONS, poolConfig);
+    };public JedisCluster(Set<HostAndPort> nodes, final GenericObjectPoolConfig poolConfig) {
+    this(nodes, DEFAULT_TIMEOUT, DEFAULT_MAX_REDIRECTIONS, poolConfig);
+  }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_53e7dc2_d33bd40/rev_53e7dc2-d33bd40;/src/main/java/redis/clients/jedis/JedisCluster;JedisCluster(Set<HostAndPort>,int,GenericObjectPoolConfig);public JedisCluster(Set<HostAndPort> nodes, int timeout,
+        final GenericObjectPoolConfig poolConfig) {
+	this(nodes, timeout, DEFAULT_MAX_REDIRECTIONS, poolConfig);
+    };public JedisCluster(Set<HostAndPort> nodes, int timeout,
+        final GenericObjectPoolConfig poolConfig) {
+    this(nodes, timeout, DEFAULT_MAX_REDIRECTIONS, poolConfig);
+    };public JedisCluster(Set<HostAndPort> nodes, int timeout, final GenericObjectPoolConfig poolConfig) {
+    this(nodes, timeout, DEFAULT_MAX_REDIRECTIONS, poolConfig);
+  }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_53e7dc2_d33bd40/rev_53e7dc2-d33bd40;/src/main/java/redis/clients/jedis/JedisCluster;JedisCluster(Set<HostAndPort>,int,int,GenericObjectPoolConfig);public JedisCluster(Set<HostAndPort> jedisClusterNode, int timeout,
+        int maxRedirections, final GenericObjectPoolConfig poolConfig) {
+	super(jedisClusterNode, timeout, maxRedirections, poolConfig);
+    };public JedisCluster(Set<HostAndPort> jedisClusterNode, int timeout,
+        int maxRedirections, final GenericObjectPoolConfig poolConfig) {
+    this.connectionHandler = new JedisSlotBasedConnectionHandler(
+            jedisClusterNode, poolConfig);
+    this.timeout = timeout;
+    this.maxRedirections = maxRedirections;
+    };public JedisCluster(Set<HostAndPort> jedisClusterNode, int timeout, int maxRedirections,
+      final GenericObjectPoolConfig poolConfig) {
+    this.connectionHandler = new JedisSlotBasedConnectionHandler(jedisClusterNode, poolConfig);
+    this.timeout = timeout;
+    this.maxRedirections = maxRedirections;
+  }
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_8d7f5cc_38d9130/rev_8d7f5cc-38d9130;/src/test/java/org/junit/tests/experimental/theories/TheoryTestUtils;runTheoryClass(Class<?>);;;public static Result runTheoryClass(Class<?> testClass) throws InitializationError {
+        Runner theoryRunner = new Theories(testClass);
+        Request request = Request.runner(theoryRunner);
+        return new JUnitCore().run(request);
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_d56c729_55d591e/rev_d56c729-55d591e;/src/main/java/org/junit/internal/runners/JUnit38ClassRunner;filter(Filter);;;            if (filtered.testCount() == 0) {
+                throw new NoTestsRemainException();
+            }

@@ -1,0 +1,886 @@
+revision;file;nodeIdentifier1;;nodeIdentifier2;conflict
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_a84be6a_08e0412/rev_a84be6a-08e0412.revisions;/eureka-core/src/main/java/com/netflix/eureka/InstanceRegistry.java;public Applications getApplicationDeltasFromMultipleRegions(String[] remoteRegions) ;public Applications getApplicationDeltasFromMultipleRegions(String[] remoteRegions) ;
+     * Gets the application delta also including instances from the passed remote regions, with the instances from the
+     * local region. <br/>
+     *
+     * The remote regions from where the instances will be chosen can further be restricted if this application does not
+     * appear in the whitelist specified for the region as returned by
+     * {@link EurekaServerConfig#getRemoteRegionAppWhitelist(String)} for a region. In case, there is no whitelist
+     * defined for a region, this method will also look for a global whitelist by passing <code>null</code> to the
+     * method {@link EurekaServerConfig#getRemoteRegionAppWhitelist(String)} <br/>
+     *
+     * @param remoteRegions The remote regions for which the instances are to be queried. The instances may be limited
+     *                      by a whitelist as explained above. If <code>null</code> all remote regions are included.
+     *                      If empty list then no remote region is included.
+     *
+     * @return The delta with instances from the passed remote regions as well as local region. The instances
+     * from remote regions can be further be restricted as explained above. <code>null</code> if the application does
+     * not exist locally or in remote regions.
+     */
+    public Applications getApplicationDeltasFromMultipleRegions(String[] remoteRegions) {
+        if (null == remoteRegions) {
+            remoteRegions = allKnownRemoteRegions; // null means all remote regions.
+        }
+
+        boolean includeRemoteRegion = remoteRegions.length != 0;
+
+        if (includeRemoteRegion) {
+            GET_ALL_WITH_REMOTE_REGIONS_CACHE_MISS_DELTA.increment();
+        } else {
+            GET_ALL_CACHE_MISS_DELTA.increment();
+        }
+
+        Applications apps = new Applications();
+        apps.setVersion(ResponseCache.getVersionDeltaWithRegions().get());
+        Map<String, Application> applicationInstancesMap = new HashMap<String, Application>();
+        try {
+            write.lock();
+            Iterator<RecentlyChangedItem> iter = this.recentlyChangedQueue.iterator();
+            logger.debug("The number of elements in the delta queue is :" + this.recentlyChangedQueue.size());
+            while (iter.hasNext()) {
+                Lease<InstanceInfo> lease = iter.next().getLeaseInfo();
+                InstanceInfo instanceInfo = lease.getHolder();
+                Object[] args = { instanceInfo.getId(),
+                                  instanceInfo.getStatus().name(),
+                                  instanceInfo.getActionType().name() };
+                logger.debug(
+                        "The instance id %s is found with status %s and actiontype %s",
+                        args);
+                Application app = applicationInstancesMap.get(instanceInfo
+                        .getAppName());
+                if (app == null) {
+                    app = new Application(instanceInfo.getAppName());
+                    applicationInstancesMap.put(instanceInfo.getAppName(), app);
+                    apps.addApplication(app);
+                }
+                app.addInstance(decorateInstanceInfo(lease));
+            }
+
+            if (includeRemoteRegion) {
+                for (String remoteRegion : remoteRegions) {
+                    RemoteRegionRegistry remoteRegistry = regionNameVSRemoteRegistry.get(remoteRegion);
+                    if (null != remoteRegistry) {
+                        Applications remoteAppsDelta = remoteRegistry.getApplicationDeltas();
+                        if (null != remoteAppsDelta) {
+                            for (Application application : remoteAppsDelta.getRegisteredApplications()) {
+                                if (shouldFetchFromRemoteRegistry(application.getName(), remoteRegion)) {
+                                    Application appInstanceTillNow = apps.getRegisteredApplications(application.getName());
+                                    if (appInstanceTillNow == null) {
+                                        appInstanceTillNow = new Application(application.getName());
+                                        apps.addApplication(appInstanceTillNow);
+                                    }
+                                    for (InstanceInfo instanceInfo : application.getInstances()) {
+                                        appInstanceTillNow.addInstance(instanceInfo);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            Applications allApps = getApplicationsFromMultipleRegions(remoteRegions);
+            apps.setAppsHashCode(allApps.getReconcileHashCode());
+            return apps;
+        } finally {
+            write.unlock();
+        }
+    }
+
+    /**
+=======
+     * Gets the application delta also including instances from the passed remote regions, with the instances from the
+     * local region. <br/>
+     *
+     * The remote regions from where the instances will be chosen can further be restricted if this application does not
+     * appear in the whitelist specified for the region as returned by
+     * {@link EurekaServerConfig#getRemoteRegionAppWhitelist(String)} for a region. In case, there is no whitelist
+     * defined for a region, this method will also look for a global whitelist by passing <code>null</code> to the
+     * method {@link EurekaServerConfig#getRemoteRegionAppWhitelist(String)} <br/>
+     *
+     * @param remoteRegions The remote regions for which the instances are to be queried. The instances may be limited
+     *                      by a whitelist as explained above. If <code>null</code> all remote regions are included.
+     *                      If empty list then no remote region is included.
+     *
+     * @return The delta with instances from the passed remote regions as well as local region. The instances
+     * from remote regions can be further be restricted as explained above. <code>null</code> if the application does
+     * not exist locally or in remote regions.
+     */
+    public Applications getApplicationDeltasFromMultipleRegions(String[] remoteRegions) {
+        if (null == remoteRegions) {
+            remoteRegions = allKnownRemoteRegions; // null means all remote regions.
+        }
+
+        boolean includeRemoteRegion = remoteRegions.length != 0;
+
+        if (includeRemoteRegion) {
+            GET_ALL_WITH_REMOTE_REGIONS_CACHE_MISS_DELTA.increment();
+        } else {
+            GET_ALL_CACHE_MISS_DELTA.increment();
+        }
+
+        Applications apps = new Applications();
+        apps.setVersion(ResponseCache.getVersionDelta().get());
+        Map<String, Application> applicationInstancesMap = new HashMap<String, Application>();
+        try {
+            write.lock();
+            Iterator<RecentlyChangedItem> iter = this.recentlyChangedQueue.iterator();
+            logger.debug("The number of elements in the delta queue is :" + this.recentlyChangedQueue.size());
+            while (iter.hasNext()) {
+                Lease<InstanceInfo> lease = iter.next().getLeaseInfo();
+                InstanceInfo instanceInfo = lease.getHolder();
+                Object[] args = { instanceInfo.getId(),
+                                  instanceInfo.getStatus().name(),
+                                  instanceInfo.getActionType().name() };
+                logger.debug(
+                        "The instance id %s is found with status %s and actiontype %s",
+                        args);
+                Application app = applicationInstancesMap.get(instanceInfo
+                        .getAppName());
+                if (app == null) {
+                    app = new Application(instanceInfo.getAppName());
+                    applicationInstancesMap.put(instanceInfo.getAppName(), app);
+                    apps.addApplication(app);
+                }
+                app.addInstance(decorateInstanceInfo(lease));
+            }
+
+            if (includeRemoteRegion) {
+                for (String remoteRegion : remoteRegions) {
+                    RemoteRegionRegistry remoteRegistry = regionNameVSRemoteRegistry.get(remoteRegion);
+                    if (null != remoteRegistry) {
+                        Applications remoteAppsDelta = remoteRegistry.getApplicationDeltas();
+                        if (null != remoteAppsDelta) {
+                            for (Application application : remoteAppsDelta.getRegisteredApplications()) {
+                                if (shouldFetchFromRemoteRegistry(application.getName(), remoteRegion)) {
+                                    Application appInstanceTillNow = apps.getRegisteredApplications(application.getName());
+                                    if (appInstanceTillNow == null) {
+                                        appInstanceTillNow = new Application(application.getName());
+                                        apps.addApplication(appInstanceTillNow);
+                                    }
+                                    for (InstanceInfo instanceInfo : application.getInstances()) {
+                                        appInstanceTillNow.addInstance(instanceInfo);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            Applications allApps = getApplicationsFromMultipleRegions(remoteRegions);
+            apps.setAppsHashCode(allApps.getReconcileHashCode());
+            return apps;
+        } finally {
+            write.unlock();
+        }
+    }
+
+    /**
+
+
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_526d3b1_6333a71/rev_526d3b1-6333a71.revisions;/eureka-client/src/test/java/com/netflix/discovery/AbstractDiscoveryClientTester.java;public static final String ALL_REGIONS_VIP1_ADDR ;public static final String ALL_REGIONS_VIP1_ADDR ;
+
+    public static final String ALL_REGIONS_VIP1_ADDR = "myvip1";
+    public static final String REMOTE_REGION_APP1_INSTANCE1_HOSTNAME = "blah1-1";
+    public static final String REMOTE_REGION_APP1_INSTANCE2_HOSTNAME = "blah1-2";
+    public static final String LOCAL_REGION_APP1_NAME = "MYAPP1_LOC";
+    public static final String LOCAL_REGION_APP1_INSTANCE1_HOSTNAME = "blahloc1-1";
+    public static final String LOCAL_REGION_APP1_INSTANCE2_HOSTNAME = "blahloc1-2";
+    public static final String REMOTE_REGION_APP1_NAME = "MYAPP1";
+
+    public static final String ALL_REGIONS_VIP2_ADDR = "myvip2";
+    public static final String REMOTE_REGION_APP2_INSTANCE1_HOSTNAME = "blah2-1";
+    public static final String REMOTE_REGION_APP2_INSTANCE2_HOSTNAME = "blah2-2";
+    public static final String REMOTE_REGION_APP2_INSTANCE3_HOSTNAME = "blah2-3";
+    public static final String LOCAL_REGION_APP2_NAME = "MYAPP2_LOC";
+    public static final String LOCAL_REGION_APP2_INSTANCE1_HOSTNAME = "blahloc2-1";
+    public static final String LOCAL_REGION_APP2_INSTANCE2_HOSTNAME = "blahloc2-2";
+    public static final String LOCAL_REGION_APP2_INSTANCE3_HOSTNAME = "blahloc2-3";
+    public static final String REMOTE_REGION_APP2_NAME = "MYAPP2";
+
+=======
+
+    public static final String ALL_REGIONS_VIP1_ADDR = "myvip1";
+    public static final String REMOTE_REGION_APP1_INSTANCE1_HOSTNAME = "blah1-1";
+    public static final String REMOTE_REGION_APP1_INSTANCE2_HOSTNAME = "blah1-2";
+    public static final String LOCAL_REGION_APP1_NAME = "MYAPP1_LOC";
+    public static final String LOCAL_REGION_APP1_INSTANCE1_HOSTNAME = "blahloc1-1";
+    public static final String LOCAL_REGION_APP1_INSTANCE2_HOSTNAME = "blahloc1-2";
+    public static final String REMOTE_REGION_APP1_NAME = "MYAPP1";
+
+    public static final String ALL_REGIONS_VIP2_ADDR = "myvip2";
+    public static final String REMOTE_REGION_APP2_INSTANCE1_HOSTNAME = "blah2-1";
+    public static final String REMOTE_REGION_APP2_INSTANCE2_HOSTNAME = "blah2-2";
+    public static final String LOCAL_REGION_APP2_NAME = "MYAPP2_LOC";
+    public static final String LOCAL_REGION_APP2_INSTANCE1_HOSTNAME = "blahloc2-1";
+    public static final String LOCAL_REGION_APP2_INSTANCE2_HOSTNAME = "blahloc2-2";
+    public static final String REMOTE_REGION_APP2_NAME = "MYAPP2";
+
+
+
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_526d3b1_6333a71/rev_526d3b1-6333a71.revisions;/eureka-client/src/test/java/com/netflix/discovery/AbstractDiscoveryClientTester.java;public static final String REMOTE_REGION_APP1_INSTANCE1_HOSTNAME ;public static final String REMOTE_REGION_APP1_INSTANCE1_HOSTNAME ;
+
+    public static final String ALL_REGIONS_VIP1_ADDR = "myvip1";
+    public static final String REMOTE_REGION_APP1_INSTANCE1_HOSTNAME = "blah1-1";
+    public static final String REMOTE_REGION_APP1_INSTANCE2_HOSTNAME = "blah1-2";
+    public static final String LOCAL_REGION_APP1_NAME = "MYAPP1_LOC";
+    public static final String LOCAL_REGION_APP1_INSTANCE1_HOSTNAME = "blahloc1-1";
+    public static final String LOCAL_REGION_APP1_INSTANCE2_HOSTNAME = "blahloc1-2";
+    public static final String REMOTE_REGION_APP1_NAME = "MYAPP1";
+
+    public static final String ALL_REGIONS_VIP2_ADDR = "myvip2";
+    public static final String REMOTE_REGION_APP2_INSTANCE1_HOSTNAME = "blah2-1";
+    public static final String REMOTE_REGION_APP2_INSTANCE2_HOSTNAME = "blah2-2";
+    public static final String REMOTE_REGION_APP2_INSTANCE3_HOSTNAME = "blah2-3";
+    public static final String LOCAL_REGION_APP2_NAME = "MYAPP2_LOC";
+    public static final String LOCAL_REGION_APP2_INSTANCE1_HOSTNAME = "blahloc2-1";
+    public static final String LOCAL_REGION_APP2_INSTANCE2_HOSTNAME = "blahloc2-2";
+    public static final String LOCAL_REGION_APP2_INSTANCE3_HOSTNAME = "blahloc2-3";
+    public static final String REMOTE_REGION_APP2_NAME = "MYAPP2";
+
+=======
+
+    public static final String ALL_REGIONS_VIP1_ADDR = "myvip1";
+    public static final String REMOTE_REGION_APP1_INSTANCE1_HOSTNAME = "blah1-1";
+    public static final String REMOTE_REGION_APP1_INSTANCE2_HOSTNAME = "blah1-2";
+    public static final String LOCAL_REGION_APP1_NAME = "MYAPP1_LOC";
+    public static final String LOCAL_REGION_APP1_INSTANCE1_HOSTNAME = "blahloc1-1";
+    public static final String LOCAL_REGION_APP1_INSTANCE2_HOSTNAME = "blahloc1-2";
+    public static final String REMOTE_REGION_APP1_NAME = "MYAPP1";
+
+    public static final String ALL_REGIONS_VIP2_ADDR = "myvip2";
+    public static final String REMOTE_REGION_APP2_INSTANCE1_HOSTNAME = "blah2-1";
+    public static final String REMOTE_REGION_APP2_INSTANCE2_HOSTNAME = "blah2-2";
+    public static final String LOCAL_REGION_APP2_NAME = "MYAPP2_LOC";
+    public static final String LOCAL_REGION_APP2_INSTANCE1_HOSTNAME = "blahloc2-1";
+    public static final String LOCAL_REGION_APP2_INSTANCE2_HOSTNAME = "blahloc2-2";
+    public static final String REMOTE_REGION_APP2_NAME = "MYAPP2";
+
+
+
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_526d3b1_6333a71/rev_526d3b1-6333a71.revisions;/eureka-client/src/test/java/com/netflix/discovery/AbstractDiscoveryClientTester.java;public static final String REMOTE_REGION_APP1_INSTANCE2_HOSTNAME ;public static final String REMOTE_REGION_APP1_INSTANCE2_HOSTNAME ;
+
+    public static final String ALL_REGIONS_VIP1_ADDR = "myvip1";
+    public static final String REMOTE_REGION_APP1_INSTANCE1_HOSTNAME = "blah1-1";
+    public static final String REMOTE_REGION_APP1_INSTANCE2_HOSTNAME = "blah1-2";
+    public static final String LOCAL_REGION_APP1_NAME = "MYAPP1_LOC";
+    public static final String LOCAL_REGION_APP1_INSTANCE1_HOSTNAME = "blahloc1-1";
+    public static final String LOCAL_REGION_APP1_INSTANCE2_HOSTNAME = "blahloc1-2";
+    public static final String REMOTE_REGION_APP1_NAME = "MYAPP1";
+
+    public static final String ALL_REGIONS_VIP2_ADDR = "myvip2";
+    public static final String REMOTE_REGION_APP2_INSTANCE1_HOSTNAME = "blah2-1";
+    public static final String REMOTE_REGION_APP2_INSTANCE2_HOSTNAME = "blah2-2";
+    public static final String REMOTE_REGION_APP2_INSTANCE3_HOSTNAME = "blah2-3";
+    public static final String LOCAL_REGION_APP2_NAME = "MYAPP2_LOC";
+    public static final String LOCAL_REGION_APP2_INSTANCE1_HOSTNAME = "blahloc2-1";
+    public static final String LOCAL_REGION_APP2_INSTANCE2_HOSTNAME = "blahloc2-2";
+    public static final String LOCAL_REGION_APP2_INSTANCE3_HOSTNAME = "blahloc2-3";
+    public static final String REMOTE_REGION_APP2_NAME = "MYAPP2";
+
+=======
+
+    public static final String ALL_REGIONS_VIP1_ADDR = "myvip1";
+    public static final String REMOTE_REGION_APP1_INSTANCE1_HOSTNAME = "blah1-1";
+    public static final String REMOTE_REGION_APP1_INSTANCE2_HOSTNAME = "blah1-2";
+    public static final String LOCAL_REGION_APP1_NAME = "MYAPP1_LOC";
+    public static final String LOCAL_REGION_APP1_INSTANCE1_HOSTNAME = "blahloc1-1";
+    public static final String LOCAL_REGION_APP1_INSTANCE2_HOSTNAME = "blahloc1-2";
+    public static final String REMOTE_REGION_APP1_NAME = "MYAPP1";
+
+    public static final String ALL_REGIONS_VIP2_ADDR = "myvip2";
+    public static final String REMOTE_REGION_APP2_INSTANCE1_HOSTNAME = "blah2-1";
+    public static final String REMOTE_REGION_APP2_INSTANCE2_HOSTNAME = "blah2-2";
+    public static final String LOCAL_REGION_APP2_NAME = "MYAPP2_LOC";
+    public static final String LOCAL_REGION_APP2_INSTANCE1_HOSTNAME = "blahloc2-1";
+    public static final String LOCAL_REGION_APP2_INSTANCE2_HOSTNAME = "blahloc2-2";
+    public static final String REMOTE_REGION_APP2_NAME = "MYAPP2";
+
+
+
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_526d3b1_6333a71/rev_526d3b1-6333a71.revisions;/eureka-client/src/test/java/com/netflix/discovery/AbstractDiscoveryClientTester.java;public static final String LOCAL_REGION_APP1_NAME ;public static final String LOCAL_REGION_APP1_NAME ;
+
+    public static final String ALL_REGIONS_VIP1_ADDR = "myvip1";
+    public static final String REMOTE_REGION_APP1_INSTANCE1_HOSTNAME = "blah1-1";
+    public static final String REMOTE_REGION_APP1_INSTANCE2_HOSTNAME = "blah1-2";
+    public static final String LOCAL_REGION_APP1_NAME = "MYAPP1_LOC";
+    public static final String LOCAL_REGION_APP1_INSTANCE1_HOSTNAME = "blahloc1-1";
+    public static final String LOCAL_REGION_APP1_INSTANCE2_HOSTNAME = "blahloc1-2";
+    public static final String REMOTE_REGION_APP1_NAME = "MYAPP1";
+
+    public static final String ALL_REGIONS_VIP2_ADDR = "myvip2";
+    public static final String REMOTE_REGION_APP2_INSTANCE1_HOSTNAME = "blah2-1";
+    public static final String REMOTE_REGION_APP2_INSTANCE2_HOSTNAME = "blah2-2";
+    public static final String REMOTE_REGION_APP2_INSTANCE3_HOSTNAME = "blah2-3";
+    public static final String LOCAL_REGION_APP2_NAME = "MYAPP2_LOC";
+    public static final String LOCAL_REGION_APP2_INSTANCE1_HOSTNAME = "blahloc2-1";
+    public static final String LOCAL_REGION_APP2_INSTANCE2_HOSTNAME = "blahloc2-2";
+    public static final String LOCAL_REGION_APP2_INSTANCE3_HOSTNAME = "blahloc2-3";
+    public static final String REMOTE_REGION_APP2_NAME = "MYAPP2";
+
+=======
+
+    public static final String ALL_REGIONS_VIP1_ADDR = "myvip1";
+    public static final String REMOTE_REGION_APP1_INSTANCE1_HOSTNAME = "blah1-1";
+    public static final String REMOTE_REGION_APP1_INSTANCE2_HOSTNAME = "blah1-2";
+    public static final String LOCAL_REGION_APP1_NAME = "MYAPP1_LOC";
+    public static final String LOCAL_REGION_APP1_INSTANCE1_HOSTNAME = "blahloc1-1";
+    public static final String LOCAL_REGION_APP1_INSTANCE2_HOSTNAME = "blahloc1-2";
+    public static final String REMOTE_REGION_APP1_NAME = "MYAPP1";
+
+    public static final String ALL_REGIONS_VIP2_ADDR = "myvip2";
+    public static final String REMOTE_REGION_APP2_INSTANCE1_HOSTNAME = "blah2-1";
+    public static final String REMOTE_REGION_APP2_INSTANCE2_HOSTNAME = "blah2-2";
+    public static final String LOCAL_REGION_APP2_NAME = "MYAPP2_LOC";
+    public static final String LOCAL_REGION_APP2_INSTANCE1_HOSTNAME = "blahloc2-1";
+    public static final String LOCAL_REGION_APP2_INSTANCE2_HOSTNAME = "blahloc2-2";
+    public static final String REMOTE_REGION_APP2_NAME = "MYAPP2";
+
+
+
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_526d3b1_6333a71/rev_526d3b1-6333a71.revisions;/eureka-client/src/test/java/com/netflix/discovery/AbstractDiscoveryClientTester.java;public static final String LOCAL_REGION_APP1_INSTANCE1_HOSTNAME ;public static final String LOCAL_REGION_APP1_INSTANCE1_HOSTNAME ;
+
+    public static final String ALL_REGIONS_VIP1_ADDR = "myvip1";
+    public static final String REMOTE_REGION_APP1_INSTANCE1_HOSTNAME = "blah1-1";
+    public static final String REMOTE_REGION_APP1_INSTANCE2_HOSTNAME = "blah1-2";
+    public static final String LOCAL_REGION_APP1_NAME = "MYAPP1_LOC";
+    public static final String LOCAL_REGION_APP1_INSTANCE1_HOSTNAME = "blahloc1-1";
+    public static final String LOCAL_REGION_APP1_INSTANCE2_HOSTNAME = "blahloc1-2";
+    public static final String REMOTE_REGION_APP1_NAME = "MYAPP1";
+
+    public static final String ALL_REGIONS_VIP2_ADDR = "myvip2";
+    public static final String REMOTE_REGION_APP2_INSTANCE1_HOSTNAME = "blah2-1";
+    public static final String REMOTE_REGION_APP2_INSTANCE2_HOSTNAME = "blah2-2";
+    public static final String REMOTE_REGION_APP2_INSTANCE3_HOSTNAME = "blah2-3";
+    public static final String LOCAL_REGION_APP2_NAME = "MYAPP2_LOC";
+    public static final String LOCAL_REGION_APP2_INSTANCE1_HOSTNAME = "blahloc2-1";
+    public static final String LOCAL_REGION_APP2_INSTANCE2_HOSTNAME = "blahloc2-2";
+    public static final String LOCAL_REGION_APP2_INSTANCE3_HOSTNAME = "blahloc2-3";
+    public static final String REMOTE_REGION_APP2_NAME = "MYAPP2";
+
+=======
+
+    public static final String ALL_REGIONS_VIP1_ADDR = "myvip1";
+    public static final String REMOTE_REGION_APP1_INSTANCE1_HOSTNAME = "blah1-1";
+    public static final String REMOTE_REGION_APP1_INSTANCE2_HOSTNAME = "blah1-2";
+    public static final String LOCAL_REGION_APP1_NAME = "MYAPP1_LOC";
+    public static final String LOCAL_REGION_APP1_INSTANCE1_HOSTNAME = "blahloc1-1";
+    public static final String LOCAL_REGION_APP1_INSTANCE2_HOSTNAME = "blahloc1-2";
+    public static final String REMOTE_REGION_APP1_NAME = "MYAPP1";
+
+    public static final String ALL_REGIONS_VIP2_ADDR = "myvip2";
+    public static final String REMOTE_REGION_APP2_INSTANCE1_HOSTNAME = "blah2-1";
+    public static final String REMOTE_REGION_APP2_INSTANCE2_HOSTNAME = "blah2-2";
+    public static final String LOCAL_REGION_APP2_NAME = "MYAPP2_LOC";
+    public static final String LOCAL_REGION_APP2_INSTANCE1_HOSTNAME = "blahloc2-1";
+    public static final String LOCAL_REGION_APP2_INSTANCE2_HOSTNAME = "blahloc2-2";
+    public static final String REMOTE_REGION_APP2_NAME = "MYAPP2";
+
+
+
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_526d3b1_6333a71/rev_526d3b1-6333a71.revisions;/eureka-client/src/test/java/com/netflix/discovery/AbstractDiscoveryClientTester.java;public static final String LOCAL_REGION_APP1_INSTANCE2_HOSTNAME ;public static final String LOCAL_REGION_APP1_INSTANCE2_HOSTNAME ;
+
+    public static final String ALL_REGIONS_VIP1_ADDR = "myvip1";
+    public static final String REMOTE_REGION_APP1_INSTANCE1_HOSTNAME = "blah1-1";
+    public static final String REMOTE_REGION_APP1_INSTANCE2_HOSTNAME = "blah1-2";
+    public static final String LOCAL_REGION_APP1_NAME = "MYAPP1_LOC";
+    public static final String LOCAL_REGION_APP1_INSTANCE1_HOSTNAME = "blahloc1-1";
+    public static final String LOCAL_REGION_APP1_INSTANCE2_HOSTNAME = "blahloc1-2";
+    public static final String REMOTE_REGION_APP1_NAME = "MYAPP1";
+
+    public static final String ALL_REGIONS_VIP2_ADDR = "myvip2";
+    public static final String REMOTE_REGION_APP2_INSTANCE1_HOSTNAME = "blah2-1";
+    public static final String REMOTE_REGION_APP2_INSTANCE2_HOSTNAME = "blah2-2";
+    public static final String REMOTE_REGION_APP2_INSTANCE3_HOSTNAME = "blah2-3";
+    public static final String LOCAL_REGION_APP2_NAME = "MYAPP2_LOC";
+    public static final String LOCAL_REGION_APP2_INSTANCE1_HOSTNAME = "blahloc2-1";
+    public static final String LOCAL_REGION_APP2_INSTANCE2_HOSTNAME = "blahloc2-2";
+    public static final String LOCAL_REGION_APP2_INSTANCE3_HOSTNAME = "blahloc2-3";
+    public static final String REMOTE_REGION_APP2_NAME = "MYAPP2";
+
+=======
+
+    public static final String ALL_REGIONS_VIP1_ADDR = "myvip1";
+    public static final String REMOTE_REGION_APP1_INSTANCE1_HOSTNAME = "blah1-1";
+    public static final String REMOTE_REGION_APP1_INSTANCE2_HOSTNAME = "blah1-2";
+    public static final String LOCAL_REGION_APP1_NAME = "MYAPP1_LOC";
+    public static final String LOCAL_REGION_APP1_INSTANCE1_HOSTNAME = "blahloc1-1";
+    public static final String LOCAL_REGION_APP1_INSTANCE2_HOSTNAME = "blahloc1-2";
+    public static final String REMOTE_REGION_APP1_NAME = "MYAPP1";
+
+    public static final String ALL_REGIONS_VIP2_ADDR = "myvip2";
+    public static final String REMOTE_REGION_APP2_INSTANCE1_HOSTNAME = "blah2-1";
+    public static final String REMOTE_REGION_APP2_INSTANCE2_HOSTNAME = "blah2-2";
+    public static final String LOCAL_REGION_APP2_NAME = "MYAPP2_LOC";
+    public static final String LOCAL_REGION_APP2_INSTANCE1_HOSTNAME = "blahloc2-1";
+    public static final String LOCAL_REGION_APP2_INSTANCE2_HOSTNAME = "blahloc2-2";
+    public static final String REMOTE_REGION_APP2_NAME = "MYAPP2";
+
+
+
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_526d3b1_6333a71/rev_526d3b1-6333a71.revisions;/eureka-client/src/test/java/com/netflix/discovery/AbstractDiscoveryClientTester.java;public static final String REMOTE_REGION_APP1_NAME ;public static final String REMOTE_REGION_APP1_NAME ;
+
+    public static final String ALL_REGIONS_VIP1_ADDR = "myvip1";
+    public static final String REMOTE_REGION_APP1_INSTANCE1_HOSTNAME = "blah1-1";
+    public static final String REMOTE_REGION_APP1_INSTANCE2_HOSTNAME = "blah1-2";
+    public static final String LOCAL_REGION_APP1_NAME = "MYAPP1_LOC";
+    public static final String LOCAL_REGION_APP1_INSTANCE1_HOSTNAME = "blahloc1-1";
+    public static final String LOCAL_REGION_APP1_INSTANCE2_HOSTNAME = "blahloc1-2";
+    public static final String REMOTE_REGION_APP1_NAME = "MYAPP1";
+
+    public static final String ALL_REGIONS_VIP2_ADDR = "myvip2";
+    public static final String REMOTE_REGION_APP2_INSTANCE1_HOSTNAME = "blah2-1";
+    public static final String REMOTE_REGION_APP2_INSTANCE2_HOSTNAME = "blah2-2";
+    public static final String REMOTE_REGION_APP2_INSTANCE3_HOSTNAME = "blah2-3";
+    public static final String LOCAL_REGION_APP2_NAME = "MYAPP2_LOC";
+    public static final String LOCAL_REGION_APP2_INSTANCE1_HOSTNAME = "blahloc2-1";
+    public static final String LOCAL_REGION_APP2_INSTANCE2_HOSTNAME = "blahloc2-2";
+    public static final String LOCAL_REGION_APP2_INSTANCE3_HOSTNAME = "blahloc2-3";
+    public static final String REMOTE_REGION_APP2_NAME = "MYAPP2";
+
+=======
+
+    public static final String ALL_REGIONS_VIP1_ADDR = "myvip1";
+    public static final String REMOTE_REGION_APP1_INSTANCE1_HOSTNAME = "blah1-1";
+    public static final String REMOTE_REGION_APP1_INSTANCE2_HOSTNAME = "blah1-2";
+    public static final String LOCAL_REGION_APP1_NAME = "MYAPP1_LOC";
+    public static final String LOCAL_REGION_APP1_INSTANCE1_HOSTNAME = "blahloc1-1";
+    public static final String LOCAL_REGION_APP1_INSTANCE2_HOSTNAME = "blahloc1-2";
+    public static final String REMOTE_REGION_APP1_NAME = "MYAPP1";
+
+    public static final String ALL_REGIONS_VIP2_ADDR = "myvip2";
+    public static final String REMOTE_REGION_APP2_INSTANCE1_HOSTNAME = "blah2-1";
+    public static final String REMOTE_REGION_APP2_INSTANCE2_HOSTNAME = "blah2-2";
+    public static final String LOCAL_REGION_APP2_NAME = "MYAPP2_LOC";
+    public static final String LOCAL_REGION_APP2_INSTANCE1_HOSTNAME = "blahloc2-1";
+    public static final String LOCAL_REGION_APP2_INSTANCE2_HOSTNAME = "blahloc2-2";
+    public static final String REMOTE_REGION_APP2_NAME = "MYAPP2";
+
+
+
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_526d3b1_6333a71/rev_526d3b1-6333a71.revisions;/eureka-client/src/test/java/com/netflix/discovery/AbstractDiscoveryClientTester.java;public static final String ALL_REGIONS_VIP2_ADDR ;public static final String ALL_REGIONS_VIP2_ADDR ;
+
+    public static final String ALL_REGIONS_VIP1_ADDR = "myvip1";
+    public static final String REMOTE_REGION_APP1_INSTANCE1_HOSTNAME = "blah1-1";
+    public static final String REMOTE_REGION_APP1_INSTANCE2_HOSTNAME = "blah1-2";
+    public static final String LOCAL_REGION_APP1_NAME = "MYAPP1_LOC";
+    public static final String LOCAL_REGION_APP1_INSTANCE1_HOSTNAME = "blahloc1-1";
+    public static final String LOCAL_REGION_APP1_INSTANCE2_HOSTNAME = "blahloc1-2";
+    public static final String REMOTE_REGION_APP1_NAME = "MYAPP1";
+
+    public static final String ALL_REGIONS_VIP2_ADDR = "myvip2";
+    public static final String REMOTE_REGION_APP2_INSTANCE1_HOSTNAME = "blah2-1";
+    public static final String REMOTE_REGION_APP2_INSTANCE2_HOSTNAME = "blah2-2";
+    public static final String REMOTE_REGION_APP2_INSTANCE3_HOSTNAME = "blah2-3";
+    public static final String LOCAL_REGION_APP2_NAME = "MYAPP2_LOC";
+    public static final String LOCAL_REGION_APP2_INSTANCE1_HOSTNAME = "blahloc2-1";
+    public static final String LOCAL_REGION_APP2_INSTANCE2_HOSTNAME = "blahloc2-2";
+    public static final String LOCAL_REGION_APP2_INSTANCE3_HOSTNAME = "blahloc2-3";
+    public static final String REMOTE_REGION_APP2_NAME = "MYAPP2";
+
+=======
+
+    public static final String ALL_REGIONS_VIP1_ADDR = "myvip1";
+    public static final String REMOTE_REGION_APP1_INSTANCE1_HOSTNAME = "blah1-1";
+    public static final String REMOTE_REGION_APP1_INSTANCE2_HOSTNAME = "blah1-2";
+    public static final String LOCAL_REGION_APP1_NAME = "MYAPP1_LOC";
+    public static final String LOCAL_REGION_APP1_INSTANCE1_HOSTNAME = "blahloc1-1";
+    public static final String LOCAL_REGION_APP1_INSTANCE2_HOSTNAME = "blahloc1-2";
+    public static final String REMOTE_REGION_APP1_NAME = "MYAPP1";
+
+    public static final String ALL_REGIONS_VIP2_ADDR = "myvip2";
+    public static final String REMOTE_REGION_APP2_INSTANCE1_HOSTNAME = "blah2-1";
+    public static final String REMOTE_REGION_APP2_INSTANCE2_HOSTNAME = "blah2-2";
+    public static final String LOCAL_REGION_APP2_NAME = "MYAPP2_LOC";
+    public static final String LOCAL_REGION_APP2_INSTANCE1_HOSTNAME = "blahloc2-1";
+    public static final String LOCAL_REGION_APP2_INSTANCE2_HOSTNAME = "blahloc2-2";
+    public static final String REMOTE_REGION_APP2_NAME = "MYAPP2";
+
+
+
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_526d3b1_6333a71/rev_526d3b1-6333a71.revisions;/eureka-client/src/test/java/com/netflix/discovery/AbstractDiscoveryClientTester.java;public static final String REMOTE_REGION_APP2_INSTANCE1_HOSTNAME ;public static final String REMOTE_REGION_APP2_INSTANCE1_HOSTNAME ;
+
+    public static final String ALL_REGIONS_VIP1_ADDR = "myvip1";
+    public static final String REMOTE_REGION_APP1_INSTANCE1_HOSTNAME = "blah1-1";
+    public static final String REMOTE_REGION_APP1_INSTANCE2_HOSTNAME = "blah1-2";
+    public static final String LOCAL_REGION_APP1_NAME = "MYAPP1_LOC";
+    public static final String LOCAL_REGION_APP1_INSTANCE1_HOSTNAME = "blahloc1-1";
+    public static final String LOCAL_REGION_APP1_INSTANCE2_HOSTNAME = "blahloc1-2";
+    public static final String REMOTE_REGION_APP1_NAME = "MYAPP1";
+
+    public static final String ALL_REGIONS_VIP2_ADDR = "myvip2";
+    public static final String REMOTE_REGION_APP2_INSTANCE1_HOSTNAME = "blah2-1";
+    public static final String REMOTE_REGION_APP2_INSTANCE2_HOSTNAME = "blah2-2";
+    public static final String REMOTE_REGION_APP2_INSTANCE3_HOSTNAME = "blah2-3";
+    public static final String LOCAL_REGION_APP2_NAME = "MYAPP2_LOC";
+    public static final String LOCAL_REGION_APP2_INSTANCE1_HOSTNAME = "blahloc2-1";
+    public static final String LOCAL_REGION_APP2_INSTANCE2_HOSTNAME = "blahloc2-2";
+    public static final String LOCAL_REGION_APP2_INSTANCE3_HOSTNAME = "blahloc2-3";
+    public static final String REMOTE_REGION_APP2_NAME = "MYAPP2";
+
+=======
+
+    public static final String ALL_REGIONS_VIP1_ADDR = "myvip1";
+    public static final String REMOTE_REGION_APP1_INSTANCE1_HOSTNAME = "blah1-1";
+    public static final String REMOTE_REGION_APP1_INSTANCE2_HOSTNAME = "blah1-2";
+    public static final String LOCAL_REGION_APP1_NAME = "MYAPP1_LOC";
+    public static final String LOCAL_REGION_APP1_INSTANCE1_HOSTNAME = "blahloc1-1";
+    public static final String LOCAL_REGION_APP1_INSTANCE2_HOSTNAME = "blahloc1-2";
+    public static final String REMOTE_REGION_APP1_NAME = "MYAPP1";
+
+    public static final String ALL_REGIONS_VIP2_ADDR = "myvip2";
+    public static final String REMOTE_REGION_APP2_INSTANCE1_HOSTNAME = "blah2-1";
+    public static final String REMOTE_REGION_APP2_INSTANCE2_HOSTNAME = "blah2-2";
+    public static final String LOCAL_REGION_APP2_NAME = "MYAPP2_LOC";
+    public static final String LOCAL_REGION_APP2_INSTANCE1_HOSTNAME = "blahloc2-1";
+    public static final String LOCAL_REGION_APP2_INSTANCE2_HOSTNAME = "blahloc2-2";
+    public static final String REMOTE_REGION_APP2_NAME = "MYAPP2";
+
+
+
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_526d3b1_6333a71/rev_526d3b1-6333a71.revisions;/eureka-client/src/test/java/com/netflix/discovery/AbstractDiscoveryClientTester.java;public static final String REMOTE_REGION_APP2_INSTANCE2_HOSTNAME ;public static final String REMOTE_REGION_APP2_INSTANCE2_HOSTNAME ;
+
+    public static final String ALL_REGIONS_VIP1_ADDR = "myvip1";
+    public static final String REMOTE_REGION_APP1_INSTANCE1_HOSTNAME = "blah1-1";
+    public static final String REMOTE_REGION_APP1_INSTANCE2_HOSTNAME = "blah1-2";
+    public static final String LOCAL_REGION_APP1_NAME = "MYAPP1_LOC";
+    public static final String LOCAL_REGION_APP1_INSTANCE1_HOSTNAME = "blahloc1-1";
+    public static final String LOCAL_REGION_APP1_INSTANCE2_HOSTNAME = "blahloc1-2";
+    public static final String REMOTE_REGION_APP1_NAME = "MYAPP1";
+
+    public static final String ALL_REGIONS_VIP2_ADDR = "myvip2";
+    public static final String REMOTE_REGION_APP2_INSTANCE1_HOSTNAME = "blah2-1";
+    public static final String REMOTE_REGION_APP2_INSTANCE2_HOSTNAME = "blah2-2";
+    public static final String REMOTE_REGION_APP2_INSTANCE3_HOSTNAME = "blah2-3";
+    public static final String LOCAL_REGION_APP2_NAME = "MYAPP2_LOC";
+    public static final String LOCAL_REGION_APP2_INSTANCE1_HOSTNAME = "blahloc2-1";
+    public static final String LOCAL_REGION_APP2_INSTANCE2_HOSTNAME = "blahloc2-2";
+    public static final String LOCAL_REGION_APP2_INSTANCE3_HOSTNAME = "blahloc2-3";
+    public static final String REMOTE_REGION_APP2_NAME = "MYAPP2";
+
+=======
+
+    public static final String ALL_REGIONS_VIP1_ADDR = "myvip1";
+    public static final String REMOTE_REGION_APP1_INSTANCE1_HOSTNAME = "blah1-1";
+    public static final String REMOTE_REGION_APP1_INSTANCE2_HOSTNAME = "blah1-2";
+    public static final String LOCAL_REGION_APP1_NAME = "MYAPP1_LOC";
+    public static final String LOCAL_REGION_APP1_INSTANCE1_HOSTNAME = "blahloc1-1";
+    public static final String LOCAL_REGION_APP1_INSTANCE2_HOSTNAME = "blahloc1-2";
+    public static final String REMOTE_REGION_APP1_NAME = "MYAPP1";
+
+    public static final String ALL_REGIONS_VIP2_ADDR = "myvip2";
+    public static final String REMOTE_REGION_APP2_INSTANCE1_HOSTNAME = "blah2-1";
+    public static final String REMOTE_REGION_APP2_INSTANCE2_HOSTNAME = "blah2-2";
+    public static final String LOCAL_REGION_APP2_NAME = "MYAPP2_LOC";
+    public static final String LOCAL_REGION_APP2_INSTANCE1_HOSTNAME = "blahloc2-1";
+    public static final String LOCAL_REGION_APP2_INSTANCE2_HOSTNAME = "blahloc2-2";
+    public static final String REMOTE_REGION_APP2_NAME = "MYAPP2";
+
+
+
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_526d3b1_6333a71/rev_526d3b1-6333a71.revisions;/eureka-client/src/test/java/com/netflix/discovery/AbstractDiscoveryClientTester.java;public static final String LOCAL_REGION_APP2_NAME ;public static final String LOCAL_REGION_APP2_NAME ;
+
+    public static final String ALL_REGIONS_VIP1_ADDR = "myvip1";
+    public static final String REMOTE_REGION_APP1_INSTANCE1_HOSTNAME = "blah1-1";
+    public static final String REMOTE_REGION_APP1_INSTANCE2_HOSTNAME = "blah1-2";
+    public static final String LOCAL_REGION_APP1_NAME = "MYAPP1_LOC";
+    public static final String LOCAL_REGION_APP1_INSTANCE1_HOSTNAME = "blahloc1-1";
+    public static final String LOCAL_REGION_APP1_INSTANCE2_HOSTNAME = "blahloc1-2";
+    public static final String REMOTE_REGION_APP1_NAME = "MYAPP1";
+
+    public static final String ALL_REGIONS_VIP2_ADDR = "myvip2";
+    public static final String REMOTE_REGION_APP2_INSTANCE1_HOSTNAME = "blah2-1";
+    public static final String REMOTE_REGION_APP2_INSTANCE2_HOSTNAME = "blah2-2";
+    public static final String REMOTE_REGION_APP2_INSTANCE3_HOSTNAME = "blah2-3";
+    public static final String LOCAL_REGION_APP2_NAME = "MYAPP2_LOC";
+    public static final String LOCAL_REGION_APP2_INSTANCE1_HOSTNAME = "blahloc2-1";
+    public static final String LOCAL_REGION_APP2_INSTANCE2_HOSTNAME = "blahloc2-2";
+    public static final String LOCAL_REGION_APP2_INSTANCE3_HOSTNAME = "blahloc2-3";
+    public static final String REMOTE_REGION_APP2_NAME = "MYAPP2";
+
+=======
+
+    public static final String ALL_REGIONS_VIP1_ADDR = "myvip1";
+    public static final String REMOTE_REGION_APP1_INSTANCE1_HOSTNAME = "blah1-1";
+    public static final String REMOTE_REGION_APP1_INSTANCE2_HOSTNAME = "blah1-2";
+    public static final String LOCAL_REGION_APP1_NAME = "MYAPP1_LOC";
+    public static final String LOCAL_REGION_APP1_INSTANCE1_HOSTNAME = "blahloc1-1";
+    public static final String LOCAL_REGION_APP1_INSTANCE2_HOSTNAME = "blahloc1-2";
+    public static final String REMOTE_REGION_APP1_NAME = "MYAPP1";
+
+    public static final String ALL_REGIONS_VIP2_ADDR = "myvip2";
+    public static final String REMOTE_REGION_APP2_INSTANCE1_HOSTNAME = "blah2-1";
+    public static final String REMOTE_REGION_APP2_INSTANCE2_HOSTNAME = "blah2-2";
+    public static final String LOCAL_REGION_APP2_NAME = "MYAPP2_LOC";
+    public static final String LOCAL_REGION_APP2_INSTANCE1_HOSTNAME = "blahloc2-1";
+    public static final String LOCAL_REGION_APP2_INSTANCE2_HOSTNAME = "blahloc2-2";
+    public static final String REMOTE_REGION_APP2_NAME = "MYAPP2";
+
+
+
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_526d3b1_6333a71/rev_526d3b1-6333a71.revisions;/eureka-client/src/test/java/com/netflix/discovery/AbstractDiscoveryClientTester.java;public static final String LOCAL_REGION_APP2_INSTANCE1_HOSTNAME ;public static final String LOCAL_REGION_APP2_INSTANCE1_HOSTNAME ;
+
+    public static final String ALL_REGIONS_VIP1_ADDR = "myvip1";
+    public static final String REMOTE_REGION_APP1_INSTANCE1_HOSTNAME = "blah1-1";
+    public static final String REMOTE_REGION_APP1_INSTANCE2_HOSTNAME = "blah1-2";
+    public static final String LOCAL_REGION_APP1_NAME = "MYAPP1_LOC";
+    public static final String LOCAL_REGION_APP1_INSTANCE1_HOSTNAME = "blahloc1-1";
+    public static final String LOCAL_REGION_APP1_INSTANCE2_HOSTNAME = "blahloc1-2";
+    public static final String REMOTE_REGION_APP1_NAME = "MYAPP1";
+
+    public static final String ALL_REGIONS_VIP2_ADDR = "myvip2";
+    public static final String REMOTE_REGION_APP2_INSTANCE1_HOSTNAME = "blah2-1";
+    public static final String REMOTE_REGION_APP2_INSTANCE2_HOSTNAME = "blah2-2";
+    public static final String REMOTE_REGION_APP2_INSTANCE3_HOSTNAME = "blah2-3";
+    public static final String LOCAL_REGION_APP2_NAME = "MYAPP2_LOC";
+    public static final String LOCAL_REGION_APP2_INSTANCE1_HOSTNAME = "blahloc2-1";
+    public static final String LOCAL_REGION_APP2_INSTANCE2_HOSTNAME = "blahloc2-2";
+    public static final String LOCAL_REGION_APP2_INSTANCE3_HOSTNAME = "blahloc2-3";
+    public static final String REMOTE_REGION_APP2_NAME = "MYAPP2";
+
+=======
+
+    public static final String ALL_REGIONS_VIP1_ADDR = "myvip1";
+    public static final String REMOTE_REGION_APP1_INSTANCE1_HOSTNAME = "blah1-1";
+    public static final String REMOTE_REGION_APP1_INSTANCE2_HOSTNAME = "blah1-2";
+    public static final String LOCAL_REGION_APP1_NAME = "MYAPP1_LOC";
+    public static final String LOCAL_REGION_APP1_INSTANCE1_HOSTNAME = "blahloc1-1";
+    public static final String LOCAL_REGION_APP1_INSTANCE2_HOSTNAME = "blahloc1-2";
+    public static final String REMOTE_REGION_APP1_NAME = "MYAPP1";
+
+    public static final String ALL_REGIONS_VIP2_ADDR = "myvip2";
+    public static final String REMOTE_REGION_APP2_INSTANCE1_HOSTNAME = "blah2-1";
+    public static final String REMOTE_REGION_APP2_INSTANCE2_HOSTNAME = "blah2-2";
+    public static final String LOCAL_REGION_APP2_NAME = "MYAPP2_LOC";
+    public static final String LOCAL_REGION_APP2_INSTANCE1_HOSTNAME = "blahloc2-1";
+    public static final String LOCAL_REGION_APP2_INSTANCE2_HOSTNAME = "blahloc2-2";
+    public static final String REMOTE_REGION_APP2_NAME = "MYAPP2";
+
+
+
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_526d3b1_6333a71/rev_526d3b1-6333a71.revisions;/eureka-client/src/test/java/com/netflix/discovery/AbstractDiscoveryClientTester.java;public static final String LOCAL_REGION_APP2_INSTANCE2_HOSTNAME ;public static final String LOCAL_REGION_APP2_INSTANCE2_HOSTNAME ;
+
+    public static final String ALL_REGIONS_VIP1_ADDR = "myvip1";
+    public static final String REMOTE_REGION_APP1_INSTANCE1_HOSTNAME = "blah1-1";
+    public static final String REMOTE_REGION_APP1_INSTANCE2_HOSTNAME = "blah1-2";
+    public static final String LOCAL_REGION_APP1_NAME = "MYAPP1_LOC";
+    public static final String LOCAL_REGION_APP1_INSTANCE1_HOSTNAME = "blahloc1-1";
+    public static final String LOCAL_REGION_APP1_INSTANCE2_HOSTNAME = "blahloc1-2";
+    public static final String REMOTE_REGION_APP1_NAME = "MYAPP1";
+
+    public static final String ALL_REGIONS_VIP2_ADDR = "myvip2";
+    public static final String REMOTE_REGION_APP2_INSTANCE1_HOSTNAME = "blah2-1";
+    public static final String REMOTE_REGION_APP2_INSTANCE2_HOSTNAME = "blah2-2";
+    public static final String REMOTE_REGION_APP2_INSTANCE3_HOSTNAME = "blah2-3";
+    public static final String LOCAL_REGION_APP2_NAME = "MYAPP2_LOC";
+    public static final String LOCAL_REGION_APP2_INSTANCE1_HOSTNAME = "blahloc2-1";
+    public static final String LOCAL_REGION_APP2_INSTANCE2_HOSTNAME = "blahloc2-2";
+    public static final String LOCAL_REGION_APP2_INSTANCE3_HOSTNAME = "blahloc2-3";
+    public static final String REMOTE_REGION_APP2_NAME = "MYAPP2";
+
+=======
+
+    public static final String ALL_REGIONS_VIP1_ADDR = "myvip1";
+    public static final String REMOTE_REGION_APP1_INSTANCE1_HOSTNAME = "blah1-1";
+    public static final String REMOTE_REGION_APP1_INSTANCE2_HOSTNAME = "blah1-2";
+    public static final String LOCAL_REGION_APP1_NAME = "MYAPP1_LOC";
+    public static final String LOCAL_REGION_APP1_INSTANCE1_HOSTNAME = "blahloc1-1";
+    public static final String LOCAL_REGION_APP1_INSTANCE2_HOSTNAME = "blahloc1-2";
+    public static final String REMOTE_REGION_APP1_NAME = "MYAPP1";
+
+    public static final String ALL_REGIONS_VIP2_ADDR = "myvip2";
+    public static final String REMOTE_REGION_APP2_INSTANCE1_HOSTNAME = "blah2-1";
+    public static final String REMOTE_REGION_APP2_INSTANCE2_HOSTNAME = "blah2-2";
+    public static final String LOCAL_REGION_APP2_NAME = "MYAPP2_LOC";
+    public static final String LOCAL_REGION_APP2_INSTANCE1_HOSTNAME = "blahloc2-1";
+    public static final String LOCAL_REGION_APP2_INSTANCE2_HOSTNAME = "blahloc2-2";
+    public static final String REMOTE_REGION_APP2_NAME = "MYAPP2";
+
+
+
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_526d3b1_6333a71/rev_526d3b1-6333a71.revisions;/eureka-client/src/test/java/com/netflix/discovery/AbstractDiscoveryClientTester.java;public static final String REMOTE_REGION_APP2_NAME ;public static final String REMOTE_REGION_APP2_NAME ;
+
+    public static final String ALL_REGIONS_VIP1_ADDR = "myvip1";
+    public static final String REMOTE_REGION_APP1_INSTANCE1_HOSTNAME = "blah1-1";
+    public static final String REMOTE_REGION_APP1_INSTANCE2_HOSTNAME = "blah1-2";
+    public static final String LOCAL_REGION_APP1_NAME = "MYAPP1_LOC";
+    public static final String LOCAL_REGION_APP1_INSTANCE1_HOSTNAME = "blahloc1-1";
+    public static final String LOCAL_REGION_APP1_INSTANCE2_HOSTNAME = "blahloc1-2";
+    public static final String REMOTE_REGION_APP1_NAME = "MYAPP1";
+
+    public static final String ALL_REGIONS_VIP2_ADDR = "myvip2";
+    public static final String REMOTE_REGION_APP2_INSTANCE1_HOSTNAME = "blah2-1";
+    public static final String REMOTE_REGION_APP2_INSTANCE2_HOSTNAME = "blah2-2";
+    public static final String REMOTE_REGION_APP2_INSTANCE3_HOSTNAME = "blah2-3";
+    public static final String LOCAL_REGION_APP2_NAME = "MYAPP2_LOC";
+    public static final String LOCAL_REGION_APP2_INSTANCE1_HOSTNAME = "blahloc2-1";
+    public static final String LOCAL_REGION_APP2_INSTANCE2_HOSTNAME = "blahloc2-2";
+    public static final String LOCAL_REGION_APP2_INSTANCE3_HOSTNAME = "blahloc2-3";
+    public static final String REMOTE_REGION_APP2_NAME = "MYAPP2";
+
+=======
+
+    public static final String ALL_REGIONS_VIP1_ADDR = "myvip1";
+    public static final String REMOTE_REGION_APP1_INSTANCE1_HOSTNAME = "blah1-1";
+    public static final String REMOTE_REGION_APP1_INSTANCE2_HOSTNAME = "blah1-2";
+    public static final String LOCAL_REGION_APP1_NAME = "MYAPP1_LOC";
+    public static final String LOCAL_REGION_APP1_INSTANCE1_HOSTNAME = "blahloc1-1";
+    public static final String LOCAL_REGION_APP1_INSTANCE2_HOSTNAME = "blahloc1-2";
+    public static final String REMOTE_REGION_APP1_NAME = "MYAPP1";
+
+    public static final String ALL_REGIONS_VIP2_ADDR = "myvip2";
+    public static final String REMOTE_REGION_APP2_INSTANCE1_HOSTNAME = "blah2-1";
+    public static final String REMOTE_REGION_APP2_INSTANCE2_HOSTNAME = "blah2-2";
+    public static final String LOCAL_REGION_APP2_NAME = "MYAPP2_LOC";
+    public static final String LOCAL_REGION_APP2_INSTANCE1_HOSTNAME = "blahloc2-1";
+    public static final String LOCAL_REGION_APP2_INSTANCE2_HOSTNAME = "blahloc2-2";
+    public static final String REMOTE_REGION_APP2_NAME = "MYAPP2";
+
+
+
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_a995b04_c1c4cbe/rev_a995b04-c1c4cbe.revisions;/eureka-client/src/test/java/com/netflix/discovery/converters/EurekaJsonAndXmlJacksonCodecTest.java;@Test    public void testInstanceInfoWithNoMetaEncodeDecodeWithXml() throws Exception ;@Test    public void testInstanceInfoWithNoMetaEncodeDecodeWithXml() throws Exception ;
+    public void testInstanceInfoWithNoMetaEncodeDecodeWithJson() throws Exception {
+        doInstanceInfoWithNoMetaEncodeDecode(new EurekaJsonJacksonCodec().getObjectMapper());
+    }
+
+    @Test
+    public void testInstanceInfoWithNoMetaEncodeDecodeWithXml() throws Exception {
+        doInstanceInfoWithNoMetaEncodeDecode(new EurekaXmlJacksonCodec().getObjectMapper());
+    }
+
+    private void doInstanceInfoWithNoMetaEncodeDecode(ObjectMapper mapper) throws Exception {
+        InstanceInfo noMetaDataInfo = new InstanceInfo.Builder(infoIterator.next()).setMetadata(null).build();
+
+        String encodedString = mapper.writeValueAsString(noMetaDataInfo);
+        InstanceInfo decodedValue = mapper.readValue(encodedString, InstanceInfo.class);
+
+        assertThat(decodedValue.getId(), is(equalTo(noMetaDataInfo.getId())));
+    }
+
+    @Test
+=======
+    public void testInstanceInfoWithNoMetaEncodeDecodeWithJson() throws Exception {
+        doInstanceInfoWithNoMetaEncodeDecode(new EurekaJsonJacksonCodec().getObjectMapper(), true);
+    }
+
+    @Test
+    public void testInstanceInfoWithNoMetaEncodeDecodeWithXml() throws Exception {
+        doInstanceInfoWithNoMetaEncodeDecode(new EurekaXmlJacksonCodec().getObjectMapper(), false);
+    }
+
+    private void doInstanceInfoWithNoMetaEncodeDecode(ObjectMapper mapper, boolean json) throws Exception {
+        InstanceInfo noMetaDataInfo = new InstanceInfo.Builder(infoIterator.next()).setMetadata(null).build();
+
+        String encodedString = mapper.writeValueAsString(noMetaDataInfo);
+
+        // Backward compatibility with old codec
+        if (json) {
+            assertThat(encodedString.contains("\"@class\":\"java.util.Collections$EmptyMap\""), is(true));
+        }
+
+        InstanceInfo decodedValue = mapper.readValue(encodedString, InstanceInfo.class);
+        assertThat(decodedValue.getId(), is(equalTo(noMetaDataInfo.getId())));
+        assertThat(decodedValue.getMetadata().isEmpty(), is(true));
+    }
+
+    @Test
+
+
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_2529120_333a91e/rev_2529120-333a91e.revisions;/eureka-core/src/main/java/com/netflix/eureka/DefaultEurekaServerConfig.java;@Override    public String getExperimental(String name) ;@Override    public String getExperimental(String name) ;
+
+    @Override
+    public String getExperimental(String name) {
+        return configInstance.getStringProperty(namespace + "experimental." + name, null).get();
+    }
+=======
+
+    @Override
+    public String getExperimental(String name) {
+        return configInstance.getStringProperty(namespace + "experimental." + name, null).get();
+    }
+
+    @Override
+    public int getRoute53BindRebindRetries() {
+        return configInstance.getIntProperty(
+                namespace + "route53BindRebindRetries", 3).get();
+
+    }
+
+    @Override
+    public int getRoute53BindingRetryIntervalMs() {
+        return configInstance.getIntProperty(
+                namespace + "route53BindRebindRetryIntervalMs", (5 * 60 * 1000))
+                .get();
+    }
+
+    @Override
+    public long getRoute53DomainTTL() {
+        return configInstance.getLongProperty(
+                namespace + "route53DomainTTL", 30l)
+                .get();
+    }
+
+    @Override
+    public AwsBindingStrategy getBindingStrategy() {
+        return AwsBindingStrategy.valueOf(configInstance.getStringProperty(namespace + "awsBindingStrategy", AwsBindingStrategy.EIP.name()).get().toUpperCase());
+    }
+
+
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_2529120_333a91e/rev_2529120-333a91e.revisions;/eureka-core/src/main/java/com/netflix/eureka/EurekaServerConfig.java;String getExperimental(String name);String getExperimental(String name);
+
+    /**
+     * To avoid configuration API pollution when trying new/experimental or features or for the migration process,
+     * the corresponding configuration can be put into experimental configuration section.
+     *
+     * @return a property of experimental feature
+     */
+    String getExperimental(String name);
+=======
+
+    /**
+     * To avoid configuration API pollution when trying new/experimental or features or for the migration process,
+     * the corresponding configuration can be put into experimental configuration section.
+     *
+     * @return a property of experimental feature
+     */
+    String getExperimental(String name);
+
+
+    /**
+     * Get the configured binding strategy EIP or Route53.
+     * @return the configured binding strategy
+     */
+    AwsBindingStrategy getBindingStrategy();
+
+    /**
+     *
+     * @return the ttl used to set up the route53 domain if new
+     */
+    long getRoute53DomainTTL();
+
+    /**
+     * Gets the number of times the server should try to bind to the candidate
+     * Route53 domain.
+     *
+     * <p>
+     * <em>The changes are effective at runtime.</em>
+     * </p>
+     *
+     * @return the number of times the server should try to bind to the
+     *         candidate Route53 domain.
+     */
+    int getRoute53BindRebindRetries();
+
+    /**
+     * Gets the interval with which the server should check if the Route53 domain is bound
+     * and should try to bind in the case if it is already not bound.
+     * <p>
+     * <em>The changes are effective at runtime.</em>
+     * </p>
+     *
+     * @return the time in milliseconds.
+     */
+    int getRoute53BindingRetryIntervalMs();
+
+

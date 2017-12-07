@@ -1,0 +1,1134 @@
+file;ssmergeConf
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_a84be6a_08e0412/rev_a84be6a-08e0412/eureka-core/src/main/java/com/netflix/eureka/InstanceRegistry.java;<<<<<<< MINE
+public Applications getApplicationDeltasFromMultipleRegions(String[] remoteRegions) {
+        if (null == remoteRegions) {
+            remoteRegions = allKnownRemoteRegions; // null means all remote regions.
+        }
+
+        boolean includeRemoteRegion = remoteRegions.length != 0;
+
+        if (includeRemoteRegion) {
+            GET_ALL_WITH_REMOTE_REGIONS_CACHE_MISS_DELTA.increment();
+        } else {
+            GET_ALL_CACHE_MISS_DELTA.increment();
+        }
+
+        Applications apps = new Applications();
+        apps.setVersion(ResponseCache.getVersionDeltaWithRegions().get());
+        Map<String, Application> applicationInstancesMap = new HashMap<String, Application>();
+        try {
+            write.lock();
+            Iterator<RecentlyChangedItem> iter = this.recentlyChangedQueue.iterator();
+            logger.debug("The number of elements in the delta queue is :" + this.recentlyChangedQueue.size());
+            while (iter.hasNext()) {
+                Lease<InstanceInfo> lease = iter.next().getLeaseInfo();
+                InstanceInfo instanceInfo = lease.getHolder();
+                Object[] args = { instanceInfo.getId(),
+                                  instanceInfo.getStatus().name(),
+                                  instanceInfo.getActionType().name() };
+                logger.debug(
+                        "The instance id %s is found with status %s and actiontype %s",
+                        args);
+                Application app = applicationInstancesMap.get(instanceInfo
+                        .getAppName());
+                if (app == null) {
+                    app = new Application(instanceInfo.getAppName());
+                    applicationInstancesMap.put(instanceInfo.getAppName(), app);
+                    apps.addApplication(app);
+                }
+                app.addInstance(decorateInstanceInfo(lease));
+            }
+
+            if (includeRemoteRegion) {
+                for (String remoteRegion : remoteRegions) {
+                    RemoteRegionRegistry remoteRegistry = regionNameVSRemoteRegistry.get(remoteRegion);
+                    if (null != remoteRegistry) {
+                        Applications remoteAppsDelta = remoteRegistry.getApplicationDeltas();
+                        if (null != remoteAppsDelta) {
+                            for (Application application : remoteAppsDelta.getRegisteredApplications()) {
+                                if (shouldFetchFromRemoteRegistry(application.getName(), remoteRegion)) {
+                                    Application appInstanceTillNow = apps.getRegisteredApplications(application.getName());
+                                    if (appInstanceTillNow == null) {
+                                        appInstanceTillNow = new Application(application.getName());
+                                        apps.addApplication(appInstanceTillNow);
+                                    }
+                                    for (InstanceInfo instanceInfo : application.getInstances()) {
+                                        appInstanceTillNow.addInstance(instanceInfo);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            Applications allApps = getApplicationsFromMultipleRegions(remoteRegions);
+            apps.setAppsHashCode(allApps.getReconcileHashCode());
+            return apps;
+        } finally {
+            write.unlock();
+        }
+    }
+=======
+public Applications getApplicationDeltasFromMultipleRegions(String[] remoteRegions) {
+        if (null == remoteRegions) {
+            remoteRegions = allKnownRemoteRegions; // null means all remote regions.
+        }
+
+        boolean includeRemoteRegion = remoteRegions.length != 0;
+
+        if (includeRemoteRegion) {
+            GET_ALL_WITH_REMOTE_REGIONS_CACHE_MISS_DELTA.increment();
+        } else {
+            GET_ALL_CACHE_MISS_DELTA.increment();
+        }
+
+        Applications apps = new Applications();
+        apps.setVersion(ResponseCache.getVersionDelta().get());
+        Map<String, Application> applicationInstancesMap = new HashMap<String, Application>();
+        try {
+            write.lock();
+            Iterator<RecentlyChangedItem> iter = this.recentlyChangedQueue.iterator();
+            logger.debug("The number of elements in the delta queue is :" + this.recentlyChangedQueue.size());
+            while (iter.hasNext()) {
+                Lease<InstanceInfo> lease = iter.next().getLeaseInfo();
+                InstanceInfo instanceInfo = lease.getHolder();
+                Object[] args = { instanceInfo.getId(),
+                                  instanceInfo.getStatus().name(),
+                                  instanceInfo.getActionType().name() };
+                logger.debug(
+                        "The instance id %s is found with status %s and actiontype %s",
+                        args);
+                Application app = applicationInstancesMap.get(instanceInfo
+                        .getAppName());
+                if (app == null) {
+                    app = new Application(instanceInfo.getAppName());
+                    applicationInstancesMap.put(instanceInfo.getAppName(), app);
+                    apps.addApplication(app);
+                }
+                app.addInstance(decorateInstanceInfo(lease));
+            }
+
+            if (includeRemoteRegion) {
+                for (String remoteRegion : remoteRegions) {
+                    RemoteRegionRegistry remoteRegistry = regionNameVSRemoteRegistry.get(remoteRegion);
+                    if (null != remoteRegistry) {
+                        Applications remoteAppsDelta = remoteRegistry.getApplicationDeltas();
+                        if (null != remoteAppsDelta) {
+                            for (Application application : remoteAppsDelta.getRegisteredApplications()) {
+                                if (shouldFetchFromRemoteRegistry(application.getName(), remoteRegion)) {
+                                    Application appInstanceTillNow = apps.getRegisteredApplications(application.getName());
+                                    if (appInstanceTillNow == null) {
+                                        appInstanceTillNow = new Application(application.getName());
+                                        apps.addApplication(appInstanceTillNow);
+                                    }
+                                    for (InstanceInfo instanceInfo : application.getInstances()) {
+                                        appInstanceTillNow.addInstance(instanceInfo);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            Applications allApps = getApplicationsFromMultipleRegions(remoteRegions);
+            apps.setAppsHashCode(allApps.getReconcileHashCode());
+            return apps;
+        } finally {
+            write.unlock();
+        }
+    }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_b7e1825_f0dec22/rev_b7e1825-f0dec22/eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java;<<<<<<< MINE
+        this(myInfo, config, null);
+=======
+        try {
+            scheduler = Executors.newScheduledThreadPool(4);
+
+            clientConfig = config;
+            final String zone = getZone(myInfo);
+            eurekaServiceUrls.set(getDiscoveryServiceUrls(zone));
+            scheduler.scheduleWithFixedDelay(getServiceUrlUpdateTask(zone),
+                                             clientConfig.getEurekaServiceUrlPollIntervalSeconds(),
+                                             clientConfig.getEurekaServiceUrlPollIntervalSeconds(), TimeUnit.SECONDS);
+            localRegionApps.set(new Applications());
+
+            if (myInfo != null) {
+                instanceInfo = myInfo;
+                appPathIdentifier = instanceInfo.getAppName() + "/"
+                                    + instanceInfo.getId();
+            }
+            String proxyHost = clientConfig.getProxyHost();
+            String proxyPort = clientConfig.getProxyPort();
+            discoveryJerseyClient = EurekaJerseyClient.createJerseyClient("DiscoveryClient-HTTPClient",
+                                                                          clientConfig
+                                                                                  .getEurekaServerConnectTimeoutSeconds(),
+                                                                          clientConfig
+                                                                                  .getEurekaServerReadTimeoutSeconds(),
+                                                                          clientConfig
+                                                                                  .getEurekaServerTotalConnectionsPerHost(),
+                                                                          clientConfig
+                                                                                  .getEurekaServerTotalConnections(),
+                                                                          clientConfig
+                                                                                  .getEurekaConnectionIdleTimeoutSeconds());
+            discoveryApacheClient = discoveryJerseyClient.getClient();
+            ClientConfig cc = discoveryJerseyClient.getClientconfig();
+            remoteRegionsToFetch = new AtomicReference<String>(clientConfig.fetchRegistryForRemoteRegions());
+            AzToRegionMapper azToRegionMapper;
+            if (clientConfig.shouldUseDnsForFetchingServiceUrls()) {
+                azToRegionMapper = new DNSBasedAzToRegionMapper();
+            } else {
+                azToRegionMapper = new PropertyBasedAzToRegionMapper(clientConfig);
+            }
+            if (null != remoteRegionsToFetch.get()) {
+                azToRegionMapper.setRegionsToFetch(remoteRegionsToFetch.get().split(","));
+            }
+            instanceRegionChecker = new InstanceRegionChecker(azToRegionMapper, clientConfig.getRegion());
+            boolean enableGZIPContentEncodingFilter = config.shouldGZipContent();
+            // should we enable GZip decoding of responses based on Response
+            // Headers?
+            if (enableGZIPContentEncodingFilter) {
+                // compressed only if there exists a 'Content-Encoding' header
+                // whose value is "gzip"
+                discoveryApacheClient.addFilter(new GZIPContentEncodingFilter(
+                        false));
+            }
+            if (proxyHost != null && proxyPort != null) {
+                cc.getProperties().put(
+                        DefaultApacheHttpClient4Config.PROPERTY_PROXY_URI,
+                        "http://" + proxyHost + ":" + proxyPort);
+            }
+
+        } catch (Throwable e) {
+            throw new RuntimeException("Failed to initialize DiscoveryClient!",
+                    e);
+        }
+        if (clientConfig.shouldFetchRegistry() && !fetchRegistry(false)) {
+            fetchRegistryFromBackup();
+        }
+        initScheduledTasks();
+        try {
+            Monitors.registerObject(this);
+        } catch (Throwable e) {
+            logger.warn("Cannot register timers", e);
+        }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_b7e1825_f0dec22/rev_b7e1825-f0dec22/eureka-client/src/test/java/com/netflix/discovery/MockRemoteEurekaServer.java;<<<<<<< MINE
+public MockRemoteEurekaServer(Map<String, Application> localRegionApps,
+                                  Map<String, Application> localRegionAppsDelta,
+                                  Map<String, Application> remoteRegionApps,
+                                  Map<String, Application> remoteRegionAppsDelta) {
+        this.port = port;
+        this.applicationMap = localRegionApps;
+        this.applicationDeltaMap = localRegionAppsDelta;
+        this.remoteRegionApps = remoteRegionApps;
+        this.remoteRegionAppsDelta = remoteRegionAppsDelta;
+        server = new Server(this.port);
+        server.setHandler(new AppsResourceHandler());
+    }
+=======
+public MockRemoteEurekaServer(Map<String, Application> localRegionApps,
+                                  Map<String, Application> localRegionAppsDelta,
+                                  Map<String, Application> remoteRegionApps,
+                                  Map<String, Application> remoteRegionAppsDelta) {
+        this.port = port;
+        applicationMap = localRegionApps;
+        applicationDeltaMap = localRegionAppsDelta;
+        this.remoteRegionApps = remoteRegionApps;
+        this.remoteRegionAppsDelta = remoteRegionAppsDelta;
+        server = new Server(port);
+        server.setHandler(new AppsResourceHandler());
+    }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_526d3b1_6333a71/rev_526d3b1-6333a71/eureka-client/src/test/java/com/netflix/discovery/AbstractDiscoveryClientTester.java;<<<<<<< MINE
+private static List<Application> createRemoteApps() {
+        Application myapp1 = new Application(REMOTE_REGION_APP1_NAME);
+        InstanceInfo instanceInfo1 = createInstance(REMOTE_REGION_APP1_NAME, ALL_REGIONS_VIP1_ADDR, REMOTE_REGION_APP1_INSTANCE1_HOSTNAME, null);
+        myapp1.addInstance(instanceInfo1);
+
+        Application myapp2 = new Application(REMOTE_REGION_APP2_NAME);
+        InstanceInfo instanceInfo2 = createInstance(REMOTE_REGION_APP2_NAME, ALL_REGIONS_VIP2_ADDR, REMOTE_REGION_APP2_INSTANCE1_HOSTNAME, null);
+        myapp2.addInstance(instanceInfo2);
+
+        return Arrays.asList(myapp1, myapp2);
+=======
+private static List<Application> createRemoteApps() {
+        Application myapp1 = new Application(REMOTE_REGION_APP1_NAME);
+        InstanceInfo instanceInfo1 = createRemoteInstanceForApp1(REMOTE_REGION_APP1_INSTANCE1_HOSTNAME);
+        myapp1.addInstance(instanceInfo1);
+
+        Application myapp2 = new Application(REMOTE_REGION_APP2_NAME);
+        InstanceInfo instanceInfo2 = createRemoteInstanceForApp2(REMOTE_REGION_APP2_INSTANCE1_HOSTNAME);
+        myapp2.addInstance(instanceInfo2);
+
+        return Arrays.asList(myapp1, myapp2);
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_526d3b1_6333a71/rev_526d3b1-6333a71/eureka-client/src/test/java/com/netflix/discovery/AbstractDiscoveryClientTester.java;<<<<<<< MINE
+private static List<Application> createRemoteAppsDelta() {
+        Application myapp1 = new Application(REMOTE_REGION_APP1_NAME);
+        InstanceInfo instanceInfo1 = createInstance(REMOTE_REGION_APP1_NAME, ALL_REGIONS_VIP1_ADDR, REMOTE_REGION_APP1_INSTANCE2_HOSTNAME, null);
+        instanceInfo1.setActionType(InstanceInfo.ActionType.ADDED);
+        myapp1.addInstance(instanceInfo1);
+
+        Application myapp2 = new Application(REMOTE_REGION_APP2_NAME);
+        InstanceInfo instanceInfo2 = createInstance(REMOTE_REGION_APP2_NAME, ALL_REGIONS_VIP2_ADDR, REMOTE_REGION_APP2_INSTANCE2_HOSTNAME, null);
+        instanceInfo2.setActionType(InstanceInfo.ActionType.ADDED);
+        myapp2.addInstance(instanceInfo2);
+
+        return Arrays.asList(myapp1, myapp2);
+=======
+private static List<Application> createRemoteAppsDelta() {
+        Application myapp1 = new Application(REMOTE_REGION_APP1_NAME);
+        InstanceInfo instanceInfo1 = createRemoteInstanceForApp1(REMOTE_REGION_APP1_INSTANCE2_HOSTNAME);
+        instanceInfo1.setActionType(InstanceInfo.ActionType.ADDED);
+        myapp1.addInstance(instanceInfo1);
+
+        Application myapp2 = new Application(REMOTE_REGION_APP2_NAME);
+        InstanceInfo instanceInfo2 = createRemoteInstanceForApp2(REMOTE_REGION_APP2_INSTANCE2_HOSTNAME);
+        instanceInfo2.setActionType(InstanceInfo.ActionType.ADDED);
+        myapp2.addInstance(instanceInfo2);
+
+        return Arrays.asList(myapp1, myapp2);
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_526d3b1_6333a71/rev_526d3b1-6333a71/eureka-client/src/test/java/com/netflix/discovery/AbstractDiscoveryClientTester.java;<<<<<<< MINE
+private static List<Application> createLocalApps() {
+        Application myapp1 = new Application(LOCAL_REGION_APP1_NAME);
+        InstanceInfo instanceInfo1 = createInstance(LOCAL_REGION_APP1_NAME, ALL_REGIONS_VIP1_ADDR, LOCAL_REGION_APP1_INSTANCE1_HOSTNAME, null);
+        myapp1.addInstance(instanceInfo1);
+
+        Application myapp2 = new Application(LOCAL_REGION_APP2_NAME);
+        InstanceInfo instanceInfo2 = createInstance(LOCAL_REGION_APP2_NAME, ALL_REGIONS_VIP2_ADDR, LOCAL_REGION_APP2_INSTANCE1_HOSTNAME, null);
+        myapp2.addInstance(instanceInfo2);
+
+        return Arrays.asList(myapp1, myapp2);
+=======
+private static List<Application> createLocalApps() {
+        Application myapp1 = new Application(LOCAL_REGION_APP1_NAME);
+        InstanceInfo instanceInfo1 = createLocalInstanceForApp1(LOCAL_REGION_APP1_INSTANCE1_HOSTNAME);
+        myapp1.addInstance(instanceInfo1);
+
+        Application myapp2 = new Application(LOCAL_REGION_APP2_NAME);
+        InstanceInfo instanceInfo2 = createLocalInstanceForApp2(LOCAL_REGION_APP2_INSTANCE1_HOSTNAME);
+        myapp2.addInstance(instanceInfo2);
+
+        return Arrays.asList(myapp1, myapp2);
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_526d3b1_6333a71/rev_526d3b1-6333a71/eureka-client/src/test/java/com/netflix/discovery/AbstractDiscoveryClientTester.java;<<<<<<< MINE
+private static List<Application> createLocalAppsDelta() {
+        Application myapp1 = new Application(LOCAL_REGION_APP1_NAME);
+        InstanceInfo instanceInfo1 = createInstance(LOCAL_REGION_APP1_NAME, ALL_REGIONS_VIP1_ADDR, LOCAL_REGION_APP1_INSTANCE2_HOSTNAME, null);
+        instanceInfo1.setActionType(InstanceInfo.ActionType.ADDED);
+        myapp1.addInstance(instanceInfo1);
+
+        Application myapp2 = new Application(LOCAL_REGION_APP2_NAME);
+        InstanceInfo instanceInfo2 = createInstance(LOCAL_REGION_APP2_NAME, ALL_REGIONS_VIP2_ADDR, LOCAL_REGION_APP2_INSTANCE2_HOSTNAME, null);
+        instanceInfo2.setActionType(InstanceInfo.ActionType.ADDED);
+        myapp2.addInstance(instanceInfo2);
+
+        return Arrays.asList(myapp1, myapp2);
+=======
+private static List<Application> createLocalAppsDelta() {
+        Application myapp1 = new Application(LOCAL_REGION_APP1_NAME);
+        InstanceInfo instanceInfo1 = createLocalInstanceForApp1(LOCAL_REGION_APP1_INSTANCE2_HOSTNAME);
+        instanceInfo1.setActionType(InstanceInfo.ActionType.ADDED);
+        myapp1.addInstance(instanceInfo1);
+
+        Application myapp2 = new Application(LOCAL_REGION_APP2_NAME);
+        InstanceInfo instanceInfo2 = createLocalInstanceForApp2(LOCAL_REGION_APP2_INSTANCE2_HOSTNAME);
+        instanceInfo2.setActionType(InstanceInfo.ActionType.ADDED);
+        myapp2.addInstance(instanceInfo2);
+
+        return Arrays.asList(myapp1, myapp2);
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_b276656_00a016c/rev_b276656-00a016c/eureka-client/src/test/java/com/netflix/discovery/converters/InstanceInfoGenerator.java;<<<<<<< MINE
+=======
+private InstanceInfo generateInstanceInfo(int appIndex, int appInstanceId) {
+        String hostName = "instance" + appInstanceId + ".application" + appIndex + ".com";
+        String publicIp = "20.0." + appIndex + '.' + appInstanceId;
+        String privateIp = "192.168." + appIndex + '.' + appInstanceId;
+
+        AmazonInfo dataCenterInfo = AmazonInfo.Builder.newBuilder()
+                .addMetadata(MetaDataKey.accountId, "testAccountId")
+                .addMetadata(MetaDataKey.amiId, String.format("ami-%04d%04d", appIndex, appInstanceId))
+                .addMetadata(MetaDataKey.availabilityZone, "us-east1c")
+                .addMetadata(MetaDataKey.instanceId, String.format("i-%04d%04d", appIndex, appInstanceId))
+                .addMetadata(MetaDataKey.instanceType, "m2.xlarge")
+                .addMetadata(MetaDataKey.localIpv4, privateIp)
+                .addMetadata(MetaDataKey.publicHostname, hostName)
+                .addMetadata(MetaDataKey.publicIpv4, publicIp)
+                .build();
+
+        String unsecureURL = "http://" + hostName + ":8080";
+        String secureURL = "https://" + hostName + ":8081";
+
+        LeaseInfo leaseInfo = LeaseInfo.Builder.newBuilder()
+                .setDurationInSecs(RENEW_INTERVAL)
+                .setRenewalIntervalInSecs(RENEW_INTERVAL)
+                .build();
+
+        Builder builder = InstanceInfo.Builder.newBuilder()
+                .setAppGroupName("AppGroup" + appIndex)
+                .setAppName("App" + appIndex)
+                .setASGName("ASG" + appIndex)
+                .setHostName(hostName)
+                .setIPAddr(publicIp)
+                .setPort(8080)
+                .setSecurePort(8081)
+                .enablePort(PortType.SECURE, true)
+                .setHealthCheckUrls("/healthcheck", unsecureURL + "/healthcheck", secureURL + "/healthcheck")
+                .setHomePageUrl("/homepage", unsecureURL + "/homepage")
+                .setStatusPageUrl("/status", unsecureURL + "/status")
+                .setLeaseInfo(leaseInfo)
+                .setStatus(InstanceStatus.UP)
+                .setVIPAddress(hostName + ":8080")
+                .setSecureVIPAddress(hostName + ":8081")
+                .setDataCenterInfo(dataCenterInfo)
+                .setLastUpdatedTimestamp(System.currentTimeMillis() - 100)
+                .setLastDirtyTimestamp(System.currentTimeMillis() - 100)
+                .setIsCoordinatingDiscoveryServer(true)
+                .enablePort(PortType.UNSECURE, true);
+        if (withMetaData) {
+            builder.add("appKey" + appIndex, Integer.toString(appInstanceId));
+        }
+        return builder.build();
+    }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7ac504a_578f4c0/rev_7ac504a-578f4c0/eureka-core/src/main/java/com/netflix/eureka/InstanceRegistry.java;<<<<<<< MINE
+=======
+public Applications getApplicationsFromMultipleRegions(String[] remoteRegions) {
+
+        boolean includeRemoteRegion = null != remoteRegions && remoteRegions.length != 0;
+
+        logger.info("Fetching applications registry with remote regions: {}, Regions argument {}", includeRemoteRegion,
+                Arrays.toString(remoteRegions));
+
+        if (includeRemoteRegion) {
+            GET_ALL_WITH_REMOTE_REGIONS_CACHE_MISS.increment();
+        } else {
+            GET_ALL_CACHE_MISS.increment();
+        }
+        Applications apps = new Applications();
+        apps.setVersion(1L);
+        for (Entry<String, Map<String, Lease<InstanceInfo>>> entry : registry.entrySet()) {
+            Application app = null;
+
+            if (entry.getValue() != null) {
+                for (Entry<String, Lease<InstanceInfo>> stringLeaseEntry : entry.getValue().entrySet()) {
+                    Lease<InstanceInfo> lease = stringLeaseEntry.getValue();
+                    if (app == null) {
+                        app = new Application(lease.getHolder().getAppName());
+                    }
+                    app.addInstance(decorateInstanceInfo(lease));
+                }
+            }
+            if (app != null) {
+                apps.addApplication(app);
+            }
+        }
+        if (includeRemoteRegion) {
+            for (String remoteRegion : remoteRegions) {
+                RemoteRegionRegistry remoteRegistry = regionNameVSRemoteRegistry.get(remoteRegion);
+                if (null != remoteRegistry) {
+                    Applications remoteApps = remoteRegistry.getApplications();
+                    for (Application application : remoteApps.getRegisteredApplications()) {
+                        if (shouldFetchFromRemoteRegistry(application.getName(), remoteRegion)) {
+                            logger.info("Application {}  fetched from the remote region {}",
+                                    application.getName(), remoteRegion);
+
+                            Application appInstanceTillNow = apps.getRegisteredApplications(application.getName());
+                            if (appInstanceTillNow == null) {
+                                appInstanceTillNow = new Application(application.getName());
+                                apps.addApplication(appInstanceTillNow);
+                            }
+                            for (InstanceInfo instanceInfo : application.getInstances()) {
+                                appInstanceTillNow.addInstance(instanceInfo);
+                            }
+                        } else {
+                            logger.debug("Application {} not fetched from the remote region {} as there exists a "
+                                            + "whitelist and this app is not in the whitelist.",
+                                    application.getName(), remoteRegion);
+                        }
+                    }
+                } else {
+                    logger.warn("No remote registry available for the remote region {}", remoteRegion);
+                }
+            }
+        }
+        apps.setAppsHashCode(apps.getReconcileHashCode());
+        return apps;
+    }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_81aaebd_756bcd9/rev_81aaebd-756bcd9/eureka-core/src/main/java/com/netflix/eureka/PeerAwareInstanceRegistry.java;<<<<<<< MINE
+=======
+@com.netflix.servo.annotations.Monitor(name = "isBelowRenewThreshold", description = "0 = false, 1 = true",
+            type = com.netflix.servo.annotations.DataSourceType.GAUGE)
+    public int isBelowRenewThresold() {
+        if ((getNumOfRenewsInLastMin() <= numberOfRenewsPerMinThreshold)
+                && ((this.startupTime > 0) && (System.currentTimeMillis() > this.startupTime
+                + (EUREKA_SERVER_CONFIG.getWaitTimeInMsWhenSyncEmpty())))) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_491cca0_3f69679/rev_491cca0-3f69679/eureka-core/src/main/java/com/netflix/eureka/InstanceRegistry.java;<<<<<<< MINE
+=======
+private InstanceStatus getOverriddenInstanceStatus(InstanceInfo r,
+                                                       Lease<InstanceInfo> existingLease, boolean isReplication) {
+        // ReplicationInstance is DOWN or STARTING - believe that, but when the instance
+        // says UP, question that
+        // The client instance sends STARTING or DOWN (because of heartbeat
+        // failures), then we accept what
+        // the client says. The same is the case with replica as well.
+        // The OUT_OF_SERVICE from the client or replica needs to be confirmed
+        // as well since the service may be
+        // currently in SERVICE
+        if ((!InstanceStatus.UP.equals(r.getStatus()))
+                && (!InstanceStatus.OUT_OF_SERVICE.equals(r.getStatus()))) {
+            logger.debug(
+                    "Trusting the instance status {} from replica or instance for instance",
+                    r.getStatus(), r.getId());
+            return r.getStatus();
+        }
+        // Overrides are the status like OUT_OF_SERVICE and UP set by NAC
+        InstanceStatus overridden = overriddenInstanceStatusMap.get(r.getId());
+        // If there are instance specific overrides, then they win - otherwise
+        // the ASG status
+        if (overridden != null) {
+            logger.debug(
+                    "The instance specific override for instance {} and the value is {}",
+                    r.getId(), overridden.name());
+            return overridden;
+        }
+        // If the ASGName is present- check for its status
+        boolean isASGDisabled = false;
+        if (r.getASGName() != null) {
+            isASGDisabled = !AwsAsgUtil.getInstance().isASGEnabled(r);
+            logger.debug("The ASG name is specified {} and the value is {}",
+                    r.getASGName(), isASGDisabled);
+            if (isASGDisabled) {
+                return InstanceStatus.OUT_OF_SERVICE;
+            } else {
+                return InstanceStatus.UP;
+            }
+        }
+        // This is for backward compatibility until all applications have ASG
+        // names, otherwise while starting up
+        // the client status may override status replicated from other servers
+        if (!isReplication) {
+            InstanceStatus existingStatus = null;
+            if (existingLease != null) {
+                existingStatus = existingLease.getHolder().getStatus();
+            }
+            // Allow server to have its way when the status is UP or
+            // OUT_OF_SERVICE
+            if ((existingStatus != null)
+                    && (InstanceStatus.OUT_OF_SERVICE.equals(existingStatus)
+                    || InstanceStatus.UP.equals(existingStatus))) {
+                logger.debug(
+                        "There is already an existing lease with status {}  for instance {}",
+                        existingLease.getHolder().getStatus().name(),
+                        existingLease.getHolder().getId());
+                return existingLease.getHolder().getStatus();
+            }
+        }
+        logger.debug(
+                "Returning the default instance status {} for instance {},",
+                r.getStatus(), r.getId());
+        return r.getStatus();
+    }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_491cca0_3f69679/rev_491cca0-3f69679/eureka-core/src/main/java/com/netflix/eureka/util/AwsAsgUtil.java;<<<<<<< MINE
+private Set<String> getASGNames() {
+        Set<String> asgNames = new HashSet<String>();
+        Applications apps = PeerAwareInstanceRegistryImpl.getInstance().getApplications(false);
+        for (Application app : apps.getRegisteredApplications()) {
+            for (InstanceInfo instanceInfo : app.getInstances()) {
+                String asgName = instanceInfo.getASGName();
+                if (asgName != null) {
+                    asgNames.add(asgName);
+                }
+            }
+        }
+
+        return asgNames;
+    }
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_a995b04_c1c4cbe/rev_a995b04-c1c4cbe/eureka-client/src/main/java/com/netflix/discovery/shared/EurekaJerseyClientImpl.java;<<<<<<< MINE
+=======
+public EurekaJerseyClientImpl(int connectionTimeout, int readTimeout, final int connectionIdleTimeout,
+                              ClientConfig clientConfig) {
+        try {
+            jerseyClientConfig = clientConfig;
+            apacheHttpClient = ApacheHttpClient4.create(jerseyClientConfig);
+            HttpParams params = apacheHttpClient.getClientHandler().getHttpClient().getParams();
+
+            HttpConnectionParams.setConnectionTimeout(params, connectionTimeout);
+            HttpConnectionParams.setSoTimeout(params, readTimeout);
+
+            eurekaConnCleaner.scheduleWithFixedDelay(
+                    new ConnectionCleanerTask(connectionIdleTimeout), HTTP_CONNECTION_CLEANER_INTERVAL_MS,
+                    HTTP_CONNECTION_CLEANER_INTERVAL_MS,
+                    TimeUnit.MILLISECONDS);
+        } catch (Throwable e) {
+            throw new RuntimeException("Cannot create Jersey client", e);
+        }
+    }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_a995b04_c1c4cbe/rev_a995b04-c1c4cbe/eureka-client/src/main/java/com/netflix/discovery/shared/EurekaJerseyClientImpl.java;<<<<<<< MINE
+=======
+MyDefaultApacheHttpClient4Config() {
+                MonitoredConnectionManager cm;
+
+                if (systemSSL) {
+                    cm = createSystemSslCM();
+                } else if (trustStoreFileName != null) {
+                    cm = createCustomSslCM();
+                } else {
+                    cm = new MonitoredConnectionManager(clientName);
+                }
+
+                if (proxyHost != null) {
+                    addProxyConfiguration(cm);
+                }
+
+                DiscoveryJerseyProvider discoveryJerseyProvider = new DiscoveryJerseyProvider(encoderWrapper, decoderWrapper);
+                getSingletons().add(discoveryJerseyProvider);
+
+                // Common properties to all clients
+                cm.setDefaultMaxPerRoute(maxConnectionsPerHost);
+                cm.setMaxTotal(maxTotalConnections);
+                getProperties().put(ApacheHttpClient4Config.PROPERTY_CONNECTION_MANAGER, cm);
+
+                String fullUserAgentName = (userAgent == null ? clientName : userAgent) + "/v" + buildVersion();
+                getProperties().put(CoreProtocolPNames.USER_AGENT, fullUserAgentName);
+
+                // To pin a client to specific server in case redirect happens, we handle redirects directly
+                // (see DiscoveryClient.makeRemoteCall methods).
+                getProperties().put(PROPERTY_FOLLOW_REDIRECTS, Boolean.FALSE);
+                getProperties().put(ClientPNames.HANDLE_REDIRECTS, Boolean.FALSE);
+            }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_a995b04_c1c4cbe/rev_a995b04-c1c4cbe/eureka-client/src/test/java/com/netflix/discovery/converters/EurekaJsonAndXmlJacksonCodecTest.java;<<<<<<< MINE
+@Test
+    public void testInstanceInfoWithNoMetaEncodeDecodeWithJson() throws Exception {
+        doInstanceInfoWithNoMetaEncodeDecode(new EurekaJsonJacksonCodec().getObjectMapper());
+    }
+=======
+@Test
+    public void testInstanceInfoWithNoMetaEncodeDecodeWithJson() throws Exception {
+        doInstanceInfoWithNoMetaEncodeDecode(new EurekaJsonJacksonCodec().getObjectMapper(), true);
+    }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_a995b04_c1c4cbe/rev_a995b04-c1c4cbe/eureka-client/src/test/java/com/netflix/discovery/converters/EurekaJsonAndXmlJacksonCodecTest.java;<<<<<<< MINE
+@Test
+    public void testInstanceInfoWithNoMetaEncodeDecodeWithXml() throws Exception {
+        doInstanceInfoWithNoMetaEncodeDecode(new EurekaXmlJacksonCodec().getObjectMapper());
+    }
+=======
+@Test
+    public void testInstanceInfoWithNoMetaEncodeDecodeWithXml() throws Exception {
+        doInstanceInfoWithNoMetaEncodeDecode(new EurekaXmlJacksonCodec().getObjectMapper(), false);
+    }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7c47165_264020a/rev_7c47165-264020a/eureka-core/src/main/java/com/netflix/eureka/PeerAwareInstanceRegistryImpl.java;<<<<<<< MINE
+=======
+public void statusUpdate(final String asgName, final ASGStatus newStatus,
+                             final boolean isReplication) {
+        // If this is replicated from an other node, do not try to replicate
+        // again.
+        if (isReplication) {
+            return;
+        }
+        for (final PeerEurekaNode node : peerEurekaNodes.getPeerEurekaNodes()) {
+            replicateASGInfoToReplicaNodes(asgName, newStatus, node);
+
+        }
+    }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7c47165_264020a/rev_7c47165-264020a/eureka-core/src/main/java/com/netflix/eureka/PeerAwareInstanceRegistryImpl.java;<<<<<<< MINE
+=======
+@Override
+    public boolean isLeaseExpirationEnabled() {
+        if (!isSelfPreservationModeEnabled()) {
+            // The self preservation mode is disabled, hence allowing the instances to expire.
+            return true;
+        }
+        return numberOfRenewsPerMinThreshold > 0 && getNumOfRenewsInLastMin() > numberOfRenewsPerMinThreshold;
+    }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_2529120_333a91e/rev_2529120-333a91e/eureka-core/src/main/java/com/netflix/eureka/cluster/ReplicationTaskProcessor.java;<<<<<<< MINE
+private void executeSingle(List<ReplicationTask> tasks) {
+        for (ReplicationTask task : tasks) {
+            long lastNetworkErrorTime = 0;
+            boolean done;
+            do {
+                done = true;
+                try {
+                    if (isLate(task)) {
+                        continue;
+                    }
+                    DynamicCounter.increment("Single_" + task.getAction().name() + "_tries");
+
+                    EurekaHttpResponse<?> httpResponse = task.execute();
+                    int statusCode = httpResponse.getStatusCode();
+                    Object entity = httpResponse.getEntity();
+                    if (logger.isDebugEnabled()) {
+                        logger.debug("Replication task {} completed with status {}, (includes entity {})", task.getTaskName(), statusCode, entity != null);
+                    }
+                    if (isSuccess(statusCode)) {
+                        DynamicCounter.increment("Single_" + task.getAction().name() + "_success");
+                        task.handleSuccess();
+                    } else {
+                        DynamicCounter.increment("Single_" + task.getAction().name() + "_failure");
+                        task.handleFailure(statusCode, entity);
+                    }
+                } catch (Throwable e) {
+                    if (isNetworkConnectException(e)) {
+                        long now = System.currentTimeMillis();
+                        // We want to retry eagerly, but without flooding log file with tons of error entries.
+                        // As tasks are executed by a pool of threads the error logging multiplies. For example:
+                        // 20 threads * 100ms delay == 200 error entries / sec worst case
+                        // Still we would like to see the exception samples, so we print samples at regular intervals.
+                        if (now - lastNetworkErrorTime > 10000) {
+                            lastNetworkErrorTime = now;
+                            logger.error("Network level connection to peer " + peerId + " for task " + task.getTaskName() + "; retrying after delay", e);
+                        }
+                        try {
+                            Thread.sleep(retrySleepTimeMs);
+                        } catch (InterruptedException ignore) {
+                        }
+                        DynamicCounter.increment(task.getAction().name() + "_retries");
+                        done = false;
+                    } else {
+                        logger.error(peerId + ": " + task.getTaskName() + "Not re-trying this exception because it does not seem to be a network exception", e);
+                    }
+                }
+            } while (!done);
+        }
+    }
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_2529120_333a91e/rev_2529120-333a91e/eureka-core/src/main/java/com/netflix/eureka/cluster/ReplicationTaskProcessor.java;<<<<<<< MINE
+private void executeBatch(List<ReplicationTask> tasks) {
+        ReplicationList list = createReplicationListOf(tasks);
+        if (list.getReplicationList().isEmpty()) {
+            return;
+        }
+
+        Action action = list.getReplicationList().get(0).getAction();
+        DynamicCounter.increment("Batch_" + action + "_tries");
+
+        long lastNetworkErrorTime = 0;
+        boolean done;
+        do {
+            done = true;
+            try {
+                EurekaHttpResponse<ReplicationListResponse> response = replicationClient.submitBatchUpdates(list);
+                int statusCode = response.getStatusCode();
+                if (!isSuccess(statusCode)) {
+                    if (statusCode == 503) {
+                        logger.warn("Server busy (503) HTTP status code received from the peer {}; rescheduling tasks after delay", peerId);
+                        rescheduleAfterDelay(tasks);
+                    } else {
+                        // Unexpected error returned from the server. This should ideally never happen.
+                        logger.error("Batch update failure with HTTP status code {}; discarding {} replication tasks", statusCode, tasks.size());
+                    }
+                    return;
+                }
+                DynamicCounter.increment("Batch_" + action + "_success");
+
+                handleBatchResponse(tasks, response.getEntity().getResponseList());
+            } catch (Throwable e) {
+                if (isNetworkConnectException(e)) {
+                    long now = System.currentTimeMillis();
+                    // We want to retry eagerly, but without flooding log file with tons of error entries.
+                    // As tasks are executed by a pool of threads the error logging multiplies. For example:
+                    // 20 threads * 100ms delay == 200 error entries / sec worst case
+                    // Still we would like to see the exception samples, so we print samples at regular intervals
+                    if (now - lastNetworkErrorTime > 10000) {
+                        lastNetworkErrorTime = now;
+                        logger.error("Network level connection to peer " + peerId + "; retrying after delay", e);
+                    }
+
+                    try {
+                        Thread.sleep(retrySleepTimeMs);
+                    } catch (InterruptedException ignore) {
+                    }
+                    done = false;
+                    DynamicCounter.increment("Batch_" + action + "_retries");
+                } else {
+                    logger.error("Not re-trying this exception because it does not seem to be a network exception", e);
+                }
+            }
+        } while (!done);
+    }
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_b49487b_7fadaa1/rev_b49487b-7fadaa1/eureka-core/src/main/java/com/netflix/eureka/resources/StatusResource.java;<<<<<<< MINE
+=======
+private boolean isReplicaAvailable(String myAppName, String url) {
+
+        try {
+            String givenHostName = new URI(url).getHost();
+            Application app = PeerAwareInstanceRegistryImpl.getInstance()
+                    .getApplication(myAppName, false);
+            if (app == null) {
+                return false;
+            }
+            for (InstanceInfo info : app.getInstances()) {
+                if (info.getHostName().equals(givenHostName)) {
+                    return true;
+                }
+            }
+            givenHostName = new URI(url).getHost();
+        } catch (Throwable e) {
+            logger.error("Could not determine if the replica is available ", e);
+        }
+        return false;
+    }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_203fa01_9950fce/rev_203fa01-9950fce/eureka-core/src/main/java/com/netflix/eureka/util/StatusUtil.java;<<<<<<< MINE
+private boolean isReplicaAvailable(String myAppName, String url) {
+
+        try {
+            Application app = registry.getApplication(myAppName, false);
+            if (app == null) {
+                return false;
+            }
+            for (InstanceInfo info : app.getInstances()) {
+                if (peerEurekaNodes.isInstanceURL(url, info)) {
+                    return true;
+                }
+            }
+        } catch (Throwable e) {
+            logger.error("Could not determine if the replica is available ", e);
+        }
+        return false;
+    }
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/ghostdriver/revisions/rev_30d2ebf_3b872e9/rev_30d2ebf-3b872e9/test/src/test/java/ghostdriver/CookieTest.java;<<<<<<< MINE
+@Test
+    public void shouldBeAbleToAddCookie() {
+        WebDriver d = getDriver();
+        d.get("http://www.github.com");
+
+        // Clear all cookies
+        assertTrue(d.manage().getCookies().size() > 0);
+        d.manage().deleteAllCookies();
+        assertEquals(d.manage().getCookies().size(), 0);
+
+        // Add a cookie
+        Cookie myCookie = new Cookie("foo", "bar");
+        d.manage().addCookie(myCookie);
+        assertEquals(d.manage().getCookies().size(), 1);
+
+        // Check that the new cookie it's there
+        Cookie myCookieIsBack = d.manage().getCookieNamed("foo");
+        assertTrue(myCookieIsBack.getDomain().contains("github"));
+    }
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_29233cb_52f8582/rev_29233cb-52f8582/Essentials/src/com/earth2me/essentials/commands/Commandhelp.java;<<<<<<< MINE
+@SuppressWarnings("CallToThreadDumpStack")
+	private List<String> getHelpLines(User user, String match) throws Exception
+	{
+		List<String> retval = new ArrayList<String>();
+		File helpFile = new File(ess.getDataFolder(), "help_"+Util.sanitizeFileName(user.getName()) +".txt");
+		if (!helpFile.exists())
+		{
+			helpFile = new File(ess.getDataFolder(), "help_"+Util.sanitizeFileName(user.getGroup()) +".txt");
+		}
+		if (!helpFile.exists())
+		{
+			helpFile = new File(ess.getDataFolder(), "help.txt");
+		}
+		if (helpFile.exists())
+		{
+			final BufferedReader bufferedReader = new BufferedReader(new FileReader(helpFile));
+			try {
+				
+				while (bufferedReader.ready())
+				{
+					final String line = bufferedReader.readLine();
+					retval.add(line.replace('&', 'Â§'));
+				}
+			}
+			finally
+			{
+				bufferedReader.close();
+			}
+			return retval;
+		}
+
+		boolean reported = false;
+		String pluginName = "";
+		for (Plugin p : ess.getServer().getPluginManager().getPlugins())
+		{
+			try
+			{
+				final PluginDescriptionFile desc = p.getDescription();
+				final HashMap<String, HashMap<String, String>> cmds = (HashMap<String, HashMap<String, String>>)desc.getCommands();
+				for (Entry<String, HashMap<String, String>> k : cmds.entrySet())
+				{
+					if ((!match.equalsIgnoreCase("")) && (!p.getDescription().getName().toLowerCase().contains(match))
+									&& (!p.getDescription().getDescription().toLowerCase().contains(match)))
+					{
+						continue;
+					}
+					
+					if (p.getDescription().getName().toLowerCase().contains("essentials"))
+					{
+						final String node = "essentials." + k.getKey();
+						if (!ess.getSettings().isCommandDisabled(k.getKey()) && user.isAuthorized(node))
+						{
+							retval.add("Â§c" + k.getKey() + "Â§7: " + k.getValue().get("description"));
+						}
+					}
+					else
+					{
+						if (ess.getSettings().showNonEssCommandsInHelp())
+						{
+							pluginName = p.getDescription().getName();
+							final HashMap<String, String> value = k.getValue();
+							if (value.containsKey("permission") && value.get("permission") != null && !(value.get("permission").equals("")))
+							{
+								if (user.isAuthorized(value.get("permission")))
+								{
+									retval.add("Â§c" + k.getKey() + "Â§7: " + value.get("description"));
+								}
+							}
+							else
+							{
+								if (!ess.getSettings().hidePermissionlessHelp())
+								{
+									retval.add("Â§c" + k.getKey() + "Â§7: " + value.get("description"));
+								}
+							}
+						}
+
+					}
+				}
+			}
+			catch (NullPointerException ex)
+			{
+				continue;
+			}
+			catch (Exception ex)
+			{
+				if (!reported)
+				{
+					logger.log(Level.WARNING, "Error getting help for:" + pluginName, ex);
+				}
+				reported = true;
+				continue;
+			}
+		}
+		return retval;
+	}
+=======
+@SuppressWarnings("CallToThreadDumpStack")
+	private List<String> getHelpLines(User user, String match) throws Exception
+	{
+		List<String> retval = new ArrayList<String>();
+		File helpFile = new File(ess.getDataFolder(), "help_" + Util.sanitizeFileName(user.getName()) + ".txt");
+		if (!helpFile.exists())
+		{
+			helpFile = new File(ess.getDataFolder(), "help_" + Util.sanitizeFileName(user.getGroup()) + ".txt");
+		}
+		if (!helpFile.exists())
+		{
+			helpFile = new File(ess.getDataFolder(), "help.txt");
+		}
+		if (helpFile.exists())
+		{
+			final BufferedReader bufferedReader = new BufferedReader(new FileReader(helpFile));
+			try
+			{
+
+				while (bufferedReader.ready())
+				{
+					final String line = bufferedReader.readLine();
+					retval.add(line.replace('&', 'Â§'));
+				}
+			}
+			finally
+			{
+				bufferedReader.close();
+			}
+			return retval;
+		}
+
+		boolean reported = false;
+		String pluginName = "";
+		for (Plugin p : ess.getServer().getPluginManager().getPlugins())
+		{
+			try
+			{
+				final PluginDescriptionFile desc = p.getDescription();
+				final HashMap<String, HashMap<String, String>> cmds = (HashMap<String, HashMap<String, String>>)desc.getCommands();
+				for (Entry<String, HashMap<String, String>> k : cmds.entrySet())
+				{
+					if ((!match.equalsIgnoreCase("")) && (!p.getDescription().getName().toLowerCase().contains(match))
+						&& (!p.getDescription().getDescription().toLowerCase().contains(match)))
+					{
+						continue;
+					}
+
+					if (p.getDescription().getName().toLowerCase().contains("essentials"))
+					{
+						final String node = "essentials." + k.getKey();
+						if (!ess.getSettings().isCommandDisabled(k.getKey()) && user.isAuthorized(node))
+						{
+							retval.add("Â§c" + k.getKey() + "Â§7: " + k.getValue().get("description"));
+						}
+					}
+					else
+					{
+						if (ess.getSettings().showNonEssCommandsInHelp())
+						{
+							pluginName = p.getDescription().getName();
+							final HashMap<String, String> value = k.getValue();
+							if (value.containsKey("permission") && value.get("permission") != null && !(value.get("permission").equals("")))
+							{
+								if (user.isAuthorized(value.get("permission")))
+								{
+									retval.add("Â§c" + k.getKey() + "Â§7: " + value.get("description"));
+								}
+							}
+							else
+							{
+								if (!ess.getSettings().hidePermissionlessHelp())
+								{
+									retval.add("Â§c" + k.getKey() + "Â§7: " + value.get("description"));
+								}
+							}
+						}
+
+					}
+				}
+			}
+			catch (NullPointerException ex)
+			{
+				continue;
+			}
+			catch (Exception ex)
+			{
+				if (!reported)
+				{
+					logger.log(Level.WARNING, "Error getting help for:" + pluginName, ex);
+				}
+				reported = true;
+				continue;
+			}
+		}
+		return retval;
+	}
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_1a715bd_455fbd8/rev_1a715bd-455fbd8/Essentials/src/com/earth2me/essentials/commands/Commandspawnmob.java;<<<<<<< MINE
+private void changeMobData(String type, Entity spawned, String data, User user) throws Exception
+	{
+		if ("Slime".equalsIgnoreCase(type))
+		{
+			try
+			{
+				((CraftSlime)spawned).setSize(Integer.parseInt(data));
+			}
+			catch (Exception e)
+			{
+				throw new Exception(Util.i18n("slimeMalformedSize"), e);
+			}
+		}
+		if ("Sheep".equalsIgnoreCase(type))
+		{
+			try
+			{
+				((CraftSheep)spawned).setColor(DyeColor.valueOf(data.toUpperCase()));
+			}
+			catch (Exception e)
+			{
+				throw new Exception(Util.i18n("sheepMalformedColor"), e);
+			}
+		}
+		if ("Wolf".equalsIgnoreCase(type) && data.equalsIgnoreCase("tamed"))
+		{
+			EntityWolf wolf = ((CraftWolf)spawned).getHandle();
+			wolf.setTamed(true);
+			wolf.setPathEntity((PathEntity)null);
+			wolf.setSitting(true);
+			wolf.health = 20;
+			wolf.setOwnerName(user.getName());
+			wolf.world.a(wolf, (byte)7);
+		}
+		if ("Wolf".equalsIgnoreCase(type) && data.equalsIgnoreCase("angry"))
+		{
+			((CraftWolf)spawned).setAngry(true);
+		}
+		if ("Creeper".equalsIgnoreCase(type) && data.equalsIgnoreCase("powered")) {
+			((CraftCreeper)spawned).setPowered(true);
+		}
+	}
+=======
+private void changeMobData(String type, Entity spawned, String data, User user) throws Exception
+	{
+		if ("Slime".equalsIgnoreCase(type))
+		{
+			try
+			{
+				((CraftSlime)spawned).setSize(Integer.parseInt(data));
+			}
+			catch (Exception e)
+			{
+				throw new Exception(Util.i18n("slimeMalformedSize"), e);
+			}
+		}
+		if ("Sheep".equalsIgnoreCase(type))
+		{
+			try
+			{
+				((CraftSheep)spawned).setColor(DyeColor.valueOf(data.toUpperCase()));
+			}
+			catch (Exception e)
+			{
+				throw new Exception(Util.i18n("sheepMalformedColor"), e);
+			}
+		}
+		if ("Wolf".equalsIgnoreCase(type) && data.equalsIgnoreCase("tamed"))
+		{
+			EntityWolf wolf = ((CraftWolf)spawned).getHandle();
+			wolf.setTamed(true);
+			wolf.setPathEntity((PathEntity)null);
+			wolf.setSitting(true);
+			wolf.health = 20;
+			wolf.setOwnerName(user.getName());
+			wolf.world.a(wolf, (byte)7);
+		}
+		if ("Wolf".equalsIgnoreCase(type) && data.equalsIgnoreCase("angry"))
+		{
+			((CraftWolf)spawned).setAngry(true);
+		}
+		if ("Creeper".equalsIgnoreCase(type) && data.equalsIgnoreCase("powered"))
+		{
+			((CraftCreeper)spawned).setPowered(true);
+		}
+	}
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_d3ca002_df1e4a2/rev_d3ca002-df1e4a2/Essentials/src/com/earth2me/essentials/commands/Commandbook.java;<<<<<<< MINE
+private boolean isAuthor(BookMeta bmeta, String player)
+	{
+		return bmeta.getAuthor().equalsIgnoreCase(player);
+	}
+=======
+private boolean isAuthor(BookMeta bmeta, String player)
+	{
+		if (bmeta.getAuthor().equalsIgnoreCase(player))
+		{
+			return true;
+		}
+		return false;
+	}
+>>>>>>> YOURS

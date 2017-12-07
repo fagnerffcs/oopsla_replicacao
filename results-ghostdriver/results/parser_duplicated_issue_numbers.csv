@@ -1,0 +1,4 @@
+revision;file;errors
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_a84be6a_08e0412/rev_a84be6a-08e0412.revisions;/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_a84be6a_08e0412/rev_a84be6a-08e0412/eureka-core/src/main/java/com/netflix/eureka/InstanceRegistry.java;1
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_526d3b1_6333a71/rev_526d3b1-6333a71.revisions;/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_526d3b1_6333a71/rev_526d3b1-6333a71/eureka-client/src/test/java/com/netflix/discovery/AbstractDiscoveryClientTester.java;4
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_a995b04_c1c4cbe/rev_a995b04-c1c4cbe.revisions;/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_a995b04_c1c4cbe/rev_a995b04-c1c4cbe/eureka-client/src/test/java/com/netflix/discovery/converters/EurekaJsonAndXmlJacksonCodecTest.java;2

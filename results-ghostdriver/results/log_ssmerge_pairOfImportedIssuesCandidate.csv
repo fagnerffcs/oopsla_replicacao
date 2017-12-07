@@ -1,0 +1,12 @@
+revision;file;leftImport;rightImport;conflictUnmerge
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_aa986ae_507bb14/rev_aa986ae-507bb14.revisions;/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_aa986ae_507bb14/rev_aa986ae-507bb14/eureka-core/src/test/java/com/netflix/eureka/cluster/ReplicationTaskProcessorTest.java;importcom.netflix.eureka.cluster.ReplicationTask.ProcessingState;;importcom.netflix.eureka.cluster.TestableInstanceReplicationTask.ProcessingState;;
+import com.netflix.eureka.EurekaServerConfig;
+import com.netflix.eureka.registry.PeerAwareInstanceRegistryImpl.Action;
+import com.netflix.eureka.cluster.ReplicationTask.ProcessingState;
+import org.junit.After;
+=======
+import com.netflix.eureka.PeerAwareInstanceRegistryImpl.Action;
+import com.netflix.eureka.cluster.TestableInstanceReplicationTask.ProcessingState;
+import com.netflix.eureka.util.batcher.TaskProcessor.ProcessingResult;
+
+

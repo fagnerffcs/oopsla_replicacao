@@ -1,0 +1,9 @@
+project;mergeScenarios;fpOrderingMergeScenarios;fpRenamingMergeScenarios;fnDuplicationMergeScenarios;fnImportMergeScenarios;textualConfUnmerge;textualConfSsmerge;fpOrderingConf;fpRenamingConf;fnDuplicationMissed;fnImportMissed;fpRenamingConfDup;fpConsLines;fpSpacing;fpConsSpac;fpRenamingConfDupMergeScenarios;fpConsLinesMergeScenarios;fpSpacingMergeScenarios;fpConsSpacMergeScenarios;fnNewArtRefOldOneMergeScnarios;fnNewArtRefOldOneConf;fnAnonymous;fnAnonymousMergeScnarios;minfpam;minfpamScenarios;fnAcidental;fnAcidentalScenarios;crosscutingConflicts;crosscutingScenarios;equalConfs
+aws-sdk-java;21;1;0;0;0;3053;1;191;0;0;0;0;1;733;1;0;1;2;1;0;0;0;0;1;1;2862;2;2586;2;0
+elasticsearch-river-mongodb;121;2;1;0;0;4;6;2;6;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;1;0;0;0
+essentials;570;17;0;0;0;434;19;132;0;0;0;0;4;197;1;0;4;17;1;0;0;0;0;19;11;283;19;210;16;16
+eureka;436;16;7;3;0;954;47;355;10;7;0;1;13;634;1;1;5;10;1;0;0;0;0;30;8;561;17;440;15;25
+junit;385;31;7;4;0;905;57;336;14;5;0;5;18;311;3;4;11;28;2;2;8;0;0;38;21;521;43;316;35;23
+jeromq;235;0;0;0;0;2;0;0;0;0;0;0;0;1;0;0;0;1;0;0;0;0;0;0;0;2;1;2;1;0
+jedis;341;33;22;3;0;478;402;98;121;19;0;49;81;145;46;6;21;19;11;6;82;0;0;234;29;166;43;132;39;150
+ghostdriver;96;0;1;0;0;4;2;0;1;0;0;0;1;1;1;0;1;1;1;0;0;0;0;1;1;2;1;2;1;1

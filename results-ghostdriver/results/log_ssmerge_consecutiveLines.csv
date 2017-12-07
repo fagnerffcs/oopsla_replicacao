@@ -1,0 +1,366 @@
+revision;file;methodsignature;leftbody;basebody;rightbody
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_b7e1825_f0dec22/rev_b7e1825-f0dec22;/eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient;DiscoveryClient(InstanceInfo,EurekaClientConfig);        this(myInfo, config, null);;        try {
+            clientConfig = config;
+            final String zone = getZone(myInfo);
+            eurekaServiceUrls.set(getDiscoveryServiceUrls(zone));
+            serviceUrlUpdaterTimer.schedule(getServiceUrlUpdateTask(zone),
+                    clientConfig.getEurekaServiceUrlPollIntervalSeconds(),
+                    clientConfig.getEurekaServiceUrlPollIntervalSeconds());
+            localRegionApps.set(new Applications());
+
+            if (myInfo != null) {
+                instanceInfo = myInfo;
+                appPathIdentifier = instanceInfo.getAppName() + "/"
+                        + instanceInfo.getId();
+            }
+            String proxyHost = clientConfig.getProxyHost();
+            String proxyPort = clientConfig.getProxyPort();
+            discoveryJerseyClient = EurekaJerseyClient.createJerseyClient("DiscoveryClient-HTTPClient",
+                    clientConfig.getEurekaServerConnectTimeoutSeconds(),
+                    clientConfig.getEurekaServerReadTimeoutSeconds(),
+                    clientConfig.getEurekaServerTotalConnectionsPerHost(),
+                    clientConfig.getEurekaServerTotalConnections(),
+                    clientConfig.getEurekaConnectionIdleTimeoutSeconds());
+            discoveryApacheClient = discoveryJerseyClient.getClient();
+            ClientConfig cc = discoveryJerseyClient.getClientconfig();
+            remoteRegionsToFetch = new AtomicReference<String>(clientConfig.fetchRegistryForRemoteRegions());
+            AzToRegionMapper azToRegionMapper;
+            if (clientConfig.shouldUseDnsForFetchingServiceUrls()) {
+                azToRegionMapper = new DNSBasedAzToRegionMapper();
+            } else {
+                azToRegionMapper = new PropertyBasedAzToRegionMapper(clientConfig);
+            }
+            if (null != remoteRegionsToFetch.get()) {
+                azToRegionMapper.setRegionsToFetch(remoteRegionsToFetch.get().split(","));
+            }
+            instanceRegionChecker = new InstanceRegionChecker(azToRegionMapper, clientConfig.getRegion());
+            boolean enableGZIPContentEncodingFilter = config.shouldGZipContent();
+            // should we enable GZip decoding of responses based on Response
+            // Headers?
+            if (enableGZIPContentEncodingFilter) {
+                // compressed only if there exists a 'Content-Encoding' header
+                // whose value is "gzip"
+                discoveryApacheClient.addFilter(new GZIPContentEncodingFilter(
+                        false));
+            }
+            if (proxyHost != null && proxyPort != null) {
+                cc.getProperties().put(
+                        DefaultApacheHttpClient4Config.PROPERTY_PROXY_URI,
+                        "http://" + proxyHost + ":" + proxyPort);
+            }
+
+        } catch (Throwable e) {
+            throw new RuntimeException("Failed to initialize DiscoveryClient!",
+                    e);
+        }
+        if (clientConfig.shouldFetchRegistry() && !fetchRegistry(false)) {
+            fetchRegistryFromBackup();
+        }
+        initScheduledTasks();
+        try {
+            Monitors.registerObject(this);
+        } catch (Throwable e) {
+            logger.warn("Cannot register timers", e);
+        };        try {
+            scheduler = Executors.newScheduledThreadPool(4);
+
+            clientConfig = config;
+            final String zone = getZone(myInfo);
+            eurekaServiceUrls.set(getDiscoveryServiceUrls(zone));
+            scheduler.scheduleWithFixedDelay(getServiceUrlUpdateTask(zone),
+                                             clientConfig.getEurekaServiceUrlPollIntervalSeconds(),
+                                             clientConfig.getEurekaServiceUrlPollIntervalSeconds(), TimeUnit.SECONDS);
+            localRegionApps.set(new Applications());
+
+            if (myInfo != null) {
+                instanceInfo = myInfo;
+                appPathIdentifier = instanceInfo.getAppName() + "/"
+                                    + instanceInfo.getId();
+            }
+            String proxyHost = clientConfig.getProxyHost();
+            String proxyPort = clientConfig.getProxyPort();
+            discoveryJerseyClient = EurekaJerseyClient.createJerseyClient("DiscoveryClient-HTTPClient",
+                                                                          clientConfig
+                                                                                  .getEurekaServerConnectTimeoutSeconds(),
+                                                                          clientConfig
+                                                                                  .getEurekaServerReadTimeoutSeconds(),
+                                                                          clientConfig
+                                                                                  .getEurekaServerTotalConnectionsPerHost(),
+                                                                          clientConfig
+                                                                                  .getEurekaServerTotalConnections(),
+                                                                          clientConfig
+                                                                                  .getEurekaConnectionIdleTimeoutSeconds());
+            discoveryApacheClient = discoveryJerseyClient.getClient();
+            ClientConfig cc = discoveryJerseyClient.getClientconfig();
+            remoteRegionsToFetch = new AtomicReference<String>(clientConfig.fetchRegistryForRemoteRegions());
+            AzToRegionMapper azToRegionMapper;
+            if (clientConfig.shouldUseDnsForFetchingServiceUrls()) {
+                azToRegionMapper = new DNSBasedAzToRegionMapper();
+            } else {
+                azToRegionMapper = new PropertyBasedAzToRegionMapper(clientConfig);
+            }
+            if (null != remoteRegionsToFetch.get()) {
+                azToRegionMapper.setRegionsToFetch(remoteRegionsToFetch.get().split(","));
+            }
+            instanceRegionChecker = new InstanceRegionChecker(azToRegionMapper, clientConfig.getRegion());
+            boolean enableGZIPContentEncodingFilter = config.shouldGZipContent();
+            // should we enable GZip decoding of responses based on Response
+            // Headers?
+            if (enableGZIPContentEncodingFilter) {
+                // compressed only if there exists a 'Content-Encoding' header
+                // whose value is "gzip"
+                discoveryApacheClient.addFilter(new GZIPContentEncodingFilter(
+                        false));
+            }
+            if (proxyHost != null && proxyPort != null) {
+                cc.getProperties().put(
+                        DefaultApacheHttpClient4Config.PROPERTY_PROXY_URI,
+                        "http://" + proxyHost + ":" + proxyPort);
+            }
+
+        } catch (Throwable e) {
+            throw new RuntimeException("Failed to initialize DiscoveryClient!",
+                    e);
+        }
+        if (clientConfig.shouldFetchRegistry() && !fetchRegistry(false)) {
+            fetchRegistryFromBackup();
+        }
+        initScheduledTasks();
+        try {
+            Monitors.registerObject(this);
+        } catch (Throwable e) {
+            logger.warn("Cannot register timers", e);
+        }
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_b694d77_fcffccb/rev_b694d77-fcffccb;/eureka-core/src/main/java/com/netflix/eureka/RemoteRegionRegistry;RemoteRegionRegistry(String,URL);        this.fetchRegistryTimer = Monitors.newTimer(this.remoteRegionURL
+                .toString() + "_" + "FetchRegistry");
+
+        String jerseyClientName;;        this.fetchRegistryTimer = Monitors.newTimer(this.remoteRegionURL
+                .toString() + "_" + "FetchRegistry");
+        String jerseyClientName;;        this.fetchRegistryTimer = Monitors.newTimer(this.remoteRegionURL.toString() + "_FetchRegistry");
+
+        EurekaJerseyClientBuilder clientBuilder = new EurekaJerseyClientBuilder()
+                .withUserAgent("Java EurekaClient (remote region)")
+                .withConnectionTimeout(EUREKA_SERVER_CONFIG.getRemoteRegionConnectTimeoutMs())
+                .withReadTimeout(EUREKA_SERVER_CONFIG.getRemoteRegionReadTimeoutMs())
+                .withMaxConnectionsPerHost(EUREKA_SERVER_CONFIG.getRemoteRegionTotalConnectionsPerHost())
+                .withMaxTotalConnections(EUREKA_SERVER_CONFIG.getRemoteRegionTotalConnections())
+                .withConnectionIdleTimeout(EUREKA_SERVER_CONFIG.getRemoteRegionConnectionIdleTimeoutSeconds());
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_b694d77_fcffccb/rev_b694d77-fcffccb;/eureka-core/src/main/java/com/netflix/eureka/RemoteRegionRegistry;RemoteRegionRegistry(String,URL);            jerseyClientName = "Discovery-RemoteRegionClient-" + regionName;
+            discoveryJerseyClient = new JerseyClient(
+                    EUREKA_SERVER_CONFIG.getRemoteRegionConnectTimeoutMs(),
+                    EUREKA_SERVER_CONFIG.getRemoteRegionReadTimeoutMs(),
+                    EUREKA_SERVER_CONFIG.getRemoteRegionConnectionIdleTimeoutSeconds(),
+                    JerseyClientConfigBuilder.newClientConfigBuilder()
+                            .withClientName(jerseyClientName)
+                            .withMaxConnectionsPerHost(EUREKA_SERVER_CONFIG.getRemoteRegionTotalConnectionsPerHost())
+                            .withMaxTotalConnections(EUREKA_SERVER_CONFIG.getRemoteRegionTotalConnections())
+                            .build()
+            );;            jerseyClientName = "Discovery-RemoteRegionClient-" + regionName;
+            discoveryJerseyClient = EurekaJerseyClient.createJerseyClient(jerseyClientName,
+                    EUREKA_SERVER_CONFIG.getRemoteRegionConnectTimeoutMs(),
+                    EUREKA_SERVER_CONFIG.getRemoteRegionReadTimeoutMs(),
+                    EUREKA_SERVER_CONFIG.getRemoteRegionTotalConnectionsPerHost(),
+                    EUREKA_SERVER_CONFIG.getRemoteRegionTotalConnections(),
+                    EUREKA_SERVER_CONFIG.getRemoteRegionConnectionIdleTimeoutSeconds());;            clientBuilder.withClientName("Discovery-RemoteRegionClient-" + regionName);
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_b694d77_fcffccb/rev_b694d77-fcffccb;/eureka-core/src/main/java/com/netflix/eureka/RemoteRegionRegistry;RemoteRegionRegistry(String,URL);            jerseyClientName = "Discovery-RemoteRegionSystemSecureClient-" + regionName;
+            discoveryJerseyClient = new JerseyClient(
+                    EUREKA_SERVER_CONFIG.getRemoteRegionConnectTimeoutMs(),
+                    EUREKA_SERVER_CONFIG.getRemoteRegionReadTimeoutMs(),
+                    EUREKA_SERVER_CONFIG.getRemoteRegionConnectionIdleTimeoutSeconds(),
+                    JerseyClientConfigBuilder.newSystemSSLClientConfigBuilder()
+                            .withClientName(jerseyClientName)
+                            .withMaxConnectionsPerHost(EUREKA_SERVER_CONFIG.getRemoteRegionTotalConnectionsPerHost())
+                            .withMaxTotalConnections(EUREKA_SERVER_CONFIG.getRemoteRegionTotalConnections())
+                            .build()
+            );;            jerseyClientName = "Discovery-RemoteRegionSystemSecureClient-" + regionName;
+            discoveryJerseyClient =
+                    EurekaJerseyClient.createSystemSSLJerseyClient(
+                            jerseyClientName,
+                            EUREKA_SERVER_CONFIG.getRemoteRegionConnectTimeoutMs(),
+                            EUREKA_SERVER_CONFIG.getRemoteRegionReadTimeoutMs(),
+                            EUREKA_SERVER_CONFIG.getRemoteRegionTotalConnectionsPerHost(),
+                            EUREKA_SERVER_CONFIG.getRemoteRegionTotalConnections(),
+                            EUREKA_SERVER_CONFIG.getRemoteRegionConnectionIdleTimeoutSeconds());;            clientBuilder.withClientName("Discovery-RemoteRegionSystemSecureClient-" + regionName)
+                    .withSystemSSLConfiguration();
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_b694d77_fcffccb/rev_b694d77-fcffccb;/eureka-core/src/main/java/com/netflix/eureka/RemoteRegionRegistry;RemoteRegionRegistry(String,URL);            jerseyClientName = "Discovery-RemoteRegionSecureClient-" + regionName;
+            discoveryJerseyClient = new JerseyClient(
+                    EUREKA_SERVER_CONFIG.getRemoteRegionConnectTimeoutMs(),
+                    EUREKA_SERVER_CONFIG.getRemoteRegionReadTimeoutMs(),
+                    EUREKA_SERVER_CONFIG.getRemoteRegionConnectionIdleTimeoutSeconds(),
+                    JerseyClientConfigBuilder.newSSLClientConfigBuilder()
+                            .withClientName(jerseyClientName)
+                            .withMaxConnectionsPerHost(EUREKA_SERVER_CONFIG.getRemoteRegionTotalConnectionsPerHost())
+                            .withMaxTotalConnections(EUREKA_SERVER_CONFIG.getRemoteRegionTotalConnections())
+                            .withTrustStoreFileName(EUREKA_SERVER_CONFIG.getRemoteRegionTrustStore())
+                            .withTrustStorePassword(EUREKA_SERVER_CONFIG.getRemoteRegionTrustStorePassword())
+                            .build()
+            );;            jerseyClientName = "Discovery-RemoteRegionSecureClient-" + regionName;
+            discoveryJerseyClient =
+                    EurekaJerseyClient.createSSLJerseyClient(
+                            jerseyClientName,
+                            EUREKA_SERVER_CONFIG.getRemoteRegionConnectTimeoutMs(),
+                            EUREKA_SERVER_CONFIG.getRemoteRegionReadTimeoutMs(),
+                            EUREKA_SERVER_CONFIG.getRemoteRegionTotalConnectionsPerHost(),
+                            EUREKA_SERVER_CONFIG.getRemoteRegionTotalConnections(),
+                            EUREKA_SERVER_CONFIG.getRemoteRegionConnectionIdleTimeoutSeconds(),
+                            EUREKA_SERVER_CONFIG.getRemoteRegionTrustStore(),
+                            EUREKA_SERVER_CONFIG.getRemoteRegionTrustStorePassword());;            clientBuilder.withClientName("Discovery-RemoteRegionSecureClient-" + regionName)
+                    .withTrustStoreFile(
+                            EUREKA_SERVER_CONFIG.getRemoteRegionTrustStore(),
+                            EUREKA_SERVER_CONFIG.getRemoteRegionTrustStorePassword()
+                    );
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_b694d77_fcffccb/rev_b694d77-fcffccb;/eureka-core/src/main/java/com/netflix/eureka/resources/ResponseCache;getPayLoad(Key,Applications);private String getPayLoad(Key key, Applications apps) {
+        EncoderWrapper encoderWrapper = serverCodecs.getEncoder(key.getType(), key.getEurekaAccept());
+        try {
+            return encoderWrapper.encode(apps);
+        } catch (Exception e) {
+            logger.error("Failed to encode the payload for all apps", e);
+            return "";;private static String getPayLoad(Key key, Applications apps) {
+        if (key.getType() == KeyType.JSON) {
+            return EurekaJacksonCodec.getInstance().writeToString(apps);
+        } else {
+            return XmlXStream.getInstance().toXML(apps);;private static String getPayLoad(Key key, Applications apps) {
+        String result;
+        if (key.getType() == KeyType.JSON) {
+            result = EurekaJacksonCodec.getInstance().writeToString(apps);
+        } else {
+            result = XmlXStream.getInstance().toXML(apps);
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_a995b04_c1c4cbe/rev_a995b04-c1c4cbe;/eureka-server/src/test/java/com/netflix/eureka/resources/EurekaClientServerRestIntegrationTest;setUp();        jerseyReplicationClient = JerseyReplicationClient.createReplicationClient(eurekaServerConfig, eurekaServiceUrl);;            @Override
+            public void shutdown() {
+                super.shutdown();
+                jerseyClient.destroyResources();
+            }
+        };
+        jerseyReplicationClient = new JerseyReplicationClient(eurekaServerConfig, eurekaServiceUrl);;            @Override
+            public void shutdown() {
+                super.shutdown();
+                jerseyClient.destroyResources();
+            }
+        };
+
+        ServerCodecs serverCodecs = new DefaultServerCodecs(eurekaServerConfig);
+        jerseyReplicationClient = new JerseyReplicationClient(eurekaServerConfig, serverCodecs, eurekaServiceUrl);
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_ac2215e_1837e04/rev_ac2215e-1837e04;/eureka-core/src/main/java/com/netflix/eureka/cluster/PeerEurekaNode;shutDown();        batchingDispatcher.shutdown();
+        nonBatchingDispatcher.shutdown();;        heartBeatProcessor.shutdown();
+        registerProcessor.shutdown();
+        cancelProcessor.shutdown();
+        statusProcessor.shutdown();
+        asgStatusProcessor.shutdown();;        heartBeatProcessor.shutdown();
+        registerProcessor.shutdown();
+        cancelProcessor.shutdown();
+        statusProcessor.shutdown();
+        asgStatusProcessor.shutdown();
+        replicationClient.shutdown();
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_2529120_333a91e/rev_2529120-333a91e;/eureka-core/src/main/java/com/netflix/eureka/cluster/PeerEurekaNode;register(InstanceInfo);        registerProcessor.process(new InstanceReplicationTask(name, Action.Register, info, null, true) {
+            public EurekaHttpResponse<Void> execute() {
+                return replicationClient.register(info);
+            }
+        });;        registerProcessor.process(new InstanceReplicationTask(name, Action.Register, info, null, true) {
+            public HttpResponse<Void> execute() {
+                return replicationClient.register(info);
+            }
+        });;        long expiryTime = System.currentTimeMillis() + info.getLeaseInfo().getRenewalIntervalInSecs() * 1000;
+        batchingDispatcher.process(
+                taskId("register", info),
+                new InstanceReplicationTask(targetHost, Action.Register, info, null, true) {
+                    public HttpResponse<Void> execute() {
+                        return replicationClient.register(info);
+                    }
+                },
+                expiryTime
+        );
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_2529120_333a91e/rev_2529120-333a91e;/eureka-core/src/main/java/com/netflix/eureka/cluster/PeerEurekaNode;cancel(String,String);        cancelProcessor.process(new InstanceReplicationTask(name, Action.Cancel, appName, id) {
+            @Override
+            public EurekaHttpResponse<Void> execute() {
+                return replicationClient.cancel(appName, id);
+            };        cancelProcessor.process(new InstanceReplicationTask(name, Action.Cancel, appName, id) {
+            @Override
+            public HttpResponse<Void> execute() {
+                return replicationClient.cancel(appName, id);
+            };        long expiryTime = System.currentTimeMillis() + maxProcessingDelayMs;
+        batchingDispatcher.process(
+                taskId("cancel", appName, id),
+                new InstanceReplicationTask(targetHost, Action.Cancel, appName, id) {
+                    @Override
+                    public HttpResponse<Void> execute() {
+                        return replicationClient.cancel(appName, id);
+                    }
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_2529120_333a91e/rev_2529120-333a91e;/eureka-core/src/main/java/com/netflix/eureka/cluster/PeerEurekaNode;statusUpdate(String,ASGStatus);        asgStatusProcessor.process(new AsgReplicationTask(name, Action.StatusUpdate, asgName, newStatus) {
+            public EurekaHttpResponse<?> execute() {
+                return replicationClient.statusUpdate(asgName, newStatus);
+            }
+        });;        asgStatusProcessor.process(new AsgReplicationTask(name, Action.StatusUpdate, asgName, newStatus) {
+            public HttpResponse<?> execute() {
+                return replicationClient.statusUpdate(asgName, newStatus);
+            }
+        });;        long expiryTime = System.currentTimeMillis() + maxProcessingDelayMs;
+        nonBatchingDispatcher.process(
+                asgName,
+                new AsgReplicationTask(targetHost, Action.StatusUpdate, asgName, newStatus) {
+                    public HttpResponse<?> execute() {
+                        return replicationClient.statusUpdate(asgName, newStatus);
+                    }
+                },
+                expiryTime
+        );
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_2529120_333a91e/rev_2529120-333a91e;/eureka-core/src/main/java/com/netflix/eureka/cluster/PeerEurekaNode;statusUpdate(String,String,InstanceStatus,InstanceInfo);        statusProcessor.process(new InstanceReplicationTask(name, Action.StatusUpdate, info, null, false) {
+            @Override
+            public EurekaHttpResponse<Void> execute() {
+                return replicationClient.statusUpdate(appName, id, newStatus, info);
+            }
+        });;        statusProcessor.process(new InstanceReplicationTask(name, Action.StatusUpdate, info, null, false) {
+            @Override
+            public HttpResponse<Void> execute() {
+                return replicationClient.statusUpdate(appName, id, newStatus, info);
+            }
+        });;        long expiryTime = System.currentTimeMillis() + maxProcessingDelayMs;
+        batchingDispatcher.process(
+                taskId("statusUpdate", appName, id),
+                new InstanceReplicationTask(targetHost, Action.StatusUpdate, info, null, false) {
+                    @Override
+                    public HttpResponse<Void> execute() {
+                        return replicationClient.statusUpdate(appName, id, newStatus, info);
+                    }
+                },
+                expiryTime
+        );
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_2529120_333a91e/rev_2529120-333a91e;/eureka-core/src/main/java/com/netflix/eureka/cluster/PeerEurekaNode;deleteStatusOverride(String,String,InstanceInfo);        statusProcessor.process(new InstanceReplicationTask(name, Action.DeleteStatusOverride, info, null, false) {
+            @Override
+            public EurekaHttpResponse<Void> execute() {
+                return replicationClient.deleteStatusOverride(appName, id, info);
+            }
+        });;        statusProcessor.process(new InstanceReplicationTask(name, Action.DeleteStatusOverride, info, null, false) {
+            @Override
+            public HttpResponse<Void> execute() {
+                return replicationClient.deleteStatusOverride(appName, id, info);
+            }
+        });;        long expiryTime = System.currentTimeMillis() + maxProcessingDelayMs;
+        batchingDispatcher.process(
+                taskId("deleteStatusOverride", appName, id),
+                new InstanceReplicationTask(targetHost, Action.DeleteStatusOverride, info, null, false) {
+                    @Override
+                    public HttpResponse<Void> execute() {
+                        return replicationClient.deleteStatusOverride(appName, id, info);
+                    }
+                },
+                expiryTime);
+/home/paper219/Desktop/analysis/fullsample//projects/ghostdriver/revisions/rev_30d2ebf_3b872e9/rev_30d2ebf-3b872e9;/test/src/test/java/ghostdriver/CookieTest;shouldRetainCookieInfo();        Cookie addedCookie = new Cookie.Builder("fish", "cod")
+                        .expiresOn(new Date(System.currentTimeMillis() + 100 * 1000)) //< now + 100sec
+                        .path("/404")
+                        .isSecure(true)
+                        .domain("github.com")
+                        .build();
+        d.manage().addCookie(addedCookie);;        Cookie addedCookie =
+            new Cookie.Builder("fish", "cod")
+                .expiresOn(new Date(System.currentTimeMillis() + 100 * 1000)) //< now + 100sec
+                .path("/404")
+                .isSecure(true)
+                .domain("github.com")
+                .build();
+        d.manage().addCookie(addedCookie);;        Cookie addedCookie =
+            new Cookie.Builder("fish", "cod")
+                .expiresOn(new Date(System.currentTimeMillis() + 100 * 1000)) //< now + 100sec
+                .path("/404")
+                .domain("localhost")
+                .build();
+        driver.manage().addCookie(addedCookie);

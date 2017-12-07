@@ -1,0 +1,2940 @@
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_f2ec67e_28fb91a/rev_f2ec67e-28fb91a/src/main/java/org/junit/runner/Result.java;<<<<<<< MINE
+			fIgnoredDuringExecution= true;
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_f2ec67e_28fb91a/rev_f2ec67e-28fb91a/src/test/java/org/junit/tests/running/methods/TestMethodTest.java;<<<<<<< MINE
+=======
+		assertEquals(1, result.getRunCount());
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52/src/main/java/org/junit/experimental/max/MaxCore.java;<<<<<<< MINE
+				save();
+=======
+				fHistory.save();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52/src/test/java/org/junit/tests/experimental/max/MaxStarterTest.java;<<<<<<< MINE
+=======
+
+	}
+
+	@Test
+	public void rememberOldRuns() {
+		fMax.run(TwoUnEqualTests.class);
+
+		MaxCore reincarnation= MaxCore.storedLocally(fMaxFile);
+		List<Failure> failures= reincarnation.run(TwoUnEqualTests.class)
+				.getFailures();
+		assertEquals("fast", failures.get(0).getDescription().getMethodName());
+		assertEquals("slow", failures.get(1).getDescription().getMethodName());
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52/src/test/java/org/junit/tests/experimental/max/MaxStarterTest.java;<<<<<<< MINE
+	public void remember() throws CouldNotReadCoreException {
+		Request request= Request.aClass(TwoUnEqualTests.class);
+		fMax.run(request);
+		MaxCore reincarnation= MaxCore.forFolder(fMax.getFolder());
+		try {
+			Description thing= reincarnation.sortedLeavesForTest(request).get(1);
+			assertEquals(Description.createTestDescription(TwoUnEqualTests.class, "slow"), thing);
+		} finally {
+			reincarnation.forget();
+		}
+	}
+
+	@Test
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e980c59_1bb1eaf/rev_e980c59-1bb1eaf/src/main/java/org/junit/Assert.java;<<<<<<< MINE
+=======
+	 * Asserts that two double arrays are equal. If they are not, an
+	 * {@link AssertionError} is thrown with the given message.
+	 * 
+	 * @param message
+	 *            the identifying message for the {@link AssertionError} (<code>null</code>
+	 *            okay)
+	 * @param expecteds
+	 *            double array with expected values.
+	 * @param actuals
+	 *            double array with actual values
+	 */
+	public static void assertArrayEquals(String message, float[] expecteds,
+			float[] actuals, float delta) throws ArrayComparisonFailure {
+		new InexactComparisonCriteria(delta).internalArrayEquals(message, expecteds, actuals);
+	}
+
+	// TODO (Mar 10, 2009 10:52:18 AM): fix javadoc
+	/**
+	 * Asserts that two double arrays are equal. If they are not, an
+	 * {@link AssertionError} is thrown.
+	 * 
+	 * @param expecteds
+	 *            double array with expected values.
+	 * @param actuals
+	 *            double array with actual values
+	 */
+	public static void assertArrayEquals(float[] expecteds, float[] actuals, float delta) {
+		assertArrayEquals(null, expecteds, actuals, delta);
+	}
+
+	/**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e980c59_1bb1eaf/rev_e980c59-1bb1eaf/src/test/java/org/junit/tests/assertion/AssertionTest.java;<<<<<<< MINE
+		// TODO: add floats
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e980c59_1bb1eaf/rev_e980c59-1bb1eaf/src/test/java/org/junit/tests/assertion/AssertionTest.java;<<<<<<< MINE
+=======
+		// TODO (Mar 10, 2009 10:47:34 AM): Import
+		Assert.assertArrayEquals(new float[] {1.0f}, new float[] {1.0f}, 1.0f);
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e980c59_1bb1eaf/rev_e980c59-1bb1eaf/src/test/java/org/junit/tests/assertion/AssertionTest.java;<<<<<<< MINE
+		// TODO: add floats
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e980c59_1bb1eaf/rev_e980c59-1bb1eaf/src/test/java/org/junit/tests/assertion/AssertionTest.java;<<<<<<< MINE
+=======
+	public void oneDimensionalFloatArraysAreNotEqual() {
+		assertArrayEquals(new float[] {1.0f}, new float[] {2.5f}, 1.0f);
+	}
+
+	@Test(expected=AssertionError.class)
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_592bc69_330135e/rev_592bc69-330135e/src/main/java/redis/clients/util/Sharded.java;<<<<<<< MINE
+	totalWeight = 0;
+=======
+        int totalWeight = 0;
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_592bc69_330135e/rev_592bc69-330135e/src/main/java/redis/clients/util/Sharded.java;<<<<<<< MINE
+	MessageDigest md5;
+	try {
+	    md5 = MessageDigest.getInstance("MD5");
+	} catch (NoSuchAlgorithmException e) {
+	    throw new IllegalStateException("++++ no md5 algorythm found");
+	}
+=======
+        long oneForthOfStep = (1L << 62) / totalWeight; // 62 vs 64 to normalize math in Long
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_1708730_912e94c/rev_1708730-912e94c/src/main/java/org/junit/internal/runners/statements/FailOnTimeout.java;<<<<<<< MINE
+=======
+					fFinished= true;
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_1708730_912e94c/rev_1708730-912e94c/src/main/java/org/junit/internal/runners/statements/FailOnTimeout.java;<<<<<<< MINE
+				return null;
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_1708730_912e94c/rev_1708730-912e94c/src/test/java/org/junit/tests/running/methods/TimeoutTest.java;<<<<<<< MINE
+	@Ignore("We would like this behavior to work but it may not be possible")
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+     * Ask the server to silently close the connection.
+     */
+    public void quit() {
+        runChecks();
+        client.quit();
+    }
+
+    /**
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+     * Delete all the keys of the currently selected DB. This command never
+     * fails.
+     * 
+     * @return Status code reply
+     */
+    public String flushDB() {
+        runChecks();
+        client.flushDB();
+        return client.getStatusCodeReply();
+    }
+
+    /**
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+     * Return the number of keys in the currently selected database.
+     * 
+     * @return Integer reply
+     */
+    public Integer dbSize() {
+        runChecks();
+        client.dbSize();
+        return client.getIntegerReply();
+    }
+
+    /**
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+     * Select the DB with having the specified zero-based numeric index. For
+     * default every new client connection is automatically selected to DB 0.
+     * 
+     * @param index
+     * @return Status code reply
+     */
+    public String select(int index) {
+        runChecks();
+        client.select(index);
+        return client.getStatusCodeReply();
+    }
+
+    /**
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+     * Delete all the keys of all the existing databases, not just the currently
+     * selected one. This command never fails.
+     * 
+     * @return Status code reply
+     */
+    public String flushAll() {
+        runChecks();
+        client.flushAll();
+        return client.getStatusCodeReply();
+    }
+
+    /**
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_333a9bc_e7e4c4c/rev_333a9bc-e7e4c4c/src/main/java/redis/clients/jedis/Transaction.java;<<<<<<< MINE
+        return client.getStatusCodeReply() == "1";
+    }
+
+    public long setrange(String key, long offset, String value) {
+        client.setrange(key, offset, value);
+        return client.getIntegerReply();
+    }
+
+    public String getrange(String key, long startOffset, long endOffset) {
+        client.getrange(key, startOffset, endOffset);
+        return client.getBulkReply();
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_219beb3_b77d9de/rev_219beb3-b77d9de/src/main/java/org/junit/internal/InexactComparisonCriteria.java;<<<<<<< MINE
+/**
+ * 
+ */
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_219beb3_b77d9de/rev_219beb3-b77d9de/src/main/java/org/junit/Assert.java;<<<<<<< MINE
+	// TODO (Mar 10, 2009 10:52:18 AM): fix javadoc
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_219beb3_b77d9de/rev_219beb3-b77d9de/src/test/java/org/junit/tests/experimental/max/MaxStarterTest.java;<<<<<<< MINE
+		@SuppressWarnings("unused")
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_2527d9a_2386579/rev_2527d9a-2386579/src/main/java/org/junit/experimental/interceptor/Interceptors.java;<<<<<<< MINE
+		// TODO Auto-generated method stub
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_2527d9a_2386579/rev_2527d9a-2386579/src/main/java/org/junit/experimental/interceptor/TestWatchman.java;<<<<<<< MINE
+=======
+				starting(method);
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_2527d9a_2386579/rev_2527d9a-2386579/src/main/java/org/junit/experimental/interceptor/TestWatchman.java;<<<<<<< MINE
+=======
+				} finally {
+					finished(method);
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_2527d9a_2386579/rev_2527d9a-2386579/src/main/java/org/junit/experimental/ParallelComputer.java;<<<<<<< MINE
+	}
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_2527d9a_2386579/rev_2527d9a-2386579/src/main/java/org/junit/experimental/ParallelComputer.java;<<<<<<< MINE
+		return fMethods
+			? new ParallelRunner(testClass)
+			: super.getRunner(builder, testClass);
+	}
+
+	public static Computer methods() {
+		return new ParallelComputer(false, true);
+	}
+	
+	private static class ParallelCollator {
+		private final List<Future<Object>> results = new ArrayList<Future<Object>>();
+		private final ExecutorService service = Executors.newCachedThreadPool();
+
+		public void process(Callable<Object> callable) {
+			this.results.add(service.submit(callable));
+		}
+=======
+		// TODO (May 4, 2009 4:09:16 PM): no guarantees here
+		BlockJUnit4ClassRunner runner= (BlockJUnit4ClassRunner) super.getRunner(builder, testClass);
+		return fMethods ? parallelize(runner) : runner;
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_2527d9a_2386579/rev_2527d9a-2386579/src/test/java/org/junit/tests/experimental/max/MaxComputerTest.java;<<<<<<< MINE
+
+	// Description succeed= Description.createTestDescription(TwoTests.class,
+	// "succeed");
+	// Description dontSucceed= Description.createTestDescription(
+	// TwoTests.class, "dontSucceed");
+	// assertTrue(things.contains(succeed));
+	// assertTrue(things.contains(dontSucceed));
+	// assertEquals(2, things.size());
+	// }
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_dafc0ed_79b869e/rev_dafc0ed-79b869e/src/main/java/org/junit/experimental/interceptor/TestWatchman.java;<<<<<<< MINE
+/**
+ * 
+ */
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_dafc0ed_79b869e/rev_dafc0ed-79b869e/src/test/java/org/junit/tests/experimental/TimeoutInterceptorTest.java;<<<<<<< MINE
+=======
+	// TODO (May 6, 2009 11:30:19 AM): Make a separate build that makes gump happy
+	@Ignore("For gump, for now")
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_b3ee106_5eaf0fb/rev_b3ee106-5eaf0fb/src/main/java/org/junit/runners/BlockJUnit4ClassRunner.java;<<<<<<< MINE
+=======
+		// TODO (May 11, 2009 11:28:21 PM):
+		// withBefores/withAfters/withBeforeClass/withAfterClass is a lot of
+		// duplication.
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910/src/main/java/org/junit/runners/BlockJUnit4ClassRunner.java;<<<<<<< MINE
+=======
+		validateFields(errors);
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910/src/main/java/org/junit/runners/BlockJUnit4ClassRunner.java;<<<<<<< MINE
+=======
+		// TODO (May 26, 2009 10:48:26 PM): don't override this
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910/src/main/java/org/junit/runners/BlockJUnit4ClassRunner.java;<<<<<<< MINE
+=======
+		statement= withInterceptors(method, test, statement);
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910/src/main/java/org/junit/experimental/interceptor/TestWatchman.java;<<<<<<< MINE
+=======
+	
+	// TODO (May 25, 2009 9:44:36 PM): Fix max and Theories
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910/src/test/java/org/junit/tests/experimental/max/MaxStarterTest.java;<<<<<<< MINE
+=======
+		@SuppressWarnings("unused")
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910/src/test/java/org/junit/tests/experimental/interceptor/InterceptorTest.java;<<<<<<< MINE
+	@RunWith(Interceptors.class)
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910/src/test/java/org/junit/tests/experimental/interceptor/InterceptorTest.java;<<<<<<< MINE
+			// TODO (Apr 28, 2009 10:31:18 PM): much better error if
+			// @Interceptor
+			// annotates a non-public field.
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910/src/test/java/org/junit/tests/experimental/interceptor/InterceptorTest.java;<<<<<<< MINE
+	@RunWith(Interceptors.class)
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910/src/test/java/org/junit/tests/experimental/interceptor/InterceptorTest.java;<<<<<<< MINE
+	@RunWith(Interceptors.class)
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910/src/test/java/org/junit/tests/experimental/interceptor/InterceptorTest.java;<<<<<<< MINE
+	@RunWith(Interceptors.class)
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910/src/test/java/org/junit/tests/experimental/interceptor/InterceptorTest.java;<<<<<<< MINE
+			// TODO (Apr 28, 2009 10:50:47 PM): is this right? Is
+			// FrameworkMethod too powerful?
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910/src/test/java/org/junit/tests/experimental/interceptor/InterceptorTest.java;<<<<<<< MINE
+	@RunWith(Interceptors.class)
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910/src/test/java/org/junit/tests/experimental/interceptor/InterceptorTest.java;<<<<<<< MINE
+	@RunWith(Interceptors.class)
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910/src/test/java/org/junit/tests/experimental/interceptor/TimeoutInterceptorTest.java;<<<<<<< MINE
+	@RunWith(Interceptors.class)
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910/src/test/java/org/junit/tests/experimental/interceptor/NameInterceptorTest.java;<<<<<<< MINE
+@RunWith(Interceptors.class)
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5/src/main/java/org/junit/internal/matchers/SubstringMatcher.java;<<<<<<< MINE
+=======
+/**
+ * @deprectated Use org.hamcrest.core.SubstringMatcher directly
+ */
+@Deprecated
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5/src/main/java/org/junit/internal/matchers/StringContains.java;<<<<<<< MINE
+=======
+@Deprecated
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5/src/main/java/org/junit/internal/matchers/TypeSafeMatcher.java;<<<<<<< MINE
+=======
+/**
+ * @deprectated Use org.hamcrest.TypeSafeMatcher
+ */
+@Deprecated
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5/src/main/java/org/junit/internal/matchers/Each.java;<<<<<<< MINE
+=======
+
+/**
+ * @deprecated use org.hamcrest.core.Every
+ */
+@Deprecated
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5/src/main/java/org/junit/matchers/JUnitMatchers.java;<<<<<<< MINE
+=======
+@Deprecated
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5/src/main/java/org/junit/matchers/JUnitMatchers.java;<<<<<<< MINE
+=======
+	// TODO (May 27, 2009 11:46:27 AM): deprecate all?
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5/src/main/java/org/junit/matchers/JUnitMatchers.java;<<<<<<< MINE
+=======
+	 * @deprecated Use org.hamcrest.CoreMatchers.hasItem
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5/src/main/java/org/junit/matchers/JUnitMatchers.java;<<<<<<< MINE
+=======
+	 * @deprecated Use org.hamcrest.CoreMatchers.hasItem
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5/src/main/java/org/junit/matchers/JUnitMatchers.java;<<<<<<< MINE
+=======
+	 * @deprecated Use org.hamcrest.CoreMatchers.hasItems
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5/src/main/java/org/junit/matchers/JUnitMatchers.java;<<<<<<< MINE
+=======
+	@Deprecated
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5/src/main/java/org/junit/matchers/JUnitMatchers.java;<<<<<<< MINE
+=======
+	 * @deprecated Use org.hamcrest.CoreMatchers.hasItems
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5/src/main/java/org/junit/matchers/JUnitMatchers.java;<<<<<<< MINE
+=======
+	 * @deprecated use CoreMatchers.everyItem directly
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5/src/main/java/org/junit/matchers/JUnitMatchers.java;<<<<<<< MINE
+=======
+	@Deprecated
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5/src/main/java/org/junit/matchers/JUnitMatchers.java;<<<<<<< MINE
+=======
+	 * @deprecated Use org.hamcrest.CoreMatchers.containsString
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5/src/main/java/org/junit/matchers/JUnitMatchers.java;<<<<<<< MINE
+=======
+	@Deprecated
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5/src/main/java/org/junit/matchers/JUnitMatchers.java;<<<<<<< MINE
+=======
+	 * @deprecated Use org.hamcrest.CoreMatchers.both
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5/src/main/java/org/junit/matchers/JUnitMatchers.java;<<<<<<< MINE
+=======
+	 * @deprecated Use org.hamcrest.CoreMatchers.either
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5/src/test/java/org/junit/tests/experimental/results/PrintableResultTest.java;<<<<<<< MINE
+	@SuppressWarnings("unchecked")
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5/src/test/java/org/junit/tests/AllTests.java;<<<<<<< MINE
+	EachTest.class,
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_a402014_3f05aac/rev_a402014-3f05aac/src/main/java/org/junit/matchers/JUnitMatchers.java;<<<<<<< MINE
+@Deprecated
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_a402014_3f05aac/rev_a402014-3f05aac/src/main/java/org/junit/matchers/JUnitMatchers.java;<<<<<<< MINE
+	 * @deprecated Use org.hamcrest.CoreMatchers.both
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_20dd074_2e9a239/rev_20dd074-2e9a239/src/main/java/org/junit/experimental/interceptor/ExpectedException.java;<<<<<<< MINE
+				complete = true;
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_20dd074_2e9a239/rev_20dd074-2e9a239/src/main/java/org/junit/experimental/interceptor/ExpectedException.java;<<<<<<< MINE
+=======
+			if (fMatcher != null)
+				throw new AssertionError("Expected test to throw "
+						+ StringDescription.toString(fMatcher));
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_20dd074_2e9a239/rev_20dd074-2e9a239/src/main/java/org/junit/experimental/interceptor/ExpectedException.java;<<<<<<< MINE
+=======
+	}
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_20dd074_2e9a239/rev_20dd074-2e9a239/src/main/java/org/junit/experimental/interceptor/ExpectedException.java;<<<<<<< MINE
+		private String getMessage(Throwable e) {
+			return e.getMessage() == null ? "" : e.getMessage();
+		}
+=======
+	private Matcher<Throwable> hasMessage(Matcher<String> matcher) {
+		return new FeatureMatcher<Throwable, String>(matcher,
+				"exception with message", "getMessage()") {
+			@Override
+			protected String featureValueOf(Throwable actual) {
+				return actual.getMessage();
+			}
+		};
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_20dd074_2e9a239/rev_20dd074-2e9a239/src/test/java/org/junit/tests/experimental/interceptor/ExpectedExceptionInterceptorTest.java;<<<<<<< MINE
+		assertThat(
+				testResult(ExpectsSubstringNullMessage.class),
+				hasSingleFailureContaining("Unexpected exception message, expected<anything!> but was<>"));
+=======
+		assertThat(testResult(ExpectsSubstringNullMessage.class),
+				hasSingleFailureContaining("but: getMessage() was null"));
+	}
+
+	public static class ExpectsMessageMatcher {
+		@Interceptor
+		public ExpectedException thrown= new ExpectedException();
+
+		@Test
+		public void throwsMore() {
+			thrown.expectMessage(startsWith("Ack"));
+			throw new NullPointerException("Ack!");
+		}
+	}
+
+	@Test
+	public void succeedsWithMessageMatcher() {
+		assertThat(testResult(ExpectsMessageMatcher.class), isSuccessful());
+	}
+
+	public static class ExpectedMessageMatcherFails {
+		@Interceptor
+		public ExpectedException thrown= new ExpectedException();
+
+		@Test
+		public void throwsMore() {
+			thrown.expectMessage(startsWith("Wrong start"));
+			throw new NullPointerException("Back!");
+		}
+	}
+
+	@Test
+	public void failsWithMatcher() {
+		assertThat(testResult(ExpectedMessageMatcherFails.class),
+				hasSingleFailureContaining("Wrong start"));
+	}
+
+	public static class ExpectsMatcher {
+		@Interceptor
+		public ExpectedException thrown= new ExpectedException();
+
+		@Test
+		public void throwsMore() {
+			thrown.expect(any(Throwable.class));
+			throw new NullPointerException("Ack!");
+		}
+	}
+
+	@Test
+	public void succeedsWithMatcher() {
+		assertThat(testResult(ExpectsMatcher.class), isSuccessful());
+	}
+
+	public static class ExpectsMultipleMatchers {
+		@Interceptor
+		public ExpectedException thrown= new ExpectedException();
+
+		@Test
+		public void throwsMore() {
+			thrown.expect(IllegalArgumentException.class);
+			thrown.expectMessage("Ack!");
+			throw new NullPointerException("Ack!");
+		}
+	}
+
+	@Test
+	public void failsWithMultipleMatchers() {
+		assertThat(testResult(ExpectsMultipleMatchers.class),
+				hasSingleFailureContaining("IllegalArgumentException"));
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/internal/matchers/IsCollectionContaining.java;<<<<<<< MINE
+		// TODO Auto-generated constructor stub
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/internal/runners/JUnit38ClassRunner.java;<<<<<<< MINE
+//			// TODO (Feb 23, 2009 11:45:54 PM): Think hard about this. Didn't think hard enough. Throwing away information doesn't help error recovery.
+//			if ("warning".equals(getName(test)))
+//				try {
+//					return (Class<? extends Test>) Class.forName(fTest.toString());
+//				} catch (ClassNotFoundException e) {
+//					return test.getClass();
+//				}
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/internal/ExactComparisonCriteria.java;<<<<<<< MINE
+// TODO (Apr 29, 2009 4:17:49 PM): where should this live?
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/internal/ComparisonCriteria.java;<<<<<<< MINE
+=======
+/**
+ * Defines criteria for finding two items "equal enough". Concrete subclasses
+ * may demand exact equality, or, for example, equality within a given delta.
+ */
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/internal/ComparisonCriteria.java;<<<<<<< MINE
+	 * @param criteria TODO
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/runners/model/FrameworkMethod.java;<<<<<<< MINE
+=======
+	@Override
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/runners/model/FrameworkMethod.java;<<<<<<< MINE
+=======
+	@Override
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/runners/model/TestClass.java;<<<<<<< MINE
+	// TODO (May 25, 2009 9:46:48 PM): move to FrameworkMember
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/runners/model/TestClass.java;<<<<<<< MINE
+=======
+	/**
+	 * Returns, efficiently, all the non-overridden fields in this class and
+	 * its superclasses that are annotated with {@code annotationClass}.
+	 */
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/runners/model/FrameworkField.java;<<<<<<< MINE
+=======
+	@Override
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/runners/BlockJUnit4ClassRunner.java;<<<<<<< MINE
+
+=======
+	
+	/**
+	 * Adds to {@code errors} if the test class has more than one constructor,
+	 * or if the constructor takes parameters.  Override if a subclass requires
+	 * different validation rules.
+	 */
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/runners/BlockJUnit4ClassRunner.java;<<<<<<< MINE
+=======
+	 * (do not override)
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/runners/BlockJUnit4ClassRunner.java;<<<<<<< MINE
+		// TODO (May 26, 2009 10:48:26 PM): don't override this
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/runners/BlockJUnit4ClassRunner.java;<<<<<<< MINE
+=======
+	@Deprecated
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/runners/BlockJUnit4ClassRunner.java;<<<<<<< MINE
+=======
+	@Deprecated
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/runners/BlockJUnit4ClassRunner.java;<<<<<<< MINE
+=======
+	@Deprecated
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/runners/BlockJUnit4ClassRunner.java;<<<<<<< MINE
+=======
+	@Deprecated
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/runner/JUnitCore.java;<<<<<<< MINE
+		// TODO(parallel) too many Executioner creations
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/experimental/max/CouldNotReadCoreException.java;<<<<<<< MINE
+=======
+/**
+ * Thrown when Max cannot read the MaxCore serialization
+ */
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/experimental/max/CouldNotReadCoreException.java;<<<<<<< MINE
+=======
+	/**
+	 * Constructs
+	 */
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/experimental/max/MaxCore.java;<<<<<<< MINE
+=======
+/**
+ * A replacement for JUnitCore, which keeps track of runtime and failure history, and reorders tests
+ * to maximize the chances that a failing test occurs early in the test run.
+ * 
+ * The rules for sorting are:
+ * <ol>
+ * <li> Never-run tests first, in arbitrary order
+ * <li> Group remaining tests by the date at which they most recently failed.
+ * <li> Sort groups such that the most recent failure date is first, and never-failing tests are at the end.
+ * <li> Within a group, run the fastest tests first. 
+ * </ol>
+ */
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/experimental/max/MaxCore.java;<<<<<<< MINE
+=======
+	/**
+	 * Create a new MaxCore from a serialized file stored at storedResults
+	 */
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/experimental/max/MaxCore.java;<<<<<<< MINE
+=======
+	/**
+	 * Run all the tests in <code>class</code>.
+	 * @return a {@link Result} describing the details of the test run and the failed tests.
+	 */
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/experimental/max/MaxCore.java;<<<<<<< MINE
+=======
+	/**
+	 * Run all the tests contained in <code>request</code>.
+	 * @param request the request describing tests
+	 * @return a {@link Result} describing the details of the test run and the failed tests.
+	 */
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/experimental/max/MaxCore.java;<<<<<<< MINE
+=======
+	/**
+	 * Run all the tests contained in <code>request</code>.
+	 * 
+	 * This variant should be used if {@code core} has attached listeners that this
+	 * run should notify.
+	 * 
+	 * @param request the request describing tests
+	 * @param core a JUnitCore to delegate to.
+	 * @return a {@link Result} describing the details of the test run and the failed tests.
+	 */
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/experimental/max/MaxCore.java;<<<<<<< MINE
+			// TODO (Nov 18, 2008 2:04:09 PM): add a check if building a runner is possible
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/experimental/max/MaxHistory.java;<<<<<<< MINE
+=======
+/**
+ * Stores a subset of the history of each test:
+ * <ul>
+ * <li>Last failure timestamp
+ * <li>Duration of last execution
+ * </ul>
+ */
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/experimental/max/MaxHistory.java;<<<<<<< MINE
+				stream= new ObjectInputStream(file);
+			} catch (IOException e) {
+				throw new CouldNotReadCoreException(e);
+			}
+			try {
+				return (MaxHistory) stream.readObject();
+			} catch (Exception e) {
+				throw new CouldNotReadCoreException(e); //TODO think about what we can do better here
+			} finally {
+=======
+				ObjectInputStream stream= new ObjectInputStream(file);
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/experimental/max/MaxHistory.java;<<<<<<< MINE
+=======
+					return (MaxHistory) stream.readObject();
+				} finally {
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/experimental/max/MaxHistory.java;<<<<<<< MINE
+				} catch (IOException e) {
+					throw new CouldNotReadCoreException(e);
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/experimental/max/MaxHistory.java;<<<<<<< MINE
+			} catch (IOException e) {
+				// TODO can't imagine what's gone wrong here, but who cares?
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/experimental/max/MaxHistory.java;<<<<<<< MINE
+=======
+		} catch (Exception e) {
+			throw new CouldNotReadCoreException(e);
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/test/java/org/junit/tests/experimental/parallel/ParallelClassTest.java;<<<<<<< MINE
+	// TODO(parallel) we need to push parallel execution down through suites (i.e. run a Suite with a parallel executioner and you get parallel execution)
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/test/java/org/junit/tests/experimental/max/MaxStarterTest.java;<<<<<<< MINE
+		// TODO (Nov 18, 2008 2:03:06 PM): flaky?
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_b33b4b0_c3873cf/rev_b33b4b0-c3873cf/src/main/java/org/junit/runners/ParentRunner.java;<<<<<<< MINE
+	 * <li>Call {@link #runChild(Object, RunNotifier)} on each object returned by {@link #getChildren()} (subject to any imposed filter and sort).</li>
+	 * <li>ALWAYS run all non-overridden {@code @BeforeClass} methods on this class
+	 * and superclasses before the previous step; if any throws an
+=======
+	 * <li>Call {@link #runChild(Object, RunNotifier)} on each object returned
+	 * by {@link #getChildren()} (subject to any imposed filter and sort).</li>
+	 * <li>ALWAYS run all non-overridden {@code @BeforeClass} methods on this
+	 * class and superclasses before the previous step; if any throws an
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_b33b4b0_c3873cf/rev_b33b4b0-c3873cf/src/main/java/org/junit/runners/ParentRunner.java;<<<<<<< MINE
+	 * <li>ALWAYS run all non-overridden {@code @AfterClass} methods on this class
+	 * and superclasses before any of the previous steps; all AfterClass methods are
+	 * always executed: exceptions thrown by previous steps are combined, if
+	 * necessary, with exceptions from AfterClass methods into a
+=======
+	 * <li>ALWAYS run all non-overridden {@code @AfterClass} methods on this
+	 * class and superclasses before any of the previous steps; all AfterClass
+	 * methods are always executed: exceptions thrown by previous steps are
+	 * combined, if necessary, with exceptions from AfterClass methods into a
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_b33b4b0_c3873cf/rev_b33b4b0-c3873cf/src/main/java/org/junit/runners/ParentRunner.java;<<<<<<< MINE
+=======
+	 * 
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_b33b4b0_c3873cf/rev_b33b4b0-c3873cf/src/main/java/org/junit/runners/ParentRunner.java;<<<<<<< MINE
+	 * Returns a {@link Statement}: run all non-overridden {@code @BeforeClass} methods on this class
+	 * and superclasses before executing {@code statement}; if any throws an
+	 * Exception, stop execution and pass the exception on.
+=======
+	 * Returns a {@link Statement}: run all non-overridden {@code @BeforeClass}
+	 * methods on this class and superclasses before executing {@code statement}
+	 * ; if any throws an Exception, stop execution and pass the exception on.
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_b33b4b0_c3873cf/rev_b33b4b0-c3873cf/src/main/java/org/junit/runners/ParentRunner.java;<<<<<<< MINE
+	 * Returns a {@link Statement}: run all non-overridden {@code @AfterClass} methods on this class
+	 * and superclasses before executing {@code statement}; all AfterClass methods are
+	 * always executed: exceptions thrown by previous steps are combined, if
+	 * necessary, with exceptions from AfterClass methods into a
+	 * {@link MultipleFailureException}.
+=======
+	 * Returns a {@link Statement}: run all non-overridden {@code @AfterClass}
+	 * methods on this class and superclasses before executing {@code statement}
+	 * ; all AfterClass methods are always executed: exceptions thrown by
+	 * previous steps are combined, if necessary, with exceptions from
+	 * AfterClass methods into a {@link MultipleFailureException}.
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_25fa1d5_2de4d6f/rev_25fa1d5-2de4d6f/src/test/java/junit/tests/framework/SuiteTest.java;<<<<<<< MINE
+=======
+		suite.addTest(new SuiteTest("testOneTestCaseEclipseSeesSameStructureAs381"));		
+		suite.addTest(new SuiteTest("testNoTestCaseClass"));
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_25fa1d5_2de4d6f/rev_25fa1d5-2de4d6f/src/test/java/junit/tests/framework/SuiteTest.java;<<<<<<< MINE
+// This test case is obsolete, since the compiler will catch this error in 1.5
+//	public void testNoTestCaseClass() {
+//		Test t= new TestSuite(NoTestCaseClass.class);
+//		t.run(fResult);
+//		assertEquals(1, fResult.runCount());  // warning test
+//		assertTrue(! fResult.wasSuccessful());
+//	}
+=======
+	public void testNoTestCaseClass() {
+		Test t= new TestSuite(NoTestCaseClass.class);
+		t.run(fResult);
+		assertEquals(1, fResult.runCount());  // warning test
+		assertTrue(! fResult.wasSuccessful());
+	}
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/main/java/org/junit/rules/ExternalResource.java;<<<<<<< MINE
+	 * 
+	 * TODO: can assume here.
+	 * 
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/main/java/org/junit/rules/ExternalResource.java;<<<<<<< MINE
+=======
+	 * @throws if setup fails (which will disable {@code after}
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/main/java/org/junit/runners/ParentRunner.java;<<<<<<< MINE
+	 * <li>Call {@link #runChild(Object, RunNotifier)} on each object returned
+	 * by {@link #getChildren()} (subject to any imposed filter and sort).</li>
+	 * <li>ALWAYS run all non-overridden {@code @BeforeClass} methods on this
+	 * class and superclasses before the previous step; if any throws an
+=======
+	 * <li>Call {@link #runChild(Object, RunNotifier)} on each object returned by {@link #getChildren()} (subject to any imposed filter and sort).</li>
+	 * <li>ALWAYS run all non-overridden {@code @BeforeClass} methods on this class
+	 * and superclasses before the previous step; if any throws an
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/main/java/org/junit/runners/ParentRunner.java;<<<<<<< MINE
+	 * <li>ALWAYS run all non-overridden {@code @AfterClass} methods on this
+	 * class and superclasses before any of the previous steps; all AfterClass
+	 * methods are always executed: exceptions thrown by previous steps are
+	 * combined, if necessary, with exceptions from AfterClass methods into a
+=======
+	 * <li>ALWAYS run all non-overridden {@code @AfterClass} methods on this class
+	 * and superclasses before any of the previous steps; all AfterClass methods are
+	 * always executed: exceptions thrown by previous steps are combined, if
+	 * necessary, with exceptions from AfterClass methods into a
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/main/java/org/junit/runners/ParentRunner.java;<<<<<<< MINE
+	 * 
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/main/java/org/junit/runners/ParentRunner.java;<<<<<<< MINE
+	 * Returns a {@link Statement}: run all non-overridden {@code @BeforeClass}
+	 * methods on this class and superclasses before executing {@code statement}
+	 * ; if any throws an Exception, stop execution and pass the exception on.
+=======
+	 * Returns a {@link Statement}: run all non-overridden {@code @BeforeClass} methods on this class
+	 * and superclasses before executing {@code statement}; if any throws an
+	 * Exception, stop execution and pass the exception on.
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/main/java/org/junit/runners/ParentRunner.java;<<<<<<< MINE
+	 * Returns a {@link Statement}: run all non-overridden {@code @AfterClass}
+	 * methods on this class and superclasses before executing {@code statement}
+	 * ; all AfterClass methods are always executed: exceptions thrown by
+	 * previous steps are combined, if necessary, with exceptions from
+	 * AfterClass methods into a {@link MultipleFailureException}.
+=======
+	 * Returns a {@link Statement}: run all non-overridden {@code @AfterClass} methods on this class
+	 * and superclasses before executing {@code statement}; all AfterClass methods are
+	 * always executed: exceptions thrown by previous steps are combined, if
+	 * necessary, with exceptions from AfterClass methods into a
+	 * {@link MultipleFailureException}.
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/main/java/org/junit/runner/manipulation/Filter.java;<<<<<<< MINE
+	 * 
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/main/java/org/junit/runner/Description.java;<<<<<<< MINE
+ * TODO: Make really clear how this has changed.
+ * 
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/main/java/org/junit/runner/Description.java;<<<<<<< MINE
+	// This is vestigial
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/main/java/org/junit/runner/Description.java;<<<<<<< MINE
+	 * @deprecated Description should not be used for walking the test tree.
+	 * Instead, call {@code Runner.getPlan} to get a {@code Plan}, and use
+	 * {@code Plan.getChildren}
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/main/java/org/junit/runner/notification/RunListener.java;<<<<<<< MINE
+	 * @deprecated override {@link RunListener#testRunStarted(Plan)} instead.
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/main/java/org/junit/runner/notification/RunListener.java;<<<<<<< MINE
+	@Deprecated
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/main/java/org/junit/runner/notification/RunNotifier.java;<<<<<<< MINE
+	public void fireTestRunStarted(final Plan plan) {
+		new SafeNotifier() {
+			@SuppressWarnings("deprecation")
+			@Override
+			protected void notifyListener(RunListener each) throws Exception {
+				each.testRunStarted(plan);
+				each.testRunStarted(plan.getDescription());
+			};
+		}.run();
+	}
+	
+	/**
+	 * Do not invoke.  Really, don't!
+	 * @deprecated Call {@link RunNotifier#fireTestRunStarted(Plan)} if you must.
+	 *             But don't.
+	 */
+	@Deprecated
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/main/java/org/junit/experimental/theories/Theories.java;<<<<<<< MINE
+=======
+            fTestClass= testClass;
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/test/java/junit/tests/framework/SuiteTest.java;<<<<<<< MINE
+=======
+		suite.addTest(new SuiteTest("testOneTestCaseEclipseSeesSameStructureAs381"));		
+		suite.addTest(new SuiteTest("testNoTestCaseClass"));
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/test/java/junit/tests/framework/SuiteTest.java;<<<<<<< MINE
+// This test case is obsolete, since the compiler will catch this error in 1.5
+//	public void testNoTestCaseClass() {
+//		Test t= new TestSuite(NoTestCaseClass.class);
+//		t.run(fResult);
+//		assertEquals(1, fResult.runCount());  // warning test
+//		assertTrue(! fResult.wasSuccessful());
+//	}
+=======
+	public void testNoTestCaseClass() {
+		Test t= new TestSuite(NoTestCaseClass.class);
+		t.run(fResult);
+		assertEquals(1, fResult.runCount());  // warning test
+		assertTrue(! fResult.wasSuccessful());
+	}
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/test/java/org/junit/tests/experimental/max/MaxStarterTest.java;<<<<<<< MINE
+=======
+	public void testCountsMatchUp() {
+		JUnitCore core= new JUnitCore();
+		Request filtered= Request.aClass(AllTests.class).filterWith(
+				new Filter() {
+					@Override
+					public boolean shouldRun(Description description) {
+						return !description.toString().contains("Max");
+					}
+
+					@Override
+					public String describe() {
+						return "Avoid infinite recursion";
+					}
+				});
+		int maxCount= fMax.run(filtered, core).getRunCount();
+		int coreCount= core.run(filtered).getRunCount();
+		assertEquals(coreCount, maxCount);
+	}
+
+	@Test
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_28ef5cb_74bb7d8/rev_28ef5cb-74bb7d8/src/main/java/org/junit/runners/ParentRunner.java;<<<<<<< MINE
+=======
+		statement= withClassRules(statement);
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_28ef5cb_74bb7d8/rev_28ef5cb-74bb7d8/src/main/java/org/junit/runners/ParentRunner.java;<<<<<<< MINE
+=======
+	 * Returns a {@link Statement}: apply all static {@link ClassRule} fields
+	 * annotated with {@link Rule}.
+	 *
+	 * @param statement
+	 *            the base statement
+	 * @return a WithClassRules statement if any class-level {@link Rule}s are
+	 *         found, or the base statement
+	 */
+	private Statement withClassRules(Statement statement) {
+		final List<ClassRule> classRules= classRules();
+		if (classRules.isEmpty()) {
+			return statement;
+		}
+		Statement next = statement;
+		for (final ClassRule classRule : classRules) {
+			next = classRule.apply(next, fTestClass);
+		}
+		return next;
+	}
+
+	/**
+	 * @return the {@code ClassRule}s that can transform the block that runs
+	 *         each method in the tested class.
+	 */
+	protected List<ClassRule> classRules() {
+		final List<ClassRule> results= new ArrayList<ClassRule>();
+		for (FrameworkField field : ruleFields()) {
+			if (ClassRule.class.isAssignableFrom(field.getType())) {
+				results.add(getClassRule(field));
+			}
+		}
+		return results;
+	}
+
+	private ClassRule getClassRule(final FrameworkField field) {
+		try {
+			return (ClassRule) field.get(null);
+		} catch (IllegalAccessException e) {
+			throw new RuntimeException(
+					"How did getAnnotatedFields return a field we couldn't access?");
+		}
+	}
+
+	/**
+	 * @return list of {@link FrameworkField}s annotated with {@link Rule}
+	 */
+	protected List<FrameworkField> ruleFields() {
+		return fTestClass.getAnnotatedFields(Rule.class);
+	}
+
+	/**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_28ef5cb_74bb7d8/rev_28ef5cb-74bb7d8/src/main/java/org/junit/runners/model/FrameworkField.java;<<<<<<< MINE
+=======
+	 * @return the underlying Java Field type
+	 * @see java.lang.reflect.Field#getType()
+	 */
+	public Class<?> getType() {
+		return fField.getType();
+	}
+
+	/**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_28ef5cb_74bb7d8/rev_28ef5cb-74bb7d8/src/main/java/org/junit/runners/BlockJUnit4ClassRunner.java;<<<<<<< MINE
+		if (!MethodRule.class.isAssignableFrom(field.getType()))
+			errors.add(new Exception("Field " + field.getName()
+					+ " must implement MethodRule"));
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_28ef5cb_74bb7d8/rev_28ef5cb-74bb7d8/src/main/java/org/junit/runners/BlockJUnit4ClassRunner.java;<<<<<<< MINE
+=======
+		if (!MethodRule.class.isAssignableFrom(field.getType())) {
+			if (ClassRule.class.isAssignableFrom(field.getType())) {
+				if (!Modifier.isStatic(field.getModifiers())) {
+					errors.add(new Exception("Field " + field.getName()
+							+ " must be static"));
+				}
+			} else {
+				errors.add(new Exception("Field " + field.getName()
+						+ " must implement MethodRule or ClassRule"));
+			}
+		}
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_28ef5cb_74bb7d8/rev_28ef5cb-74bb7d8/src/test/java/org/junit/tests/AllTests.java;<<<<<<< MINE
+=======
+	ClassRulesTest.class,
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_fb723db_72ca494/rev_fb723db-72ca494/src/main/java/redis/clients/jedis/Response.java;<<<<<<< MINE
+            response = builder.build(data);
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_88e662e_155aff0/rev_88e662e-155aff0/src/main/java/redis/clients/jedis/BinaryClient.java;<<<<<<< MINE
+    public void zrangeByScore(final byte[] key, final double min,
+            final double max) {
+=======
+    public void zrangeByScore(final byte[] key, final byte[] min,
+	    final byte[] max) {
+	sendCommand(ZRANGEBYSCORE, key, min, max);
+    }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_4fb85d0_51a4bf9/rev_4fb85d0-51a4bf9/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+	return evalResult(client.getOne());
+    }
+
+    private Object evalResult(Object result) {
+=======
+	Object result = client.getOne();
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_4fb85d0_51a4bf9/rev_4fb85d0-51a4bf9/src/test/java/redis/clients/jedis/tests/commands/ScriptingCommandsTest.java;<<<<<<< MINE
+    @Test
+    public void scriptEvalShaReturnNullValues() {
+	String script = "return {KEYS[1],KEYS[2],ARGV[1],ARGV[2]}";
+	String sha = jedis.scriptLoad(script);
+	List<String> results = (List<String>) jedis.evalsha(sha, 2, "key1", "key2", "1", "2");
+	assertEquals("key1", results.get(0));
+	assertEquals("key2", results.get(1));
+	assertEquals("1", results.get(2));
+	assertEquals("2", results.get(3));
+    }
+=======
+    @Test
+    public void scriptEvalShaReturnNullValues() {
+	String script = "return {KEYS[1],KEYS[2],ARGV[1],ARGV[2]}";
+	String sha = jedis.scriptLoad(script);
+	List<String> results = (List<String>) jedis.evalsha(sha, 2, "key1",
+		"key2", "1", "2");
+	assertEquals(results.get(0), "key1");
+	assertEquals(results.get(1), "key2");
+	assertEquals(results.get(2), "1");
+	assertEquals(results.get(3), "2");
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_4fb85d0_51a4bf9/rev_4fb85d0-51a4bf9/src/test/java/redis/clients/jedis/tests/commands/ScriptingCommandsTest.java;<<<<<<< MINE
+    private <T> CombinableMatcher<List<T>> listWithItem(T expected) {
+	return both(CoreMatchers.<List<T>>instanceOf(List.class)).and(hasItem(equalTo(expected)));
+    }
+=======
+    }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_daeda1a_2162def/rev_daeda1a-2162def/src/main/java/org/junit/rules/TestWatcher.java;<<<<<<< MINE
+=======
+ * @since 4.9
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_6c68624_74b527d/rev_6c68624-74b527d/src/main/java/redis/clients/jedis/JedisClusterConnectionHandler.java;<<<<<<< MINE
+	    HostAndPort node = getHostAndPortFromNodeLine(nodeInfo, jedis);
+        setNodeIfNotExist(node);
+
+	    JedisPool nodePool = nodes.get(getNodeKey(node));
+	    populateNodeSlots(nodeInfo, nodePool);
+	}
+    }
+    
+    private void setNodeIfNotExist(HostAndPort node) {
+	String nodeKey = getNodeKey(node);
+	if (nodes.containsKey(nodeKey))
+	    return;
+	
+	JedisPool nodePool = new JedisPool(poolConfig, node.getHost(), node.getPort());
+	nodes.put(nodeKey, nodePool);
+    }
+=======
+	    ClusterNodeInformation clusterNodeInfo = nodeInfoParser.parse(
+		    nodeInfo, new HostAndPort(jedis.getClient().getHost(),
+			    jedis.getClient().getPort()));
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_bbacbd9_2f879b9/rev_bbacbd9-2f879b9/src/main/java/org/junit/rules/MethodRule.java;<<<<<<< MINE
+ * 
+ * Note that {@link MethodRule} has been replaced by {@link TestRule},
+ * which has the added benefit of supporting class rules.
+=======
+ *
+ * Note that {@link MethodRule} is now deprecated, you should be using {@link TestRule} instead.
+ *
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_bbacbd9_2f879b9/rev_bbacbd9-2f879b9/src/main/java/org/junit/Rule.java;<<<<<<< MINE
+ * 
+ * For more information and more examples, see 
+ * {@link org.junit.rules.TestRule}. 
+=======
+ *
+ * For more information and more examples, see
+ * {@link org.junit.rules.TestRule}.
+ *
+ * Note: for backwards compatibility, this annotation may also mark
+ * fields or methods of type {@link org.junit.rules.MethodRule}, which will be honored.  However,
+ * this is a deprecated interface and feature.
+ *
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_6766336_b04c86a/rev_6766336-b04c86a/src/test/java/org/junit/internal/MethodSorterTest.java;<<<<<<< MINE
+=======
+    public void testDefaultMethodSorter() {
+        List<String> expected = Arrays.asList(new String[]{EPSILON, BETA, ALPHA, DELTA, GAMMA_VOID, GAMMA_BOOLEAN});
+        List<String> actual = getDeclaredFilteredMethods(DummySortWithDefault.class, expected);
+        assertEquals(expected, actual);
+    }
+
+    
+    @Test
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_36810df_15ab934/rev_36810df-15ab934/src/test/java/redis/clients/jedis/tests/commands/ClusterCommandsTest.java;<<<<<<< MINE
+=======
+	node1.clusterDelSlots(3000, 3001, 3002);
+	node2.clusterDelSlots(4000, 4001, 4002);
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_53c9344_ab2f43b/rev_53c9344-ab2f43b/src/test/java/redis/clients/jedis/tests/JedisSentinelPoolTest.java;<<<<<<< MINE
+    protected static HostAndPort master = HostAndPortUtil.getRedisServers()
+	    .get(2);
+    protected static HostAndPort slave1 = HostAndPortUtil.getRedisServers()
+	    .get(3);
+
+    protected static HostAndPort sentinel1 = HostAndPortUtil
+	    .getSentinelServers().get(1);
+    protected static HostAndPort sentinel2 = HostAndPortUtil
+            .getSentinelServers().get(3);
+
+    protected static Jedis sentinelJedis1;
+    protected static Jedis sentinelJedis2;
+
+    protected Set<String> sentinels = new HashSet<String>();
+
+    @Before
+    public void setUp() throws Exception {
+	sentinels.add(sentinel1.toString());
+	sentinels.add(sentinel2.toString());
+
+	sentinelJedis1 = new Jedis(sentinel1.getHost(), sentinel1.getPort());
+	sentinelJedis2 = new Jedis(sentinel2.getHost(), sentinel2.getPort());
+    }
+    
+    @Test
+    public void checkCloseableConnections() throws Exception {
+	GenericObjectPoolConfig config = new GenericObjectPoolConfig();
+
+	JedisSentinelPool pool = new JedisSentinelPool(
+		MASTER_NAME, sentinels, config, 1000, "foobared", 2);
+	Jedis jedis = pool.getResource();
+	jedis.auth("foobared");
+	jedis.set("foo", "bar");
+	assertEquals("bar", jedis.get("foo"));
+	pool.returnResource(jedis);
+	pool.close();
+	assertTrue(pool.isClosed());
+    }
+
+    @Test
+    public void ensureSafeTwiceFailover() throws InterruptedException {
+	JedisSentinelPool pool = new JedisSentinelPool(MASTER_NAME, sentinels,
+		new GenericObjectPoolConfig(), 1000, "foobared", 2);
+
+	forceFailover(pool);
+	// after failover sentinel needs a bit of time to stabilize before a new failover
+	Thread.sleep(100);
+	forceFailover(pool);
+
+	// you can test failover as much as possible
+    }
+    
+    @Test
+    public void returnResourceShouldResetState() {
+	GenericObjectPoolConfig config = new GenericObjectPoolConfig();
+	config.setMaxTotal(1);
+	config.setBlockWhenExhausted(false);
+	JedisSentinelPool pool = new JedisSentinelPool(MASTER_NAME, sentinels,
+		config, 1000, "foobared", 2);
+
+	Jedis jedis = pool.getResource();
+	Jedis jedis2 = null;
+	
+	try {
+	    jedis.set("hello", "jedis");
+	    Transaction t = jedis.multi();
+	    t.set("hello", "world");
+	    pool.returnResource(jedis);
+	    
+	    jedis2 = pool.getResource();
+
+	    assertTrue(jedis == jedis2);
+	    assertEquals("jedis", jedis2.get("hello"));
+	} catch (JedisConnectionException e) {
+	    if (jedis2 != null) {
+		pool.returnBrokenResource(jedis2);
+		jedis2 = null;
+	    }
+	} finally {
+	    if (jedis2 != null)
+		pool.returnResource(jedis2);
+	    
+	    pool.destroy();
+	}
+    }
+    
+    @Test
+    public void checkResourceIsCloseable() {
+	GenericObjectPoolConfig config = new GenericObjectPoolConfig();
+	config.setMaxTotal(1);
+	config.setBlockWhenExhausted(false);
+	JedisSentinelPool pool = new JedisSentinelPool(MASTER_NAME, sentinels,
+		config, 1000, "foobared", 2);
+
+	Jedis jedis = pool.getResource();
+	try {
+	    jedis.set("hello", "jedis");
+	} finally {
+	    jedis.close();
+	}
+
+	Jedis jedis2 = pool.getResource();
+	try {
+	    assertEquals(jedis, jedis2);
+	} finally {
+	    jedis2.close();
+	}
+    }
+
+    @Test
+    public void returnResourceWithNullResource() {
+	GenericObjectPoolConfig config = new GenericObjectPoolConfig();
+	config.setMaxTotal(1);
+	config.setBlockWhenExhausted(false);
+	JedisSentinelPool pool = new JedisSentinelPool(MASTER_NAME, sentinels,
+		config, 1000, "foobared", 2);
+
+	Jedis nullJedis = null;
+	pool.returnResource(nullJedis);
+	pool.destroy();
+    }
+
+    @Test
+    public void returnBrokenResourceWithNullResource() {
+	GenericObjectPoolConfig config = new GenericObjectPoolConfig();
+	config.setMaxTotal(1);
+	config.setBlockWhenExhausted(false);
+	JedisSentinelPool pool = new JedisSentinelPool(MASTER_NAME, sentinels,
+		config, 1000, "foobared", 2);
+
+	Jedis nullJedis = null;
+	pool.returnBrokenResource(nullJedis);
+	pool.destroy();
+    }
+
+    private void forceFailover(JedisSentinelPool pool)
+	    throws InterruptedException {
+	HostAndPort oldMaster = pool.getCurrentHostMaster();
+
+	// jedis connection should be master
+	Jedis beforeFailoverJedis = pool.getResource();
+	assertEquals("PONG", beforeFailoverJedis.ping());
+
+	waitForFailover(pool, oldMaster);
+
+	Jedis afterFailoverJedis = pool.getResource();
+	assertEquals("PONG", afterFailoverJedis.ping());
+	assertEquals("foobared", afterFailoverJedis.configGet("requirepass").get(1));
+	assertEquals(2, afterFailoverJedis.getDB().intValue());
+	
+	// returning both connections to the pool should not throw
+	beforeFailoverJedis.close();
+	afterFailoverJedis.close();
+    }
+
+    private void waitForFailover(JedisSentinelPool pool, HostAndPort oldMaster)
+	    throws InterruptedException {
+	HostAndPort newMaster = JedisSentinelTestUtil
+		.waitForNewPromotedMaster(MASTER_NAME, sentinelJedis1, sentinelJedis2);
+
+	waitForJedisSentinelPoolRecognizeNewMaster(pool, newMaster);
+    }
+
+    private void waitForJedisSentinelPoolRecognizeNewMaster(
+	    JedisSentinelPool pool, HostAndPort newMaster)
+	    throws InterruptedException {
+
+	while (true) {
+	    HostAndPort currentHostMaster = pool.getCurrentHostMaster();
+
+	    if (newMaster.equals(currentHostMaster))
+		break;
+=======
+	protected static HostAndPort master = HostAndPortUtil.getRedisServers()
+			.get(2);
+	protected static HostAndPort slave1 = HostAndPortUtil.getRedisServers()
+			.get(3);
+	protected static HostAndPort sentinel1 = HostAndPortUtil
+			.getSentinelServers().get(1);
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_0f76459_53e7dc2/rev_0f76459-53e7dc2/src/main/java/redis/clients/jedis/JedisCluster.java;<<<<<<< MINE
+	MultiKeyJedisClusterCommands, JedisClusterScriptingCommands {
+=======
+        JedisClusterScriptingCommands {
+    public static enum Reset {SOFT, HARD}
+
+    public JedisCluster(Set<HostAndPort> nodes) {
+	this(nodes, DEFAULT_TIMEOUT);
+    }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_53e7dc2_d33bd40/rev_53e7dc2-d33bd40/src/main/java/redis/clients/util/JedisClusterCRC16.java;<<<<<<< MINE
+    
+    public static int getSlot(byte[] key) {
+        int s = -1;
+        int e = -1;
+        boolean sFound = false;
+        for (int i = 0; i < key.length; i++) {
+            if (key[i] == '{' && !sFound) {
+                s = i;
+                sFound = true;
+            }
+            if (key[i] == '}' && sFound) {
+                e = i;
+                break;
+            }
+        }
+        if (s > -1 && e > -1 && e != s + 1) {
+            return getCRC16(key, s+1, e) & (16384 - 1);
+        }
+        return getCRC16(key) & (16384 - 1);
+    }
+=======
+    // optimization with modulo operator with power of 2
+    // equivalent to getCRC16(key) % 16384
+    return getCRC16(key) & (16384 - 1);
+  }
+
+  /**
+   * Create a CRC16 checksum from the bytes. implementation is from mp911de/lettuce, modified with
+   * some more optimizations
+   * @param bytes
+   * @return CRC16 as integer value
+   * @see https://github.com/xetorthio/jedis/pull/733#issuecomment-55840331
+   */
+  public static int getCRC16(byte[] bytes) {
+    int crc = 0x0000;
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_53e7dc2_d33bd40/rev_53e7dc2-d33bd40/src/main/java/redis/clients/util/JedisClusterCRC16.java;<<<<<<< MINE
+    
+    public static int getCRC16(byte[] bytes) {
+	return getCRC16(bytes, 0, bytes.length);
+    }
+=======
+    return crc & 0xFFFF;
+  }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_8d7f5cc_38d9130/rev_8d7f5cc-38d9130/src/test/java/org/junit/tests/experimental/theories/internal/AllMembersSupplierTest.java;<<<<<<< MINE
+    public void dataPointsArrayShouldBeRecognizedOnValueTypeNotFieldType() throws Exception {
+        List<PotentialAssignment> assignments = potentialAssignments(
+                HasDataPointsArrayWithMatchingButInaccurateTypes.class.getMethod("theory", Integer.class));
+        
+        assertEquals(2, assignments.size());
+    }
+    
+    public static class HasDataPointMethodWithOverlyGeneralTypes {
+        @DataPoint
+        public static Integer object() {
+            return 1;
+        }
+
+        @Theory
+        public void theory(Object param) {
+        }
+    }
+
+    @Test
+    public void dataPointMethodShouldBeRecognizedForOverlyGeneralParameters() throws Exception {
+        List<PotentialAssignment> assignments = potentialAssignments(
+                HasDataPointMethodWithOverlyGeneralTypes.class.getMethod("theory", Object.class));
+        
+        assertEquals(1, assignments.size());
+    }
+    
+    public static class HasDataPointsWithObjectParameter {
+        @DataPoints
+        public static Object[] objectField = {1, 2};
+
+        @Theory
+        public void theory(Object obj) {
+        }
+    }
+
+    @Test
+    public void dataPointsAnnotationMeansTreatAsArrayOnly() throws Exception {
+        List<PotentialAssignment> assignments = potentialAssignments(
+                HasDataPointsWithObjectParameter.class.getMethod("theory", Object.class));
+        
+        assertEquals(2, assignments.size());
+        for (PotentialAssignment assignment : assignments) {
+            assertNotEquals(HasDataPointsWithObjectParameter.objectField, assignment.getValue());
+        }
+=======
+    public void dataPointsAnnotationMeansTreatAsArrayOnly() throws Throwable {
+        List<PotentialAssignment> valueSources = allMemberValuesFor(
+                HasDataPoints.class, Object.class);
+        assertThat(valueSources.size(), is(2));
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_d56c729_55d591e/rev_d56c729-55d591e/src/main/java/org/junit/internal/runners/JUnit38ClassRunner.java;<<<<<<< MINE
+=======
+            if (filtered.testCount() == 0) {
+                throw new NoTestsRemainException();
+            }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_80d2827_d1842a2/rev_80d2827-d1842a2/src/test/java/redis/clients/jedis/tests/ShardedJedisTest.java;<<<<<<< MINE
+
+    for (String clientInfo : deadClient.clientList().split("\n")) {
+      if (clientInfo.contains("DEAD")) {
+        // Ugly, but cmon, it's a test.
+        String[] hostAndPort = clientInfo.split(" ")[1].split("=")[1].split(":");
+        // It would be better if we kill the client by Id as it's safer but jedis doesn't implement
+        // the command yet.
+        deadClient.clientKill(hostAndPort[0] + ":" + hostAndPort[1]);
+      }
+    }
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_4a9b82a_18308d1/rev_4a9b82a-18308d1/src/main/java/redis/clients/jedis/JedisCluster.java;<<<<<<< MINE
+	MultiKeyJedisClusterCommands, JedisClusterScriptingCommands {
+    public static enum Reset {SOFT, HARD}
+=======
+    JedisClusterScriptingCommands {
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_4a9b82a_18308d1/rev_4a9b82a-18308d1/src/main/java/redis/clients/jedis/JedisCluster.java;<<<<<<< MINE
+    public JedisCluster(Set<HostAndPort> nodes) {
+	this(nodes, DEFAULT_TIMEOUT);
+    }
+
+    public JedisCluster(Set<HostAndPort> nodes, int timeout) {
+	this(nodes, timeout, DEFAULT_MAX_REDIRECTIONS);
+    }
+
+    public JedisCluster(Set<HostAndPort> nodes, int timeout,
+	    int maxRedirections) {
+        this(nodes, timeout, maxRedirections,
+                new GenericObjectPoolConfig());
+    }
+
+    public JedisCluster(Set<HostAndPort> nodes,
+        final GenericObjectPoolConfig poolConfig) {
+	this(nodes, DEFAULT_TIMEOUT, DEFAULT_MAX_REDIRECTIONS, poolConfig);
+    }
+
+    public JedisCluster(Set<HostAndPort> nodes, int timeout,
+        final GenericObjectPoolConfig poolConfig) {
+	this(nodes, timeout, DEFAULT_MAX_REDIRECTIONS, poolConfig);
+    }
+
+    public JedisCluster(Set<HostAndPort> jedisClusterNode, int timeout,
+        int maxRedirections, final GenericObjectPoolConfig poolConfig) {
+	super(jedisClusterNode, timeout, maxRedirections, poolConfig);
+    }
+    
+    @Override
+    public String set(final String key, final String value) {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.set(key, value);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public String set(final String key, final String value, final String nxxx,
+                      final String expx, final long time) {
+        return new JedisClusterCommand<String>(connectionHandler, timeout,
+                maxRedirections) {
+            @Override
+            public String execute(Jedis connection) {
+                return connection.set(key, value, nxxx, expx, time);
+            }
+        }.run(key);
+    }
+
+    @Override
+    public String get(final String key) {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.get(key);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Boolean exists(final String key) {
+	return new JedisClusterCommand<Boolean>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Boolean execute(Jedis connection) {
+		return connection.exists(key);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long persist(final String key) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.persist(key);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public String type(final String key) {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.type(key);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long expire(final String key, final int seconds) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.expire(key, seconds);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long expireAt(final String key, final long unixTime) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection
+			.expireAt(key, unixTime);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long ttl(final String key) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.ttl(key);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Boolean setbit(final String key, final long offset,
+	    final boolean value) {
+	return new JedisClusterCommand<Boolean>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Boolean execute(Jedis connection) {
+		return connection.setbit(key, offset,
+			value);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Boolean setbit(final String key, final long offset,
+	    final String value) {
+	return new JedisClusterCommand<Boolean>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Boolean execute(Jedis connection) {
+		return connection.setbit(key, offset,
+			value);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Boolean getbit(final String key, final long offset) {
+	return new JedisClusterCommand<Boolean>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Boolean execute(Jedis connection) {
+		return connection.getbit(key, offset);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long setrange(final String key, final long offset, final String value) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.setrange(key, offset,
+			value);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public String getrange(final String key, final long startOffset,
+	    final long endOffset) {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.getrange(key,
+			startOffset, endOffset);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public String getSet(final String key, final String value) {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.getSet(key, value);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long setnx(final String key, final String value) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.setnx(key, value);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public String setex(final String key, final int seconds, final String value) {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.setex(key, seconds,
+			value);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long decrBy(final String key, final long integer) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.decrBy(key, integer);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long decr(final String key) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.decr(key);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long incrBy(final String key, final long integer) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.incrBy(key, integer);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long incr(final String key) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.incr(key);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long append(final String key, final String value) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.append(key, value);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public String substr(final String key, final int start, final int end) {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection
+			.substr(key, start, end);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long hset(final String key, final String field, final String value) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection
+			.hset(key, field, value);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public String hget(final String key, final String field) {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.hget(key, field);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long hsetnx(final String key, final String field, final String value) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.hsetnx(key, field,
+			value);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public String hmset(final String key, final Map<String, String> hash) {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.hmset(key, hash);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public List<String> hmget(final String key, final String... fields) {
+	return new JedisClusterCommand<List<String>>(connectionHandler,
+		timeout, maxRedirections) {
+	    @Override
+	    public List<String> execute(Jedis connection) {
+		return connection.hmget(key, fields);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long hincrBy(final String key, final String field, final long value) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.hincrBy(key, field,
+			value);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Boolean hexists(final String key, final String field) {
+	return new JedisClusterCommand<Boolean>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Boolean execute(Jedis connection) {
+		return connection.hexists(key, field);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long hdel(final String key, final String... field) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.hdel(key, field);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long hlen(final String key) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.hlen(key);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Set<String> hkeys(final String key) {
+	return new JedisClusterCommand<Set<String>>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Set<String> execute(Jedis connection) {
+		return connection.hkeys(key);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public List<String> hvals(final String key) {
+	return new JedisClusterCommand<List<String>>(connectionHandler,
+		timeout, maxRedirections) {
+	    @Override
+	    public List<String> execute(Jedis connection) {
+		return connection.hvals(key);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Map<String, String> hgetAll(final String key) {
+	return new JedisClusterCommand<Map<String, String>>(connectionHandler,
+		timeout, maxRedirections) {
+	    @Override
+	    public Map<String, String> execute(Jedis connection) {
+		return connection.hgetAll(key);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long rpush(final String key, final String... string) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.rpush(key, string);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long lpush(final String key, final String... string) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.lpush(key, string);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long llen(final String key) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.llen(key);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public List<String> lrange(final String key, final long start,
+	    final long end) {
+	return new JedisClusterCommand<List<String>>(connectionHandler,
+		timeout, maxRedirections) {
+	    @Override
+	    public List<String> execute(Jedis connection) {
+		return connection
+			.lrange(key, start, end);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public String ltrim(final String key, final long start, final long end) {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.ltrim(key, start, end);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public String lindex(final String key, final long index) {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.lindex(key, index);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public String lset(final String key, final long index, final String value) {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection
+			.lset(key, index, value);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long lrem(final String key, final long count, final String value) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection
+			.lrem(key, count, value);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public String lpop(final String key) {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.lpop(key);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public String rpop(final String key) {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.rpop(key);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long sadd(final String key, final String... member) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.sadd(key, member);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Set<String> smembers(final String key) {
+	return new JedisClusterCommand<Set<String>>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Set<String> execute(Jedis connection) {
+		return connection.smembers(key);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long srem(final String key, final String... member) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.srem(key, member);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public String spop(final String key) {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.spop(key);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long scard(final String key) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.scard(key);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Boolean sismember(final String key, final String member) {
+	return new JedisClusterCommand<Boolean>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Boolean execute(Jedis connection) {
+		return connection.sismember(key, member);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public String srandmember(final String key) {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.srandmember(key);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public List<String> srandmember(final String key, final int count) {
+        return new JedisClusterCommand<List<String>>(connectionHandler, timeout,
+            maxRedirections) {
+            @Override
+            public List<String> execute(Jedis connection) {
+            return connection.srandmember(key, count);
+            }
+        }.run(key);
+    }
+
+    @Override
+    public Long strlen(final String key) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.strlen(key);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long zadd(final String key, final double score, final String member) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.zadd(key, score,
+			member);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long zadd(final String key, final Map<String, Double> scoreMembers) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection
+			.zadd(key, scoreMembers);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Set<String> zrange(final String key, final long start, final long end) {
+	return new JedisClusterCommand<Set<String>>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Set<String> execute(Jedis connection) {
+		return connection
+			.zrange(key, start, end);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long zrem(final String key, final String... member) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.zrem(key, member);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Double zincrby(final String key, final double score,
+	    final String member) {
+	return new JedisClusterCommand<Double>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Double execute(Jedis connection) {
+		return connection.zincrby(key, score,
+			member);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long zrank(final String key, final String member) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.zrank(key, member);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long zrevrank(final String key, final String member) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.zrevrank(key, member);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Set<String> zrevrange(final String key, final long start,
+	    final long end) {
+	return new JedisClusterCommand<Set<String>>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Set<String> execute(Jedis connection) {
+		return connection.zrevrange(key, start,
+			end);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Set<Tuple> zrangeWithScores(final String key, final long start,
+	    final long end) {
+	return new JedisClusterCommand<Set<Tuple>>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Set<Tuple> execute(Jedis connection) {
+		return connection.zrangeWithScores(key,
+			start, end);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Set<Tuple> zrevrangeWithScores(final String key, final long start,
+	    final long end) {
+	return new JedisClusterCommand<Set<Tuple>>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Set<Tuple> execute(Jedis connection) {
+		return connection.zrevrangeWithScores(
+			key, start, end);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long zcard(final String key) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.zcard(key);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Double zscore(final String key, final String member) {
+	return new JedisClusterCommand<Double>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Double execute(Jedis connection) {
+		return connection.zscore(key, member);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public List<String> sort(final String key) {
+	return new JedisClusterCommand<List<String>>(connectionHandler,
+		timeout, maxRedirections) {
+	    @Override
+	    public List<String> execute(Jedis connection) {
+		return connection.sort(key);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public List<String> sort(final String key,
+	    final SortingParams sortingParameters) {
+	return new JedisClusterCommand<List<String>>(connectionHandler,
+		timeout, maxRedirections) {
+	    @Override
+	    public List<String> execute(Jedis connection) {
+		return connection.sort(key,
+			sortingParameters);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long zcount(final String key, final double min, final double max) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.zcount(key, min, max);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long zcount(final String key, final String min, final String max) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.zcount(key, min, max);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Set<String> zrangeByScore(final String key, final double min,
+	    final double max) {
+	return new JedisClusterCommand<Set<String>>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Set<String> execute(Jedis connection) {
+		return connection.zrangeByScore(key,
+			min, max);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Set<String> zrangeByScore(final String key, final String min,
+	    final String max) {
+	return new JedisClusterCommand<Set<String>>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Set<String> execute(Jedis connection) {
+		return connection.zrangeByScore(key,
+			min, max);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Set<String> zrevrangeByScore(final String key, final double max,
+	    final double min) {
+	return new JedisClusterCommand<Set<String>>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Set<String> execute(Jedis connection) {
+		return connection.zrevrangeByScore(key,
+			min, max);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Set<String> zrangeByScore(final String key, final double min,
+	    final double max, final int offset, final int count) {
+	return new JedisClusterCommand<Set<String>>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Set<String> execute(Jedis connection) {
+		return connection.zrangeByScore(key,
+			min, max, offset, count);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Set<String> zrevrangeByScore(final String key, final String max,
+	    final String min) {
+	return new JedisClusterCommand<Set<String>>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Set<String> execute(Jedis connection) {
+		return connection.zrevrangeByScore(key,
+			min, max);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Set<String> zrangeByScore(final String key, final String min,
+	    final String max, final int offset, final int count) {
+	return new JedisClusterCommand<Set<String>>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Set<String> execute(Jedis connection) {
+		return connection.zrangeByScore(key,
+			min, max, offset, count);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Set<String> zrevrangeByScore(final String key, final double max,
+	    final double min, final int offset, final int count) {
+	return new JedisClusterCommand<Set<String>>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Set<String> execute(Jedis connection) {
+		return connection.zrevrangeByScore(key,
+			min, max, offset, count);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Set<Tuple> zrangeByScoreWithScores(final String key,
+	    final double min, final double max) {
+	return new JedisClusterCommand<Set<Tuple>>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Set<Tuple> execute(Jedis connection) {
+		return connection
+			.zrangeByScoreWithScores(key, min, max);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Set<Tuple> zrevrangeByScoreWithScores(final String key,
+	    final double max, final double min) {
+	return new JedisClusterCommand<Set<Tuple>>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Set<Tuple> execute(Jedis connection) {
+		return connection
+			.zrevrangeByScoreWithScores(key, min, max);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Set<Tuple> zrangeByScoreWithScores(final String key,
+	    final double min, final double max, final int offset,
+	    final int count) {
+	return new JedisClusterCommand<Set<Tuple>>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Set<Tuple> execute(Jedis connection) {
+		return connection
+			.zrangeByScoreWithScores(key, min, max, offset, count);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Set<String> zrevrangeByScore(final String key, final String max,
+	    final String min, final int offset, final int count) {
+	return new JedisClusterCommand<Set<String>>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Set<String> execute(Jedis connection) {
+		return connection.zrevrangeByScore(key,
+			min, max, offset, count);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Set<Tuple> zrangeByScoreWithScores(final String key,
+	    final String min, final String max) {
+	return new JedisClusterCommand<Set<Tuple>>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Set<Tuple> execute(Jedis connection) {
+		return connection
+			.zrangeByScoreWithScores(key, min, max);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Set<Tuple> zrevrangeByScoreWithScores(final String key,
+	    final String max, final String min) {
+	return new JedisClusterCommand<Set<Tuple>>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Set<Tuple> execute(Jedis connection) {
+		return connection
+			.zrevrangeByScoreWithScores(key, min, max);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Set<Tuple> zrangeByScoreWithScores(final String key,
+	    final String min, final String max, final int offset,
+	    final int count) {
+	return new JedisClusterCommand<Set<Tuple>>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Set<Tuple> execute(Jedis connection) {
+		return connection
+			.zrangeByScoreWithScores(key, min, max, offset, count);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Set<Tuple> zrevrangeByScoreWithScores(final String key,
+	    final double max, final double min, final int offset,
+	    final int count) {
+	return new JedisClusterCommand<Set<Tuple>>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Set<Tuple> execute(Jedis connection) {
+		return connection
+			.zrevrangeByScoreWithScores(key, max, min, offset,
+				count);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Set<Tuple> zrevrangeByScoreWithScores(final String key,
+	    final String max, final String min, final int offset,
+	    final int count) {
+	return new JedisClusterCommand<Set<Tuple>>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Set<Tuple> execute(Jedis connection) {
+		return connection
+			.zrevrangeByScoreWithScores(key, max, min, offset,
+				count);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long zremrangeByRank(final String key, final long start,
+	    final long end) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.zremrangeByRank(key,
+			start, end);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long zremrangeByScore(final String key, final double start,
+	    final double end) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.zremrangeByScore(key,
+			start, end);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long zremrangeByScore(final String key, final String start,
+	    final String end) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.zremrangeByScore(key,
+			start, end);
+	    }
+	}.run(key);
+    }
+    
+    @Override
+    public Long zlexcount(final String key, final String min, final String max) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout, 
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.zlexcount(key, min, max);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Set<String> zrangeByLex(final String key, final String min, final String max) {
+	return new JedisClusterCommand<Set<String>>(connectionHandler, timeout, 
+		maxRedirections) {
+	    @Override
+	    public Set<String> execute(Jedis connection) {
+		return connection.zrangeByLex(key, min, max);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Set<String> zrangeByLex(final String key, final String min, final String max,
+	    final int offset, final int count) {
+	return new JedisClusterCommand<Set<String>>(connectionHandler, timeout, 
+		maxRedirections) {
+	    @Override
+	    public Set<String> execute(Jedis connection) {
+		return connection.zrangeByLex(key, min, max, offset, count);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long zremrangeByLex(final String key, final String min, final String max) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout, 
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.zremrangeByLex(key, min, max);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long linsert(final String key, final LIST_POSITION where,
+	    final String pivot, final String value) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.linsert(key, where,
+			pivot, value);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long lpushx(final String key, final String... string) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.lpushx(key, string);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long rpushx(final String key, final String... string) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.rpushx(key, string);
+	    }
+	}.run(key);
+    }
+    
+    @Override
+    public List<String> blpop(final int timeout, final String key) {
+	return new JedisClusterCommand<List<String>>(connectionHandler,
+		timeout, maxRedirections) {
+	    @Override
+	    public List<String> execute(Jedis connection) {
+		return connection.blpop(timeout, key);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public List<String> brpop(final int timeout, final String key) {
+	return new JedisClusterCommand<List<String>>(connectionHandler,
+		timeout, maxRedirections) {
+	    @Override
+	    public List<String> execute(Jedis connection) {
+		return connection.brpop(timeout, key);
+	    }
+	}.run(key);
+    }
+
+
+    @Override
+    public List<String> blpop(final String arg) {
+	return new JedisClusterCommand<List<String>>(connectionHandler,
+		timeout, maxRedirections) {
+	    @Override
+	    public List<String> execute(Jedis connection) {
+		return connection.blpop(arg);
+	    }
+	}.run(arg);
+    }
+
+    @Override
+    public List<String> brpop(final String arg) {
+	return new JedisClusterCommand<List<String>>(connectionHandler,
+		timeout, maxRedirections) {
+	    @Override
+	    public List<String> execute(Jedis connection) {
+		return connection.brpop(arg);
+	    }
+	}.run(arg);
+    }
+
+    @Override
+    public Long del(final String key) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.del(key);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public String echo(final String string) {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.echo(string);
+	    }
+	}.run(null);
+    }
+
+    @Override
+    public Long move(final String key, final int dbIndex) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.move(key, dbIndex);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long bitcount(final String key) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.bitcount(key);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long bitcount(final String key, final long start, final long end) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.bitcount(key, start,
+			end);
+	    }
+	}.run(key);
+    }
+
+    public Map<String, JedisPool> getClusterNodes() {
+	return connectionHandler.getNodes();
+    }
+
+    @Override
+    public ScanResult<Entry<String, String>> hscan(final String key,
+	    final String cursor) {
+	return new JedisClusterCommand<ScanResult<Entry<String, String>>>(
+		connectionHandler, timeout, maxRedirections) {
+	    @Override
+	    public ScanResult<Entry<String, String>> execute(Jedis connection) {
+		return connection.hscan(key, cursor);
+	    }
+	}.run(key);
+    }
+    
+    @Override
+    public ScanResult<String> sscan(final String key, final String cursor) {
+	return new JedisClusterCommand<ScanResult<String>>(connectionHandler,
+		timeout, maxRedirections) {
+	    @Override
+	    public ScanResult<String> execute(Jedis connection) {
+		return connection.sscan(key, cursor);
+	    }
+	}.run(key);
+    }
+    
+    @Override
+    public ScanResult<Tuple> zscan(final String key, final String cursor) {
+	return new JedisClusterCommand<ScanResult<Tuple>>(connectionHandler,
+		timeout, maxRedirections) {
+	    @Override
+	    public ScanResult<Tuple> execute(Jedis connection) {
+		return connection.zscan(key, cursor);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Object eval(final String script, final int keyCount, final String... params) {
+    return new JedisClusterCommand<Object>(connectionHandler,
+        timeout, maxRedirections) {
+        @Override
+        public Object execute(Jedis connection) {
+=======
+  public static enum Reset {
+    SOFT, HARD
+  }
+
+  public JedisCluster(Set<HostAndPort> nodes) {
+    this(nodes, DEFAULT_TIMEOUT);
+  }
+
+  public JedisCluster(Set<HostAndPort> nodes, int timeout) {
+    this(nodes, timeout, DEFAULT_MAX_REDIRECTIONS);
+  }
+
+  public JedisCluster(Set<HostAndPort> nodes, int timeout, int maxRedirections) {
+    this(nodes, timeout, maxRedirections, new GenericObjectPoolConfig());
+  }
+
+  public JedisCluster(Set<HostAndPort> nodes, final GenericObjectPoolConfig poolConfig) {
+    this(nodes, DEFAULT_TIMEOUT, DEFAULT_MAX_REDIRECTIONS, poolConfig);
+  }
+
+  public JedisCluster(Set<HostAndPort> nodes, int timeout, final GenericObjectPoolConfig poolConfig) {
+    this(nodes, timeout, DEFAULT_MAX_REDIRECTIONS, poolConfig);
+  }
+
+  public JedisCluster(Set<HostAndPort> jedisClusterNode, int timeout, int maxRedirections,
+      final GenericObjectPoolConfig poolConfig) {
+    super(jedisClusterNode, timeout, maxRedirections, poolConfig);
+  }
+
+  public Map<String, JedisPool> getClusterNodes() {
+    return connectionHandler.getNodes();
+  }
+
+  @Override
+  public Object eval(final String script, final int keyCount, final String... params) {
+    return new JedisClusterCommand<Object>(connectionHandler, maxRedirections) {
+      @Override
+      public Object execute(Jedis connection) {
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_8558487_ca59f9b/rev_8558487-ca59f9b/src/main/java/redis/clients/jedis/BinaryJedis.java;<<<<<<< MINE
+=======
+   * @deprecated use BinaryJedis.pexpire(byte[], long) or Jedis.pexpire(String,long) Set a timeout
+   *             on the specified key. After the timeout the key will be automatically deleted by
+   *             the server. A key with an associated timeout is said to be volatile in Redis
+   *             terminology.
+   *             <p>
+   *             Voltile keys are stored on disk like the other keys, the timeout is persistent too
+   *             like all the other aspects of the dataset. Saving a dataset containing expires and
+   *             stopping the server does not stop the flow of time as Redis stores on disk the time
+   *             when the key will no longer be available as Unix time, and not the remaining
+   *             milliseconds.
+   *             <p>
+   *             Since Redis 2.1.3 you can update the value of the timeout of a key already having
+   *             an expire set. It is also possible to undo the expire at all turning the key into a
+   *             normal key using the {@link #persist(byte[]) PERSIST} command.
+   *             <p>
+   *             Time complexity: O(1)
+   * @see <ahref="http://redis.io/commands/pexpire">PEXPIRE Command</a>
+   * @param key
+   * @param milliseconds
+   * @return Integer reply, specifically: 1: the timeout was set. 0: the timeout was not set since
+   *         the key already has an associated timeout (this may happen only in Redis versions <
+   *         2.1.3, Redis >= 2.1.3 will happily update the timeout), or the key does not exist.
+   */
+  @Deprecated
+  public Long pexpire(String key, final long milliseconds) {
+    checkIsInMulti();
+    client.pexpire(key, milliseconds);
+    return client.getIntegerReply();
+  }
+
+  /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_ae1ffc9_6dd24ff/rev_ae1ffc9-6dd24ff/src/main/java/org/junit/internal/runners/rules/RuleFieldValidator.java;<<<<<<< MINE
+    @SuppressWarnings("deprecation")
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_9e95ce1_b540775/rev_9e95ce1-b540775/src/main/java/redis/clients/jedis/Client.java;<<<<<<< MINE
+  @Override
+=======
+  public void exists(final String... keys) {
+    final byte[][] bkeys = SafeEncoder.encodeMany(keys);
+    exists(bkeys);
+  }
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_1e5e10c_48170f7/rev_1e5e10c-48170f7/src/main/java/redis/clients/jedis/BinaryJedis.java;<<<<<<< MINE
+=======
+   * Set a timeout on the specified key. After the timeout the key will be automatically deleted by
+   * the server. A key with an associated timeout is said to be volatile in Redis terminology.
+   * <p>
+   * Voltile keys are stored on disk like the other keys, the timeout is persistent too like all the
+   * other aspects of the dataset. Saving a dataset containing expires and stopping the server does
+   * not stop the flow of time as Redis stores on disk the time when the key will no longer be
+   * available as Unix time, and not the remaining milliseconds.
+   * <p>
+   * Since Redis 2.1.3 you can update the value of the timeout of a key already having an expire
+   * set. It is also possible to undo the expire at all turning the key into a normal key using the
+   * {@link #persist(byte[]) PERSIST} command.
+   * <p>
+   * Time complexity: O(1)
+   * @see <ahref="http://redis.io/commands/pexpire">PEXPIRE Command</a>
+   * @param key
+   * @param milliseconds
+   * @return Integer reply, specifically: 1: the timeout was set. 0: the timeout was not set since
+   *         the key already has an associated timeout (this may happen only in Redis versions <
+   *         2.1.3, Redis >= 2.1.3 will happily update the timeout), or the key does not exist.
+   */
+  public Long pexpire(final byte[] key, final long milliseconds) {
+    checkIsInMulti();
+    client.pexpire(key, milliseconds);
+    return client.getIntegerReply();
+  }
+
+  /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_1e5e10c_48170f7/rev_1e5e10c-48170f7/src/main/java/redis/clients/jedis/BinaryJedis.java;<<<<<<< MINE
+  @Override
+  public Long pexpire(final byte[] key, final long milliseconds) {
+    checkIsInMultiOrPipeline();
+    client.pexpire(key, milliseconds);
+    return client.getIntegerReply();
+  }
+
+  @Override
+=======
+>>>>>>> YOURS

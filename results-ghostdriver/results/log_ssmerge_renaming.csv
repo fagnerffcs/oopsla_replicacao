@@ -1,0 +1,10 @@
+revision;file;methodSignature
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_7ac504a_578f4c0/rev_7ac504a-578f4c0;/eureka-core/src/main/java/com/netflix/eureka/InstanceRegistry;getApplicationsFromMultipleRegions(String[]);
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_81aaebd_756bcd9/rev_81aaebd-756bcd9;/eureka-core/src/main/java/com/netflix/eureka/PeerAwareInstanceRegistry;isBelowRenewThresold();
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_491cca0_3f69679/rev_491cca0-3f69679;/eureka-core/src/main/java/com/netflix/eureka/InstanceRegistry;getOverriddenInstanceStatus(InstanceInfo,Lease<InstanceInfo>,boolean);
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_491cca0_3f69679/rev_491cca0-3f69679;/eureka-core/src/main/java/com/netflix/eureka/util/AwsAsgUtil;getASGNames();private Set<String> getASGNames() {
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_7c47165_264020a/rev_7c47165-264020a;/eureka-core/src/main/java/com/netflix/eureka/PeerAwareInstanceRegistryImpl;isLeaseExpirationEnabled();
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_2529120_333a91e/rev_2529120-333a91e;/eureka-core/src/main/java/com/netflix/eureka/cluster/ReplicationTaskProcessor;executeBatch(List<ReplicationTask>);private void executeBatch(List<ReplicationTask> tasks) {
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_b49487b_7fadaa1/rev_b49487b-7fadaa1;/eureka-core/src/main/java/com/netflix/eureka/resources/StatusResource;isReplicaAvailable(String,String);
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_203fa01_9950fce/rev_203fa01-9950fce;/eureka-core/src/main/java/com/netflix/eureka/util/StatusUtil;isReplicaAvailable(String,String);private boolean isReplicaAvailable(String myAppName, String url) {
+/home/paper219/Desktop/analysis/fullsample//projects/ghostdriver/revisions/rev_30d2ebf_3b872e9/rev_30d2ebf-3b872e9;/test/src/test/java/ghostdriver/CookieTest;shouldBeAbleToAddCookie();@Test    public void shouldBeAbleToAddCookie() {

@@ -1,0 +1,3181 @@
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/elasticmapreduce/AmazonElasticMapReduce.java;<<<<<<< MINE
+=======
+     * Sets whether all AWS Identity and Access Management (IAM) users under
+     * your account can access the specifed job flows. This action works on
+     * running job flows. You can also set the visibility of a job flow when
+     * you launch it using the <code>VisibleToAllUsers</code> parameter of
+     * RunJobFlow. The SetVisibleToAllUsers action can be called only by an
+     * IAM user who created the job flow or the AWS account that owns the job
+     * flow.
+     * </p>
+     *
+     * @param setVisibleToAllUsersRequest Container for the necessary
+     *           parameters to execute the SetVisibleToAllUsers service method on
+     *           AmazonElasticMapReduce.
+     * 
+     * @throws InternalServerErrorException
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonElasticMapReduce indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public void setVisibleToAllUsers(SetVisibleToAllUsersRequest setVisibleToAllUsersRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
+     * <p>
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/elasticmapreduce/AmazonElasticMapReduce.java;<<<<<<< MINE
+=======
+     * <p>
+     * The call to TerminateJobFlows is asynchronous. Depending on the
+     * configuration of the job flow, it may take up to 5-20 minutes for the
+     * job flow to completely terminate and release allocated resources, such
+     * as Amazon EC2 instances.
+     * </p>
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/elasticmapreduce/AmazonElasticMapReduceAsync.java;<<<<<<< MINE
+=======
+     * Sets whether all AWS Identity and Access Management (IAM) users under
+     * your account can access the specifed job flows. This action works on
+     * running job flows. You can also set the visibility of a job flow when
+     * you launch it using the <code>VisibleToAllUsers</code> parameter of
+     * RunJobFlow. The SetVisibleToAllUsers action can be called only by an
+     * IAM user who created the job flow or the AWS account that owns the job
+     * flow.
+     * </p>
+     *
+     * @param setVisibleToAllUsersRequest Container for the necessary
+     *           parameters to execute the SetVisibleToAllUsers operation on
+     *           AmazonElasticMapReduce.
+     * 
+     * @return A Java Future object containing the response from the
+     *         SetVisibleToAllUsers service method, as returned by
+     *         AmazonElasticMapReduce.
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonElasticMapReduce indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<Void> setVisibleToAllUsersAsync(SetVisibleToAllUsersRequest setVisibleToAllUsersRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
+     * <p>
+     * Sets whether all AWS Identity and Access Management (IAM) users under
+     * your account can access the specifed job flows. This action works on
+     * running job flows. You can also set the visibility of a job flow when
+     * you launch it using the <code>VisibleToAllUsers</code> parameter of
+     * RunJobFlow. The SetVisibleToAllUsers action can be called only by an
+     * IAM user who created the job flow or the AWS account that owns the job
+     * flow.
+     * </p>
+     *
+     * @param setVisibleToAllUsersRequest Container for the necessary
+     *           parameters to execute the SetVisibleToAllUsers operation on
+     *           AmazonElasticMapReduce.
+     * @param asyncHandler Asynchronous callback handler for events in the
+     *           life-cycle of the request. Users could provide the implementation of
+     *           the four callback methods in this interface to process the operation
+     *           result or handle the exception.
+     * 
+     * @return A Java Future object containing the response from the
+     *         SetVisibleToAllUsers service method, as returned by
+     *         AmazonElasticMapReduce.
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonElasticMapReduce indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<Void> setVisibleToAllUsersAsync(SetVisibleToAllUsersRequest setVisibleToAllUsersRequest,
+            AsyncHandler<SetVisibleToAllUsersRequest, Void> asyncHandler)
+                    throws AmazonServiceException, AmazonClientException;
+
+    /**
+     * <p>
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/elasticmapreduce/AmazonElasticMapReduceAsync.java;<<<<<<< MINE
+=======
+     * <p>
+     * The call to TerminateJobFlows is asynchronous. Depending on the
+     * configuration of the job flow, it may take up to 5-20 minutes for the
+     * job flow to completely terminate and release allocated resources, such
+     * as Amazon EC2 instances.
+     * </p>
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/elasticmapreduce/AmazonElasticMapReduceAsync.java;<<<<<<< MINE
+=======
+     * <p>
+     * The call to TerminateJobFlows is asynchronous. Depending on the
+     * configuration of the job flow, it may take up to 5-20 minutes for the
+     * job flow to completely terminate and release allocated resources, such
+     * as Amazon EC2 instances.
+     * </p>
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/elasticmapreduce/model/JobFlowDetail.java;<<<<<<< MINE
+=======
+     * Specifies whether the job flow is visible to all IAM users of the AWS
+     * account associated with the job flow. If this value is set to
+     * <code>true</code>, all IAM users of that AWS account can view and (if
+     * they have the proper policy permissions set) manage the job flow. If
+     * it is set to <code>false</code>, only the IAM user that created the
+     * job flow can view and manage it. This value can be changed using the
+     * <a>SetVisibleToAllUsers</a> action.
+     */
+    private Boolean visibleToAllUsers;
+
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/elasticmapreduce/model/JobFlowDetail.java;<<<<<<< MINE
+=======
+     * Specifies whether the job flow is visible to all IAM users of the AWS
+     * account associated with the job flow. If this value is set to
+     * <code>true</code>, all IAM users of that AWS account can view and (if
+     * they have the proper policy permissions set) manage the job flow. If
+     * it is set to <code>false</code>, only the IAM user that created the
+     * job flow can view and manage it. This value can be changed using the
+     * <a>SetVisibleToAllUsers</a> action.
+     *
+     * @return Specifies whether the job flow is visible to all IAM users of the AWS
+     *         account associated with the job flow. If this value is set to
+     *         <code>true</code>, all IAM users of that AWS account can view and (if
+     *         they have the proper policy permissions set) manage the job flow. If
+     *         it is set to <code>false</code>, only the IAM user that created the
+     *         job flow can view and manage it. This value can be changed using the
+     *         <a>SetVisibleToAllUsers</a> action.
+     */
+    public Boolean isVisibleToAllUsers() {
+        return visibleToAllUsers;
+    }
+    
+    /**
+     * Specifies whether the job flow is visible to all IAM users of the AWS
+     * account associated with the job flow. If this value is set to
+     * <code>true</code>, all IAM users of that AWS account can view and (if
+     * they have the proper policy permissions set) manage the job flow. If
+     * it is set to <code>false</code>, only the IAM user that created the
+     * job flow can view and manage it. This value can be changed using the
+     * <a>SetVisibleToAllUsers</a> action.
+     *
+     * @param visibleToAllUsers Specifies whether the job flow is visible to all IAM users of the AWS
+     *         account associated with the job flow. If this value is set to
+     *         <code>true</code>, all IAM users of that AWS account can view and (if
+     *         they have the proper policy permissions set) manage the job flow. If
+     *         it is set to <code>false</code>, only the IAM user that created the
+     *         job flow can view and manage it. This value can be changed using the
+     *         <a>SetVisibleToAllUsers</a> action.
+     */
+    public void setVisibleToAllUsers(Boolean visibleToAllUsers) {
+        this.visibleToAllUsers = visibleToAllUsers;
+    }
+    
+    /**
+     * Specifies whether the job flow is visible to all IAM users of the AWS
+     * account associated with the job flow. If this value is set to
+     * <code>true</code>, all IAM users of that AWS account can view and (if
+     * they have the proper policy permissions set) manage the job flow. If
+     * it is set to <code>false</code>, only the IAM user that created the
+     * job flow can view and manage it. This value can be changed using the
+     * <a>SetVisibleToAllUsers</a> action.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param visibleToAllUsers Specifies whether the job flow is visible to all IAM users of the AWS
+     *         account associated with the job flow. If this value is set to
+     *         <code>true</code>, all IAM users of that AWS account can view and (if
+     *         they have the proper policy permissions set) manage the job flow. If
+     *         it is set to <code>false</code>, only the IAM user that created the
+     *         job flow can view and manage it. This value can be changed using the
+     *         <a>SetVisibleToAllUsers</a> action.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together. 
+     */
+    public JobFlowDetail withVisibleToAllUsers(Boolean visibleToAllUsers) {
+        this.visibleToAllUsers = visibleToAllUsers;
+        return this;
+    }
+    
+    
+    /**
+     * Specifies whether the job flow is visible to all IAM users of the AWS
+     * account associated with the job flow. If this value is set to
+     * <code>true</code>, all IAM users of that AWS account can view and (if
+     * they have the proper policy permissions set) manage the job flow. If
+     * it is set to <code>false</code>, only the IAM user that created the
+     * job flow can view and manage it. This value can be changed using the
+     * <a>SetVisibleToAllUsers</a> action.
+     *
+     * @return Specifies whether the job flow is visible to all IAM users of the AWS
+     *         account associated with the job flow. If this value is set to
+     *         <code>true</code>, all IAM users of that AWS account can view and (if
+     *         they have the proper policy permissions set) manage the job flow. If
+     *         it is set to <code>false</code>, only the IAM user that created the
+     *         job flow can view and manage it. This value can be changed using the
+     *         <a>SetVisibleToAllUsers</a> action.
+     */
+    public Boolean getVisibleToAllUsers() {
+        return visibleToAllUsers;
+    }
+    
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/elasticmapreduce/model/JobFlowDetail.java;<<<<<<< MINE
+=======
+        if (visibleToAllUsers != null) sb.append("VisibleToAllUsers: " + visibleToAllUsers + ", ");
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/elasticmapreduce/model/JobFlowDetail.java;<<<<<<< MINE
+=======
+        hashCode = prime * hashCode + ((isVisibleToAllUsers() == null) ? 0 : isVisibleToAllUsers().hashCode()); 
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/elasticmapreduce/model/JobFlowDetail.java;<<<<<<< MINE
+=======
+        if (other.isVisibleToAllUsers() == null ^ this.isVisibleToAllUsers() == null) return false;
+        if (other.isVisibleToAllUsers() != null && other.isVisibleToAllUsers().equals(this.isVisibleToAllUsers()) == false) return false; 
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/elasticmapreduce/model/TerminateJobFlowsRequest.java;<<<<<<< MINE
+=======
+ * <p>
+ * The call to TerminateJobFlows is asynchronous. Depending on the configuration of the job flow, it may take up to 5-20 minutes for the job flow to
+ * completely terminate and release allocated resources, such as Amazon EC2 instances.
+ * </p>
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/elasticmapreduce/model/RunJobFlowRequest.java;<<<<<<< MINE
+=======
+     * Whether the job flow is visible to all IAM users of the AWS account
+     * associated with the job flow. If this value is set to
+     * <code>true</code>, all IAM users of that AWS account can view and (if
+     * they have the proper policy permissions set) manage the job flow. If
+     * it is set to <code>false</code>, only the IAM user that created the
+     * job flow can view and manage it.
+     */
+    private Boolean visibleToAllUsers;
+
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/elasticmapreduce/model/RunJobFlowRequest.java;<<<<<<< MINE
+=======
+     * Whether the job flow is visible to all IAM users of the AWS account
+     * associated with the job flow. If this value is set to
+     * <code>true</code>, all IAM users of that AWS account can view and (if
+     * they have the proper policy permissions set) manage the job flow. If
+     * it is set to <code>false</code>, only the IAM user that created the
+     * job flow can view and manage it.
+     *
+     * @return Whether the job flow is visible to all IAM users of the AWS account
+     *         associated with the job flow. If this value is set to
+     *         <code>true</code>, all IAM users of that AWS account can view and (if
+     *         they have the proper policy permissions set) manage the job flow. If
+     *         it is set to <code>false</code>, only the IAM user that created the
+     *         job flow can view and manage it.
+     */
+    public Boolean isVisibleToAllUsers() {
+        return visibleToAllUsers;
+    }
+    
+    /**
+     * Whether the job flow is visible to all IAM users of the AWS account
+     * associated with the job flow. If this value is set to
+     * <code>true</code>, all IAM users of that AWS account can view and (if
+     * they have the proper policy permissions set) manage the job flow. If
+     * it is set to <code>false</code>, only the IAM user that created the
+     * job flow can view and manage it.
+     *
+     * @param visibleToAllUsers Whether the job flow is visible to all IAM users of the AWS account
+     *         associated with the job flow. If this value is set to
+     *         <code>true</code>, all IAM users of that AWS account can view and (if
+     *         they have the proper policy permissions set) manage the job flow. If
+     *         it is set to <code>false</code>, only the IAM user that created the
+     *         job flow can view and manage it.
+     */
+    public void setVisibleToAllUsers(Boolean visibleToAllUsers) {
+        this.visibleToAllUsers = visibleToAllUsers;
+    }
+    
+    /**
+     * Whether the job flow is visible to all IAM users of the AWS account
+     * associated with the job flow. If this value is set to
+     * <code>true</code>, all IAM users of that AWS account can view and (if
+     * they have the proper policy permissions set) manage the job flow. If
+     * it is set to <code>false</code>, only the IAM user that created the
+     * job flow can view and manage it.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param visibleToAllUsers Whether the job flow is visible to all IAM users of the AWS account
+     *         associated with the job flow. If this value is set to
+     *         <code>true</code>, all IAM users of that AWS account can view and (if
+     *         they have the proper policy permissions set) manage the job flow. If
+     *         it is set to <code>false</code>, only the IAM user that created the
+     *         job flow can view and manage it.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together. 
+     */
+    public RunJobFlowRequest withVisibleToAllUsers(Boolean visibleToAllUsers) {
+        this.visibleToAllUsers = visibleToAllUsers;
+        return this;
+    }
+    
+    
+    /**
+     * Whether the job flow is visible to all IAM users of the AWS account
+     * associated with the job flow. If this value is set to
+     * <code>true</code>, all IAM users of that AWS account can view and (if
+     * they have the proper policy permissions set) manage the job flow. If
+     * it is set to <code>false</code>, only the IAM user that created the
+     * job flow can view and manage it.
+     *
+     * @return Whether the job flow is visible to all IAM users of the AWS account
+     *         associated with the job flow. If this value is set to
+     *         <code>true</code>, all IAM users of that AWS account can view and (if
+     *         they have the proper policy permissions set) manage the job flow. If
+     *         it is set to <code>false</code>, only the IAM user that created the
+     *         job flow can view and manage it.
+     */
+    public Boolean getVisibleToAllUsers() {
+        return visibleToAllUsers;
+    }
+    
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/elasticmapreduce/model/RunJobFlowRequest.java;<<<<<<< MINE
+=======
+        if (visibleToAllUsers != null) sb.append("VisibleToAllUsers: " + visibleToAllUsers + ", ");
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/elasticmapreduce/model/RunJobFlowRequest.java;<<<<<<< MINE
+=======
+        hashCode = prime * hashCode + ((isVisibleToAllUsers() == null) ? 0 : isVisibleToAllUsers().hashCode()); 
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/elasticmapreduce/model/RunJobFlowRequest.java;<<<<<<< MINE
+=======
+        if (other.isVisibleToAllUsers() == null ^ this.isVisibleToAllUsers() == null) return false;
+        if (other.isVisibleToAllUsers() != null && other.isVisibleToAllUsers().equals(this.isVisibleToAllUsers()) == false) return false; 
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/elasticmapreduce/model/transform/RunJobFlowRequestMarshaller.java;<<<<<<< MINE
+=======
+        if (runJobFlowRequest.isVisibleToAllUsers() != null) {
+            request.addParameter("VisibleToAllUsers", StringUtils.fromBoolean(runJobFlowRequest.isVisibleToAllUsers()));
+        }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/elasticmapreduce/model/transform/JobFlowDetailStaxUnmarshaller.java;<<<<<<< MINE
+=======
+                if (context.testExpression("VisibleToAllUsers", targetDepth)) {
+                    jobFlowDetail.setVisibleToAllUsers(BooleanStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/elasticmapreduce/AmazonElasticMapReduceClient.java;<<<<<<< MINE
+=======
+     * Sets whether all AWS Identity and Access Management (IAM) users under
+     * your account can access the specifed job flows. This action works on
+     * running job flows. You can also set the visibility of a job flow when
+     * you launch it using the <code>VisibleToAllUsers</code> parameter of
+     * RunJobFlow. The SetVisibleToAllUsers action can be called only by an
+     * IAM user who created the job flow or the AWS account that owns the job
+     * flow.
+     * </p>
+     *
+     * @param setVisibleToAllUsersRequest Container for the necessary
+     *           parameters to execute the SetVisibleToAllUsers service method on
+     *           AmazonElasticMapReduce.
+     * 
+     * @throws InternalServerErrorException
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonElasticMapReduce indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public void setVisibleToAllUsers(SetVisibleToAllUsersRequest setVisibleToAllUsersRequest) 
+            throws AmazonServiceException, AmazonClientException {
+        Request<SetVisibleToAllUsersRequest> request = new SetVisibleToAllUsersRequestMarshaller().marshall(setVisibleToAllUsersRequest);
+        invoke(request, null);
+    }
+    
+    /**
+     * <p>
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/elasticmapreduce/AmazonElasticMapReduceClient.java;<<<<<<< MINE
+=======
+     * <p>
+     * The call to TerminateJobFlows is asynchronous. Depending on the
+     * configuration of the job flow, it may take up to 5-20 minutes for the
+     * job flow to completely terminate and release allocated resources, such
+     * as Amazon EC2 instances.
+     * </p>
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/elasticmapreduce/AmazonElasticMapReduceAsyncClient.java;<<<<<<< MINE
+=======
+     * Sets whether all AWS Identity and Access Management (IAM) users under
+     * your account can access the specifed job flows. This action works on
+     * running job flows. You can also set the visibility of a job flow when
+     * you launch it using the <code>VisibleToAllUsers</code> parameter of
+     * RunJobFlow. The SetVisibleToAllUsers action can be called only by an
+     * IAM user who created the job flow or the AWS account that owns the job
+     * flow.
+     * </p>
+     *
+     * @param setVisibleToAllUsersRequest Container for the necessary
+     *           parameters to execute the SetVisibleToAllUsers operation on
+     *           AmazonElasticMapReduce.
+     * 
+     * @return A Java Future object containing the response from the
+     *         SetVisibleToAllUsers service method, as returned by
+     *         AmazonElasticMapReduce.
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonElasticMapReduce indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<Void> setVisibleToAllUsersAsync(final SetVisibleToAllUsersRequest setVisibleToAllUsersRequest) 
+            throws AmazonServiceException, AmazonClientException {
+        return executorService.submit(new Callable<Void>() {
+            public Void call() throws Exception {
+                setVisibleToAllUsers(setVisibleToAllUsersRequest);
+                return null;
+		    }
+		});
+    }
+
+    
+    /**
+     * <p>
+     * Sets whether all AWS Identity and Access Management (IAM) users under
+     * your account can access the specifed job flows. This action works on
+     * running job flows. You can also set the visibility of a job flow when
+     * you launch it using the <code>VisibleToAllUsers</code> parameter of
+     * RunJobFlow. The SetVisibleToAllUsers action can be called only by an
+     * IAM user who created the job flow or the AWS account that owns the job
+     * flow.
+     * </p>
+     *
+     * @param setVisibleToAllUsersRequest Container for the necessary
+     *           parameters to execute the SetVisibleToAllUsers operation on
+     *           AmazonElasticMapReduce.
+     * @param asyncHandler Asynchronous callback handler for events in the
+     *           life-cycle of the request. Users could provide the implementation of
+     *           the four callback methods in this interface to process the operation
+     *           result or handle the exception.
+     * 
+     * @return A Java Future object containing the response from the
+     *         SetVisibleToAllUsers service method, as returned by
+     *         AmazonElasticMapReduce.
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonElasticMapReduce indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<Void> setVisibleToAllUsersAsync(
+            final SetVisibleToAllUsersRequest setVisibleToAllUsersRequest,
+            final AsyncHandler<SetVisibleToAllUsersRequest, Void> asyncHandler)
+                    throws AmazonServiceException, AmazonClientException {
+        return executorService.submit(new Callable<Void>() {
+            public Void call() throws Exception {
+            	try {
+            		setVisibleToAllUsers(setVisibleToAllUsersRequest);
+            	} catch (Exception ex) {
+            	    asyncHandler.onError(ex);
+    				throw ex;
+            	}
+            	asyncHandler.onSuccess(setVisibleToAllUsersRequest, null);
+               	return null;
+		    }
+		});
+    }
+    
+    /**
+     * <p>
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/elasticmapreduce/AmazonElasticMapReduceAsyncClient.java;<<<<<<< MINE
+=======
+     * <p>
+     * The call to TerminateJobFlows is asynchronous. Depending on the
+     * configuration of the job flow, it may take up to 5-20 minutes for the
+     * job flow to completely terminate and release allocated resources, such
+     * as Amazon EC2 instances.
+     * </p>
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/elasticmapreduce/AmazonElasticMapReduceAsyncClient.java;<<<<<<< MINE
+=======
+     * <p>
+     * The call to TerminateJobFlows is asynchronous. Depending on the
+     * configuration of the job flow, it may take up to 5-20 minutes for the
+     * job flow to completely terminate and release allocated resources, such
+     * as Amazon EC2 instances.
+     * </p>
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDS.java;<<<<<<< MINE
+=======
+     * @throws DBInstanceNotFoundException
+     * @throws DBSnapshotNotFoundException
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDS.java;<<<<<<< MINE
+=======
+     * @throws InvalidDBSnapshotStateException
+     * @throws DBSnapshotNotFoundException
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDS.java;<<<<<<< MINE
+=======
+     * @throws DBParameterGroupNotFoundException
+     * @throws InstanceQuotaExceededException
+     * @throws DBSubnetGroupNotFoundException
+     * @throws DBInstanceAlreadyExistsException
+     * @throws DBInstanceNotFoundException
+     * @throws StorageQuotaExceededException
+     * @throws InvalidVPCNetworkStateException
+     * @throws InvalidDBInstanceStateException
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDS.java;<<<<<<< MINE
+=======
+     * @throws DBParameterGroupNotFoundException
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDS.java;<<<<<<< MINE
+=======
+     * @throws PointInTimeRestoreNotEnabledException
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDS.java;<<<<<<< MINE
+=======
+     * @throws DBInstanceNotFoundException
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDS.java;<<<<<<< MINE
+=======
+     * @throws DBParameterGroupNotFoundException
+     * @throws DBInstanceNotFoundException
+     * @throws StorageQuotaExceededException
+     * @throws InvalidVPCNetworkStateException
+     * @throws InvalidDBInstanceStateException
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDS.java;<<<<<<< MINE
+=======
+     * @throws InsufficientDBInstanceCapacityException
+     * @throws OptionGroupNotFoundException
+     * @throws ProvisionedIopsNotAvailableInAZException
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDS.java;<<<<<<< MINE
+=======
+     * @throws DBParameterGroupNotFoundException
+     * @throws InvalidDBParameterGroupStateException
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDS.java;<<<<<<< MINE
+=======
+     * @throws DBSnapshotNotFoundException
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDS.java;<<<<<<< MINE
+=======
+     * @throws InvalidOptionGroupStateException
+     * @throws OptionGroupNotFoundException
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDS.java;<<<<<<< MINE
+=======
+     *
+     * @param describeEventsRequest Container for the necessary parameters to
+     *           execute the DescribeEvents service method on AmazonRDS.
+     * 
+     * @return The response from the DescribeEvents service method, as
+     *         returned by AmazonRDS.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonRDS indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public DescribeEventsResult describeEvents(DescribeEventsRequest describeEventsRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDS.java;<<<<<<< MINE
+=======
+     * @throws InvalidRestoreException
+     * @throws InstanceQuotaExceededException
+     * @throws DBSubnetGroupNotFoundException
+     * @throws DBInstanceAlreadyExistsException
+     * @throws StorageQuotaExceededException
+     * @throws InvalidVPCNetworkStateException
+     * @throws InvalidDBSnapshotStateException
+     * @throws InsufficientDBInstanceCapacityException
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDS.java;<<<<<<< MINE
+=======
+     * @throws ProvisionedIopsNotAvailableInAZException
+     * @throws DBSnapshotNotFoundException
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDS.java;<<<<<<< MINE
+=======
+     *
+     * @param createDBParameterGroupRequest Container for the necessary
+     *           parameters to execute the CreateDBParameterGroup service method on
+     *           AmazonRDS.
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDS.java;<<<<<<< MINE
+=======
+     * @throws DBParameterGroupQuotaExceededException
+     * @throws DBParameterGroupAlreadyExistsException
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDS.java;<<<<<<< MINE
+=======
+     *
+     * @param revokeDBSecurityGroupIngressRequest Container for the necessary
+     *           parameters to execute the RevokeDBSecurityGroupIngress service method
+     *           on AmazonRDS.
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDS.java;<<<<<<< MINE
+=======
+     * @throws ReservedDBInstanceNotFoundException
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/RestoreDBInstanceFromDBSnapshotRequest.java;<<<<<<< MINE
+=======
+     * The amount of Provisioned IOPS (input/output operations per second) to
+     * be initially allocated for the DB Instance. <p> Constraints: Must be
+     * an integer greater than 1000.
+     *
+     * @return The amount of Provisioned IOPS (input/output operations per second) to
+     *         be initially allocated for the DB Instance. <p> Constraints: Must be
+     *         an integer greater than 1000.
+     */
+    public Integer getIops() {
+        return iops;
+    }
+    
+    /**
+     * The amount of Provisioned IOPS (input/output operations per second) to
+     * be initially allocated for the DB Instance. <p> Constraints: Must be
+     * an integer greater than 1000.
+     *
+     * @param iops The amount of Provisioned IOPS (input/output operations per second) to
+     *         be initially allocated for the DB Instance. <p> Constraints: Must be
+     *         an integer greater than 1000.
+     */
+    public void setIops(Integer iops) {
+        this.iops = iops;
+    }
+    
+    /**
+     * The amount of Provisioned IOPS (input/output operations per second) to
+     * be initially allocated for the DB Instance. <p> Constraints: Must be
+     * an integer greater than 1000.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param iops The amount of Provisioned IOPS (input/output operations per second) to
+     *         be initially allocated for the DB Instance. <p> Constraints: Must be
+     *         an integer greater than 1000.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together. 
+     */
+    public RestoreDBInstanceFromDBSnapshotRequest withIops(Integer iops) {
+        this.iops = iops;
+        return this;
+    }
+    
+    
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/RestoreDBInstanceFromDBSnapshotRequest.java;<<<<<<< MINE
+=======
+        if (iops != null) sb.append("Iops: " + iops + ", ");
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/RestoreDBInstanceFromDBSnapshotRequest.java;<<<<<<< MINE
+=======
+        hashCode = prime * hashCode + ((getIops() == null) ? 0 : getIops().hashCode()); 
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/RestoreDBInstanceFromDBSnapshotRequest.java;<<<<<<< MINE
+=======
+        if (other.getIops() == null ^ this.getIops() == null) return false;
+        if (other.getIops() != null && other.getIops().equals(this.getIops()) == false) return false; 
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/AvailabilityZone.java;<<<<<<< MINE
+=======
+     * Returns the value of the ProvisionedIopsCapable property for this
+     * object.
+     *
+     * @return The value of the ProvisionedIopsCapable property for this object.
+     */
+    public Boolean isProvisionedIopsCapable() {
+        return provisionedIopsCapable;
+    }
+    
+    /**
+     * Sets the value of the ProvisionedIopsCapable property for this object.
+     *
+     * @param provisionedIopsCapable The new value for the ProvisionedIopsCapable property for this object.
+     */
+    public void setProvisionedIopsCapable(Boolean provisionedIopsCapable) {
+        this.provisionedIopsCapable = provisionedIopsCapable;
+    }
+    
+    /**
+     * Sets the value of the ProvisionedIopsCapable property for this object.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param provisionedIopsCapable The new value for the ProvisionedIopsCapable property for this object.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together. 
+     */
+    public AvailabilityZone withProvisionedIopsCapable(Boolean provisionedIopsCapable) {
+        this.provisionedIopsCapable = provisionedIopsCapable;
+        return this;
+    }
+    
+    
+    /**
+     * Returns the value of the ProvisionedIopsCapable property for this
+     * object.
+     *
+     * @return The value of the ProvisionedIopsCapable property for this object.
+     */
+    public Boolean getProvisionedIopsCapable() {
+        return provisionedIopsCapable;
+    }
+    
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/AvailabilityZone.java;<<<<<<< MINE
+=======
+        if (provisionedIopsCapable != null) sb.append("ProvisionedIopsCapable: " + provisionedIopsCapable + ", ");
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/AvailabilityZone.java;<<<<<<< MINE
+=======
+        hashCode = prime * hashCode + ((isProvisionedIopsCapable() == null) ? 0 : isProvisionedIopsCapable().hashCode()); 
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/AvailabilityZone.java;<<<<<<< MINE
+=======
+        if (other.isProvisionedIopsCapable() == null ^ this.isProvisionedIopsCapable() == null) return false;
+        if (other.isProvisionedIopsCapable() != null && other.isProvisionedIopsCapable().equals(this.isProvisionedIopsCapable()) == false) return false; 
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/DBInstance.java;<<<<<<< MINE
+=======
+     * Specifies the Provisioned IOPS (I/O operations per second) value.
+     */
+    private Integer iops;
+
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/DBInstance.java;<<<<<<< MINE
+=======
+     * Specifies the Provisioned IOPS (I/O operations per second) value.
+     *
+     * @return Specifies the Provisioned IOPS (I/O operations per second) value.
+     */
+    public Integer getIops() {
+        return iops;
+    }
+    
+    /**
+     * Specifies the Provisioned IOPS (I/O operations per second) value.
+     *
+     * @param iops Specifies the Provisioned IOPS (I/O operations per second) value.
+     */
+    public void setIops(Integer iops) {
+        this.iops = iops;
+    }
+    
+    /**
+     * Specifies the Provisioned IOPS (I/O operations per second) value.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param iops Specifies the Provisioned IOPS (I/O operations per second) value.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together. 
+     */
+    public DBInstance withIops(Integer iops) {
+        this.iops = iops;
+        return this;
+    }
+    
+    
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/DBInstance.java;<<<<<<< MINE
+=======
+        if (iops != null) sb.append("Iops: " + iops + ", ");
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/DBInstance.java;<<<<<<< MINE
+=======
+        hashCode = prime * hashCode + ((getIops() == null) ? 0 : getIops().hashCode()); 
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/DBInstance.java;<<<<<<< MINE
+=======
+        if (other.getIops() == null ^ this.getIops() == null) return false;
+        if (other.getIops() != null && other.getIops().equals(this.getIops()) == false) return false; 
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/CreateDBInstanceRequest.java;<<<<<<< MINE
+=======
+     * The amount of Provisioned IOPS (input/output operations per second) to
+     * be initially allocated for the DB Instance. <p> Constraints: Must be
+     * an integer greater than 1000.
+     */
+    private Integer iops;
+
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/CreateDBInstanceRequest.java;<<<<<<< MINE
+=======
+     * The amount of Provisioned IOPS (input/output operations per second) to
+     * be initially allocated for the DB Instance. <p> Constraints: Must be
+     * an integer greater than 1000.
+     *
+     * @return The amount of Provisioned IOPS (input/output operations per second) to
+     *         be initially allocated for the DB Instance. <p> Constraints: Must be
+     *         an integer greater than 1000.
+     */
+    public Integer getIops() {
+        return iops;
+    }
+    
+    /**
+     * The amount of Provisioned IOPS (input/output operations per second) to
+     * be initially allocated for the DB Instance. <p> Constraints: Must be
+     * an integer greater than 1000.
+     *
+     * @param iops The amount of Provisioned IOPS (input/output operations per second) to
+     *         be initially allocated for the DB Instance. <p> Constraints: Must be
+     *         an integer greater than 1000.
+     */
+    public void setIops(Integer iops) {
+        this.iops = iops;
+    }
+    
+    /**
+     * The amount of Provisioned IOPS (input/output operations per second) to
+     * be initially allocated for the DB Instance. <p> Constraints: Must be
+     * an integer greater than 1000.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param iops The amount of Provisioned IOPS (input/output operations per second) to
+     *         be initially allocated for the DB Instance. <p> Constraints: Must be
+     *         an integer greater than 1000.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together. 
+     */
+    public CreateDBInstanceRequest withIops(Integer iops) {
+        this.iops = iops;
+        return this;
+    }
+    
+    
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/CreateDBInstanceRequest.java;<<<<<<< MINE
+=======
+        if (iops != null) sb.append("Iops: " + iops + ", ");
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/CreateDBInstanceRequest.java;<<<<<<< MINE
+=======
+        hashCode = prime * hashCode + ((getIops() == null) ? 0 : getIops().hashCode()); 
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/CreateDBInstanceRequest.java;<<<<<<< MINE
+=======
+        if (other.getIops() == null ^ this.getIops() == null) return false;
+        if (other.getIops() != null && other.getIops().equals(this.getIops()) == false) return false; 
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/DBSnapshot.java;<<<<<<< MINE
+=======
+     * Specifies the Provisioned IOPS (I/O operations per second) value of
+     * the DB Instance at the time of the snapshot.
+     */
+    private Integer iops;
+
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/DBSnapshot.java;<<<<<<< MINE
+=======
+     * Specifies the Provisioned IOPS (I/O operations per second) value of
+     * the DB Instance at the time of the snapshot.
+     *
+     * @return Specifies the Provisioned IOPS (I/O operations per second) value of
+     *         the DB Instance at the time of the snapshot.
+     */
+    public Integer getIops() {
+        return iops;
+    }
+    
+    /**
+     * Specifies the Provisioned IOPS (I/O operations per second) value of
+     * the DB Instance at the time of the snapshot.
+     *
+     * @param iops Specifies the Provisioned IOPS (I/O operations per second) value of
+     *         the DB Instance at the time of the snapshot.
+     */
+    public void setIops(Integer iops) {
+        this.iops = iops;
+    }
+    
+    /**
+     * Specifies the Provisioned IOPS (I/O operations per second) value of
+     * the DB Instance at the time of the snapshot.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param iops Specifies the Provisioned IOPS (I/O operations per second) value of
+     *         the DB Instance at the time of the snapshot.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together. 
+     */
+    public DBSnapshot withIops(Integer iops) {
+        this.iops = iops;
+        return this;
+    }
+    
+    
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/DBSnapshot.java;<<<<<<< MINE
+=======
+        if (iops != null) sb.append("Iops: " + iops + ", ");
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/DBSnapshot.java;<<<<<<< MINE
+=======
+        hashCode = prime * hashCode + ((getIops() == null) ? 0 : getIops().hashCode()); 
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/DBSnapshot.java;<<<<<<< MINE
+=======
+        if (other.getIops() == null ^ this.getIops() == null) return false;
+        if (other.getIops() != null && other.getIops().equals(this.getIops()) == false) return false; 
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/RestoreDBInstanceToPointInTimeRequest.java;<<<<<<< MINE
+=======
+     * The amount of Provisioned IOPS (input/output operations per second) to
+     * be initially allocated for the DB Instance. <p> Constraints: Must be
+     * an integer greater than 1000.
+     *
+     * @return The amount of Provisioned IOPS (input/output operations per second) to
+     *         be initially allocated for the DB Instance. <p> Constraints: Must be
+     *         an integer greater than 1000.
+     */
+    public Integer getIops() {
+        return iops;
+    }
+    
+    /**
+     * The amount of Provisioned IOPS (input/output operations per second) to
+     * be initially allocated for the DB Instance. <p> Constraints: Must be
+     * an integer greater than 1000.
+     *
+     * @param iops The amount of Provisioned IOPS (input/output operations per second) to
+     *         be initially allocated for the DB Instance. <p> Constraints: Must be
+     *         an integer greater than 1000.
+     */
+    public void setIops(Integer iops) {
+        this.iops = iops;
+    }
+    
+    /**
+     * The amount of Provisioned IOPS (input/output operations per second) to
+     * be initially allocated for the DB Instance. <p> Constraints: Must be
+     * an integer greater than 1000.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param iops The amount of Provisioned IOPS (input/output operations per second) to
+     *         be initially allocated for the DB Instance. <p> Constraints: Must be
+     *         an integer greater than 1000.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together. 
+     */
+    public RestoreDBInstanceToPointInTimeRequest withIops(Integer iops) {
+        this.iops = iops;
+        return this;
+    }
+    
+    
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/RestoreDBInstanceToPointInTimeRequest.java;<<<<<<< MINE
+=======
+        if (iops != null) sb.append("Iops: " + iops + ", ");
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/RestoreDBInstanceToPointInTimeRequest.java;<<<<<<< MINE
+=======
+        hashCode = prime * hashCode + ((getIops() == null) ? 0 : getIops().hashCode()); 
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/RestoreDBInstanceToPointInTimeRequest.java;<<<<<<< MINE
+=======
+        if (other.getIops() == null ^ this.getIops() == null) return false;
+        if (other.getIops() != null && other.getIops().equals(this.getIops()) == false) return false; 
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/PendingModifiedValues.java;<<<<<<< MINE
+=======
+     * Specifies the new Provisioned IOPS value for the DB Instance that will
+     * be applied or is being applied.
+     */
+    private Integer iops;
+
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/PendingModifiedValues.java;<<<<<<< MINE
+=======
+     * Specifies the new Provisioned IOPS value for the DB Instance that will
+     * be applied or is being applied.
+     *
+     * @return Specifies the new Provisioned IOPS value for the DB Instance that will
+     *         be applied or is being applied.
+     */
+    public Integer getIops() {
+        return iops;
+    }
+    
+    /**
+     * Specifies the new Provisioned IOPS value for the DB Instance that will
+     * be applied or is being applied.
+     *
+     * @param iops Specifies the new Provisioned IOPS value for the DB Instance that will
+     *         be applied or is being applied.
+     */
+    public void setIops(Integer iops) {
+        this.iops = iops;
+    }
+    
+    /**
+     * Specifies the new Provisioned IOPS value for the DB Instance that will
+     * be applied or is being applied.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param iops Specifies the new Provisioned IOPS value for the DB Instance that will
+     *         be applied or is being applied.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together. 
+     */
+    public PendingModifiedValues withIops(Integer iops) {
+        this.iops = iops;
+        return this;
+    }
+    
+    
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/PendingModifiedValues.java;<<<<<<< MINE
+=======
+        if (iops != null) sb.append("Iops: " + iops + ", ");
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/PendingModifiedValues.java;<<<<<<< MINE
+=======
+        hashCode = prime * hashCode + ((getIops() == null) ? 0 : getIops().hashCode()); 
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/PendingModifiedValues.java;<<<<<<< MINE
+=======
+        if (other.getIops() == null ^ this.getIops() == null) return false;
+        if (other.getIops() != null && other.getIops().equals(this.getIops()) == false) return false; 
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/CreateDBInstanceReadReplicaRequest.java;<<<<<<< MINE
+=======
+     * The amount of Provisioned IOPS (input/output operations per second) to
+     * be initially allocated for the DB Instance.
+     *
+     * @return The amount of Provisioned IOPS (input/output operations per second) to
+     *         be initially allocated for the DB Instance.
+     */
+    public Integer getIops() {
+        return iops;
+    }
+    
+    /**
+     * The amount of Provisioned IOPS (input/output operations per second) to
+     * be initially allocated for the DB Instance.
+     *
+     * @param iops The amount of Provisioned IOPS (input/output operations per second) to
+     *         be initially allocated for the DB Instance.
+     */
+    public void setIops(Integer iops) {
+        this.iops = iops;
+    }
+    
+    /**
+     * The amount of Provisioned IOPS (input/output operations per second) to
+     * be initially allocated for the DB Instance.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param iops The amount of Provisioned IOPS (input/output operations per second) to
+     *         be initially allocated for the DB Instance.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together. 
+     */
+    public CreateDBInstanceReadReplicaRequest withIops(Integer iops) {
+        this.iops = iops;
+        return this;
+    }
+    
+    
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/CreateDBInstanceReadReplicaRequest.java;<<<<<<< MINE
+=======
+        if (iops != null) sb.append("Iops: " + iops + ", ");
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/CreateDBInstanceReadReplicaRequest.java;<<<<<<< MINE
+=======
+        hashCode = prime * hashCode + ((getIops() == null) ? 0 : getIops().hashCode()); 
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/CreateDBInstanceReadReplicaRequest.java;<<<<<<< MINE
+=======
+        if (other.getIops() == null ^ this.getIops() == null) return false;
+        if (other.getIops() != null && other.getIops().equals(this.getIops()) == false) return false; 
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/DBEngineVersion.java;<<<<<<< MINE
+=======
+     * The default character set for new instances of this engine version, if
+     * the <code>CharacterSetName</code> parameter of the CreateDBInstance
+     * API is not specified.
+     */
+    private CharacterSet defaultCharacterSet;
+
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/DBEngineVersion.java;<<<<<<< MINE
+=======
+     * The default character set for new instances of this engine version, if
+     * the <code>CharacterSetName</code> parameter of the CreateDBInstance
+     * API is not specified.
+     *
+     * @return The default character set for new instances of this engine version, if
+     *         the <code>CharacterSetName</code> parameter of the CreateDBInstance
+     *         API is not specified.
+     */
+    public CharacterSet getDefaultCharacterSet() {
+        return defaultCharacterSet;
+    }
+    
+    /**
+     * The default character set for new instances of this engine version, if
+     * the <code>CharacterSetName</code> parameter of the CreateDBInstance
+     * API is not specified.
+     *
+     * @param defaultCharacterSet The default character set for new instances of this engine version, if
+     *         the <code>CharacterSetName</code> parameter of the CreateDBInstance
+     *         API is not specified.
+     */
+    public void setDefaultCharacterSet(CharacterSet defaultCharacterSet) {
+        this.defaultCharacterSet = defaultCharacterSet;
+    }
+    
+    /**
+     * The default character set for new instances of this engine version, if
+     * the <code>CharacterSetName</code> parameter of the CreateDBInstance
+     * API is not specified.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param defaultCharacterSet The default character set for new instances of this engine version, if
+     *         the <code>CharacterSetName</code> parameter of the CreateDBInstance
+     *         API is not specified.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together. 
+     */
+    public DBEngineVersion withDefaultCharacterSet(CharacterSet defaultCharacterSet) {
+        this.defaultCharacterSet = defaultCharacterSet;
+        return this;
+    }
+    
+    
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/DBEngineVersion.java;<<<<<<< MINE
+=======
+        if (defaultCharacterSet != null) sb.append("DefaultCharacterSet: " + defaultCharacterSet + ", ");
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/DBEngineVersion.java;<<<<<<< MINE
+=======
+        hashCode = prime * hashCode + ((getDefaultCharacterSet() == null) ? 0 : getDefaultCharacterSet().hashCode()); 
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/DBEngineVersion.java;<<<<<<< MINE
+=======
+        if (other.getDefaultCharacterSet() == null ^ this.getDefaultCharacterSet() == null) return false;
+        if (other.getDefaultCharacterSet() != null && other.getDefaultCharacterSet().equals(this.getDefaultCharacterSet()) == false) return false; 
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/transform/PendingModifiedValuesStaxUnmarshaller.java;<<<<<<< MINE
+=======
+                if (context.testExpression("Iops", targetDepth)) {
+                    pendingModifiedValues.setIops(IntegerStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/transform/AvailabilityZoneStaxUnmarshaller.java;<<<<<<< MINE
+=======
+                if (context.testExpression("ProvisionedIopsCapable", targetDepth)) {
+                    availabilityZone.setProvisionedIopsCapable(BooleanStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/transform/DescribeOrderableDBInstanceOptionsRequestMarshaller.java;<<<<<<< MINE
+=======
+        if (describeOrderableDBInstanceOptionsRequest.isVpc() != null) {
+            request.addParameter("Vpc", StringUtils.fromBoolean(describeOrderableDBInstanceOptionsRequest.isVpc()));
+        }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/transform/CreateDBInstanceRequestMarshaller.java;<<<<<<< MINE
+=======
+        if (createDBInstanceRequest.getIops() != null) {
+            request.addParameter("Iops", StringUtils.fromInteger(createDBInstanceRequest.getIops()));
+        }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/transform/OptionGroupStaxUnmarshaller.java;<<<<<<< MINE
+=======
+                if (context.testExpression("AllowsVpcAndNonVpcInstanceMemberships", targetDepth)) {
+                    optionGroup.setAllowsVpcAndNonVpcInstanceMemberships(BooleanStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+                if (context.testExpression("VpcId", targetDepth)) {
+                    optionGroup.setVpcId(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/transform/DBEngineVersionStaxUnmarshaller.java;<<<<<<< MINE
+=======
+                if (context.testExpression("DefaultCharacterSet", targetDepth)) {
+                    dBEngineVersion.setDefaultCharacterSet(CharacterSetStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/transform/RestoreDBInstanceToPointInTimeRequestMarshaller.java;<<<<<<< MINE
+=======
+        if (restoreDBInstanceToPointInTimeRequest.getIops() != null) {
+            request.addParameter("Iops", StringUtils.fromInteger(restoreDBInstanceToPointInTimeRequest.getIops()));
+        }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/transform/CreateDBInstanceReadReplicaRequestMarshaller.java;<<<<<<< MINE
+=======
+        if (createDBInstanceReadReplicaRequest.getIops() != null) {
+            request.addParameter("Iops", StringUtils.fromInteger(createDBInstanceReadReplicaRequest.getIops()));
+        }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/transform/DBInstanceStaxUnmarshaller.java;<<<<<<< MINE
+=======
+                if (context.testExpression("Iops", targetDepth)) {
+                    dBInstance.setIops(IntegerStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/transform/ModifyDBInstanceRequestMarshaller.java;<<<<<<< MINE
+=======
+        if (modifyDBInstanceRequest.getIops() != null) {
+            request.addParameter("Iops", StringUtils.fromInteger(modifyDBInstanceRequest.getIops()));
+        }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/transform/DBSnapshotStaxUnmarshaller.java;<<<<<<< MINE
+=======
+                if (context.testExpression("Iops", targetDepth)) {
+                    dBSnapshot.setIops(IntegerStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/transform/RestoreDBInstanceFromDBSnapshotRequestMarshaller.java;<<<<<<< MINE
+=======
+        if (restoreDBInstanceFromDBSnapshotRequest.getIops() != null) {
+            request.addParameter("Iops", StringUtils.fromInteger(restoreDBInstanceFromDBSnapshotRequest.getIops()));
+        }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/ModifyDBInstanceRequest.java;<<<<<<< MINE
+=======
+ * <p>
+ * Some parameter changes are applied immediately while others are applied when the DB Instance is rebooted or during the next maintenance window. See
+ * the individual parameter descriptions for more information.
+ * </p>
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/ModifyDBInstanceRequest.java;<<<<<<< MINE
+=======
+     * The new Provisioned IOPS (I/O operations per second) value for the RDS
+     * instance. Changing this parameter does not result in an outage and the
+     * change is applied during the next maintenance window unless the
+     * <code>ApplyImmediately</code> parameter is set to <code>true</code>
+     * for this request. <p>Default: Uses existing setting <p>Constraints:
+     * Value supplied must be at least 10% greater than the current value.
+     * Values that are not at least 10% greater than the existing value are
+     * rounded up so that they are 10% greater than the current value.
+     */
+    private Integer iops;
+
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/ModifyDBInstanceRequest.java;<<<<<<< MINE
+=======
+     * The new Provisioned IOPS (I/O operations per second) value for the RDS
+     * instance. Changing this parameter does not result in an outage and the
+     * change is applied during the next maintenance window unless the
+     * <code>ApplyImmediately</code> parameter is set to <code>true</code>
+     * for this request. <p>Default: Uses existing setting <p>Constraints:
+     * Value supplied must be at least 10% greater than the current value.
+     * Values that are not at least 10% greater than the existing value are
+     * rounded up so that they are 10% greater than the current value.
+     *
+     * @return The new Provisioned IOPS (I/O operations per second) value for the RDS
+     *         instance. Changing this parameter does not result in an outage and the
+     *         change is applied during the next maintenance window unless the
+     *         <code>ApplyImmediately</code> parameter is set to <code>true</code>
+     *         for this request. <p>Default: Uses existing setting <p>Constraints:
+     *         Value supplied must be at least 10% greater than the current value.
+     *         Values that are not at least 10% greater than the existing value are
+     *         rounded up so that they are 10% greater than the current value.
+     */
+    public Integer getIops() {
+        return iops;
+    }
+    
+    /**
+     * The new Provisioned IOPS (I/O operations per second) value for the RDS
+     * instance. Changing this parameter does not result in an outage and the
+     * change is applied during the next maintenance window unless the
+     * <code>ApplyImmediately</code> parameter is set to <code>true</code>
+     * for this request. <p>Default: Uses existing setting <p>Constraints:
+     * Value supplied must be at least 10% greater than the current value.
+     * Values that are not at least 10% greater than the existing value are
+     * rounded up so that they are 10% greater than the current value.
+     *
+     * @param iops The new Provisioned IOPS (I/O operations per second) value for the RDS
+     *         instance. Changing this parameter does not result in an outage and the
+     *         change is applied during the next maintenance window unless the
+     *         <code>ApplyImmediately</code> parameter is set to <code>true</code>
+     *         for this request. <p>Default: Uses existing setting <p>Constraints:
+     *         Value supplied must be at least 10% greater than the current value.
+     *         Values that are not at least 10% greater than the existing value are
+     *         rounded up so that they are 10% greater than the current value.
+     */
+    public void setIops(Integer iops) {
+        this.iops = iops;
+    }
+    
+    /**
+     * The new Provisioned IOPS (I/O operations per second) value for the RDS
+     * instance. Changing this parameter does not result in an outage and the
+     * change is applied during the next maintenance window unless the
+     * <code>ApplyImmediately</code> parameter is set to <code>true</code>
+     * for this request. <p>Default: Uses existing setting <p>Constraints:
+     * Value supplied must be at least 10% greater than the current value.
+     * Values that are not at least 10% greater than the existing value are
+     * rounded up so that they are 10% greater than the current value.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param iops The new Provisioned IOPS (I/O operations per second) value for the RDS
+     *         instance. Changing this parameter does not result in an outage and the
+     *         change is applied during the next maintenance window unless the
+     *         <code>ApplyImmediately</code> parameter is set to <code>true</code>
+     *         for this request. <p>Default: Uses existing setting <p>Constraints:
+     *         Value supplied must be at least 10% greater than the current value.
+     *         Values that are not at least 10% greater than the existing value are
+     *         rounded up so that they are 10% greater than the current value.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together. 
+     */
+    public ModifyDBInstanceRequest withIops(Integer iops) {
+        this.iops = iops;
+        return this;
+    }
+    
+    
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/ModifyDBInstanceRequest.java;<<<<<<< MINE
+=======
+        if (iops != null) sb.append("Iops: " + iops + ", ");
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/ModifyDBInstanceRequest.java;<<<<<<< MINE
+=======
+        hashCode = prime * hashCode + ((getIops() == null) ? 0 : getIops().hashCode()); 
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/ModifyDBInstanceRequest.java;<<<<<<< MINE
+=======
+        if (other.getIops() == null ^ this.getIops() == null) return false;
+        if (other.getIops() != null && other.getIops().equals(this.getIops()) == false) return false; 
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/OptionGroup.java;<<<<<<< MINE
+=======
+     * Indicates whether this option group can be applied to both VPC and
+     * non-VPC instances. The value 'true' indicates the option group can be
+     * applied to both VPC and non-VPC instances.
+     */
+    private Boolean allowsVpcAndNonVpcInstanceMemberships;
+
+    /**
+     * If AllowsVpcAndNonVpcInstanceMemberships is 'false', this field is
+     * blank. If AllowsVpcAndNonVpcInstanceMemberships is 'true' and this
+     * field is blank, then this option group can be applied to both VPC and
+     * non-VPC instances. If this field contains a value, then this option
+     * group can only be applied to instances that are in the VPC indicated
+     * by this field.
+     */
+    private String vpcId;
+
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/OptionGroup.java;<<<<<<< MINE
+=======
+     * Indicates whether this option group can be applied to both VPC and
+     * non-VPC instances. The value 'true' indicates the option group can be
+     * applied to both VPC and non-VPC instances.
+     *
+     * @return Indicates whether this option group can be applied to both VPC and
+     *         non-VPC instances. The value 'true' indicates the option group can be
+     *         applied to both VPC and non-VPC instances.
+     */
+    public Boolean isAllowsVpcAndNonVpcInstanceMemberships() {
+        return allowsVpcAndNonVpcInstanceMemberships;
+    }
+    
+    /**
+     * Indicates whether this option group can be applied to both VPC and
+     * non-VPC instances. The value 'true' indicates the option group can be
+     * applied to both VPC and non-VPC instances.
+     *
+     * @param allowsVpcAndNonVpcInstanceMemberships Indicates whether this option group can be applied to both VPC and
+     *         non-VPC instances. The value 'true' indicates the option group can be
+     *         applied to both VPC and non-VPC instances.
+     */
+    public void setAllowsVpcAndNonVpcInstanceMemberships(Boolean allowsVpcAndNonVpcInstanceMemberships) {
+        this.allowsVpcAndNonVpcInstanceMemberships = allowsVpcAndNonVpcInstanceMemberships;
+    }
+    
+    /**
+     * Indicates whether this option group can be applied to both VPC and
+     * non-VPC instances. The value 'true' indicates the option group can be
+     * applied to both VPC and non-VPC instances.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param allowsVpcAndNonVpcInstanceMemberships Indicates whether this option group can be applied to both VPC and
+     *         non-VPC instances. The value 'true' indicates the option group can be
+     *         applied to both VPC and non-VPC instances.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together. 
+     */
+    public OptionGroup withAllowsVpcAndNonVpcInstanceMemberships(Boolean allowsVpcAndNonVpcInstanceMemberships) {
+        this.allowsVpcAndNonVpcInstanceMemberships = allowsVpcAndNonVpcInstanceMemberships;
+        return this;
+    }
+    
+    
+    /**
+     * Indicates whether this option group can be applied to both VPC and
+     * non-VPC instances. The value 'true' indicates the option group can be
+     * applied to both VPC and non-VPC instances.
+     *
+     * @return Indicates whether this option group can be applied to both VPC and
+     *         non-VPC instances. The value 'true' indicates the option group can be
+     *         applied to both VPC and non-VPC instances.
+     */
+    public Boolean getAllowsVpcAndNonVpcInstanceMemberships() {
+        return allowsVpcAndNonVpcInstanceMemberships;
+    }
+    
+    /**
+     * If AllowsVpcAndNonVpcInstanceMemberships is 'false', this field is
+     * blank. If AllowsVpcAndNonVpcInstanceMemberships is 'true' and this
+     * field is blank, then this option group can be applied to both VPC and
+     * non-VPC instances. If this field contains a value, then this option
+     * group can only be applied to instances that are in the VPC indicated
+     * by this field.
+     *
+     * @return If AllowsVpcAndNonVpcInstanceMemberships is 'false', this field is
+     *         blank. If AllowsVpcAndNonVpcInstanceMemberships is 'true' and this
+     *         field is blank, then this option group can be applied to both VPC and
+     *         non-VPC instances. If this field contains a value, then this option
+     *         group can only be applied to instances that are in the VPC indicated
+     *         by this field.
+     */
+    public String getVpcId() {
+        return vpcId;
+    }
+    
+    /**
+     * If AllowsVpcAndNonVpcInstanceMemberships is 'false', this field is
+     * blank. If AllowsVpcAndNonVpcInstanceMemberships is 'true' and this
+     * field is blank, then this option group can be applied to both VPC and
+     * non-VPC instances. If this field contains a value, then this option
+     * group can only be applied to instances that are in the VPC indicated
+     * by this field.
+     *
+     * @param vpcId If AllowsVpcAndNonVpcInstanceMemberships is 'false', this field is
+     *         blank. If AllowsVpcAndNonVpcInstanceMemberships is 'true' and this
+     *         field is blank, then this option group can be applied to both VPC and
+     *         non-VPC instances. If this field contains a value, then this option
+     *         group can only be applied to instances that are in the VPC indicated
+     *         by this field.
+     */
+    public void setVpcId(String vpcId) {
+        this.vpcId = vpcId;
+    }
+    
+    /**
+     * If AllowsVpcAndNonVpcInstanceMemberships is 'false', this field is
+     * blank. If AllowsVpcAndNonVpcInstanceMemberships is 'true' and this
+     * field is blank, then this option group can be applied to both VPC and
+     * non-VPC instances. If this field contains a value, then this option
+     * group can only be applied to instances that are in the VPC indicated
+     * by this field.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param vpcId If AllowsVpcAndNonVpcInstanceMemberships is 'false', this field is
+     *         blank. If AllowsVpcAndNonVpcInstanceMemberships is 'true' and this
+     *         field is blank, then this option group can be applied to both VPC and
+     *         non-VPC instances. If this field contains a value, then this option
+     *         group can only be applied to instances that are in the VPC indicated
+     *         by this field.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together. 
+     */
+    public OptionGroup withVpcId(String vpcId) {
+        this.vpcId = vpcId;
+        return this;
+    }
+    
+    
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/OptionGroup.java;<<<<<<< MINE
+=======
+        if (allowsVpcAndNonVpcInstanceMemberships != null) sb.append("AllowsVpcAndNonVpcInstanceMemberships: " + allowsVpcAndNonVpcInstanceMemberships + ", ");
+        if (vpcId != null) sb.append("VpcId: " + vpcId + ", ");
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/OptionGroup.java;<<<<<<< MINE
+=======
+        hashCode = prime * hashCode + ((isAllowsVpcAndNonVpcInstanceMemberships() == null) ? 0 : isAllowsVpcAndNonVpcInstanceMemberships().hashCode()); 
+        hashCode = prime * hashCode + ((getVpcId() == null) ? 0 : getVpcId().hashCode()); 
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/OptionGroup.java;<<<<<<< MINE
+=======
+        if (other.isAllowsVpcAndNonVpcInstanceMemberships() == null ^ this.isAllowsVpcAndNonVpcInstanceMemberships() == null) return false;
+        if (other.isAllowsVpcAndNonVpcInstanceMemberships() != null && other.isAllowsVpcAndNonVpcInstanceMemberships().equals(this.isAllowsVpcAndNonVpcInstanceMemberships()) == false) return false; 
+        if (other.getVpcId() == null ^ this.getVpcId() == null) return false;
+        if (other.getVpcId() != null && other.getVpcId().equals(this.getVpcId()) == false) return false; 
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/DescribeOrderableDBInstanceOptionsRequest.java;<<<<<<< MINE
+=======
+     * The VPC filter value. Specify this parameter to show only the
+     * available VPC or non-VPC offerings.
+     */
+    private Boolean vpc;
+
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/DescribeOrderableDBInstanceOptionsRequest.java;<<<<<<< MINE
+=======
+     * The VPC filter value. Specify this parameter to show only the
+     * available VPC or non-VPC offerings.
+     *
+     * @return The VPC filter value. Specify this parameter to show only the
+     *         available VPC or non-VPC offerings.
+     */
+    public Boolean isVpc() {
+        return vpc;
+    }
+    
+    /**
+     * The VPC filter value. Specify this parameter to show only the
+     * available VPC or non-VPC offerings.
+     *
+     * @param vpc The VPC filter value. Specify this parameter to show only the
+     *         available VPC or non-VPC offerings.
+     */
+    public void setVpc(Boolean vpc) {
+        this.vpc = vpc;
+    }
+    
+    /**
+     * The VPC filter value. Specify this parameter to show only the
+     * available VPC or non-VPC offerings.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param vpc The VPC filter value. Specify this parameter to show only the
+     *         available VPC or non-VPC offerings.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together. 
+     */
+    public DescribeOrderableDBInstanceOptionsRequest withVpc(Boolean vpc) {
+        this.vpc = vpc;
+        return this;
+    }
+    
+    
+    /**
+     * The VPC filter value. Specify this parameter to show only the
+     * available VPC or non-VPC offerings.
+     *
+     * @return The VPC filter value. Specify this parameter to show only the
+     *         available VPC or non-VPC offerings.
+     */
+    public Boolean getVpc() {
+        return vpc;
+    }
+    
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/DescribeOrderableDBInstanceOptionsRequest.java;<<<<<<< MINE
+=======
+        if (vpc != null) sb.append("Vpc: " + vpc + ", ");
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/DescribeOrderableDBInstanceOptionsRequest.java;<<<<<<< MINE
+=======
+        hashCode = prime * hashCode + ((isVpc() == null) ? 0 : isVpc().hashCode()); 
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/DescribeOrderableDBInstanceOptionsRequest.java;<<<<<<< MINE
+=======
+        if (other.isVpc() == null ^ this.isVpc() == null) return false;
+        if (other.isVpc() != null && other.isVpc().equals(this.isVpc()) == false) return false; 
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDSClient.java;<<<<<<< MINE
+=======
+        exceptionUnmarshallers.add(new DBSubnetGroupDoesNotCoverEnoughAZsExceptionUnmarshaller());
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDSClient.java;<<<<<<< MINE
+=======
+        exceptionUnmarshallers.add(new ProvisionedIopsNotAvailableInAZExceptionUnmarshaller());
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDSClient.java;<<<<<<< MINE
+=======
+     * @throws DBInstanceNotFoundException
+     * @throws DBSnapshotNotFoundException
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDSClient.java;<<<<<<< MINE
+=======
+     * @throws InvalidDBSnapshotStateException
+     * @throws DBSnapshotNotFoundException
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDSClient.java;<<<<<<< MINE
+=======
+     * @throws DBParameterGroupNotFoundException
+     * @throws InstanceQuotaExceededException
+     * @throws DBSubnetGroupNotFoundException
+     * @throws DBInstanceAlreadyExistsException
+     * @throws DBInstanceNotFoundException
+     * @throws StorageQuotaExceededException
+     * @throws InvalidVPCNetworkStateException
+     * @throws InvalidDBInstanceStateException
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDSClient.java;<<<<<<< MINE
+=======
+     * @throws DBParameterGroupNotFoundException
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDSClient.java;<<<<<<< MINE
+=======
+     * @throws PointInTimeRestoreNotEnabledException
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDSClient.java;<<<<<<< MINE
+=======
+     * @throws DBInstanceNotFoundException
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDSClient.java;<<<<<<< MINE
+=======
+     * @throws DBParameterGroupNotFoundException
+     * @throws DBInstanceNotFoundException
+     * @throws StorageQuotaExceededException
+     * @throws InvalidVPCNetworkStateException
+     * @throws InvalidDBInstanceStateException
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDSClient.java;<<<<<<< MINE
+=======
+     * @throws InsufficientDBInstanceCapacityException
+     * @throws OptionGroupNotFoundException
+     * @throws ProvisionedIopsNotAvailableInAZException
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDSClient.java;<<<<<<< MINE
+=======
+     * @throws DBParameterGroupNotFoundException
+     * @throws InvalidDBParameterGroupStateException
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDSClient.java;<<<<<<< MINE
+=======
+     * @throws DBSnapshotNotFoundException
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDSClient.java;<<<<<<< MINE
+=======
+     * @throws InvalidOptionGroupStateException
+     * @throws OptionGroupNotFoundException
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDSClient.java;<<<<<<< MINE
+=======
+     *
+     * @param describeEventsRequest Container for the necessary parameters to
+     *           execute the DescribeEvents service method on AmazonRDS.
+     * 
+     * @return The response from the DescribeEvents service method, as
+     *         returned by AmazonRDS.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonRDS indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public DescribeEventsResult describeEvents(DescribeEventsRequest describeEventsRequest) 
+            throws AmazonServiceException, AmazonClientException {
+        Request<DescribeEventsRequest> request = new DescribeEventsRequestMarshaller().marshall(describeEventsRequest);
+        return invoke(request, new DescribeEventsResultStaxUnmarshaller());
+    }
+    
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDSClient.java;<<<<<<< MINE
+=======
+     * @throws InvalidRestoreException
+     * @throws InstanceQuotaExceededException
+     * @throws DBSubnetGroupNotFoundException
+     * @throws DBInstanceAlreadyExistsException
+     * @throws StorageQuotaExceededException
+     * @throws InvalidVPCNetworkStateException
+     * @throws InvalidDBSnapshotStateException
+     * @throws InsufficientDBInstanceCapacityException
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDSClient.java;<<<<<<< MINE
+=======
+     * @throws ProvisionedIopsNotAvailableInAZException
+     * @throws DBSnapshotNotFoundException
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDSClient.java;<<<<<<< MINE
+=======
+     *
+     * @param createDBParameterGroupRequest Container for the necessary
+     *           parameters to execute the CreateDBParameterGroup service method on
+     *           AmazonRDS.
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDSClient.java;<<<<<<< MINE
+=======
+     * @throws DBParameterGroupQuotaExceededException
+     * @throws DBParameterGroupAlreadyExistsException
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDSClient.java;<<<<<<< MINE
+=======
+     *
+     * @param revokeDBSecurityGroupIngressRequest Container for the necessary
+     *           parameters to execute the RevokeDBSecurityGroupIngress service method
+     *           on AmazonRDS.
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDSClient.java;<<<<<<< MINE
+=======
+     * @throws ReservedDBInstanceNotFoundException
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDSAsync.java;<<<<<<< MINE
+=======
+     *
+     * @param createDBSnapshotRequest Container for the necessary parameters
+     *           to execute the CreateDBSnapshot operation on AmazonRDS.
+     * 
+     * @return A Java Future object containing the response from the
+     *         CreateDBSnapshot service method, as returned by AmazonRDS.
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonRDS indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<DBSnapshot> createDBSnapshotAsync(CreateDBSnapshotRequest createDBSnapshotRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDSAsync.java;<<<<<<< MINE
+=======
+     *
+     * @param createDBSubnetGroupRequest Container for the necessary
+     *           parameters to execute the CreateDBSubnetGroup operation on AmazonRDS.
+     * 
+     * @return A Java Future object containing the response from the
+     *         CreateDBSubnetGroup service method, as returned by AmazonRDS.
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonRDS indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<DBSubnetGroup> createDBSubnetGroupAsync(CreateDBSubnetGroupRequest createDBSubnetGroupRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDSAsync.java;<<<<<<< MINE
+=======
+     *
+     * @param describeDBParametersRequest Container for the necessary
+     *           parameters to execute the DescribeDBParameters operation on AmazonRDS.
+     * 
+     * @return A Java Future object containing the response from the
+     *         DescribeDBParameters service method, as returned by AmazonRDS.
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonRDS indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<DescribeDBParametersResult> describeDBParametersAsync(DescribeDBParametersRequest describeDBParametersRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDSAsync.java;<<<<<<< MINE
+=======
+     *
+     * @param modifyOptionGroupRequest Container for the necessary parameters
+     *           to execute the ModifyOptionGroup operation on AmazonRDS.
+     * 
+     * @return A Java Future object containing the response from the
+     *         ModifyOptionGroup service method, as returned by AmazonRDS.
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonRDS indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<OptionGroup> modifyOptionGroupAsync(ModifyOptionGroupRequest modifyOptionGroupRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDSAsync.java;<<<<<<< MINE
+=======
+     *
+     * @param describeEventsRequest Container for the necessary parameters to
+     *           execute the DescribeEvents operation on AmazonRDS.
+     * 
+     * @return A Java Future object containing the response from the
+     *         DescribeEvents service method, as returned by AmazonRDS.
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonRDS indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<DescribeEventsResult> describeEventsAsync(DescribeEventsRequest describeEventsRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDSAsync.java;<<<<<<< MINE
+=======
+     *
+     * @param describeOrderableDBInstanceOptionsRequest Container for the
+     *           necessary parameters to execute the DescribeOrderableDBInstanceOptions
+     *           operation on AmazonRDS.
+     * 
+     * @return A Java Future object containing the response from the
+     *         DescribeOrderableDBInstanceOptions service method, as returned by
+     *         AmazonRDS.
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonRDS indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<DescribeOrderableDBInstanceOptionsResult> describeOrderableDBInstanceOptionsAsync(DescribeOrderableDBInstanceOptionsRequest describeOrderableDBInstanceOptionsRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDSAsync.java;<<<<<<< MINE
+=======
+     *
+     * @param purchaseReservedDBInstancesOfferingRequest Container for the
+     *           necessary parameters to execute the
+     *           PurchaseReservedDBInstancesOffering operation on AmazonRDS.
+     * 
+     * @return A Java Future object containing the response from the
+     *         PurchaseReservedDBInstancesOffering service method, as returned by
+     *         AmazonRDS.
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonRDS indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<ReservedDBInstance> purchaseReservedDBInstancesOfferingAsync(PurchaseReservedDBInstancesOfferingRequest purchaseReservedDBInstancesOfferingRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/sqs/AmazonSQSAsync.java;<<<<<<< MINE
+=======
+     * <li> <code>ReceiveMessageWaitTimeSeconds</code> - returns the time
+     * for which a ReceiveMessage call will wait for a message to
+     * arrive.</li>
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/sqs/AmazonSQSAsync.java;<<<<<<< MINE
+=======
+     * <li> <code>ReceiveMessageWaitTimeSeconds</code> - returns the time
+     * for which a ReceiveMessage call will wait for a message to
+     * arrive.</li>
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/sqs/AmazonSQSAsync.java;<<<<<<< MINE
+=======
+     * <p>
+     * If a message is available in the queue, the call will return
+     * immediately. Otherwise, it will wait up to
+     * <code>WaitTimeSeconds</code> for a message to arrive. If you do not
+     * specify <code>WaitTimeSeconds</code> in the request, the queue
+     * attribute ReceiveMessageWaitTimeSeconds is used to determine how long
+     * to wait.
+     * </p>
+     * <p>
+     * You could ask for additional information about each message through
+     * the attributes. Attributes that can be requested are <code>[SenderId,
+     * ApproximateFirstReceiveTimestamp, ApproximateReceiveCount,
+     * SentTimestamp]</code> .
+     * </p>
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/sqs/AmazonSQSAsync.java;<<<<<<< MINE
+=======
+     * <p>
+     * If a message is available in the queue, the call will return
+     * immediately. Otherwise, it will wait up to
+     * <code>WaitTimeSeconds</code> for a message to arrive. If you do not
+     * specify <code>WaitTimeSeconds</code> in the request, the queue
+     * attribute ReceiveMessageWaitTimeSeconds is used to determine how long
+     * to wait.
+     * </p>
+     * <p>
+     * You could ask for additional information about each message through
+     * the attributes. Attributes that can be requested are <code>[SenderId,
+     * ApproximateFirstReceiveTimestamp, ApproximateReceiveCount,
+     * SentTimestamp]</code> .
+     * </p>
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/sqs/AmazonSQSClient.java;<<<<<<< MINE
+=======
+     * <li> <code>ReceiveMessageWaitTimeSeconds</code> - returns the time
+     * for which a ReceiveMessage call will wait for a message to
+     * arrive.</li>
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/sqs/AmazonSQSClient.java;<<<<<<< MINE
+=======
+     * <p>
+     * If a message is available in the queue, the call will return
+     * immediately. Otherwise, it will wait up to
+     * <code>WaitTimeSeconds</code> for a message to arrive. If you do not
+     * specify <code>WaitTimeSeconds</code> in the request, the queue
+     * attribute ReceiveMessageWaitTimeSeconds is used to determine how long
+     * to wait.
+     * </p>
+     * <p>
+     * You could ask for additional information about each message through
+     * the attributes. Attributes that can be requested are <code>[SenderId,
+     * ApproximateFirstReceiveTimestamp, ApproximateReceiveCount,
+     * SentTimestamp]</code> .
+     * </p>
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/sqs/AmazonSQS.java;<<<<<<< MINE
+=======
+     * <li> <code>ReceiveMessageWaitTimeSeconds</code> - returns the time
+     * for which a ReceiveMessage call will wait for a message to
+     * arrive.</li>
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/sqs/AmazonSQS.java;<<<<<<< MINE
+=======
+     * <p>
+     * If a message is available in the queue, the call will return
+     * immediately. Otherwise, it will wait up to
+     * <code>WaitTimeSeconds</code> for a message to arrive. If you do not
+     * specify <code>WaitTimeSeconds</code> in the request, the queue
+     * attribute ReceiveMessageWaitTimeSeconds is used to determine how long
+     * to wait.
+     * </p>
+     * <p>
+     * You could ask for additional information about each message through
+     * the attributes. Attributes that can be requested are <code>[SenderId,
+     * ApproximateFirstReceiveTimestamp, ApproximateReceiveCount,
+     * SentTimestamp]</code> .
+     * </p>
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/sqs/model/QueueAttributeName.java;<<<<<<< MINE
+=======
+        } else if ("ReceiveMessageWaitTimeSeconds".equals(value)) {
+            return QueueAttributeName.ReceiveMessageWaitTimeSeconds;
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/sqs/model/GetQueueAttributesRequest.java;<<<<<<< MINE
+=======
+ * <li> <code>ReceiveMessageWaitTimeSeconds</code> - returns the time for which a ReceiveMessage call will wait for a message to arrive.</li>
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/sqs/model/transform/ReceiveMessageRequestMarshaller.java;<<<<<<< MINE
+=======
+        if (receiveMessageRequest.getWaitTimeSeconds() != null) {
+            request.addParameter("WaitTimeSeconds", StringUtils.fromInteger(receiveMessageRequest.getWaitTimeSeconds()));
+        }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/sqs/model/ReceiveMessageRequest.java;<<<<<<< MINE
+=======
+     * The duration (in seconds) for which the call will wait for a message
+     * to arrive in the queue before returning. If a message is available,
+     * the call will return sooner than WaitTimeSeconds.
+     */
+    private Integer waitTimeSeconds;
+
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/sqs/model/ReceiveMessageRequest.java;<<<<<<< MINE
+=======
+     * The duration (in seconds) for which the call will wait for a message
+     * to arrive in the queue before returning. If a message is available,
+     * the call will return sooner than WaitTimeSeconds.
+     *
+     * @return The duration (in seconds) for which the call will wait for a message
+     *         to arrive in the queue before returning. If a message is available,
+     *         the call will return sooner than WaitTimeSeconds.
+     */
+    public Integer getWaitTimeSeconds() {
+        return waitTimeSeconds;
+    }
+    
+    /**
+     * The duration (in seconds) for which the call will wait for a message
+     * to arrive in the queue before returning. If a message is available,
+     * the call will return sooner than WaitTimeSeconds.
+     *
+     * @param waitTimeSeconds The duration (in seconds) for which the call will wait for a message
+     *         to arrive in the queue before returning. If a message is available,
+     *         the call will return sooner than WaitTimeSeconds.
+     */
+    public void setWaitTimeSeconds(Integer waitTimeSeconds) {
+        this.waitTimeSeconds = waitTimeSeconds;
+    }
+    
+    /**
+     * The duration (in seconds) for which the call will wait for a message
+     * to arrive in the queue before returning. If a message is available,
+     * the call will return sooner than WaitTimeSeconds.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     *
+     * @param waitTimeSeconds The duration (in seconds) for which the call will wait for a message
+     *         to arrive in the queue before returning. If a message is available,
+     *         the call will return sooner than WaitTimeSeconds.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together. 
+     */
+    public ReceiveMessageRequest withWaitTimeSeconds(Integer waitTimeSeconds) {
+        this.waitTimeSeconds = waitTimeSeconds;
+        return this;
+    }
+    
+    
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/sqs/model/ReceiveMessageRequest.java;<<<<<<< MINE
+=======
+        if (waitTimeSeconds != null) sb.append("WaitTimeSeconds: " + waitTimeSeconds + ", ");
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/sqs/model/ReceiveMessageRequest.java;<<<<<<< MINE
+=======
+        hashCode = prime * hashCode + ((getWaitTimeSeconds() == null) ? 0 : getWaitTimeSeconds().hashCode()); 
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/sqs/model/ReceiveMessageRequest.java;<<<<<<< MINE
+=======
+        if (other.getWaitTimeSeconds() == null ^ this.getWaitTimeSeconds() == null) return false;
+        if (other.getWaitTimeSeconds() != null && other.getWaitTimeSeconds().equals(this.getWaitTimeSeconds()) == false) return false; 
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/sqs/AmazonSQSAsyncClient.java;<<<<<<< MINE
+=======
+     * <li> <code>ReceiveMessageWaitTimeSeconds</code> - returns the time
+     * for which a ReceiveMessage call will wait for a message to
+     * arrive.</li>
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/sqs/AmazonSQSAsyncClient.java;<<<<<<< MINE
+=======
+     * <li> <code>ReceiveMessageWaitTimeSeconds</code> - returns the time
+     * for which a ReceiveMessage call will wait for a message to
+     * arrive.</li>
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/sqs/AmazonSQSAsyncClient.java;<<<<<<< MINE
+=======
+     * <p>
+     * If a message is available in the queue, the call will return
+     * immediately. Otherwise, it will wait up to
+     * <code>WaitTimeSeconds</code> for a message to arrive. If you do not
+     * specify <code>WaitTimeSeconds</code> in the request, the queue
+     * attribute ReceiveMessageWaitTimeSeconds is used to determine how long
+     * to wait.
+     * </p>
+     * <p>
+     * You could ask for additional information about each message through
+     * the attributes. Attributes that can be requested are <code>[SenderId,
+     * ApproximateFirstReceiveTimestamp, ApproximateReceiveCount,
+     * SentTimestamp]</code> .
+     * </p>
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/sqs/AmazonSQSAsyncClient.java;<<<<<<< MINE
+=======
+     * <p>
+     * If a message is available in the queue, the call will return
+     * immediately. Otherwise, it will wait up to
+     * <code>WaitTimeSeconds</code> for a message to arrive. If you do not
+     * specify <code>WaitTimeSeconds</code> in the request, the queue
+     * attribute ReceiveMessageWaitTimeSeconds is used to determine how long
+     * to wait.
+     * </p>
+     * <p>
+     * You could ask for additional information about each message through
+     * the attributes. Attributes that can be requested are <code>[SenderId,
+     * ApproximateFirstReceiveTimestamp, ApproximateReceiveCount,
+     * SentTimestamp]</code> .
+     * </p>
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/AWSStorageGatewayClient.java;<<<<<<< MINE
+=======
+     *
+     * @param listGatewaysRequest Container for the necessary parameters to
+     *           execute the ListGateways service method on AWSStorageGateway.
+     * 
+     * @return The response from the ListGateways service method, as returned
+     *         by AWSStorageGateway.
+     * 
+     * @throws InternalServerErrorException
+     * @throws InvalidGatewayRequestException
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AWSStorageGateway indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public ListGatewaysResult listGateways(ListGatewaysRequest listGatewaysRequest) 
+            throws AmazonServiceException, AmazonClientException {
+
+        /* Create execution context */
+        ExecutionContext executionContext = createExecutionContext();
+        
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.RequestMarshallTime.name());
+        Request<ListGatewaysRequest> request = new ListGatewaysRequestMarshaller().marshall(listGatewaysRequest);
+        awsRequestMetrics.endEvent(Field.RequestMarshallTime.name());
+
+        Unmarshaller<ListGatewaysResult, JsonUnmarshallerContext> unmarshaller = new ListGatewaysResultJsonUnmarshaller();
+        
+        JsonResponseHandler<ListGatewaysResult> responseHandler = new JsonResponseHandler<ListGatewaysResult>(unmarshaller);
+
+        
+
+        return invoke(request, responseHandler, executionContext);
+    }
+    
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/AWSStorageGatewayClient.java;<<<<<<< MINE
+=======
+     *
+     * @param createStorediSCSIVolumeRequest Container for the necessary
+     *           parameters to execute the CreateStorediSCSIVolume service method on
+     *           AWSStorageGateway.
+     * 
+     * @return The response from the CreateStorediSCSIVolume service method,
+     *         as returned by AWSStorageGateway.
+     * 
+     * @throws InternalServerErrorException
+     * @throws InvalidGatewayRequestException
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AWSStorageGateway indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public CreateStorediSCSIVolumeResult createStorediSCSIVolume(CreateStorediSCSIVolumeRequest createStorediSCSIVolumeRequest) 
+            throws AmazonServiceException, AmazonClientException {
+
+        /* Create execution context */
+        ExecutionContext executionContext = createExecutionContext();
+        
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.RequestMarshallTime.name());
+        Request<CreateStorediSCSIVolumeRequest> request = new CreateStorediSCSIVolumeRequestMarshaller().marshall(createStorediSCSIVolumeRequest);
+        awsRequestMetrics.endEvent(Field.RequestMarshallTime.name());
+
+        Unmarshaller<CreateStorediSCSIVolumeResult, JsonUnmarshallerContext> unmarshaller = new CreateStorediSCSIVolumeResultJsonUnmarshaller();
+        
+        JsonResponseHandler<CreateStorediSCSIVolumeResult> responseHandler = new JsonResponseHandler<CreateStorediSCSIVolumeResult>(unmarshaller);
+
+        
+
+        return invoke(request, responseHandler, executionContext);
+    }
+    
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/AWSStorageGatewayClient.java;<<<<<<< MINE
+=======
+     *
+     * @param createSnapshotRequest Container for the necessary parameters to
+     *           execute the CreateSnapshot service method on AWSStorageGateway.
+     * 
+     * @return The response from the CreateSnapshot service method, as
+     *         returned by AWSStorageGateway.
+     * 
+     * @throws InternalServerErrorException
+     * @throws InvalidGatewayRequestException
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AWSStorageGateway indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public CreateSnapshotResult createSnapshot(CreateSnapshotRequest createSnapshotRequest) 
+            throws AmazonServiceException, AmazonClientException {
+
+        /* Create execution context */
+        ExecutionContext executionContext = createExecutionContext();
+        
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.RequestMarshallTime.name());
+        Request<CreateSnapshotRequest> request = new CreateSnapshotRequestMarshaller().marshall(createSnapshotRequest);
+        awsRequestMetrics.endEvent(Field.RequestMarshallTime.name());
+
+        Unmarshaller<CreateSnapshotResult, JsonUnmarshallerContext> unmarshaller = new CreateSnapshotResultJsonUnmarshaller();
+        
+        JsonResponseHandler<CreateSnapshotResult> responseHandler = new JsonResponseHandler<CreateSnapshotResult>(unmarshaller);
+
+        
+
+        return invoke(request, responseHandler, executionContext);
+    }
+    
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/AWSStorageGatewayClient.java;<<<<<<< MINE
+=======
+     * <p>
+     * <b>IMPORTANT:</b> You no longer pay software charges after the gateway
+     * is deleted; however, your existing Amazon EBS snapshots persist and
+     * you will continue to be billed for these snapshots.??You can choose to
+     * remove all remaining Amazon EBS snapshots by canceling your Amazon EC2
+     * subscription.?? If you prefer not to cancel your Amazon EC2
+     * subscription, you can delete your snapshots using the Amazon EC2
+     * console. For more information, see the AWS Storage Gateway Detail
+     * Page.
+     * </p>
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/AWSStorageGatewayClient.java;<<<<<<< MINE
+=======
+     *
+     * @param deleteSnapshotScheduleRequest Container for the necessary
+     *           parameters to execute the DeleteSnapshotSchedule service method on
+     *           AWSStorageGateway.
+     * 
+     * @return The response from the DeleteSnapshotSchedule service method,
+     *         as returned by AWSStorageGateway.
+     * 
+     * @throws InternalServerErrorException
+     * @throws InvalidGatewayRequestException
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AWSStorageGateway indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public DeleteSnapshotScheduleResult deleteSnapshotSchedule(DeleteSnapshotScheduleRequest deleteSnapshotScheduleRequest) 
+            throws AmazonServiceException, AmazonClientException {
+
+        /* Create execution context */
+        ExecutionContext executionContext = createExecutionContext();
+        
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.RequestMarshallTime.name());
+        Request<DeleteSnapshotScheduleRequest> request = new DeleteSnapshotScheduleRequestMarshaller().marshall(deleteSnapshotScheduleRequest);
+        awsRequestMetrics.endEvent(Field.RequestMarshallTime.name());
+
+        Unmarshaller<DeleteSnapshotScheduleResult, JsonUnmarshallerContext> unmarshaller = new DeleteSnapshotScheduleResultJsonUnmarshaller();
+        
+        JsonResponseHandler<DeleteSnapshotScheduleResult> responseHandler = new JsonResponseHandler<DeleteSnapshotScheduleResult>(unmarshaller);
+
+        
+
+        return invoke(request, responseHandler, executionContext);
+    }
+    
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/AWSStorageGatewayClient.java;<<<<<<< MINE
+=======
+     *
+     * @param describeCachediSCSIVolumesRequest Container for the necessary
+     *           parameters to execute the DescribeCachediSCSIVolumes service method on
+     *           AWSStorageGateway.
+     * 
+     * @return The response from the DescribeCachediSCSIVolumes service
+     *         method, as returned by AWSStorageGateway.
+     * 
+     * @throws InternalServerErrorException
+     * @throws InvalidGatewayRequestException
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AWSStorageGateway indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public DescribeCachediSCSIVolumesResult describeCachediSCSIVolumes(DescribeCachediSCSIVolumesRequest describeCachediSCSIVolumesRequest) 
+            throws AmazonServiceException, AmazonClientException {
+
+        /* Create execution context */
+        ExecutionContext executionContext = createExecutionContext();
+        
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.RequestMarshallTime.name());
+        Request<DescribeCachediSCSIVolumesRequest> request = new DescribeCachediSCSIVolumesRequestMarshaller().marshall(describeCachediSCSIVolumesRequest);
+        awsRequestMetrics.endEvent(Field.RequestMarshallTime.name());
+
+        Unmarshaller<DescribeCachediSCSIVolumesResult, JsonUnmarshallerContext> unmarshaller = new DescribeCachediSCSIVolumesResultJsonUnmarshaller();
+        
+        JsonResponseHandler<DescribeCachediSCSIVolumesResult> responseHandler = new JsonResponseHandler<DescribeCachediSCSIVolumesResult>(unmarshaller);
+
+        
+
+        return invoke(request, responseHandler, executionContext);
+    }
+    
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/VolumeType.java;<<<<<<< MINE
+=======
+        } else if ("CACHED iSCSI".equals(value)) {
+            return VolumeType.CACHEDISCSI;
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/DescribeGatewayInformationResult.java;<<<<<<< MINE
+=======
+     * TBD
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>STORED, CACHED
+     */
+    private String gatewayType;
+
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/DescribeGatewayInformationResult.java;<<<<<<< MINE
+=======
+     * TBD
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>STORED, CACHED
+     *
+     * @return TBD
+     *
+     * @see GatewayType
+     */
+    public String getGatewayType() {
+        return gatewayType;
+    }
+    
+    /**
+     * TBD
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>STORED, CACHED
+     *
+     * @param gatewayType TBD
+     *
+     * @see GatewayType
+     */
+    public void setGatewayType(String gatewayType) {
+        this.gatewayType = gatewayType;
+    }
+    
+    /**
+     * TBD
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>STORED, CACHED
+     *
+     * @param gatewayType TBD
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together. 
+     *
+     * @see GatewayType
+     */
+    public DescribeGatewayInformationResult withGatewayType(String gatewayType) {
+        this.gatewayType = gatewayType;
+        return this;
+    }
+    
+    
+    /**
+     * TBD
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>STORED, CACHED
+     *
+     * @param gatewayType TBD
+     *
+     * @see GatewayType
+     */
+    public void setGatewayType(GatewayType gatewayType) {
+        this.gatewayType = gatewayType.toString();
+    }
+    
+    /**
+     * TBD
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>STORED, CACHED
+     *
+     * @param gatewayType TBD
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together. 
+     *
+     * @see GatewayType
+     */
+    public DescribeGatewayInformationResult withGatewayType(GatewayType gatewayType) {
+        this.gatewayType = gatewayType.toString();
+        return this;
+    }
+    
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/DescribeGatewayInformationResult.java;<<<<<<< MINE
+=======
+        if (gatewayType != null) sb.append("GatewayType: " + gatewayType + ", ");
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/DescribeGatewayInformationResult.java;<<<<<<< MINE
+=======
+        hashCode = prime * hashCode + ((getGatewayType() == null) ? 0 : getGatewayType().hashCode()); 
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/DescribeGatewayInformationResult.java;<<<<<<< MINE
+=======
+        if (other.getGatewayType() == null ^ this.getGatewayType() == null) return false;
+        if (other.getGatewayType() != null && other.getGatewayType().equals(this.getGatewayType()) == false) return false; 
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/ShutdownGatewayRequest.java;<<<<<<< MINE
+=======
+ * <p>
+ * If do not intend to use the gateway again, you must delete the gateway (using DeleteGateway) to no longer pay software charges associated with the
+ * gateway.
+ * </p>
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/DeleteGatewayRequest.java;<<<<<<< MINE
+=======
+ * <p>
+ * <b>IMPORTANT:</b> You no longer pay software charges after the gateway is deleted; however, your existing Amazon EBS snapshots persist and you will
+ * continue to be billed for these snapshots.??You can choose to remove all remaining Amazon EBS snapshots by canceling your Amazon EC2 subscription.??
+ * If you prefer not to cancel your Amazon EC2 subscription, you can delete your snapshots using the Amazon EC2 console. For more information, see the
+ * AWS Storage Gateway Detail Page.
+ * </p>
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/DiskAllocationType.java;<<<<<<< MINE
+=======
+    AVAILABLE("AVAILABLE"),
+    CACHESTORAGE("CACHE STORAGE"),
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/DiskAllocationType.java;<<<<<<< MINE
+=======
+        } else if ("AVAILABLE".equals(value)) {
+            return DiskAllocationType.AVAILABLE;
+        } else if ("CACHE STORAGE".equals(value)) {
+            return DiskAllocationType.CACHESTORAGE;
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/DiskAllocationType.java;<<<<<<< MINE
+=======
+        } else if ("UPLOAD BUFFER".equals(value)) {
+            return DiskAllocationType.UPLOADBUFFER;
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/VolumeStatus.java;<<<<<<< MINE
+=======
+        } else if ("UPLOAD BUFFER NOT CONFIGURED".equals(value)) {
+            return VolumeStatus.UPLOADBUFFERNOTCONFIGURED;
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/transform/DescribeGatewayInformationResultJsonUnmarshaller.java;<<<<<<< MINE
+=======
+                if (context.testExpression("GatewayType", targetDepth)) {
+                    context.nextToken();
+                    describeGatewayInformationResult.setGatewayType(StringJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/transform/ActivateGatewayRequestMarshaller.java;<<<<<<< MINE
+=======
+            if (activateGatewayRequest.getGatewayType() != null) {
+                jsonWriter.key("GatewayType").value(activateGatewayRequest.getGatewayType());
+            }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/UpdateChapCredentialsRequest.java;<<<<<<< MINE
+=======
+ * <p>
+ * <b>IMPORTANT:</b> When you update CHAP credentials, all existing connections on the target are closed and initiators must reconnect with the new
+ * credentials.
+ * </p>
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/ActivateGatewayRequest.java;<<<<<<< MINE
+=======
+     * One of the values that defines the type of gateway to activate. The
+     * type specified is critical to all later functions of the gateway and
+     * cannot be changed after activation. The default value is
+     * <code>STORED</code>.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>STORED, CACHED
+     */
+    private String gatewayType;
+
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/ActivateGatewayRequest.java;<<<<<<< MINE
+=======
+     * One of the values that defines the type of gateway to activate. The
+     * type specified is critical to all later functions of the gateway and
+     * cannot be changed after activation. The default value is
+     * <code>STORED</code>.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>STORED, CACHED
+     *
+     * @return One of the values that defines the type of gateway to activate. The
+     *         type specified is critical to all later functions of the gateway and
+     *         cannot be changed after activation. The default value is
+     *         <code>STORED</code>.
+     *
+     * @see GatewayType
+     */
+    public String getGatewayType() {
+        return gatewayType;
+    }
+    
+    /**
+     * One of the values that defines the type of gateway to activate. The
+     * type specified is critical to all later functions of the gateway and
+     * cannot be changed after activation. The default value is
+     * <code>STORED</code>.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>STORED, CACHED
+     *
+     * @param gatewayType One of the values that defines the type of gateway to activate. The
+     *         type specified is critical to all later functions of the gateway and
+     *         cannot be changed after activation. The default value is
+     *         <code>STORED</code>.
+     *
+     * @see GatewayType
+     */
+    public void setGatewayType(String gatewayType) {
+        this.gatewayType = gatewayType;
+    }
+    
+    /**
+     * One of the values that defines the type of gateway to activate. The
+     * type specified is critical to all later functions of the gateway and
+     * cannot be changed after activation. The default value is
+     * <code>STORED</code>.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>STORED, CACHED
+     *
+     * @param gatewayType One of the values that defines the type of gateway to activate. The
+     *         type specified is critical to all later functions of the gateway and
+     *         cannot be changed after activation. The default value is
+     *         <code>STORED</code>.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together. 
+     *
+     * @see GatewayType
+     */
+    public ActivateGatewayRequest withGatewayType(String gatewayType) {
+        this.gatewayType = gatewayType;
+        return this;
+    }
+    
+    
+    /**
+     * One of the values that defines the type of gateway to activate. The
+     * type specified is critical to all later functions of the gateway and
+     * cannot be changed after activation. The default value is
+     * <code>STORED</code>.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>STORED, CACHED
+     *
+     * @param gatewayType One of the values that defines the type of gateway to activate. The
+     *         type specified is critical to all later functions of the gateway and
+     *         cannot be changed after activation. The default value is
+     *         <code>STORED</code>.
+     *
+     * @see GatewayType
+     */
+    public void setGatewayType(GatewayType gatewayType) {
+        this.gatewayType = gatewayType.toString();
+    }
+    
+    /**
+     * One of the values that defines the type of gateway to activate. The
+     * type specified is critical to all later functions of the gateway and
+     * cannot be changed after activation. The default value is
+     * <code>STORED</code>.
+     * <p>
+     * Returns a reference to this object so that method calls can be chained together.
+     * <p>
+     * <b>Constraints:</b><br/>
+     * <b>Allowed Values: </b>STORED, CACHED
+     *
+     * @param gatewayType One of the values that defines the type of gateway to activate. The
+     *         type specified is critical to all later functions of the gateway and
+     *         cannot be changed after activation. The default value is
+     *         <code>STORED</code>.
+     *
+     * @return A reference to this updated object so that method calls can be chained 
+     *         together. 
+     *
+     * @see GatewayType
+     */
+    public ActivateGatewayRequest withGatewayType(GatewayType gatewayType) {
+        this.gatewayType = gatewayType.toString();
+        return this;
+    }
+    
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/ActivateGatewayRequest.java;<<<<<<< MINE
+=======
+        if (gatewayType != null) sb.append("GatewayType: " + gatewayType + ", ");
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/ActivateGatewayRequest.java;<<<<<<< MINE
+=======
+        hashCode = prime * hashCode + ((getGatewayType() == null) ? 0 : getGatewayType().hashCode()); 
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/ActivateGatewayRequest.java;<<<<<<< MINE
+=======
+        if (other.getGatewayType() == null ^ this.getGatewayType() == null) return false;
+        if (other.getGatewayType() != null && other.getGatewayType().equals(this.getGatewayType()) == false) return false; 
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/AWSStorageGatewayAsyncClient.java;<<<<<<< MINE
+=======
+     *
+     * @param deleteChapCredentialsRequest Container for the necessary
+     *           parameters to execute the DeleteChapCredentials operation on
+     *           AWSStorageGateway.
+     * 
+     * @return A Java Future object containing the response from the
+     *         DeleteChapCredentials service method, as returned by
+     *         AWSStorageGateway.
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AWSStorageGateway indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<DeleteChapCredentialsResult> deleteChapCredentialsAsync(final DeleteChapCredentialsRequest deleteChapCredentialsRequest) 
+            throws AmazonServiceException, AmazonClientException {
+        return executorService.submit(new Callable<DeleteChapCredentialsResult>() {
+            public DeleteChapCredentialsResult call() throws Exception {
+                return deleteChapCredentials(deleteChapCredentialsRequest);
+		    }
+		});
+    }
+
+    
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/AWSStorageGatewayAsyncClient.java;<<<<<<< MINE
+=======
+     *
+     * @param updateGatewayInformationRequest Container for the necessary
+     *           parameters to execute the UpdateGatewayInformation operation on
+     *           AWSStorageGateway.
+     * 
+     * @return A Java Future object containing the response from the
+     *         UpdateGatewayInformation service method, as returned by
+     *         AWSStorageGateway.
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AWSStorageGateway indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<UpdateGatewayInformationResult> updateGatewayInformationAsync(final UpdateGatewayInformationRequest updateGatewayInformationRequest) 
+            throws AmazonServiceException, AmazonClientException {
+        return executorService.submit(new Callable<UpdateGatewayInformationResult>() {
+            public UpdateGatewayInformationResult call() throws Exception {
+                return updateGatewayInformation(updateGatewayInformationRequest);
+		    }
+		});
+    }
+
+    
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/AWSStorageGatewayAsyncClient.java;<<<<<<< MINE
+=======
+     * <p>
+     * <b>IMPORTANT:</b> You no longer pay software charges after the gateway
+     * is deleted; however, your existing Amazon EBS snapshots persist and
+     * you will continue to be billed for these snapshots.??You can choose to
+     * remove all remaining Amazon EBS snapshots by canceling your Amazon EC2
+     * subscription.?? If you prefer not to cancel your Amazon EC2
+     * subscription, you can delete your snapshots using the Amazon EC2
+     * console. For more information, see the AWS Storage Gateway Detail
+     * Page.
+     * </p>
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/AWSStorageGatewayAsyncClient.java;<<<<<<< MINE
+=======
+     * <p>
+     * <b>IMPORTANT:</b> You no longer pay software charges after the gateway
+     * is deleted; however, your existing Amazon EBS snapshots persist and
+     * you will continue to be billed for these snapshots.??You can choose to
+     * remove all remaining Amazon EBS snapshots by canceling your Amazon EC2
+     * subscription.?? If you prefer not to cancel your Amazon EC2
+     * subscription, you can delete your snapshots using the Amazon EC2
+     * console. For more information, see the AWS Storage Gateway Detail
+     * Page.
+     * </p>
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/AWSStorageGatewayAsyncClient.java;<<<<<<< MINE
+=======
+     *
+     * @param updateChapCredentialsRequest Container for the necessary
+     *           parameters to execute the UpdateChapCredentials operation on
+     *           AWSStorageGateway.
+     * 
+     * @return A Java Future object containing the response from the
+     *         UpdateChapCredentials service method, as returned by
+     *         AWSStorageGateway.
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AWSStorageGateway indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<UpdateChapCredentialsResult> updateChapCredentialsAsync(final UpdateChapCredentialsRequest updateChapCredentialsRequest) 
+            throws AmazonServiceException, AmazonClientException {
+        return executorService.submit(new Callable<UpdateChapCredentialsResult>() {
+            public UpdateChapCredentialsResult call() throws Exception {
+                return updateChapCredentials(updateChapCredentialsRequest);
+		    }
+		});
+    }
+
+    
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/AWSStorageGatewayAsyncClient.java;<<<<<<< MINE
+=======
+     *
+     * @param describeGatewayInformationRequest Container for the necessary
+     *           parameters to execute the DescribeGatewayInformation operation on
+     *           AWSStorageGateway.
+     * 
+     * @return A Java Future object containing the response from the
+     *         DescribeGatewayInformation service method, as returned by
+     *         AWSStorageGateway.
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AWSStorageGateway indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<DescribeGatewayInformationResult> describeGatewayInformationAsync(final DescribeGatewayInformationRequest describeGatewayInformationRequest) 
+            throws AmazonServiceException, AmazonClientException {
+        return executorService.submit(new Callable<DescribeGatewayInformationResult>() {
+            public DescribeGatewayInformationResult call() throws Exception {
+                return describeGatewayInformation(describeGatewayInformationRequest);
+		    }
+		});
+    }
+
+    
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/AWSStorageGatewayAsync.java;<<<<<<< MINE
+=======
+     *
+     * @param deleteChapCredentialsRequest Container for the necessary
+     *           parameters to execute the DeleteChapCredentials operation on
+     *           AWSStorageGateway.
+     * 
+     * @return A Java Future object containing the response from the
+     *         DeleteChapCredentials service method, as returned by
+     *         AWSStorageGateway.
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AWSStorageGateway indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<DeleteChapCredentialsResult> deleteChapCredentialsAsync(DeleteChapCredentialsRequest deleteChapCredentialsRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/AWSStorageGatewayAsync.java;<<<<<<< MINE
+=======
+     *
+     * @param updateGatewayInformationRequest Container for the necessary
+     *           parameters to execute the UpdateGatewayInformation operation on
+     *           AWSStorageGateway.
+     * 
+     * @return A Java Future object containing the response from the
+     *         UpdateGatewayInformation service method, as returned by
+     *         AWSStorageGateway.
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AWSStorageGateway indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<UpdateGatewayInformationResult> updateGatewayInformationAsync(UpdateGatewayInformationRequest updateGatewayInformationRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/AWSStorageGatewayAsync.java;<<<<<<< MINE
+=======
+     *
+     * @param describeBandwidthRateLimitRequest Container for the necessary
+     *           parameters to execute the DescribeBandwidthRateLimit operation on
+     *           AWSStorageGateway.
+     * 
+     * @return A Java Future object containing the response from the
+     *         DescribeBandwidthRateLimit service method, as returned by
+     *         AWSStorageGateway.
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AWSStorageGateway indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<DescribeBandwidthRateLimitResult> describeBandwidthRateLimitAsync(DescribeBandwidthRateLimitRequest describeBandwidthRateLimitRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/AWSStorageGatewayAsync.java;<<<<<<< MINE
+=======
+     * <p>
+     * <b>IMPORTANT:</b> You no longer pay software charges after the gateway
+     * is deleted; however, your existing Amazon EBS snapshots persist and
+     * you will continue to be billed for these snapshots.??You can choose to
+     * remove all remaining Amazon EBS snapshots by canceling your Amazon EC2
+     * subscription.?? If you prefer not to cancel your Amazon EC2
+     * subscription, you can delete your snapshots using the Amazon EC2
+     * console. For more information, see the AWS Storage Gateway Detail
+     * Page.
+     * </p>
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/AWSStorageGatewayAsync.java;<<<<<<< MINE
+=======
+     * <p>
+     * <b>IMPORTANT:</b> You no longer pay software charges after the gateway
+     * is deleted; however, your existing Amazon EBS snapshots persist and
+     * you will continue to be billed for these snapshots.??You can choose to
+     * remove all remaining Amazon EBS snapshots by canceling your Amazon EC2
+     * subscription.?? If you prefer not to cancel your Amazon EC2
+     * subscription, you can delete your snapshots using the Amazon EC2
+     * console. For more information, see the AWS Storage Gateway Detail
+     * Page.
+     * </p>
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/AWSStorageGatewayAsync.java;<<<<<<< MINE
+=======
+     *
+     * @param updateChapCredentialsRequest Container for the necessary
+     *           parameters to execute the UpdateChapCredentials operation on
+     *           AWSStorageGateway.
+     * 
+     * @return A Java Future object containing the response from the
+     *         UpdateChapCredentials service method, as returned by
+     *         AWSStorageGateway.
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AWSStorageGateway indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<UpdateChapCredentialsResult> updateChapCredentialsAsync(UpdateChapCredentialsRequest updateChapCredentialsRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/AWSStorageGatewayAsync.java;<<<<<<< MINE
+=======
+     *
+     * @param listVolumeRecoveryPointsRequest Container for the necessary
+     *           parameters to execute the ListVolumeRecoveryPoints operation on
+     *           AWSStorageGateway.
+     * 
+     * @return A Java Future object containing the response from the
+     *         ListVolumeRecoveryPoints service method, as returned by
+     *         AWSStorageGateway.
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AWSStorageGateway indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<ListVolumeRecoveryPointsResult> listVolumeRecoveryPointsAsync(ListVolumeRecoveryPointsRequest listVolumeRecoveryPointsRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/AWSStorageGatewayAsync.java;<<<<<<< MINE
+=======
+     *
+     * @param describeGatewayInformationRequest Container for the necessary
+     *           parameters to execute the DescribeGatewayInformation operation on
+     *           AWSStorageGateway.
+     * 
+     * @return A Java Future object containing the response from the
+     *         DescribeGatewayInformation service method, as returned by
+     *         AWSStorageGateway.
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AWSStorageGateway indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public Future<DescribeGatewayInformationResult> describeGatewayInformationAsync(DescribeGatewayInformationRequest describeGatewayInformationRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/AWSStorageGateway.java;<<<<<<< MINE
+=======
+     *
+     * @param listGatewaysRequest Container for the necessary parameters to
+     *           execute the ListGateways service method on AWSStorageGateway.
+     * 
+     * @return The response from the ListGateways service method, as returned
+     *         by AWSStorageGateway.
+     * 
+     * @throws InternalServerErrorException
+     * @throws InvalidGatewayRequestException
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AWSStorageGateway indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public ListGatewaysResult listGateways(ListGatewaysRequest listGatewaysRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/AWSStorageGateway.java;<<<<<<< MINE
+=======
+     *
+     * @param createStorediSCSIVolumeRequest Container for the necessary
+     *           parameters to execute the CreateStorediSCSIVolume service method on
+     *           AWSStorageGateway.
+     * 
+     * @return The response from the CreateStorediSCSIVolume service method,
+     *         as returned by AWSStorageGateway.
+     * 
+     * @throws InternalServerErrorException
+     * @throws InvalidGatewayRequestException
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AWSStorageGateway indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public CreateStorediSCSIVolumeResult createStorediSCSIVolume(CreateStorediSCSIVolumeRequest createStorediSCSIVolumeRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/AWSStorageGateway.java;<<<<<<< MINE
+=======
+     *
+     * @param createSnapshotRequest Container for the necessary parameters to
+     *           execute the CreateSnapshot service method on AWSStorageGateway.
+     * 
+     * @return The response from the CreateSnapshot service method, as
+     *         returned by AWSStorageGateway.
+     * 
+     * @throws InternalServerErrorException
+     * @throws InvalidGatewayRequestException
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AWSStorageGateway indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public CreateSnapshotResult createSnapshot(CreateSnapshotRequest createSnapshotRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/AWSStorageGateway.java;<<<<<<< MINE
+=======
+     * <p>
+     * <b>IMPORTANT:</b> You no longer pay software charges after the gateway
+     * is deleted; however, your existing Amazon EBS snapshots persist and
+     * you will continue to be billed for these snapshots.??You can choose to
+     * remove all remaining Amazon EBS snapshots by canceling your Amazon EC2
+     * subscription.?? If you prefer not to cancel your Amazon EC2
+     * subscription, you can delete your snapshots using the Amazon EC2
+     * console. For more information, see the AWS Storage Gateway Detail
+     * Page.
+     * </p>
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/AWSStorageGateway.java;<<<<<<< MINE
+=======
+     *
+     * @param deleteSnapshotScheduleRequest Container for the necessary
+     *           parameters to execute the DeleteSnapshotSchedule service method on
+     *           AWSStorageGateway.
+     * 
+     * @return The response from the DeleteSnapshotSchedule service method,
+     *         as returned by AWSStorageGateway.
+     * 
+     * @throws InternalServerErrorException
+     * @throws InvalidGatewayRequestException
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AWSStorageGateway indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public DeleteSnapshotScheduleResult deleteSnapshotSchedule(DeleteSnapshotScheduleRequest deleteSnapshotScheduleRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/AWSStorageGateway.java;<<<<<<< MINE
+=======
+     *
+     * @param describeCachediSCSIVolumesRequest Container for the necessary
+     *           parameters to execute the DescribeCachediSCSIVolumes service method on
+     *           AWSStorageGateway.
+     * 
+     * @return The response from the DescribeCachediSCSIVolumes service
+     *         method, as returned by AWSStorageGateway.
+     * 
+     * @throws InternalServerErrorException
+     * @throws InvalidGatewayRequestException
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AWSStorageGateway indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public DescribeCachediSCSIVolumesResult describeCachediSCSIVolumes(DescribeCachediSCSIVolumesRequest describeCachediSCSIVolumesRequest) 
+            throws AmazonServiceException, AmazonClientException;
+
+    /**
+>>>>>>> YOURS

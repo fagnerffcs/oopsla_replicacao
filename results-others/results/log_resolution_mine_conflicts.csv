@@ -1,0 +1,558 @@
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_f2ec67e_28fb91a/rev_f2ec67e-28fb91a/src/test/java/org/junit/tests/running/methods/TestMethodTest.java;<<<<<<< MINE
+=======
+		assertEquals(1, result.getRunCount());
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52/src/test/java/org/junit/tests/experimental/max/MaxStarterTest.java;<<<<<<< MINE
+=======
+
+	}
+
+	@Test
+	public void rememberOldRuns() {
+		fMax.run(TwoUnEqualTests.class);
+
+		MaxCore reincarnation= MaxCore.storedLocally(fMaxFile);
+		List<Failure> failures= reincarnation.run(TwoUnEqualTests.class)
+				.getFailures();
+		assertEquals("fast", failures.get(0).getDescription().getMethodName());
+		assertEquals("slow", failures.get(1).getDescription().getMethodName());
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e980c59_1bb1eaf/rev_e980c59-1bb1eaf/src/main/java/org/junit/Assert.java;<<<<<<< MINE
+=======
+	 * Asserts that two double arrays are equal. If they are not, an
+	 * {@link AssertionError} is thrown with the given message.
+	 * 
+	 * @param message
+	 *            the identifying message for the {@link AssertionError} (<code>null</code>
+	 *            okay)
+	 * @param expecteds
+	 *            double array with expected values.
+	 * @param actuals
+	 *            double array with actual values
+	 */
+	public static void assertArrayEquals(String message, float[] expecteds,
+			float[] actuals, float delta) throws ArrayComparisonFailure {
+		new InexactComparisonCriteria(delta).internalArrayEquals(message, expecteds, actuals);
+	}
+
+	// TODO (Mar 10, 2009 10:52:18 AM): fix javadoc
+	/**
+	 * Asserts that two double arrays are equal. If they are not, an
+	 * {@link AssertionError} is thrown.
+	 * 
+	 * @param expecteds
+	 *            double array with expected values.
+	 * @param actuals
+	 *            double array with actual values
+	 */
+	public static void assertArrayEquals(float[] expecteds, float[] actuals, float delta) {
+		assertArrayEquals(null, expecteds, actuals, delta);
+	}
+
+	/**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e980c59_1bb1eaf/rev_e980c59-1bb1eaf/src/test/java/org/junit/tests/assertion/AssertionTest.java;<<<<<<< MINE
+=======
+		// TODO (Mar 10, 2009 10:47:34 AM): Import
+		Assert.assertArrayEquals(new float[] {1.0f}, new float[] {1.0f}, 1.0f);
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e980c59_1bb1eaf/rev_e980c59-1bb1eaf/src/test/java/org/junit/tests/assertion/AssertionTest.java;<<<<<<< MINE
+=======
+	public void oneDimensionalFloatArraysAreNotEqual() {
+		assertArrayEquals(new float[] {1.0f}, new float[] {2.5f}, 1.0f);
+	}
+
+	@Test(expected=AssertionError.class)
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_1708730_912e94c/rev_1708730-912e94c/src/main/java/org/junit/internal/runners/statements/FailOnTimeout.java;<<<<<<< MINE
+=======
+					fFinished= true;
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_2527d9a_2386579/rev_2527d9a-2386579/src/main/java/org/junit/experimental/interceptor/TestWatchman.java;<<<<<<< MINE
+=======
+				starting(method);
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_2527d9a_2386579/rev_2527d9a-2386579/src/main/java/org/junit/experimental/interceptor/TestWatchman.java;<<<<<<< MINE
+=======
+				} finally {
+					finished(method);
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_dafc0ed_79b869e/rev_dafc0ed-79b869e/src/test/java/org/junit/tests/experimental/TimeoutInterceptorTest.java;<<<<<<< MINE
+=======
+	// TODO (May 6, 2009 11:30:19 AM): Make a separate build that makes gump happy
+	@Ignore("For gump, for now")
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_b3ee106_5eaf0fb/rev_b3ee106-5eaf0fb/src/main/java/org/junit/runners/BlockJUnit4ClassRunner.java;<<<<<<< MINE
+=======
+		// TODO (May 11, 2009 11:28:21 PM):
+		// withBefores/withAfters/withBeforeClass/withAfterClass is a lot of
+		// duplication.
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910/src/main/java/org/junit/runners/BlockJUnit4ClassRunner.java;<<<<<<< MINE
+=======
+		validateFields(errors);
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910/src/main/java/org/junit/runners/BlockJUnit4ClassRunner.java;<<<<<<< MINE
+=======
+		// TODO (May 26, 2009 10:48:26 PM): don't override this
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910/src/main/java/org/junit/runners/BlockJUnit4ClassRunner.java;<<<<<<< MINE
+=======
+		statement= withInterceptors(method, test, statement);
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910/src/main/java/org/junit/experimental/interceptor/TestWatchman.java;<<<<<<< MINE
+=======
+	
+	// TODO (May 25, 2009 9:44:36 PM): Fix max and Theories
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910/src/test/java/org/junit/tests/experimental/max/MaxStarterTest.java;<<<<<<< MINE
+=======
+		@SuppressWarnings("unused")
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5/src/main/java/org/junit/internal/matchers/SubstringMatcher.java;<<<<<<< MINE
+=======
+/**
+ * @deprectated Use org.hamcrest.core.SubstringMatcher directly
+ */
+@Deprecated
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5/src/main/java/org/junit/internal/matchers/StringContains.java;<<<<<<< MINE
+=======
+@Deprecated
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5/src/main/java/org/junit/internal/matchers/TypeSafeMatcher.java;<<<<<<< MINE
+=======
+/**
+ * @deprectated Use org.hamcrest.TypeSafeMatcher
+ */
+@Deprecated
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5/src/main/java/org/junit/internal/matchers/Each.java;<<<<<<< MINE
+=======
+
+/**
+ * @deprecated use org.hamcrest.core.Every
+ */
+@Deprecated
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5/src/main/java/org/junit/matchers/JUnitMatchers.java;<<<<<<< MINE
+=======
+@Deprecated
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5/src/main/java/org/junit/matchers/JUnitMatchers.java;<<<<<<< MINE
+=======
+	// TODO (May 27, 2009 11:46:27 AM): deprecate all?
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5/src/main/java/org/junit/matchers/JUnitMatchers.java;<<<<<<< MINE
+=======
+	 * @deprecated Use org.hamcrest.CoreMatchers.hasItem
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5/src/main/java/org/junit/matchers/JUnitMatchers.java;<<<<<<< MINE
+=======
+	 * @deprecated Use org.hamcrest.CoreMatchers.hasItem
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5/src/main/java/org/junit/matchers/JUnitMatchers.java;<<<<<<< MINE
+=======
+	 * @deprecated Use org.hamcrest.CoreMatchers.hasItems
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5/src/main/java/org/junit/matchers/JUnitMatchers.java;<<<<<<< MINE
+=======
+	@Deprecated
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5/src/main/java/org/junit/matchers/JUnitMatchers.java;<<<<<<< MINE
+=======
+	 * @deprecated Use org.hamcrest.CoreMatchers.hasItems
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5/src/main/java/org/junit/matchers/JUnitMatchers.java;<<<<<<< MINE
+=======
+	 * @deprecated use CoreMatchers.everyItem directly
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5/src/main/java/org/junit/matchers/JUnitMatchers.java;<<<<<<< MINE
+=======
+	@Deprecated
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5/src/main/java/org/junit/matchers/JUnitMatchers.java;<<<<<<< MINE
+=======
+	 * @deprecated Use org.hamcrest.CoreMatchers.containsString
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5/src/main/java/org/junit/matchers/JUnitMatchers.java;<<<<<<< MINE
+=======
+	@Deprecated
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5/src/main/java/org/junit/matchers/JUnitMatchers.java;<<<<<<< MINE
+=======
+	 * @deprecated Use org.hamcrest.CoreMatchers.both
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5/src/main/java/org/junit/matchers/JUnitMatchers.java;<<<<<<< MINE
+=======
+	 * @deprecated Use org.hamcrest.CoreMatchers.either
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_20dd074_2e9a239/rev_20dd074-2e9a239/src/main/java/org/junit/experimental/interceptor/ExpectedException.java;<<<<<<< MINE
+=======
+			if (fMatcher != null)
+				throw new AssertionError("Expected test to throw "
+						+ StringDescription.toString(fMatcher));
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_20dd074_2e9a239/rev_20dd074-2e9a239/src/main/java/org/junit/experimental/interceptor/ExpectedException.java;<<<<<<< MINE
+=======
+	}
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/internal/ComparisonCriteria.java;<<<<<<< MINE
+=======
+/**
+ * Defines criteria for finding two items "equal enough". Concrete subclasses
+ * may demand exact equality, or, for example, equality within a given delta.
+ */
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/runners/model/FrameworkMethod.java;<<<<<<< MINE
+=======
+	@Override
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/runners/model/FrameworkMethod.java;<<<<<<< MINE
+=======
+	@Override
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/runners/model/TestClass.java;<<<<<<< MINE
+=======
+	/**
+	 * Returns, efficiently, all the non-overridden fields in this class and
+	 * its superclasses that are annotated with {@code annotationClass}.
+	 */
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/runners/model/FrameworkField.java;<<<<<<< MINE
+=======
+	@Override
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/runners/BlockJUnit4ClassRunner.java;<<<<<<< MINE
+
+=======
+	
+	/**
+	 * Adds to {@code errors} if the test class has more than one constructor,
+	 * or if the constructor takes parameters.  Override if a subclass requires
+	 * different validation rules.
+	 */
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/runners/BlockJUnit4ClassRunner.java;<<<<<<< MINE
+=======
+	 * (do not override)
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/runners/BlockJUnit4ClassRunner.java;<<<<<<< MINE
+=======
+	@Deprecated
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/runners/BlockJUnit4ClassRunner.java;<<<<<<< MINE
+=======
+	@Deprecated
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/runners/BlockJUnit4ClassRunner.java;<<<<<<< MINE
+=======
+	@Deprecated
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/runners/BlockJUnit4ClassRunner.java;<<<<<<< MINE
+=======
+	@Deprecated
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/experimental/max/CouldNotReadCoreException.java;<<<<<<< MINE
+=======
+/**
+ * Thrown when Max cannot read the MaxCore serialization
+ */
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/experimental/max/CouldNotReadCoreException.java;<<<<<<< MINE
+=======
+	/**
+	 * Constructs
+	 */
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/experimental/max/MaxCore.java;<<<<<<< MINE
+=======
+/**
+ * A replacement for JUnitCore, which keeps track of runtime and failure history, and reorders tests
+ * to maximize the chances that a failing test occurs early in the test run.
+ * 
+ * The rules for sorting are:
+ * <ol>
+ * <li> Never-run tests first, in arbitrary order
+ * <li> Group remaining tests by the date at which they most recently failed.
+ * <li> Sort groups such that the most recent failure date is first, and never-failing tests are at the end.
+ * <li> Within a group, run the fastest tests first. 
+ * </ol>
+ */
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/experimental/max/MaxCore.java;<<<<<<< MINE
+=======
+	/**
+	 * Create a new MaxCore from a serialized file stored at storedResults
+	 */
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/experimental/max/MaxCore.java;<<<<<<< MINE
+=======
+	/**
+	 * Run all the tests in <code>class</code>.
+	 * @return a {@link Result} describing the details of the test run and the failed tests.
+	 */
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/experimental/max/MaxCore.java;<<<<<<< MINE
+=======
+	/**
+	 * Run all the tests contained in <code>request</code>.
+	 * @param request the request describing tests
+	 * @return a {@link Result} describing the details of the test run and the failed tests.
+	 */
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/experimental/max/MaxCore.java;<<<<<<< MINE
+=======
+	/**
+	 * Run all the tests contained in <code>request</code>.
+	 * 
+	 * This variant should be used if {@code core} has attached listeners that this
+	 * run should notify.
+	 * 
+	 * @param request the request describing tests
+	 * @param core a JUnitCore to delegate to.
+	 * @return a {@link Result} describing the details of the test run and the failed tests.
+	 */
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/experimental/max/MaxHistory.java;<<<<<<< MINE
+=======
+/**
+ * Stores a subset of the history of each test:
+ * <ul>
+ * <li>Last failure timestamp
+ * <li>Duration of last execution
+ * </ul>
+ */
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/experimental/max/MaxHistory.java;<<<<<<< MINE
+=======
+					return (MaxHistory) stream.readObject();
+				} finally {
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/experimental/max/MaxHistory.java;<<<<<<< MINE
+=======
+		} catch (Exception e) {
+			throw new CouldNotReadCoreException(e);
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_b33b4b0_c3873cf/rev_b33b4b0-c3873cf/src/main/java/org/junit/runners/ParentRunner.java;<<<<<<< MINE
+=======
+	 * 
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_25fa1d5_2de4d6f/rev_25fa1d5-2de4d6f/src/test/java/junit/tests/framework/SuiteTest.java;<<<<<<< MINE
+=======
+		suite.addTest(new SuiteTest("testOneTestCaseEclipseSeesSameStructureAs381"));		
+		suite.addTest(new SuiteTest("testNoTestCaseClass"));
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/main/java/org/junit/rules/ExternalResource.java;<<<<<<< MINE
+=======
+	 * @throws if setup fails (which will disable {@code after}
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/main/java/org/junit/experimental/theories/Theories.java;<<<<<<< MINE
+=======
+            fTestClass= testClass;
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/test/java/junit/tests/framework/SuiteTest.java;<<<<<<< MINE
+=======
+		suite.addTest(new SuiteTest("testOneTestCaseEclipseSeesSameStructureAs381"));		
+		suite.addTest(new SuiteTest("testNoTestCaseClass"));
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/test/java/org/junit/tests/experimental/max/MaxStarterTest.java;<<<<<<< MINE
+=======
+	public void testCountsMatchUp() {
+		JUnitCore core= new JUnitCore();
+		Request filtered= Request.aClass(AllTests.class).filterWith(
+				new Filter() {
+					@Override
+					public boolean shouldRun(Description description) {
+						return !description.toString().contains("Max");
+					}
+
+					@Override
+					public String describe() {
+						return "Avoid infinite recursion";
+					}
+				});
+		int maxCount= fMax.run(filtered, core).getRunCount();
+		int coreCount= core.run(filtered).getRunCount();
+		assertEquals(coreCount, maxCount);
+	}
+
+	@Test
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_28ef5cb_74bb7d8/rev_28ef5cb-74bb7d8/src/main/java/org/junit/runners/ParentRunner.java;<<<<<<< MINE
+=======
+		statement= withClassRules(statement);
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_28ef5cb_74bb7d8/rev_28ef5cb-74bb7d8/src/main/java/org/junit/runners/ParentRunner.java;<<<<<<< MINE
+=======
+	 * Returns a {@link Statement}: apply all static {@link ClassRule} fields
+	 * annotated with {@link Rule}.
+	 *
+	 * @param statement
+	 *            the base statement
+	 * @return a WithClassRules statement if any class-level {@link Rule}s are
+	 *         found, or the base statement
+	 */
+	private Statement withClassRules(Statement statement) {
+		final List<ClassRule> classRules= classRules();
+		if (classRules.isEmpty()) {
+			return statement;
+		}
+		Statement next = statement;
+		for (final ClassRule classRule : classRules) {
+			next = classRule.apply(next, fTestClass);
+		}
+		return next;
+	}
+
+	/**
+	 * @return the {@code ClassRule}s that can transform the block that runs
+	 *         each method in the tested class.
+	 */
+	protected List<ClassRule> classRules() {
+		final List<ClassRule> results= new ArrayList<ClassRule>();
+		for (FrameworkField field : ruleFields()) {
+			if (ClassRule.class.isAssignableFrom(field.getType())) {
+				results.add(getClassRule(field));
+			}
+		}
+		return results;
+	}
+
+	private ClassRule getClassRule(final FrameworkField field) {
+		try {
+			return (ClassRule) field.get(null);
+		} catch (IllegalAccessException e) {
+			throw new RuntimeException(
+					"How did getAnnotatedFields return a field we couldn't access?");
+		}
+	}
+
+	/**
+	 * @return list of {@link FrameworkField}s annotated with {@link Rule}
+	 */
+	protected List<FrameworkField> ruleFields() {
+		return fTestClass.getAnnotatedFields(Rule.class);
+	}
+
+	/**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_28ef5cb_74bb7d8/rev_28ef5cb-74bb7d8/src/main/java/org/junit/runners/model/FrameworkField.java;<<<<<<< MINE
+=======
+	 * @return the underlying Java Field type
+	 * @see java.lang.reflect.Field#getType()
+	 */
+	public Class<?> getType() {
+		return fField.getType();
+	}
+
+	/**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_28ef5cb_74bb7d8/rev_28ef5cb-74bb7d8/src/main/java/org/junit/runners/BlockJUnit4ClassRunner.java;<<<<<<< MINE
+=======
+		if (!MethodRule.class.isAssignableFrom(field.getType())) {
+			if (ClassRule.class.isAssignableFrom(field.getType())) {
+				if (!Modifier.isStatic(field.getModifiers())) {
+					errors.add(new Exception("Field " + field.getName()
+							+ " must be static"));
+				}
+			} else {
+				errors.add(new Exception("Field " + field.getName()
+						+ " must implement MethodRule or ClassRule"));
+			}
+		}
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_28ef5cb_74bb7d8/rev_28ef5cb-74bb7d8/src/test/java/org/junit/tests/AllTests.java;<<<<<<< MINE
+=======
+	ClassRulesTest.class,
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_daeda1a_2162def/rev_daeda1a-2162def/src/main/java/org/junit/rules/TestWatcher.java;<<<<<<< MINE
+=======
+ * @since 4.9
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_6766336_b04c86a/rev_6766336-b04c86a/src/test/java/org/junit/internal/MethodSorterTest.java;<<<<<<< MINE
+=======
+    public void testDefaultMethodSorter() {
+        List<String> expected = Arrays.asList(new String[]{EPSILON, BETA, ALPHA, DELTA, GAMMA_VOID, GAMMA_BOOLEAN});
+        List<String> actual = getDeclaredFilteredMethods(DummySortWithDefault.class, expected);
+        assertEquals(expected, actual);
+    }
+
+    
+    @Test
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_36810df_15ab934/rev_36810df-15ab934/src/test/java/redis/clients/jedis/tests/commands/ClusterCommandsTest.java;<<<<<<< MINE
+=======
+	node1.clusterDelSlots(3000, 3001, 3002);
+	node2.clusterDelSlots(4000, 4001, 4002);
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_d56c729_55d591e/rev_d56c729-55d591e/src/main/java/org/junit/internal/runners/JUnit38ClassRunner.java;<<<<<<< MINE
+=======
+            if (filtered.testCount() == 0) {
+                throw new NoTestsRemainException();
+            }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_8558487_ca59f9b/rev_8558487-ca59f9b/src/main/java/redis/clients/jedis/BinaryJedis.java;<<<<<<< MINE
+=======
+   * @deprecated use BinaryJedis.pexpire(byte[], long) or Jedis.pexpire(String,long) Set a timeout
+   *             on the specified key. After the timeout the key will be automatically deleted by
+   *             the server. A key with an associated timeout is said to be volatile in Redis
+   *             terminology.
+   *             <p>
+   *             Voltile keys are stored on disk like the other keys, the timeout is persistent too
+   *             like all the other aspects of the dataset. Saving a dataset containing expires and
+   *             stopping the server does not stop the flow of time as Redis stores on disk the time
+   *             when the key will no longer be available as Unix time, and not the remaining
+   *             milliseconds.
+   *             <p>
+   *             Since Redis 2.1.3 you can update the value of the timeout of a key already having
+   *             an expire set. It is also possible to undo the expire at all turning the key into a
+   *             normal key using the {@link #persist(byte[]) PERSIST} command.
+   *             <p>
+   *             Time complexity: O(1)
+   * @see <ahref="http://redis.io/commands/pexpire">PEXPIRE Command</a>
+   * @param key
+   * @param milliseconds
+   * @return Integer reply, specifically: 1: the timeout was set. 0: the timeout was not set since
+   *         the key already has an associated timeout (this may happen only in Redis versions <
+   *         2.1.3, Redis >= 2.1.3 will happily update the timeout), or the key does not exist.
+   */
+  @Deprecated
+  public Long pexpire(String key, final long milliseconds) {
+    checkIsInMulti();
+    client.pexpire(key, milliseconds);
+    return client.getIntegerReply();
+  }
+
+  /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_1e5e10c_48170f7/rev_1e5e10c-48170f7/src/main/java/redis/clients/jedis/BinaryJedis.java;<<<<<<< MINE
+=======
+   * Set a timeout on the specified key. After the timeout the key will be automatically deleted by
+   * the server. A key with an associated timeout is said to be volatile in Redis terminology.
+   * <p>
+   * Voltile keys are stored on disk like the other keys, the timeout is persistent too like all the
+   * other aspects of the dataset. Saving a dataset containing expires and stopping the server does
+   * not stop the flow of time as Redis stores on disk the time when the key will no longer be
+   * available as Unix time, and not the remaining milliseconds.
+   * <p>
+   * Since Redis 2.1.3 you can update the value of the timeout of a key already having an expire
+   * set. It is also possible to undo the expire at all turning the key into a normal key using the
+   * {@link #persist(byte[]) PERSIST} command.
+   * <p>
+   * Time complexity: O(1)
+   * @see <ahref="http://redis.io/commands/pexpire">PEXPIRE Command</a>
+   * @param key
+   * @param milliseconds
+   * @return Integer reply, specifically: 1: the timeout was set. 0: the timeout was not set since
+   *         the key already has an associated timeout (this may happen only in Redis versions <
+   *         2.1.3, Redis >= 2.1.3 will happily update the timeout), or the key does not exist.
+   */
+  public Long pexpire(final byte[] key, final long milliseconds) {
+    checkIsInMulti();
+    client.pexpire(key, milliseconds);
+    return client.getIntegerReply();
+  }
+
+  /**
+>>>>>>> YOURS

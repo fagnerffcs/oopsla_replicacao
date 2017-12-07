@@ -1,0 +1,354 @@
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_a84be6a_08e0412/rev_a84be6a-08e0412/eureka-core/src/main/java/com/netflix/eureka/EurekaServerConfig.java;<<<<<<< MINE
+=======
+     * Get a map of region name against remote region discovery url.
+     *
+     * @return - An unmodifiable map of remote region name against remote region discovery url. Empty map if no remote region url
+     * is defined.
+     */
+    Map<String, String> getRemoteRegionUrlsWithName();
+
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_a84be6a_08e0412/rev_a84be6a-08e0412/eureka-core/src/main/java/com/netflix/eureka/EurekaServerConfig.java;<<<<<<< MINE
+=======
+     * @deprecated Use {@link #getRemoteRegionUrlsWithName()}
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_a84be6a_08e0412/rev_a84be6a-08e0412/eureka-client/src/main/java/com/netflix/discovery/shared/Application.java;<<<<<<< MINE
+=======
+                } else if (indexByRemoteRegions && null != instanceRegionChecker && null != clientConfig
+                           && null != remoteRegionsRegistry) {
+                    String instanceRegion = instanceRegionChecker.getInstanceRegion(instanceInfo);
+                    if (!instanceRegionChecker.isLocalRegion(instanceRegion)) {
+                        Applications appsForRemoteRegion = remoteRegionsRegistry.get(instanceRegion);
+                        if (null == appsForRemoteRegion) {
+                            appsForRemoteRegion = new Applications();
+                            remoteRegionsRegistry.put(instanceRegion, appsForRemoteRegion);
+                        }
+
+                        Application remoteApp = appsForRemoteRegion.getRegisteredApplications(instanceInfo.getAppName());
+                        if (null == remoteApp) {
+                            remoteApp = new Application(instanceInfo.getAppName());
+                            appsForRemoteRegion.addApplication(remoteApp);
+                        }
+
+                        remoteApp.addInstance(instanceInfo);
+                        this.removeInstance(instanceInfo, false);
+                        it.remove();
+                    }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_a84be6a_08e0412/rev_a84be6a-08e0412/eureka-client/src/main/java/com/netflix/discovery/shared/Applications.java;<<<<<<< MINE
+=======
+    }
+
+    public static String getReconcileHashCode(TreeMap<String, AtomicInteger> instanceCountMap) {
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_a84be6a_08e0412/rev_a84be6a-08e0412/eureka-client/src/main/java/com/netflix/discovery/shared/Applications.java;<<<<<<< MINE
+=======
+        _shuffleInstances(filterUpInstances, false, null, null, null);
+    }
+
+    public void shuffleAndIndexInstances(Map<String, Applications> remoteRegionsRegistry, EurekaClientConfig clientConfig,
+                                         InstanceRegionChecker instanceRegionChecker) {
+        _shuffleInstances(clientConfig.shouldFilterOnlyUpInstances(), true, remoteRegionsRegistry, clientConfig,
+                          instanceRegionChecker);
+    }
+
+    private void _shuffleInstances(boolean filterUpInstances, boolean indexByRemoteRegions,
+                                   @Nullable Map<String, Applications> remoteRegionsRegistry,
+                                   @Nullable EurekaClientConfig clientConfig,
+                                   @Nullable InstanceRegionChecker instanceRegionChecker) {
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_a84be6a_08e0412/rev_a84be6a-08e0412/eureka-client/src/main/java/com/netflix/discovery/EurekaClientConfig.java;<<<<<<< MINE
+=======
+     * Comma separated list of regions for which the eureka registry information will be fetched. It is mandatory to
+     * define the availability zones for each of these regions as returned by {@link #getAvailabilityZones(String)}.
+     * Failing to do so, will result in failure of discovery client startup.
+     *
+     * @return Comma separated list of regions for which the eureka registry information will be fetched.
+     * <code>null</code> if no remote region has to be fetched.
+     */
+    @Nullable
+    String fetchRegistryForRemoteRegions();
+
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_a84be6a_08e0412/rev_a84be6a-08e0412/eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java;<<<<<<< MINE
+
+=======
+            remoteRegionsToFetch = clientConfig.fetchRegistryForRemoteRegions();
+            instanceRegionChecker = new InstanceRegionChecker(remoteRegionsToFetch, clientConfig);
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_a84be6a_08e0412/rev_a84be6a-08e0412/eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java;<<<<<<< MINE
+=======
+        Applications applications;
+        if (instanceRegionChecker.isLocalRegion(region)) {
+            applications = this.localRegionApps.get();
+        } else {
+            applications = remoteRegionVsApps.get(region);
+            if (null == region) {
+                logger.debug("No applications are defined for region {}, so returning an empty instance list for vip address {}.",
+                             region, vipAddress);
+                return Collections.emptyList();
+            }
+        }
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_a84be6a_08e0412/rev_a84be6a-08e0412/eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java;<<<<<<< MINE
+=======
+                Applications applications = getApplications();
+                String instanceRegion = instanceRegionChecker.getInstanceRegion(instance);
+                if (!instanceRegionChecker.isLocalRegion(instanceRegion)) {
+                    Applications remoteApps = remoteRegionVsApps.get(instanceRegion);
+                    if (null == remoteApps) {
+                        remoteApps = new Applications();
+                        remoteRegionVsApps.put(instanceRegion, remoteApps);
+                    }
+                    applications = remoteApps;
+                }
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_a84be6a_08e0412/rev_a84be6a-08e0412/eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java;<<<<<<< MINE
+=======
+                if (isFetchingRemoteRegionRegistries()) {
+                    urlPath += "?regions=" + remoteRegionsToFetch;
+                }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_a84be6a_08e0412/rev_a84be6a-08e0412/eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java;<<<<<<< MINE
+=======
+                if (isFetchingRemoteRegionRegistries()) {
+                    urlPath += "?regions=" + remoteRegionsToFetch;
+                }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_526d3b1_6333a71/rev_526d3b1-6333a71/eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java;<<<<<<< MINE
+=======
+                logger.info("Single vip registry refresh property : {}", clientConfig.getRegistryRefreshSingleVipAddress());
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_526d3b1_6333a71/rev_526d3b1-6333a71/eureka-client/src/test/java/com/netflix/discovery/AbstractDiscoveryClientTester.java;<<<<<<< MINE
+=======
+        setupDiscoveryClient();
+    }
+
+    protected void setupDiscoveryClient() {
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_526d3b1_6333a71/rev_526d3b1-6333a71/eureka-client/src/test/java/com/netflix/discovery/DiscoveryClientRegistryTest.java;<<<<<<< MINE
+=======
+    public void testCacheRefreshSingleAppForLocalRegion() throws Exception {
+        final String propertyName = "eureka.registryRefreshSingleVipAddress";
+        try {
+            if (client != null) {
+                client.shutdown();  // shutdown and restart the client to pick up the config
+            }
+
+            ConfigurationManager.getConfigInstance().setProperty(propertyName, ALL_REGIONS_VIP1_ADDR);
+            setupDiscoveryClient();
+
+            List<Application> registeredApps = client.getApplications().getRegisteredApplications();
+            Assert.assertEquals(1, registeredApps.size());
+
+            Application app = registeredApps.get(0);
+            Assert.assertEquals(LOCAL_REGION_APP1_NAME, app.getName());
+
+            List<InstanceInfo> instances = app.getInstances();
+            Assert.assertEquals(1, instances.size());
+        } finally {
+            ConfigurationManager.getConfigInstance().clearProperty(propertyName);
+        }
+    }
+
+    @Test
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_526d3b1_6333a71/rev_526d3b1-6333a71/eureka-client/src/test/java/com/netflix/discovery/MockRemoteEurekaServer.java;<<<<<<< MINE
+=======
+                } else if (pathInfo.startsWith("vips/")) {
+                    String vipAddress = pathInfo.substring("vips/".length());
+                    Applications apps = new Applications();
+                    apps.setVersion(-1l);
+                    for (Application application : applicationMap.values()) {
+                        Application retApp = new Application(application.getName());
+                        for (InstanceInfo instance : application.getInstances()) {
+                            if (vipAddress.equals(instance.getVIPAddress())) {
+                                retApp.addInstance(instance);
+                            }
+                        }
+
+                        if (retApp.getInstances().size() > 0) {
+                            apps.addApplication(retApp);
+                        }
+                    }
+
+                    apps.setAppsHashCode(apps.getReconcileHashCode());
+                    sendOkResponseWithContent((Request) request, response, apps);
+                    handled = true;
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-core/src/main/java/com/netflix/eureka/EurekaBootStrap.java;<<<<<<< MINE
+=======
+            } catch (Throwable e) {
+                logger.error("Cannot bind to EIP", e);
+                Thread.sleep(EIP_BIND_SLEEP_TIME_MS);
+            }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-core/src/main/java/com/netflix/eureka/cluster/PeerEurekaNode.java;<<<<<<< MINE
+=======
+                logger.warn(
+                        "Peer wants us to take the instance information from it, since the timestamp differs,"
+                                + "Id : {} My Timestamp : {}, Peer's timestamp: {}", args);
+                if ((infoFromPeer.getOverriddenStatus() != null)
+                        && !(InstanceStatus.UNKNOWN.equals(infoFromPeer
+                        .getOverriddenStatus()))) {
+                    Object[] args1 = {id, info.getOverriddenStatus(), infoFromPeer.getOverriddenStatus()};
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-core/src/main/java/com/netflix/eureka/cluster/PeerEurekaNode.java;<<<<<<< MINE
+=======
+                            } catch (Throwable e) {
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_9b180dc_1c2989d/rev_9b180dc-1c2989d/eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java;<<<<<<< MINE
+=======
+        }
+
+        public void setHealthCheckCallbackProvider(Provider<HealthCheckCallback> healthCheckCallbackProvider) {
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_9b180dc_1c2989d/rev_9b180dc-1c2989d/eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java;<<<<<<< MINE
+=======
+        }
+
+        public void setHealthCheckHandlerProvider(Provider<HealthCheckHandler> healthCheckHandlerProvider) {
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-core/src/main/java/com/netflix/eureka/ServerRequestAuthFilter.java;<<<<<<< MINE
+=======
+@Singleton
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-core/src/main/java/com/netflix/eureka/EurekaBootStrap.java;<<<<<<< MINE
+=======
+    @Override
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-core/src/main/java/com/netflix/eureka/EurekaBootStrap.java;<<<<<<< MINE
+=======
+    @Override
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-core/src/main/java/com/netflix/eureka/RateLimitingFilter.java;<<<<<<< MINE
+=======
+@Singleton
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-core/src/main/java/com/netflix/eureka/RateLimitingFilter.java;<<<<<<< MINE
+=======
+        if (serverConfig == null) {
+            EurekaServerContext serverContext = (EurekaServerContext) filterConfig.getServletContext()
+                    .getAttribute(EurekaServerContext.class.getName());
+            serverConfig = serverContext.getServerConfig();
+        }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-core/src/main/java/com/netflix/eureka/EurekaServerConfig.java;<<<<<<< MINE
+=======
+     * Get the wait/sleep time between each retry sync attempts, if the prev retry failed and there are
+     * more retries to attempt.
+     *
+     * @return the wait time in ms between each sync retries
+     */
+    long getRegistrySyncRetryWaitMs();
+
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-core/src/main/java/com/netflix/eureka/cluster/JerseyReplicationClient.java;<<<<<<< MINE
+=======
+                    .withEncoderWrapper(serverCodecs.getFullJsonCodec())
+                    .withDecoderWrapper(serverCodecs.getFullJsonCodec())
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-core/src/main/java/com/netflix/eureka/StatusFilter.java;<<<<<<< MINE
+=======
+@Singleton
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-core/src/main/java/com/netflix/eureka/resources/InstanceResource.java;<<<<<<< MINE
+=======
+        this.serverConfig = serverConfig;
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-core/src/main/java/com/netflix/eureka/resources/ASGResource.java;<<<<<<< MINE
+=======
+        if (awsAsgUtil == null) {
+            return Response.status(400).build();
+        }
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-core/src/main/java/com/netflix/eureka/resources/ApplicationResource.java;<<<<<<< MINE
+=======
+        this.serverConfig = serverConfig;
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-core/src/main/java/com/netflix/eureka/DefaultEurekaServerConfig.java;<<<<<<< MINE
+=======
+@Singleton
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-core/src/main/java/com/netflix/eureka/DefaultEurekaServerConfig.java;<<<<<<< MINE
+=======
+    public long getRegistrySyncRetryWaitMs() {
+        return configInstance.getIntProperty(
+                namespace + "registrySyncRetryWaitMs", 30 * 1000).get();
+    }
+
+    @Override
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-client/src/main/java/com/netflix/discovery/EurekaClient.java;<<<<<<< MINE
+=======
+    @Deprecated
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-client/src/main/java/com/netflix/discovery/EurekaClient.java;<<<<<<< MINE
+=======
+     * @deprecated see {@link com.netflix.discovery.endpoint.EndpointUtils} for replacement
+     *
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-client/src/main/java/com/netflix/discovery/EurekaClient.java;<<<<<<< MINE
+=======
+    @Deprecated
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-client/src/main/java/com/netflix/discovery/EurekaClient.java;<<<<<<< MINE
+=======
+     * @deprecated see {@link com.netflix.discovery.endpoint.EndpointUtils} for replacement
+     *
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-client/src/main/java/com/netflix/discovery/EurekaClient.java;<<<<<<< MINE
+=======
+    @Deprecated
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java;<<<<<<< MINE
+=======
+     * @deprecated see replacement in {@link com.netflix.discovery.endpoint.EndpointUtils}
+     *
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java;<<<<<<< MINE
+=======
+    @Deprecated
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java;<<<<<<< MINE
+=======
+     * @deprecated see replacement in {@link com.netflix.discovery.endpoint.EndpointUtils}
+     *
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java;<<<<<<< MINE
+=======
+    @Deprecated
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java;<<<<<<< MINE
+=======
+    /**
+     * @deprecated see replacement in {@link com.netflix.discovery.endpoint.EndpointUtils}
+     */
+    @Deprecated
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java;<<<<<<< MINE
+=======
+        return EndpointUtils.getDiscoveryServiceUrls(clientConfig, zone, urlRandomizer);
+    }
+
+    private List<String> timedGetDiscoveryServiceUrls(String zone) {
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java;<<<<<<< MINE
+=======
+     * @deprecated see replacement in {@link com.netflix.discovery.endpoint.EndpointUtils}
+     *
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java;<<<<<<< MINE
+=======
+    @Deprecated
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java;<<<<<<< MINE
+=======
+    @Deprecated
+>>>>>>> YOURS

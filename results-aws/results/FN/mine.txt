@@ -1,0 +1,14 @@
+	        String archiveSize = Long.toString(file.length());
+	        CompleteMultipartUploadResult completeMultipartUploadResult =
+	            glacier.completeMultipartUpload(new CompleteMultipartUploadRequest()
+	                .withAccountId(accountId)
+	                .withArchiveSize(archiveSize)
+	                .withVaultName(vaultName)
+	                .withChecksum(checksum)
+	                .withUploadId(uploadId));
+
+	        String artifactId = completeMultipartUploadResult.getArchiveId();
+	        return new UploadResult(artifactId);
+		} catch (Exception e) {
+			glacier.abortMultipartUpload(new AbortMultipartUploadRequest(accountId, vaultName, uploadId));
+		

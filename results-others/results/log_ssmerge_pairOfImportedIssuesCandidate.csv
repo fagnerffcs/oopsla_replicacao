@@ -1,0 +1,8 @@
+revision;file;leftImport;rightImport;conflictUnmerge
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737.revisions;/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/test/java/org/junit/tests/running/classes/TestClassTest.java;importorg.junit.rules.MethodRule;;importorg.junit.experimental.interceptor.MethodRule;;
+import org.junit.rules.MethodRule;
+=======
+import org.junit.experimental.interceptor.Rule;
+import org.junit.experimental.interceptor.MethodRule;
+
+

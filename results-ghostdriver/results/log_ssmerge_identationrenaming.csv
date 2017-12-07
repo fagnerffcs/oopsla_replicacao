@@ -1,0 +1,24 @@
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_7c47165_264020a/rev_7c47165-264020a;/eureka-core/src/main/java/com/netflix/eureka/PeerAwareInstanceRegistryImpl;statusUpdate(String,ASGStatus,boolean);;public void statusUpdate(final String asgName, final ASGStatus newStatus,
+                             final boolean isReplication) {
+        // If this is replicated from an other node, do not try to replicate
+        // again.
+        if (isReplication) {
+            return;
+        }
+        for (final PeerEurekaNode node : peerEurekaNodes.getPeerEurekaNodes()) {
+            replicateASGInfoToReplicaNodes(asgName, newStatus, node);
+
+        }
+
+    };public void statusUpdate(final String asgName, final ASGStatus newStatus,
+                             final boolean isReplication) {
+        // If this is replicated from an other node, do not try to replicate
+        // again.
+        if (isReplication) {
+            return;
+        }
+        for (final PeerEurekaNode node : peerEurekaNodes.getPeerEurekaNodes()) {
+            replicateASGInfoToReplicaNodes(asgName, newStatus, node);
+
+        }
+    }

@@ -1,0 +1,2715 @@
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52/src/test/java/org/junit/tests/experimental/parallel/ParallelMethodTest.java;<<<<<<< MINE
+
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_e4ee2c0_f454880/rev_e4ee2c0-f454880/src/test/java/redis/clients/jedis/tests/JedisPoolTest.java;<<<<<<< MINE
+	private static String host = "localhost";
+	private static int port = Protocol.DEFAULT_PORT;
+	
+	static {
+		final String envHost = System.getProperty("redis-host");
+		final String envPort = System.getProperty("redis-port");
+		if (null != envHost && 0 < envHost.length()) {
+			host = envHost;
+		}
+		if (null != envPort && 0 < envPort.length()) {
+			try {
+				port = Integer.parseInt(envPort);
+			} catch (final NumberFormatException e) {}
+		}
+		
+		System.out.println("Redis host to be used : " + host + ":" + port);
+	}
+	
+	@Test
+	public void checkConnections() throws TimeoutException {
+		JedisPool pool = new JedisPool(host, port, 2000);
+		pool.setResourcesNumber(10);
+		pool.init();
+
+		Jedis jedis = pool.getResource(200);
+		jedis.auth("foobared");
+		jedis.set("foo", "bar");
+		assertEquals("bar", jedis.get("foo"));
+		pool.returnResource(jedis);
+		pool.destroy();
+	}
+
+	@Test
+	public void checkConnectionWithDefaultPort() throws TimeoutException {
+		JedisPool pool = new JedisPool(host, port);
+		pool.setResourcesNumber(10);
+		pool.init();
+
+		Jedis jedis = pool.getResource(200);
+		jedis.auth("foobared");
+		jedis.set("foo", "bar");
+		assertEquals("bar", jedis.get("foo"));
+		pool.returnResource(jedis);
+		pool.destroy();
+	}
+
+	@Test
+	public void checkJedisIsReusedWhenReturned() throws TimeoutException {
+		JedisPool pool = new JedisPool(host, port);
+		pool.setResourcesNumber(1);
+		pool.init();
+
+		Jedis jedis = pool.getResource(200);
+		jedis.auth("foobared");
+		jedis.set("foo", "0");
+		pool.returnResource(jedis);
+
+		jedis = pool.getResource(200);
+		jedis.auth("foobared");
+		jedis.incr("foo");
+		pool.returnResource(jedis);
+		pool.destroy();
+	}
+
+	@Test
+	public void checkPoolRepairedWhenJedisIsBroken() throws TimeoutException,
+			IOException {
+		JedisPool pool = new JedisPool(host, port);
+		pool.setResourcesNumber(1);
+		pool.init();
+
+		Jedis jedis = pool.getResource(200);
+		jedis.auth("foobared");
+		jedis.quit();
+		pool.returnBrokenResource(jedis);
+
+		jedis = pool.getResource(200);
+		jedis.auth("foobared");
+		jedis.incr("foo");
+		pool.returnResource(jedis);
+		pool.destroy();
+	}
+
+	@Test(expected = TimeoutException.class)
+	public void checkPoolOverflow() throws TimeoutException {
+		JedisPool pool = new JedisPool(host, port);
+		pool.setResourcesNumber(1);
+		pool.init();
+
+		Jedis jedis = pool.getResource(200);
+		jedis.auth("foobared");
+		jedis.set("foo", "0");
+
+		Jedis newJedis = pool.getResource(200);
+		newJedis.auth("foobared");
+		newJedis.incr("foo");
+	}
+=======
+    @Test
+    public void checkConnections() throws TimeoutException {
+	JedisPool pool = new JedisPool("localhost", Protocol.DEFAULT_PORT,
+		2000, "foobared");
+	pool.setResourcesNumber(10);
+	pool.init();
+
+	Jedis jedis = pool.getResource(200);
+	jedis.set("foo", "bar");
+	assertEquals("bar", jedis.get("foo"));
+	pool.returnResource(jedis);
+	pool.destroy();
+    }
+
+    @Test
+    public void checkConnectionWithDefaultPort() throws TimeoutException {
+	JedisPool pool = new JedisPool("localhost", Protocol.DEFAULT_PORT,
+		2000, "foobared");
+	pool.setResourcesNumber(10);
+	pool.init();
+
+	Jedis jedis = pool.getResource(200);
+	jedis.set("foo", "bar");
+	assertEquals("bar", jedis.get("foo"));
+	pool.returnResource(jedis);
+	pool.destroy();
+    }
+
+    @Test
+    public void checkJedisIsReusedWhenReturned() throws TimeoutException {
+	JedisPool pool = new JedisPool("localhost", Protocol.DEFAULT_PORT,
+		2000, "foobared");
+	pool.setResourcesNumber(1);
+	pool.init();
+
+	Jedis jedis = pool.getResource(200);
+	jedis.set("foo", "0");
+	pool.returnResource(jedis);
+
+	jedis = pool.getResource(200);
+	jedis.incr("foo");
+	pool.returnResource(jedis);
+	pool.destroy();
+    }
+
+    @Test
+    public void checkPoolRepairedWhenJedisIsBroken() throws TimeoutException,
+	    IOException {
+	JedisPool pool = new JedisPool("localhost", Protocol.DEFAULT_PORT,
+		2000, "foobared");
+	pool.setResourcesNumber(1);
+	pool.init();
+
+	Jedis jedis = pool.getResource(200);
+	jedis.quit();
+	pool.returnBrokenResource(jedis);
+
+	jedis = pool.getResource(200);
+	jedis.incr("foo");
+	pool.returnResource(jedis);
+	pool.destroy();
+    }
+
+    @Test(expected = TimeoutException.class)
+    public void checkPoolOverflow() throws TimeoutException {
+	JedisPool pool = new JedisPool("localhost", Protocol.DEFAULT_PORT,
+		2000, "foobared");
+	pool.setResourcesNumber(1);
+	pool.init();
+
+	Jedis jedis = pool.getResource(200);
+	jedis.set("foo", "0");
+
+	Jedis newJedis = pool.getResource(200);
+	newJedis.incr("foo");
+    }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_592bc69_330135e/rev_592bc69-330135e/src/main/java/redis/clients/util/ShardInfo.java;<<<<<<< MINE
+    @Override
+    public boolean equals(Object obj) {
+	if (this == obj)
+	    return true;
+	if (obj == null)
+	    return false;
+	if (getClass() != obj.getClass())
+	    return false;
+	ShardInfo other = (ShardInfo) obj;
+	if (host == null) {
+	    if (other.host != null)
+		return false;
+	} else if (!host.equals(other.host))
+	    return false;
+	if (port != other.port)
+	    return false;
+	if (timeout != other.timeout)
+	    return false;
+	if (weight != other.weight)
+	    return false;
+	return true;
+    }
+
+    public ShardInfo(String host, int port, int timeout) {
+	this(host, port, timeout, Sharded.DEFAULT_WEIGHT);
+    }
+
+    public ShardInfo(String host, int port, int timeout, int weight) {
+	this.host = host;
+	this.port = port;
+	this.timeout = timeout;
+	this.weight = weight;
+    }
+
+    public String getPassword() {
+	return password;
+    }
+
+    public void setPassword(String auth) {
+	this.password = auth;
+    }
+
+    public void setTimeout(int timeout) {
+	this.timeout = timeout;
+    }
+
+    public int getWeight() {
+	return this.weight;
+    }
+=======
+    protected abstract T createResource();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_1708730_912e94c/rev_1708730-912e94c/src/main/java/org/junit/internal/runners/statements/FailOnTimeout.java;<<<<<<< MINE
+
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_1708730_912e94c/rev_1708730-912e94c/src/main/java/org/junit/internal/runners/statements/FailOnTimeout.java;<<<<<<< MINE
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_28d40d9_6c942ae/rev_28d40d9-6c942ae/src/main/java/org/junit/experimental/interceptor/Interceptor.java;<<<<<<< MINE
+=======
+/**
+ * 
+ */
+package org.junit.experimental.interceptor;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Interceptor {
+
+}>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_11f0abd_8b507d7/rev_11f0abd-8b507d7/src/main/java/org/junit/experimental/max/MaxHistory.java;<<<<<<< MINE
+
+=======
+	
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_2527d9a_2386579/rev_2527d9a-2386579/src/main/java/org/junit/runners/ParentRunner.java;<<<<<<< MINE
+=======
+	
+	// TODO (May 4, 2009 4:34:28 PM): This can't be right, but it allows delegation without breaking subclasses
+	/**
+	 * Interim interface during 4.7 development.  _Very_ likely to go away.
+	 */
+	public List<T> internalGetChildren() {
+		return getChildren();
+	}
+
+	/**
+	 * Interim interface during 4.7 development.  _Very_ likely to go away.
+	 */
+	public Description internalDescribeChild(T child) {
+		return describeChild(child);
+	}
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_2527d9a_2386579/rev_2527d9a-2386579/src/main/java/org/junit/runners/ParentRunner.java;<<<<<<< MINE
+=======
+	/**
+	 * Interim interface during 4.7 development.  _Very_ likely to go away.
+	 */
+	public void internalRunChild(T child, RunNotifier notifier) {
+		runChild(child, notifier);
+	}
+	
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_2527d9a_2386579/rev_2527d9a-2386579/src/main/java/org/junit/runners/ParentRunner.java;<<<<<<< MINE
+
+=======
+	
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_2527d9a_2386579/rev_2527d9a-2386579/src/main/java/org/junit/experimental/ParallelComputer.java;<<<<<<< MINE
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_2527d9a_2386579/rev_2527d9a-2386579/src/main/java/org/junit/experimental/ParallelComputer.java;<<<<<<< MINE
+	
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_b737131_ff2ff91/rev_b737131-ff2ff91/src/main/java/org/junit/runners/ParentRunner.java;<<<<<<< MINE
+		
+=======
+
+	// TODO (May 4, 2009 4:34:28 PM): This can't be right, but it allows
+	// delegation without breaking subclasses
+	/**
+	 * Interim interface during 4.7 development. _Very_ likely to go away.
+	 */
+	public List<T> internalGetChildren() {
+		return getChildren();
+	}
+
+	/**
+	 * Interim interface during 4.7 development. _Very_ likely to go away.
+	 */
+	public Description internalDescribeChild(T child) {
+		return describeChild(child);
+	}
+
+	/**
+	 * Interim interface during 4.7 development. _Very_ likely to go away.
+	 */
+	public void internalRunChild(T child, RunNotifier notifier) {
+		runChild(child, notifier);
+	}
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_9577910_f2594e3/rev_9577910-f2594e3/src/main/java/org/junit/runners/ParentRunner.java;<<<<<<< MINE
+		
+=======
+
+	// TODO (May 4, 2009 4:34:28 PM): This can't be right, but it allows
+	// delegation without breaking subclasses
+	/**
+	 * Interim interface during 4.7 development. _Very_ likely to go away.
+	 */
+	public List<T> internalGetChildren() {
+		return getChildren();
+	}
+
+	/**
+	 * Interim interface during 4.7 development. _Very_ likely to go away.
+	 */
+	public Description internalDescribeChild(T child) {
+		return describeChild(child);
+	}
+
+	/**
+	 * Interim interface during 4.7 development. _Very_ likely to go away.
+	 */
+	public void internalRunChild(T child, RunNotifier notifier) {
+		runChild(child, notifier);
+	}
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910/src/test/java/org/junit/tests/running/classes/TestClassTest.java;<<<<<<< MINE
+	
+	private static int fComputations;
+	// Profiling a JUnit 4.4 suite shows that getAnnotatedMethods accounts for at least 13% of running time
+	// (all running time, including user test code!)
+	@Test
+	public void annotationsAreCached() {
+		TestClass testClass= new TestClass(ManyMethods.class) {			
+			@Override
+			protected Annotation[] computeAnnotations(FrameworkMethod testMethod) {
+				fComputations++;
+				return super.computeAnnotations(testMethod);
+			}
+		};
+		testClass.getAnnotatedMethods(Test.class);
+		fComputations= 0;
+		testClass.getAnnotatedMethods(Test.class);
+		assertEquals(0, fComputations);
+	}
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5/src/test/java/org/junit/tests/experimental/results/ResultMatchersTest.java;<<<<<<< MINE
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/internal/ComparisonCriteria.java;<<<<<<< MINE
+	
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/internal/ComparisonCriteria.java;<<<<<<< MINE
+			
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/runners/BlockJUnit4ClassRunner.java;<<<<<<< MINE
+=======
+	
+	private Statement withRules(FrameworkMethod method, Object target,
+			Statement statement) {
+		Statement result= statement;
+		for (MethodRule each : rules(target))
+			result= each.apply(result, method, target);
+		return result;
+	}
+	
+	/**
+	 * @return the MethodRules that can transform the block
+	 * that runs each method in the tested class.
+	 */
+	protected List<MethodRule> rules(Object test) {
+		List<MethodRule> results= new ArrayList<MethodRule>();
+		for (FrameworkField each : ruleFields())
+			results.add(createRule(test, each));
+		return results;
+	}
+
+	private List<FrameworkField> ruleFields() {
+		return getTestClass().getAnnotatedFields(Rule.class);
+	}
+
+	private MethodRule createRule(Object test,
+			FrameworkField each) {
+		try {
+			return (MethodRule) each.get(test);
+		} catch (IllegalAccessException e) {
+			throw new RuntimeException(
+					"How did getFields return a field we couldn't access?");
+		}
+	}
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/runner/Description.java;<<<<<<< MINE
+=======
+	
+	/**
+	 * @return If this describes a method invocation, 
+	 * the name of the method (or null if not)
+	 */
+	public String getMethodName() {
+		return parseMethod();
+	}
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/runner/Description.java;<<<<<<< MINE
+
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/experimental/max/MaxHistory.java;<<<<<<< MINE
+	/**
+	 * Loads a {@link MaxHistory} from {@code file}, or generates a new one that
+	 * will be saved to {@code file}.
+	 */
+	public static MaxHistory forFolder(File file) {
+		if (file.exists())
+			try {
+				return readHistory(file);
+			} catch (CouldNotReadCoreException e) {
+				e.printStackTrace();
+				file.delete();
+			}
+		return new MaxHistory(file);
+	}
+=======
+	/**
+	 * Loads a {@link MaxHistory} from {@code file}, or generates a new one that
+	 * will be saved to {@code file}.
+	 */
+	public static MaxHistory forFolder(File file) {
+		// TODO: temp!
+		if (file.getPath() == null)
+			throw new NullPointerException();
+		if (file.exists())
+			try {
+				return readHistory(file);
+			} catch (CouldNotReadCoreException e) {
+				e.printStackTrace();
+				file.delete();
+			}
+		return new MaxHistory(file);
+	}
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/experimental/max/MaxHistory.java;<<<<<<< MINE
+	
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/test/java/org/junit/tests/running/classes/TestClassTest.java;<<<<<<< MINE
+	
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_4a678cd_46036e7/rev_4a678cd-46036e7/src/main/java/org/junit/experimental/categories/Category.java;<<<<<<< MINE
+=======
+package org.junit.experimental.categories;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
+/**
+ * Marks a test class or test method as belonging to one or more categories of tests.
+ * The value is an array of interface classes that extend the {@link CategoryType}
+ * superinterface.
+ * 
+ * This annotation is only interpreted by the Categories runner (at present).
+ * 
+ * For example:
+<pre>
+	public interface FastTests extends CategoryType {}
+	public interface SlowTests extends CategoryType {}
+
+	public static class A {
+		@Test
+		public void a() {
+			fail();
+		}
+
+		@Category(SlowTests.class)
+		@Test
+		public void b() {
+		}
+	}
+
+	@Category({SlowTests.class, FastTests.class})
+	public static class B {
+		@Test
+		public void c() {
+
+		}
+	}
+</pre>
+ * 
+ * For more usage, see code example on {@link Categories}.
+ */
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Category {
+	Class<? extends CategoryType>[] value();
+}>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_b33b4b0_c3873cf/rev_b33b4b0-c3873cf/src/main/java/org/junit/runners/ParentRunner.java;<<<<<<< MINE
+	
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_b33b4b0_c3873cf/rev_b33b4b0-c3873cf/src/main/java/org/junit/runners/ParentRunner.java;<<<<<<< MINE
+		
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_b33b4b0_c3873cf/rev_b33b4b0-c3873cf/src/main/java/org/junit/runners/ParentRunner.java;<<<<<<< MINE
+	
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_b33b4b0_c3873cf/rev_b33b4b0-c3873cf/src/main/java/org/junit/runners/ParentRunner.java;<<<<<<< MINE
+	
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_b33b4b0_c3873cf/rev_b33b4b0-c3873cf/src/main/java/org/junit/runners/ParentRunner.java;<<<<<<< MINE
+	
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_b33b4b0_c3873cf/rev_b33b4b0-c3873cf/src/main/java/org/junit/runners/ParentRunner.java;<<<<<<< MINE
+	
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_b33b4b0_c3873cf/rev_b33b4b0-c3873cf/src/test/java/org/junit/tests/junit3compatibility/SuiteMethodTest.java;<<<<<<< MINE
+	
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/main/java/org/junit/runners/ParentRunner.java;<<<<<<< MINE
+
+=======
+	
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/main/java/org/junit/runners/ParentRunner.java;<<<<<<< MINE
+
+=======
+		
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/main/java/org/junit/runners/ParentRunner.java;<<<<<<< MINE
+
+=======
+	
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/main/java/org/junit/runners/ParentRunner.java;<<<<<<< MINE
+
+=======
+	
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/main/java/org/junit/runners/ParentRunner.java;<<<<<<< MINE
+
+=======
+	
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/main/java/org/junit/runners/ParentRunner.java;<<<<<<< MINE
+
+=======
+	
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/main/java/org/junit/runner/manipulation/Filter.java;<<<<<<< MINE
+
+=======
+	
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/main/java/org/junit/runner/manipulation/Filter.java;<<<<<<< MINE
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/main/java/org/junit/runner/Description.java;<<<<<<< MINE
+=======
+	
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/main/java/org/junit/runner/Description.java;<<<<<<< MINE
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/main/java/org/junit/runner/notification/RunListener.java;<<<<<<< MINE
+
+	/**
+	 * Called before any tests have been run.
+	 * @param plan describes the tests to be run
+	 */
+	public void testRunStarted(Plan plan) throws Exception {
+	}
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/main/java/org/junit/runner/notification/RunNotifier.java;<<<<<<< MINE
+	
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/test/java/org/junit/tests/experimental/categories/CategoryTest.java;<<<<<<< MINE
+
+=======
+	
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/test/java/org/junit/tests/experimental/categories/CategoryTest.java;<<<<<<< MINE
+
+=======
+	
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/test/java/org/junit/tests/experimental/categories/CategoryTest.java;<<<<<<< MINE
+
+=======
+	
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/test/java/org/junit/tests/experimental/categories/CategoryTest.java;<<<<<<< MINE
+
+=======
+	
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/test/java/org/junit/tests/experimental/categories/CategoryTest.java;<<<<<<< MINE
+
+=======
+		
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/test/java/org/junit/tests/experimental/categories/CategoryTest.java;<<<<<<< MINE
+
+=======
+	
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/test/java/org/junit/tests/experimental/categories/CategoryTest.java;<<<<<<< MINE
+
+=======
+	
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/test/java/org/junit/tests/experimental/categories/CategoryTest.java;<<<<<<< MINE
+
+=======
+		
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/test/java/org/junit/tests/experimental/categories/CategoryTest.java;<<<<<<< MINE
+
+=======
+	
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/test/java/org/junit/tests/junit3compatibility/SuiteMethodTest.java;<<<<<<< MINE
+
+=======
+		
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/test/java/org/junit/tests/junit3compatibility/SuiteMethodTest.java;<<<<<<< MINE
+
+=======
+		
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/test/java/org/junit/tests/junit3compatibility/SuiteMethodTest.java;<<<<<<< MINE
+
+=======
+	
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/test/java/org/junit/tests/junit3compatibility/SuiteMethodTest.java;<<<<<<< MINE
+=======
+	
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/test/java/org/junit/tests/junit3compatibility/SuiteMethodTest.java;<<<<<<< MINE
+
+=======
+		
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/test/java/org/junit/tests/junit3compatibility/SuiteMethodTest.java;<<<<<<< MINE
+
+=======
+	
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/test/java/org/junit/tests/junit3compatibility/SuiteMethodTest.java;<<<<<<< MINE
+
+=======
+		
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/test/java/org/junit/tests/junit3compatibility/SuiteMethodTest.java;<<<<<<< MINE
+
+=======
+	
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/test/java/org/junit/tests/junit3compatibility/SuiteMethodTest.java;<<<<<<< MINE
+
+=======
+		
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_63f40a8_ab51452/rev_63f40a8-ab51452/src/main/java/org/junit/runners/BlockJUnit4ClassRunner.java;<<<<<<< MINE
+	
+	/**
+	 * @return the MethodRules that can transform the block
+	 * that runs each method in the tested class.
+	 */
+	protected List<MethodRule> rules(Object test) {
+		List<MethodRule> results= new ArrayList<MethodRule>();
+		for (FrameworkField each : ruleFields()) {
+			if (MethodRule.class.isAssignableFrom(each.getType())) {
+				results.add(createRule(test, each));
+			}
+		}
+		return results;
+	}
+
+	private MethodRule createRule(Object test,
+			FrameworkField each) {
+		try {
+			return (MethodRule) each.get(test);
+		} catch (IllegalAccessException e) {
+			throw new RuntimeException(
+					"How did getFields return a field we couldn't access?");
+		}
+	}
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_618bbec_c765bc3/rev_618bbec-c765bc3/src/main/java/redis/clients/jedis/BinaryJedis.java;<<<<<<< MINE
+    
+    /**
+     * Evaluates scripts using the Lua interpreter built into Redis starting from version 2.6.0.
+     * <p>
+     * 
+     * @return Script result
+     */
+	public Object eval(byte[] script, List<byte[]> keys, List<byte[]> args) {
+	    client.setTimeoutInfinite();
+        client.eval(script, toByteArray(keys.size()), getParams(keys, args));
+        return client.getOne();
+	}
+	private byte[][] getParams(List<byte[]> keys, List<byte[]> args){
+    	int keyCount = keys.size();
+    	byte[][] params = new byte[keyCount + args.size()][];
+    	
+    	for(int i=0;i<keyCount;i++)
+    		params[i] = keys.get(i);
+    	
+    	for(int i=0;i<keys.size();i++)
+    		params[keyCount + i] = args.get(i);
+    	
+    	return params;
+    }
+	public Object eval(byte[] script, byte[] keyCount, byte[][] params) {
+	    client.setTimeoutInfinite();
+        client.eval(script, keyCount, params);
+        return client.getOne();
+	}
+	
+	public byte[] scriptFlush(){
+    	client.scriptFlush();
+    	return client.getBinaryBulkReply();
+    }
+	
+    public List<Long> scriptExists(byte[]... sha1){
+		client.scriptExists(sha1);
+		return client.getIntegerMultiBulkReply();
+    }
+    
+    public byte[] scriptLoad(byte[] script){
+    	client.scriptLoad(script);
+    	return client.getBinaryBulkReply();
+    }
+    
+    public byte[] scriptKill(){
+    	client.scriptKill();
+    	return client.getBinaryBulkReply();
+    }
+=======
+    
+	public byte[] slowlogReset() {
+		client.slowlogReset();
+		return client.getBinaryBulkReply();
+	}
+	
+	public long slowlogLen() {
+		client.slowlogLen();
+		return client.getIntegerReply();
+	}
+	
+	public List<byte[]> slowlogGetBinary() {
+		client.slowlogGet();
+		return client.getBinaryMultiBulkReply();
+	}
+	
+	public List<byte[]> slowlogGetBinary(long entries) {
+		client.slowlogGet(entries);
+		return client.getBinaryMultiBulkReply();
+	}
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_406d52b_69b5291/rev_406d52b-69b5291/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+
+    public Long bitcount(final String key) {
+        client.bitcount(key);
+        return client.getIntegerReply();
+    }
+
+    public Long bitcount(final String key, long start, long end) {
+        client.bitcount(key, start, end);
+        return client.getIntegerReply();
+    }
+
+    public Long bitop(BitOP op, final String destKey, String... srcKeys) {
+        client.bitop(op, destKey, srcKeys);
+        return client.getIntegerReply();
+    }
+=======
+
+  /**
+   * <pre>
+   * redis 127.0.0.1:26381> sentinel masters
+   * 1)  1) "name"
+   *     2) "mymaster"
+   *     3) "ip"
+   *     4) "127.0.0.1"
+   *     5) "port"
+   *     6) "6379"
+   *     7) "runid"
+   *     8) "93d4d4e6e9c06d0eea36e27f31924ac26576081d"
+   *     9) "flags"
+   *    10) "master"
+   *    11) "pending-commands"
+   *    12) "0"
+   *    13) "last-ok-ping-reply"
+   *    14) "423"
+   *    15) "last-ping-reply"
+   *    16) "423"
+   *    17) "info-refresh"
+   *    18) "6107"
+   *    19) "num-slaves"
+   *    20) "1"
+   *    21) "num-other-sentinels"
+   *    22) "2"
+   *    23) "quorum"
+   *    24) "2"
+   *
+   * </pre>
+   *
+   * @return
+   */
+  public List<Map<String, String>> sentinelMasters() {
+    client.sentinel(Protocol.SENTINEL_MASTERS);
+    final List<Object> reply = client.getObjectMultiBulkReply();
+
+    final List<Map<String,String>> masters = new ArrayList<Map<String,String>>();
+    for (Object obj : reply) {
+      masters.add(BuilderFactory.STRING_MAP.build((List) obj));
+    }
+    return masters;
+  }
+
+  
+  /**
+   * <pre>
+   * redis 127.0.0.1:26381> sentinel get-master-addr-by-name mymaster
+   * 1) "127.0.0.1"
+   * 2) "6379"
+   * </pre>
+   * 
+   * @param masterName
+   * @return two elements list of strings : host and port.
+   */
+  public List<String> sentinelGetMasterAddrByName(String masterName) {
+    client.sentinel(Protocol.SENTINEL_GET_MASTER_ADDR_BY_NAME, masterName);
+    final List<Object> reply = client.getObjectMultiBulkReply();
+    return BuilderFactory.STRING_LIST.build(reply);
+  }
+
+  /**
+   * <pre>
+   * redis 127.0.0.1:26381> sentinel reset mymaster
+   * (integer) 1
+   * </pre>
+   * 
+   * @param pattern
+   * @return
+   */
+  public Long sentinelReset(String pattern) {
+    client.sentinel(Protocol.SENTINEL_RESET, pattern);
+    return client.getIntegerReply();
+  }
+
+  /**
+   * <pre>
+   * redis 127.0.0.1:26381> sentinel slaves mymaster
+   * 1)  1) "name"
+   *     2) "127.0.0.1:6380"
+   *     3) "ip"
+   *     4) "127.0.0.1"
+   *     5) "port"
+   *     6) "6380"
+   *     7) "runid"
+   *     8) "d7f6c0ca7572df9d2f33713df0dbf8c72da7c039"
+   *     9) "flags"
+   *    10) "slave"
+   *    11) "pending-commands"
+   *    12) "0"
+   *    13) "last-ok-ping-reply"
+   *    14) "47"
+   *    15) "last-ping-reply"
+   *    16) "47"
+   *    17) "info-refresh"
+   *    18) "657"
+   *    19) "master-link-down-time"
+   *    20) "0"
+   *    21) "master-link-status"
+   *    22) "ok"
+   *    23) "master-host"
+   *    24) "localhost"
+   *    25) "master-port"
+   *    26) "6379"
+   *    27) "slave-priority"
+   *    28) "100"
+   * </pre>
+   * 
+   * @param masterName
+   * @return
+   */
+  public List<Map<String, String>> sentinelSlaves(String masterName) {
+    client.sentinel(Protocol.SENTINEL_SLAVES, masterName);
+    final List<Object> reply = client.getObjectMultiBulkReply();
+
+    final List<Map<String,String>> slaves = new ArrayList<Map<String,String>>();
+    for (Object obj : reply) {
+      slaves.add(BuilderFactory.STRING_MAP.build((List) obj));
+    }
+    return slaves;
+  }
+  
+  /**
+   * <pre>
+   * redis 127.0.0.1:26381> SENTINEL is-master-down-by-addr 127.0.0.1 1
+   * 1) (integer) 0
+   * 2) "?"
+   * redis 127.0.0.1:26381> SENTINEL is-master-down-by-addr 127.0.0.1 6379
+   * 1) (integer) 0
+   * 2) "aaef11fbb2712346a386078c7f9834e72ed51e96"
+   * </pre>
+   * @return Long followed by the String (runid)
+   */
+  public List<? extends Object> sentinelIsMasterDownByAddr(String host, int port) {
+    client.sentinel(Protocol.SENTINEL_IS_MASTER_DOWN_BY_ADDR, host, port);
+    final List<Object> reply = client.getObjectMultiBulkReply();
+    return Arrays.asList(BuilderFactory.LONG.build(reply.get(0)), BuilderFactory.STRING.build(reply.get(1)));
+  }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_bbb8677_7e1a1a7/rev_bbb8677-7e1a1a7/src/test/java/redis/clients/jedis/tests/JedisSentinelPoolTest.java;<<<<<<< MINE
+    protected static HostAndPort master = HostAndPortUtil.getRedisServers()
+	    .get(2);
+    protected static HostAndPort slave1 = HostAndPortUtil.getRedisServers()
+	    .get(3);
+    protected static HostAndPort slave2 = HostAndPortUtil.getRedisServers()
+	    .get(4);
+    protected static HostAndPort sentinel1 = HostAndPortUtil
+	    .getSentinelServers().get(1);
+    protected static HostAndPort sentinel2 = HostAndPortUtil
+	    .getSentinelServers().get(2);
+
+    protected static Jedis masterJedis;
+    protected static Jedis slaveJedis1;
+    protected static Jedis slaveJedis2;
+
+    protected static int slaveCount = 0;
+
+    protected Set<String> sentinels = new HashSet<String>();
+
+    @Before
+    public void setUp() throws Exception {
+
+	// set up master and slaves
+	masterJedis = new Jedis(master.host, master.port);
+	masterJedis.auth("foobared");
+	masterJedis.slaveofNoOne();
+
+	slaveJedis1 = new Jedis(slave1.host, slave1.port);
+	slaveJedis1.auth("foobared");
+	slaveJedis1.slaveof(master.host, master.port);
+	slaveCount++;
+
+	slaveJedis2 = new Jedis(slave2.host, slave2.port);
+	slaveJedis2.auth("foobared");
+	slaveJedis2.slaveof(master.host, master.port);
+	slaveCount++;
+
+	sentinels.add(sentinel1.toString());
+	sentinels.add(sentinel2.toString());
+
+	// FIXME: The following allows the master/slave relationship to
+	// be established, and let sentinels know about this relationship.
+	// We can do this more elegantly.
+	Thread.sleep(10000);
+    }
+
+    @Test
+    public void ensureSafeTwiceFailover() throws InterruptedException {
+	JedisSentinelPool pool = new JedisSentinelPool("mymaster", sentinels,
+		new GenericObjectPoolConfig(), 1000, "foobared", 2);
+
+	// perform failover
+	doSegFaultMaster(pool);
+
+	// perform failover once again
+	doSegFaultMaster(pool);
+
+	// you can test failover as much as possible
+	// but you need to prepare additional slave per failover
+    }
+
+    private void doSegFaultMaster(JedisSentinelPool pool)
+	    throws InterruptedException {
+	// jedis connection should be master
+	Jedis jedis = pool.getResource();
+	assertEquals("PONG", jedis.ping());
+
+	try {
+	    jedis.debug(DebugParams.SEGFAULT());
+	} catch (Exception e) {
+	}
+
+	// wait for the sentinel to promote a master
+	// FIXME: we can query the sentinel and sleep
+	// right until the master is promoted
+	Thread.sleep(35000);
+
+	jedis = pool.getResource();
+	assertEquals("PONG", jedis.ping());
+	assertEquals("foobared", jedis.configGet("requirepass").get(1));
+	assertEquals(2, jedis.getDB().intValue());
+    }
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_c7f5669_9f30584/rev_c7f5669-9f30584/src/main/java/org/junit/Assert.java;<<<<<<< MINE
+=======
+	
+	/**
+	 * Asserts that two floats are equal to within a positive delta.
+	 * If they are not, an {@link AssertionError} is thrown with the given
+	 * message. If the expected value is infinity then the delta value is
+	 * ignored. NaNs are considered equal:
+	 * <code>assertEquals(Float.NaN, Float.NaN, *)</code> passes
+	 * 
+	 * @param message
+	 *            the identifying message for the {@link AssertionError} (<code>null</code>
+	 *            okay)
+	 * @param expected
+	 *            expected value
+	 * @param actual
+	 *            the value to check against <code>expected</code>
+	 * @param delta
+	 *            the maximum delta between <code>expected</code> and
+	 *            <code>actual</code> for which both numbers are still
+	 *            considered equal.
+	 */
+	static public void assertEquals(String message, float expected,
+			float actual, float delta) {
+		if (Float.compare(expected, actual) == 0)
+		{
+			return;
+		}
+		if (!(Math.abs(expected - actual) <= delta))
+		{
+			failNotEquals(message, new Float(expected), new Float(actual));
+		}
+	}
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_c7f5669_9f30584/rev_c7f5669-9f30584/src/main/java/org/junit/Assert.java;<<<<<<< MINE
+=======
+	
+	/**
+	 * Asserts that two floats are equal to within a positive delta.
+	 * If they are not, an {@link AssertionError} is thrown. If the expected
+	 * value is infinity then the delta value is ignored. NaNs are considered
+	 * equal: <code>assertEquals(Float.NaN, Float.NaN, *)</code> passes
+	 * 
+	 * @param expected
+	 *            expected value
+	 * @param actual
+	 *            the value to check against <code>expected</code>
+	 * @param delta
+	 *            the maximum delta between <code>expected</code> and
+	 *            <code>actual</code> for which both numbers are still
+	 *            considered equal.
+	 */
+	
+	static public void assertEquals(float expected, float actual, float delta) {
+		assertEquals(null, expected, actual, delta);
+	}
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_72e10d3_d4755d0/rev_72e10d3-d4755d0/src/main/java/org/junit/Assert.java;<<<<<<< MINE
+	
+	/**
+	 * Asserts that two floats are equal to within a positive delta.
+	 * If they are not, an {@link AssertionError} is thrown with the given
+	 * message. If the expected value is infinity then the delta value is
+	 * ignored. NaNs are considered equal:
+	 * <code>assertEquals(Float.NaN, Float.NaN, *)</code> passes
+	 * 
+	 * @param message
+	 *            the identifying message for the {@link AssertionError} (<code>null</code>
+	 *            okay)
+	 * @param expected
+	 *            expected value
+	 * @param actual
+	 *            the value to check against <code>expected</code>
+	 * @param delta
+	 *            the maximum delta between <code>expected</code> and
+	 *            <code>actual</code> for which both numbers are still
+	 *            considered equal.
+	 */
+	static public void assertEquals(String message, float expected,
+			float actual, float delta) {
+		if (Float.compare(expected, actual) == 0)
+			return;
+		if (!(Math.abs(expected - actual) <= delta))
+			failNotEquals(message, new Float(expected), new Float(actual));
+	}
+=======
+	
+	static private boolean doubleIsDifferent(double d1, double d2, double delta) {
+		if (Double.compare(d1, d2) == 0)
+			return false;
+		if ((Math.abs(d1 - d2) <= delta))
+			return false;
+		
+		return true;
+	}
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_bbacbd9_2f879b9/rev_bbacbd9-2f879b9/src/main/java/org/junit/runners/BlockJUnit4ClassRunner.java;<<<<<<< MINE
+	/**
+	 * Creates a BlockJUnit4ClassRunner to run {@code klass}
+	 * 
+	 * @throws InitializationError
+	 *             if the test class is malformed.
+	 */
+	public BlockJUnit4ClassRunner(Class<?> klass) throws InitializationError {
+		super(klass);
+	}
+
+	//
+	// Implementation of ParentRunner
+	// 
+
+	@Override
+	protected void runChild(final FrameworkMethod method, RunNotifier notifier) {
+		Description description= describeChild(method);
+		if (method.getAnnotation(Ignore.class) != null) {
+			notifier.fireTestIgnored(description);
+		} else {
+			runLeaf(methodBlock(method), description, notifier);
+		}
+	}
+
+	@Override
+	protected Description describeChild(FrameworkMethod method) {
+		return Description.createTestDescription(getTestClass().getJavaClass(),
+				testName(method), method.getAnnotations());
+	}
+
+	@Override
+	protected List<FrameworkMethod> getChildren() {
+		return computeTestMethods();
+	}
+
+	//
+	// Override in subclasses
+	//
+
+	/**
+	 * Returns the methods that run tests. Default implementation returns all
+	 * methods annotated with {@code @Test} on this class and superclasses that
+	 * are not overridden.
+	 */
+	protected List<FrameworkMethod> computeTestMethods() {
+		return getTestClass().getAnnotatedMethods(Test.class);
+	}
+
+	@Override
+	protected void collectInitializationErrors(List<Throwable> errors) {
+		super.collectInitializationErrors(errors);
+
+		validateNoNonStaticInnerClass(errors);
+		validateConstructor(errors);
+		validateInstanceMethods(errors);
+		validateFields(errors);
+		validateMethods(errors);
+	}
+
+	protected void validateNoNonStaticInnerClass(List<Throwable> errors) {
+		if (getTestClass().isANonStaticInnerClass()) {
+			String gripe= "The inner class " + getTestClass().getName()
+					+ " is not static.";
+			errors.add(new Exception(gripe));
+		}
+	}
+
+	/**
+	 * Adds to {@code errors} if the test class has more than one constructor,
+	 * or if the constructor takes parameters. Override if a subclass requires
+	 * different validation rules.
+	 */
+	protected void validateConstructor(List<Throwable> errors) {
+		validateOnlyOneConstructor(errors);
+		validateZeroArgConstructor(errors);
+	}
+
+	/**
+	 * Adds to {@code errors} if the test class has more than one constructor
+	 * (do not override)
+	 */
+	protected void validateOnlyOneConstructor(List<Throwable> errors) {
+		if (!hasOneConstructor()) {
+			String gripe= "Test class should have exactly one public constructor";
+			errors.add(new Exception(gripe));
+		}
+	}
+
+	/**
+	 * Adds to {@code errors} if the test class's single constructor takes
+	 * parameters (do not override)
+	 */
+	protected void validateZeroArgConstructor(List<Throwable> errors) {
+		if (!getTestClass().isANonStaticInnerClass()
+				&& hasOneConstructor()
+				&& (getTestClass().getOnlyConstructor().getParameterTypes().length != 0)) {
+			String gripe= "Test class should have exactly one public zero-argument constructor";
+			errors.add(new Exception(gripe));
+		}
+	}
+
+	private boolean hasOneConstructor() {
+		return getTestClass().getJavaClass().getConstructors().length == 1;
+	}
+
+	/**
+	 * Adds to {@code errors} for each method annotated with {@code @Test},
+	 * {@code @Before}, or {@code @After} that is not a public, void instance
+	 * method with no arguments.
+	 * 
+	 * @deprecated unused API, will go away in future version
+	 */
+	@Deprecated
+	protected void validateInstanceMethods(List<Throwable> errors) {
+		validatePublicVoidNoArgMethods(After.class, false, errors);
+		validatePublicVoidNoArgMethods(Before.class, false, errors);
+		validateTestMethods(errors);
+
+		if (computeTestMethods().size() == 0)
+			errors.add(new Exception("No runnable methods"));
+	}
+
+	protected void validateFields(List<Throwable> errors) {
+		RULE_VALIDATOR.validate(getTestClass(), errors);
+	}
+
+	private void validateMethods(List<Throwable> errors) {
+		RULE_METHOD_VALIDATOR.validate(getTestClass(), errors);
+	}
+
+	/**
+	 * Adds to {@code errors} for each method annotated with {@code @Test}that
+	 * is not a public, void instance method with no arguments.
+	 */
+	protected void validateTestMethods(List<Throwable> errors) {
+		validatePublicVoidNoArgMethods(Test.class, false, errors);
+	}
+
+	/**
+	 * Returns a new fixture for running a test. Default implementation executes
+	 * the test class's no-argument constructor (validation should have ensured
+	 * one exists).
+	 */
+	protected Object createTest() throws Exception {
+		return getTestClass().getOnlyConstructor().newInstance();
+	}
+
+	/**
+	 * Returns the name that describes {@code method} for {@link Description}s.
+	 * Default implementation is the method's name
+	 */
+	protected String testName(FrameworkMethod method) {
+		return method.getName();
+	}
+
+	/**
+	 * Returns a Statement that, when executed, either returns normally if
+	 * {@code method} passes, or throws an exception if {@code method} fails.
+	 * 
+	 * Here is an outline of the default implementation:
+	 * 
+	 * <ul>
+	 * <li>Invoke {@code method} on the result of {@code createTest()}, and
+	 * throw any exceptions thrown by either operation.
+	 * <li>HOWEVER, if {@code method}'s {@code @Test} annotation has the {@code
+	 * expecting} attribute, return normally only if the previous step threw an
+	 * exception of the correct type, and throw an exception otherwise.
+	 * <li>HOWEVER, if {@code method}'s {@code @Test} annotation has the {@code
+	 * timeout} attribute, throw an exception if the previous step takes more
+	 * than the specified number of milliseconds.
+	 * <li>ALWAYS run all non-overridden {@code @Before} methods on this class
+	 * and superclasses before any of the previous steps; if any throws an
+	 * Exception, stop execution and pass the exception on.
+	 * <li>ALWAYS run all non-overridden {@code @After} methods on this class
+	 * and superclasses after any of the previous steps; all After methods are
+	 * always executed: exceptions thrown by previous steps are combined, if
+	 * necessary, with exceptions from After methods into a
+	 * {@link MultipleFailureException}.
+	 * <li>ALWAYS allow {@code @Rule} fields to modify the execution of the
+	 * above steps. A {@code Rule} may prevent all execution of the above steps,
+	 * or add additional behavior before and after, or modify thrown exceptions.
+	 * For more information, see {@link TestRule}
+	 * </ul>
+	 * 
+	 * This can be overridden in subclasses, either by overriding this method,
+	 * or the implementations creating each sub-statement.
+	 */
+	protected Statement methodBlock(FrameworkMethod method) {
+		Object test;
+		try {
+			test= new ReflectiveCallable() {
+				@Override
+				protected Object runReflectiveCall() throws Throwable {
+					return createTest();
+				}
+			}.run();
+		} catch (Throwable e) {
+			return new Fail(e);
+		}
+
+		Statement statement= methodInvoker(method, test);
+		statement= possiblyExpectingExceptions(method, test, statement);
+		statement= withPotentialTimeout(method, test, statement);
+		statement= withBefores(method, test, statement);
+		statement= withAfters(method, test, statement);
+		statement= withRules(method, test, statement);
+		return statement;
+	}
+
+	//
+	// Statement builders
+	//
+
+	/**
+	 * Returns a {@link Statement} that invokes {@code method} on {@code test}
+	 */
+	protected Statement methodInvoker(FrameworkMethod method, Object test) {
+		return new InvokeMethod(method, test);
+	}
+
+	/**
+	 * Returns a {@link Statement}: if {@code method}'s {@code @Test} annotation
+	 * has the {@code expecting} attribute, return normally only if {@code next}
+	 * throws an exception of the correct type, and throw an exception
+	 * otherwise.
+	 * 
+	 * @deprecated Will be private soon: use Rules instead
+	 */
+	@Deprecated
+	protected Statement possiblyExpectingExceptions(FrameworkMethod method,
+			Object test, Statement next) {
+		Test annotation= method.getAnnotation(Test.class);
+		return expectsException(annotation) ? new ExpectException(next,
+				getExpectedException(annotation)) : next;
+	}
+
+	/**
+	 * Returns a {@link Statement}: if {@code method}'s {@code @Test} annotation
+	 * has the {@code timeout} attribute, throw an exception if {@code next}
+	 * takes more than the specified number of milliseconds.
+	 * 
+	 * @deprecated Will be private soon: use Rules instead
+	 */
+	@Deprecated
+	protected Statement withPotentialTimeout(FrameworkMethod method,
+			Object test, Statement next) {
+		long timeout= getTimeout(method.getAnnotation(Test.class));
+		return timeout > 0 ? new FailOnTimeout(next, timeout) : next;
+	}
+
+	/**
+	 * Returns a {@link Statement}: run all non-overridden {@code @Before}
+	 * methods on this class and superclasses before running {@code next}; if
+	 * any throws an Exception, stop execution and pass the exception on.
+	 * 
+	 * @deprecated Will be private soon: use Rules instead
+	 */
+	@Deprecated
+	protected Statement withBefores(FrameworkMethod method, Object target,
+			Statement statement) {
+		List<FrameworkMethod> befores= getTestClass().getAnnotatedMethods(
+				Before.class);
+		return befores.isEmpty() ? statement : new RunBefores(statement,
+				befores, target);
+	}
+
+	/**
+	 * Returns a {@link Statement}: run all non-overridden {@code @After}
+	 * methods on this class and superclasses before running {@code next}; all
+	 * After methods are always executed: exceptions thrown by previous steps
+	 * are combined, if necessary, with exceptions from After methods into a
+	 * {@link MultipleFailureException}.
+	 * 
+	 * @deprecated Will be private soon: use Rules instead
+	 */
+	@Deprecated
+	protected Statement withAfters(FrameworkMethod method, Object target,
+			Statement statement) {
+		List<FrameworkMethod> afters= getTestClass().getAnnotatedMethods(
+				After.class);
+		return afters.isEmpty() ? statement : new RunAfters(statement, afters,
+				target);
+	}
+
+	private Statement withRules(FrameworkMethod method, Object target,
+			Statement statement) {
+		List<TestRule> testRules= getTestRules(target);
+		Statement result= statement;
+		result= withMethodRules(method, testRules, target, result);
+		result= withTestRules(method, testRules, result);
+		
+		return result;
+	}
+
+	private Statement withMethodRules(FrameworkMethod method, List<TestRule> testRules,
+			Object target, Statement result) {
+		for (org.junit.rules.MethodRule each : getMethodRules(target))
+			if (! testRules.contains(each))
+				result= each.apply(result, method, target);
+		return result;
+	}
+
+	private List<org.junit.rules.MethodRule> getMethodRules(Object target) {
+		return rules(target);
+	}
+
+	/**
+	 * @param target
+	 *            the test case instance
+	 * @return a list of MethodRules that should be applied when executing this
+	 *         test
+	 */
+	protected List<org.junit.rules.MethodRule> rules(Object target) {
+		return getTestClass().getAnnotatedFieldValues(target, Rule.class,
+				org.junit.rules.MethodRule.class);
+	}
+
+	/**
+	 * Returns a {@link Statement}: apply all non-static {@link Value} fields
+	 * annotated with {@link Rule}.
+	 * @param method 
+	 * @param testRules 
+	 * @param statement The base statement
+	 * @return a RunRules statement if any class-level {@link Rule}s are
+	 *         found, or the base statement
+	 */
+	private Statement withTestRules(FrameworkMethod method, List<TestRule> testRules,
+			Statement statement) {
+		return testRules.isEmpty() ? statement :
+			new RunRules(statement, testRules, describeChild(method));
+	}
+
+	/**
+	 * @param target
+	 *            the test case instance
+	 * @return a list of TestRules that should be applied when executing this
+	 *         test
+	 */
+	protected List<TestRule> getTestRules(Object target) {
+		List<TestRule> result = getTestClass().getAnnotatedMethodValues(target,
+				Rule.class, TestRule.class);
+			
+		result.addAll(getTestClass().getAnnotatedFieldValues(target,
+				Rule.class, TestRule.class));
+
+		return result;
+	}
+	
+	private Class<? extends Throwable> getExpectedException(Test annotation) {
+		if (annotation == null || annotation.expected() == None.class)
+			return null;
+		else
+			return annotation.expected();
+	}
+
+	private boolean expectsException(Test annotation) {
+		return getExpectedException(annotation) != null;
+	}
+
+	private long getTimeout(Test annotation) {
+		if (annotation == null)
+			return 0;
+		return annotation.timeout();
+	}
+=======
+    /**
+     * Creates a BlockJUnit4ClassRunner to run {@code klass}
+     *
+     * @throws InitializationError if the test class is malformed.
+     */
+    public BlockJUnit4ClassRunner(Class<?> klass) throws InitializationError {
+        super(klass);
+    }
+
+    //
+    // Implementation of ParentRunner
+    //
+
+    @Override
+    protected void runChild(final FrameworkMethod method, RunNotifier notifier) {
+        Description description = describeChild(method);
+        if (method.getAnnotation(Ignore.class) != null) {
+            notifier.fireTestIgnored(description);
+        } else {
+            runLeaf(methodBlock(method), description, notifier);
+        }
+    }
+
+    @Override
+    protected Description describeChild(FrameworkMethod method) {
+        return Description.createTestDescription(getTestClass().getJavaClass(),
+                testName(method), method.getAnnotations());
+    }
+
+    @Override
+    protected List<FrameworkMethod> getChildren() {
+        return computeTestMethods();
+    }
+
+    //
+    // Override in subclasses
+    //
+
+    /**
+     * Returns the methods that run tests. Default implementation returns all
+     * methods annotated with {@code @Test} on this class and superclasses that
+     * are not overridden.
+     */
+    protected List<FrameworkMethod> computeTestMethods() {
+        return getTestClass().getAnnotatedMethods(Test.class);
+    }
+
+    @Override
+    protected void collectInitializationErrors(List<Throwable> errors) {
+        super.collectInitializationErrors(errors);
+
+        validateNoNonStaticInnerClass(errors);
+        validateConstructor(errors);
+        validateInstanceMethods(errors);
+        validateFields(errors);
+        validateMethods(errors);
+    }
+
+    protected void validateNoNonStaticInnerClass(List<Throwable> errors) {
+        if (getTestClass().isANonStaticInnerClass()) {
+            String gripe = "The inner class " + getTestClass().getName()
+                    + " is not static.";
+            errors.add(new Exception(gripe));
+        }
+    }
+
+    /**
+     * Adds to {@code errors} if the test class has more than one constructor,
+     * or if the constructor takes parameters. Override if a subclass requires
+     * different validation rules.
+     */
+    protected void validateConstructor(List<Throwable> errors) {
+        validateOnlyOneConstructor(errors);
+        validateZeroArgConstructor(errors);
+    }
+
+    /**
+     * Adds to {@code errors} if the test class has more than one constructor
+     * (do not override)
+     */
+    protected void validateOnlyOneConstructor(List<Throwable> errors) {
+        if (!hasOneConstructor()) {
+            String gripe = "Test class should have exactly one public constructor";
+            errors.add(new Exception(gripe));
+        }
+    }
+
+    /**
+     * Adds to {@code errors} if the test class's single constructor takes
+     * parameters (do not override)
+     */
+    protected void validateZeroArgConstructor(List<Throwable> errors) {
+        if (!getTestClass().isANonStaticInnerClass()
+                && hasOneConstructor()
+                && (getTestClass().getOnlyConstructor().getParameterTypes().length != 0)) {
+            String gripe = "Test class should have exactly one public zero-argument constructor";
+            errors.add(new Exception(gripe));
+        }
+    }
+
+    private boolean hasOneConstructor() {
+        return getTestClass().getJavaClass().getConstructors().length == 1;
+    }
+
+    /**
+     * Adds to {@code errors} for each method annotated with {@code @Test},
+     * {@code @Before}, or {@code @After} that is not a public, void instance
+     * method with no arguments.
+     *
+     * @deprecated unused API, will go away in future version
+     */
+    @Deprecated
+    protected void validateInstanceMethods(List<Throwable> errors) {
+        validatePublicVoidNoArgMethods(After.class, false, errors);
+        validatePublicVoidNoArgMethods(Before.class, false, errors);
+        validateTestMethods(errors);
+
+        if (computeTestMethods().size() == 0) {
+            errors.add(new Exception("No runnable methods"));
+        }
+    }
+
+    protected void validateFields(List<Throwable> errors) {
+        RULE_VALIDATOR.validate(getTestClass(), errors);
+    }
+
+    private void validateMethods(List<Throwable> errors) {
+        RULE_METHOD_VALIDATOR.validate(getTestClass(), errors);
+    }
+
+    /**
+     * Adds to {@code errors} for each method annotated with {@code @Test}that
+     * is not a public, void instance method with no arguments.
+     */
+    protected void validateTestMethods(List<Throwable> errors) {
+        validatePublicVoidNoArgMethods(Test.class, false, errors);
+    }
+
+    /**
+     * Returns a new fixture for running a test. Default implementation executes
+     * the test class's no-argument constructor (validation should have ensured
+     * one exists).
+     */
+    protected Object createTest() throws Exception {
+        return getTestClass().getOnlyConstructor().newInstance();
+    }
+
+    /**
+     * Returns the name that describes {@code method} for {@link Description}s.
+     * Default implementation is the method's name
+     */
+    protected String testName(FrameworkMethod method) {
+        return method.getName();
+    }
+
+    /**
+     * Returns a Statement that, when executed, either returns normally if
+     * {@code method} passes, or throws an exception if {@code method} fails.
+     *
+     * Here is an outline of the default implementation:
+     *
+     * <ul>
+     * <li>Invoke {@code method} on the result of {@code createTest()}, and
+     * throw any exceptions thrown by either operation.
+     * <li>HOWEVER, if {@code method}'s {@code @Test} annotation has the {@code
+     * expecting} attribute, return normally only if the previous step threw an
+     * exception of the correct type, and throw an exception otherwise.
+     * <li>HOWEVER, if {@code method}'s {@code @Test} annotation has the {@code
+     * timeout} attribute, throw an exception if the previous step takes more
+     * than the specified number of milliseconds.
+     * <li>ALWAYS run all non-overridden {@code @Before} methods on this class
+     * and superclasses before any of the previous steps; if any throws an
+     * Exception, stop execution and pass the exception on.
+     * <li>ALWAYS run all non-overridden {@code @After} methods on this class
+     * and superclasses after any of the previous steps; all After methods are
+     * always executed: exceptions thrown by previous steps are combined, if
+     * necessary, with exceptions from After methods into a
+     * {@link MultipleFailureException}.
+     * <li>ALWAYS allow {@code @Rule} fields to modify the execution of the
+     * above steps. A {@code Rule} may prevent all execution of the above steps,
+     * or add additional behavior before and after, or modify thrown exceptions.
+     * For more information, see {@link TestRule}
+     * </ul>
+     *
+     * This can be overridden in subclasses, either by overriding this method,
+     * or the implementations creating each sub-statement.
+     */
+    protected Statement methodBlock(FrameworkMethod method) {
+        Object test;
+        try {
+            test = new ReflectiveCallable() {
+                @Override
+                protected Object runReflectiveCall() throws Throwable {
+                    return createTest();
+                }
+            }.run();
+        } catch (Throwable e) {
+            return new Fail(e);
+        }
+
+        Statement statement = methodInvoker(method, test);
+        statement = possiblyExpectingExceptions(method, test, statement);
+        statement = withPotentialTimeout(method, test, statement);
+        statement = withBefores(method, test, statement);
+        statement = withAfters(method, test, statement);
+        statement = withRules(method, test, statement);
+        return statement;
+    }
+
+    //
+    // Statement builders
+    //
+
+    /**
+     * Returns a {@link Statement} that invokes {@code method} on {@code test}
+     */
+    protected Statement methodInvoker(FrameworkMethod method, Object test) {
+        return new InvokeMethod(method, test);
+    }
+
+    /**
+     * Returns a {@link Statement}: if {@code method}'s {@code @Test} annotation
+     * has the {@code expecting} attribute, return normally only if {@code next}
+     * throws an exception of the correct type, and throw an exception
+     * otherwise.
+     *
+     * @deprecated Will be private soon: use Rules instead
+     */
+    @Deprecated
+    protected Statement possiblyExpectingExceptions(FrameworkMethod method,
+            Object test, Statement next) {
+        Test annotation = method.getAnnotation(Test.class);
+        return expectsException(annotation) ? new ExpectException(next,
+                getExpectedException(annotation)) : next;
+    }
+
+    /**
+     * Returns a {@link Statement}: if {@code method}'s {@code @Test} annotation
+     * has the {@code timeout} attribute, throw an exception if {@code next}
+     * takes more than the specified number of milliseconds.
+     *
+     * @deprecated Will be private soon: use Rules instead
+     */
+    @Deprecated
+    protected Statement withPotentialTimeout(FrameworkMethod method,
+            Object test, Statement next) {
+        long timeout = getTimeout(method.getAnnotation(Test.class));
+        return timeout > 0 ? new FailOnTimeout(next, timeout) : next;
+    }
+
+    /**
+     * Returns a {@link Statement}: run all non-overridden {@code @Before}
+     * methods on this class and superclasses before running {@code next}; if
+     * any throws an Exception, stop execution and pass the exception on.
+     *
+     * @deprecated Will be private soon: use Rules instead
+     */
+    @Deprecated
+    protected Statement withBefores(FrameworkMethod method, Object target,
+            Statement statement) {
+        List<FrameworkMethod> befores = getTestClass().getAnnotatedMethods(
+                Before.class);
+        return befores.isEmpty() ? statement : new RunBefores(statement,
+                befores, target);
+    }
+
+    /**
+     * Returns a {@link Statement}: run all non-overridden {@code @After}
+     * methods on this class and superclasses before running {@code next}; all
+     * After methods are always executed: exceptions thrown by previous steps
+     * are combined, if necessary, with exceptions from After methods into a
+     * {@link MultipleFailureException}.
+     *
+     * @deprecated Will be private soon: use Rules instead
+     */
+    @Deprecated
+    protected Statement withAfters(FrameworkMethod method, Object target,
+            Statement statement) {
+        List<FrameworkMethod> afters = getTestClass().getAnnotatedMethods(
+                After.class);
+        return afters.isEmpty() ? statement : new RunAfters(statement, afters,
+                target);
+    }
+
+    private Statement withRules(FrameworkMethod method, Object target,
+            Statement statement) {
+        List<TestRule> testRules = getTestRules(target);
+        Statement result = statement;
+        result = withMethodRules(method, testRules, target, result);
+        result = withTestRules(method, testRules, result);
+
+        return result;
+    }
+
+    @SuppressWarnings("deprecation")
+    private Statement withMethodRules(FrameworkMethod method, List<TestRule> testRules,
+            Object target, Statement result) {
+        for (org.junit.rules.MethodRule each : getMethodRules(target)) {
+            if (!testRules.contains(each)) {
+                result = each.apply(result, method, target);
+            }
+        }
+        return result;
+    }
+
+    @SuppressWarnings("deprecation")
+    private List<org.junit.rules.MethodRule> getMethodRules(Object target) {
+        return rules(target);
+    }
+
+    /**
+     * @param target the test case instance
+     * @return a list of MethodRules that should be applied when executing this
+     *         test
+     * @deprecated {@link org.junit.rules.MethodRule} is a deprecated interface. Port to
+     *             {@link TestRule} and
+     *             {@link BlockJUnit4ClassRunner#getTestRules(Object)}
+     */
+    @Deprecated
+    protected List<org.junit.rules.MethodRule> rules(Object target) {
+        return getTestClass().getAnnotatedFieldValues(target, Rule.class,
+                org.junit.rules.MethodRule.class);
+    }
+
+    /**
+     * Returns a {@link Statement}: apply all non-static {@link Value} fields
+     * annotated with {@link Rule}.
+     *
+     * @param statement The base statement
+     * @return a RunRules statement if any class-level {@link Rule}s are
+     *         found, or the base statement
+     */
+    private Statement withTestRules(FrameworkMethod method, List<TestRule> testRules,
+            Statement statement) {
+        return testRules.isEmpty() ? statement :
+                new RunRules(statement, testRules, describeChild(method));
+    }
+
+    /**
+     * @param target the test case instance
+     * @return a list of TestRules that should be applied when executing this
+     *         test
+     */
+    protected List<TestRule> getTestRules(Object target) {
+        List<TestRule> result = getTestClass().getAnnotatedMethodValues(target,
+                Rule.class, TestRule.class);
+
+        result.addAll(getTestClass().getAnnotatedFieldValues(target,
+                Rule.class, TestRule.class));
+
+        return result;
+    }
+
+    private Class<? extends Throwable> getExpectedException(Test annotation) {
+        if (annotation == null || annotation.expected() == None.class) {
+            return null;
+        } else {
+            return annotation.expected();
+        }
+    }
+
+    private boolean expectsException(Test annotation) {
+        return getExpectedException(annotation) != null;
+    }
+
+    private long getTimeout(Test annotation) {
+        if (annotation == null) {
+            return 0;
+        }
+        return annotation.timeout();
+    }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_6fb53a7_2f879b9/rev_6fb53a7-2f879b9/src/main/java/org/junit/rules/TestWatcher.java;<<<<<<< MINE
+	public Statement apply(final Statement base, final Description description) {
+		return new Statement() {
+			@Override
+			public void evaluate() throws Throwable {
+				List<Throwable> errors = new ArrayList<Throwable>();
+
+				startingQuietly(description, errors);
+				try {
+					base.evaluate();
+					succeededQuietly(description, errors);
+				} catch (AssumptionViolatedException e) {
+					errors.add(e);
+					skippedQuietly(e, description, errors);
+				} catch (Throwable t) {
+					errors.add(t);
+					failedQuietly(t, description, errors);
+				} finally {
+					finishedQuietly(description, errors);
+				}
+				
+				MultipleFailureException.assertEmpty(errors);
+			}
+		};
+	}
+
+	private void succeededQuietly(Description description,
+			List<Throwable> errors) {
+		try {
+			succeeded(description);
+		} catch (Throwable t) {
+			errors.add(t);
+		}
+	}
+	
+	private void failedQuietly(Throwable t, Description description,
+			List<Throwable> errors) {
+		try {
+			failed(t, description);
+		} catch (Throwable t1) {
+			errors.add(t1);
+		}
+	}
+
+	private void skippedQuietly(AssumptionViolatedException e, Description description,
+			List<Throwable> errors) {
+		try {
+			skipped(e, description);
+		} catch (Throwable t) {
+			errors.add(t);
+		}
+	}
+
+	private void startingQuietly(Description description,
+			List<Throwable> errors) {
+		try {
+			starting(description);
+		} catch (Throwable t) {
+			errors.add(t);
+		}
+	}
+	
+	private void finishedQuietly(Description description,
+			List<Throwable> errors) {
+		try {
+			finished(description);
+		} catch (Throwable t) {
+			errors.add(t);
+		}
+	}
+	
+	/**
+	 * Invoked when a test succeeds
+	 * 
+	 * @param description
+	 */
+	protected void succeeded(Description description) {
+	}
+
+	/**
+	 * Invoked when a test fails
+	 * 
+	 * @param e 
+	 * @param description
+	 */
+	protected void failed(Throwable e, Description description) {
+	}
+
+	/**
+	 * Invoked when a test is skipped due to a failed assumption.
+	 *
+	 * @param e
+	 * @param description
+	 */
+	protected void skipped(AssumptionViolatedException e, Description description) {
+	}
+
+	/**
+	 * Invoked when a test is about to start
+	 * 
+	 * @param description  
+	 */
+	protected void starting(Description description) {
+	}
+
+	/**
+	 * Invoked when a test method finishes (whether passing or failing)
+	 * 
+	 * @param description  
+	 */
+	protected void finished(Description description) {
+	}
+=======
+    public Statement apply(final Statement base, final Description description) {
+        return new Statement() {
+            @Override
+            public void evaluate() throws Throwable {
+                List<Throwable> errors = new ArrayList<Throwable>();
+
+                startingQuietly(description, errors);
+                try {
+                    base.evaluate();
+                    succeededQuietly(description, errors);
+                } catch (AssumptionViolatedException e) {
+                    skipped(e, description);
+                    throw e;
+                } catch (Throwable t) {
+                    errors.add(t);
+                    failedQuietly(t, description, errors);
+                } finally {
+                    finishedQuietly(description, errors);
+                }
+
+                MultipleFailureException.assertEmpty(errors);
+            }
+        };
+    }
+
+    private void succeededQuietly(Description description,
+            List<Throwable> errors) {
+        try {
+            succeeded(description);
+        } catch (Throwable t) {
+            errors.add(t);
+        }
+    }
+
+    private void failedQuietly(Throwable t, Description description,
+            List<Throwable> errors) {
+        try {
+            failed(t, description);
+        } catch (Throwable t1) {
+            errors.add(t1);
+        }
+    }
+
+    private void startingQuietly(Description description,
+            List<Throwable> errors) {
+        try {
+            starting(description);
+        } catch (Throwable t) {
+            errors.add(t);
+        }
+    }
+
+    private void finishedQuietly(Description description,
+            List<Throwable> errors) {
+        try {
+            finished(description);
+        } catch (Throwable t) {
+            errors.add(t);
+        }
+    }
+
+    /**
+     * Invoked when a test succeeds
+     */
+    protected void succeeded(Description description) {
+    }
+
+    /**
+     * Invoked when a test fails
+     */
+    protected void failed(Throwable e, Description description) {
+    }
+
+    /**
+     * Invoked when a test is skipped due to a failed assumption.
+     */
+    protected void skipped(AssumptionViolatedException e, Description description) {
+    }
+
+    /**
+     * Invoked when a test is about to start
+     */
+    protected void starting(Description description) {
+    }
+
+    /**
+     * Invoked when a test method finishes (whether passing or failing)
+     */
+    protected void finished(Description description) {
+    }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_8b0d35b_067ed0a/rev_8b0d35b-067ed0a/src/main/java/junit/runner/Version.java;<<<<<<< MINE
+    private static final String VERSION = getVersion();
+
+	private Version() {
+		// don't instantiate
+	}
+=======
+	private Version() {
+		// don't instantiate
+	}
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_53e7dc2_d33bd40/rev_53e7dc2-d33bd40/src/main/java/redis/clients/jedis/JedisCluster.java;<<<<<<< MINE
+    public JedisCluster(Set<HostAndPort> jedisClusterNode, int timeout,
+        int maxRedirections, final GenericObjectPoolConfig poolConfig) {
+	super(jedisClusterNode, timeout, maxRedirections, poolConfig);
+    }
+    
+    @Override
+    public String set(final String key, final String value) {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.set(key, value);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public String set(final String key, final String value, final String nxxx,
+                      final String expx, final long time) {
+        return new JedisClusterCommand<String>(connectionHandler, timeout,
+                maxRedirections) {
+            @Override
+            public String execute(Jedis connection) {
+                return connection.set(key, value, nxxx, expx, time);
+            }
+        }.run(key);
+    }
+
+    @Override
+    public String get(final String key) {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.get(key);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Boolean exists(final String key) {
+	return new JedisClusterCommand<Boolean>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Boolean execute(Jedis connection) {
+		return connection.exists(key);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long persist(final String key) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.persist(key);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public String type(final String key) {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.type(key);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long expire(final String key, final int seconds) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.expire(key, seconds);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long expireAt(final String key, final long unixTime) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection
+			.expireAt(key, unixTime);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long ttl(final String key) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.ttl(key);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Boolean setbit(final String key, final long offset,
+	    final boolean value) {
+	return new JedisClusterCommand<Boolean>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Boolean execute(Jedis connection) {
+		return connection.setbit(key, offset,
+			value);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Boolean setbit(final String key, final long offset,
+	    final String value) {
+	return new JedisClusterCommand<Boolean>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Boolean execute(Jedis connection) {
+		return connection.setbit(key, offset,
+			value);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Boolean getbit(final String key, final long offset) {
+	return new JedisClusterCommand<Boolean>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Boolean execute(Jedis connection) {
+		return connection.getbit(key, offset);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long setrange(final String key, final long offset, final String value) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.setrange(key, offset,
+			value);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public String getrange(final String key, final long startOffset,
+	    final long endOffset) {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.getrange(key,
+			startOffset, endOffset);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public String getSet(final String key, final String value) {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.getSet(key, value);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long setnx(final String key, final String value) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.setnx(key, value);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public String setex(final String key, final int seconds, final String value) {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.setex(key, seconds,
+			value);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long decrBy(final String key, final long integer) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.decrBy(key, integer);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long decr(final String key) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.decr(key);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long incrBy(final String key, final long integer) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.incrBy(key, integer);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long incr(final String key) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.incr(key);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long append(final String key, final String value) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.append(key, value);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public String substr(final String key, final int start, final int end) {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection
+			.substr(key, start, end);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long hset(final String key, final String field, final String value) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection
+			.hset(key, field, value);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public String hget(final String key, final String field) {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.hget(key, field);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public Long hsetnx(final String key, final String field, final String value) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.hsetnx(key, field,
+			value);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public String hmset(final String key, final Map<String, String> hash) {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.hmset(key, hash);
+	    }
+	}.run(key);
+    }
+
+    @Override
+    public List<String> hmget(final String key, final String... fields) {
+	return new JedisClusterCommand<List<String>>(connectionHandler,
+		timeout, maxRedirections) {
+	    @Override
+	    public List<String> execute(Jedis connection) {
+		return connection.hmget(key, fields);
+	    }
+	}.run(key);
+    }
+=======
+  public JedisCluster(Set<HostAndPort> jedisClusterNode, int timeout, int maxRedirections,
+      final GenericObjectPoolConfig poolConfig) {
+    this.connectionHandler = new JedisSlotBasedConnectionHandler(jedisClusterNode, poolConfig);
+    this.timeout = timeout;
+    this.maxRedirections = maxRedirections;
+  }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_2510e34_d33bd40/rev_2510e34-d33bd40/src/test/java/redis/clients/jedis/tests/commands/ScriptingCommandsTest.java;<<<<<<< MINE
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_80d2827_d1842a2/rev_80d2827-d1842a2/src/main/java/redis/clients/jedis/JedisCluster.java;<<<<<<< MINE
+=======
+  /**
+   * Deprecated, BasicCommands is not fit to JedisCluster, so it'll be removed
+   */
+  @Deprecated
+  @Override
+  public String ping() {
+    return new JedisClusterCommand<String>(connectionHandler, maxRedirections) {
+      @Override
+      public String execute(Jedis connection) {
+        return connection.ping();
+      }
+    }.run(null);
+  }
+
+  /**
+   * Deprecated, BasicCommands is not fit to JedisCluster, so it'll be removed
+   */
+  @Deprecated
+  @Override
+  public String quit() {
+    return new JedisClusterCommand<String>(connectionHandler, maxRedirections) {
+      @Override
+      public String execute(Jedis connection) {
+        return connection.quit();
+      }
+    }.run(null);
+  }
+
+  /**
+   * Deprecated, BasicCommands is not fit to JedisCluster, so it'll be removed
+   */
+  @Deprecated
+  @Override
+  public String flushDB() {
+    return new JedisClusterCommand<String>(connectionHandler, maxRedirections) {
+      @Override
+      public String execute(Jedis connection) {
+        return connection.flushDB();
+      }
+    }.run(null);
+  }
+
+  /**
+   * Deprecated, BasicCommands is not fit to JedisCluster, so it'll be removed
+   */
+  @Deprecated
+  @Override
+  public Long dbSize() {
+    return new JedisClusterCommand<Long>(connectionHandler, maxRedirections) {
+      @Override
+      public Long execute(Jedis connection) {
+        return connection.dbSize();
+      }
+    }.run(null);
+  }
+
+  /**
+   * Deprecated, BasicCommands is not fit to JedisCluster, so it'll be removed
+   */
+  @Deprecated
+  @Override
+  public String select(final int index) {
+    return new JedisClusterCommand<String>(connectionHandler, maxRedirections) {
+      @Override
+      public String execute(Jedis connection) {
+        return connection.select(index);
+      }
+    }.run(null);
+  }
+
+  /**
+   * Deprecated, BasicCommands is not fit to JedisCluster, so it'll be removed
+   */
+  @Deprecated
+  @Override
+  public String flushAll() {
+    return new JedisClusterCommand<String>(connectionHandler, maxRedirections) {
+      @Override
+      public String execute(Jedis connection) {
+        return connection.flushAll();
+      }
+    }.run(null);
+  }
+
+  /**
+   * Deprecated, BasicCommands is not fit to JedisCluster, so it'll be removed
+   */
+  @Deprecated
+  @Override
+  public String auth(final String password) {
+    return new JedisClusterCommand<String>(connectionHandler, maxRedirections) {
+      @Override
+      public String execute(Jedis connection) {
+        return connection.auth(password);
+      }
+    }.run(null);
+  }
+
+  /**
+   * Deprecated, BasicCommands is not fit to JedisCluster, so it'll be removed
+   */
+  @Deprecated
+  @Override
+  public String save() {
+    return new JedisClusterCommand<String>(connectionHandler, maxRedirections) {
+      @Override
+      public String execute(Jedis connection) {
+        return connection.save();
+      }
+    }.run(null);
+  }
+
+  /**
+   * Deprecated, BasicCommands is not fit to JedisCluster, so it'll be removed
+   */
+  @Deprecated
+  @Override
+  public String bgsave() {
+    return new JedisClusterCommand<String>(connectionHandler, maxRedirections) {
+      @Override
+      public String execute(Jedis connection) {
+        return connection.bgsave();
+      }
+    }.run(null);
+  }
+
+  /**
+   * Deprecated, BasicCommands is not fit to JedisCluster, so it'll be removed
+   */
+  @Deprecated
+  @Override
+  public String bgrewriteaof() {
+    return new JedisClusterCommand<String>(connectionHandler, maxRedirections) {
+      @Override
+      public String execute(Jedis connection) {
+        return connection.bgrewriteaof();
+      }
+    }.run(null);
+  }
+
+  /**
+   * Deprecated, BasicCommands is not fit to JedisCluster, so it'll be removed
+   */
+  @Deprecated
+  @Override
+  public Long lastsave() {
+    return new JedisClusterCommand<Long>(connectionHandler, maxRedirections) {
+      @Override
+      public Long execute(Jedis connection) {
+        return connection.lastsave();
+      }
+    }.run(null);
+  }
+
+  /**
+   * Deprecated, BasicCommands is not fit to JedisCluster, so it'll be removed
+   */
+  @Deprecated
+  @Override
+  public String shutdown() {
+    return new JedisClusterCommand<String>(connectionHandler, maxRedirections) {
+      @Override
+      public String execute(Jedis connection) {
+        return connection.shutdown();
+      }
+    }.run(null);
+  }
+
+  /**
+   * Deprecated, BasicCommands is not fit to JedisCluster, so it'll be removed
+   */
+  @Deprecated
+  @Override
+  public String info() {
+    return new JedisClusterCommand<String>(connectionHandler, maxRedirections) {
+      @Override
+      public String execute(Jedis connection) {
+        return connection.info();
+      }
+    }.run(null);
+  }
+
+  /**
+   * Deprecated, BasicCommands is not fit to JedisCluster, so it'll be removed
+   */
+  @Deprecated
+  @Override
+  public String info(final String section) {
+    return new JedisClusterCommand<String>(connectionHandler, maxRedirections) {
+      @Override
+      public String execute(Jedis connection) {
+        return connection.info(section);
+      }
+    }.run(null);
+  }
+
+  /**
+   * Deprecated, BasicCommands is not fit to JedisCluster, so it'll be removed
+   */
+  @Deprecated
+  @Override
+  public String slaveof(final String host, final int port) {
+    return new JedisClusterCommand<String>(connectionHandler, maxRedirections) {
+      @Override
+      public String execute(Jedis connection) {
+        return connection.slaveof(host, port);
+      }
+    }.run(null);
+  }
+
+  /**
+   * Deprecated, BasicCommands is not fit to JedisCluster, so it'll be removed
+   */
+  @Deprecated
+  @Override
+  public String slaveofNoOne() {
+    return new JedisClusterCommand<String>(connectionHandler, maxRedirections) {
+      @Override
+      public String execute(Jedis connection) {
+        return connection.slaveofNoOne();
+      }
+    }.run(null);
+  }
+
+  /**
+   * Deprecated, BasicCommands is not fit to JedisCluster, so it'll be removed
+   */
+  @Deprecated
+  @Override
+  public int getDB() {
+    return new JedisClusterCommand<Integer>(connectionHandler, maxRedirections) {
+      @Override
+      public Integer execute(Jedis connection) {
+        return connection.getDB();
+      }
+    }.run(null);
+  }
+
+  /**
+   * Deprecated, BasicCommands is not fit to JedisCluster, so it'll be removed
+   */
+  @Deprecated
+  @Override
+  public String debug(final DebugParams params) {
+    return new JedisClusterCommand<String>(connectionHandler, maxRedirections) {
+      @Override
+      public String execute(Jedis connection) {
+        return connection.debug(params);
+      }
+    }.run(null);
+  }
+
+  /**
+   * Deprecated, BasicCommands is not fit to JedisCluster, so it'll be removed
+   */
+  @Deprecated
+  @Override
+  public String configResetStat() {
+    return new JedisClusterCommand<String>(connectionHandler, maxRedirections) {
+      @Override
+      public String execute(Jedis connection) {
+        return connection.configResetStat();
+      }
+    }.run(null);
+  }
+
+>>>>>>> YOURS

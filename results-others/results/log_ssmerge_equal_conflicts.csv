@@ -1,0 +1,2915 @@
+file;ssmergeConf;linedbasedConf
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/ShardedJedis.java;<<<<<<< MINE
+public void disconnect() throws IOException {
+        for (JedisShardInfo jedis : getAllShards()) {
+            jedis.getResource().quit();
+            jedis.getResource().disconnect();
+        }
+    }
+=======
+>>>>>>> YOURS;<<<<<<< MINE
+    public void disconnect() throws IOException {
+        for (JedisShardInfo jedis : getAllShards()) {
+            jedis.getResource().quit();
+            jedis.getResource().disconnect();
+        }
+    }
+
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public String set(String key, String value) {
+        runChecks();
+=======
+public String set(final String key, final String value) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public String set(String key, String value) {
+        runChecks();
+=======
+    public String set(final String key, final String value) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public String get(String key) {
+        runChecks();
+        client.sendCommand("GET", key);
+=======
+public String get(final String key) {
+        checkIsInMulti();
+        client.get(key);
+>>>>>>> YOURS;<<<<<<< MINE
+    public String get(String key) {
+        runChecks();
+        client.sendCommand("GET", key);
+=======
+    public String get(final String key) {
+        checkIsInMulti();
+        client.get(key);
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer exists(String key) {
+        runChecks();
+=======
+public Integer exists(final String key) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer exists(String key) {
+        runChecks();
+=======
+    public Integer exists(final String key) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer del(String... keys) {
+        runChecks();
+=======
+public Integer del(final String... keys) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer del(String... keys) {
+        runChecks();
+=======
+    public Integer del(final String... keys) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public String type(String key) {
+        runChecks();
+=======
+public String type(final String key) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public String type(String key) {
+        runChecks();
+=======
+    public String type(final String key) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public List<String> keys(String pattern) {
+        runChecks();
+=======
+public Set<String> keys(final String pattern) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public List<String> keys(String pattern) {
+        runChecks();
+=======
+    public Set<String> keys(final String pattern) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public String rename(String oldkey, String newkey) {
+        runChecks();
+=======
+public String rename(final String oldkey, final String newkey) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public String rename(String oldkey, String newkey) {
+        runChecks();
+=======
+    public String rename(final String oldkey, final String newkey) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer renamenx(String oldkey, String newkey) {
+        runChecks();
+=======
+public Integer renamenx(final String oldkey, final String newkey) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer renamenx(String oldkey, String newkey) {
+        runChecks();
+=======
+    public Integer renamenx(final String oldkey, final String newkey) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer expire(String key, int seconds) {
+        runChecks();
+=======
+public Integer expire(final String key, final int seconds) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer expire(String key, int seconds) {
+        runChecks();
+=======
+    public Integer expire(final String key, final int seconds) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer expireAt(String key, long unixTime) {
+        runChecks();
+=======
+public Integer expireAt(final String key, final long unixTime) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer expireAt(String key, long unixTime) {
+        runChecks();
+=======
+    public Integer expireAt(final String key, final long unixTime) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer ttl(String key) {
+        runChecks();
+=======
+public Integer ttl(final String key) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer ttl(String key) {
+        runChecks();
+=======
+    public Integer ttl(final String key) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer move(String key, int dbIndex) {
+        runChecks();
+=======
+public Integer move(final String key, final int dbIndex) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer move(String key, int dbIndex) {
+        runChecks();
+=======
+    public Integer move(final String key, final int dbIndex) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public String getSet(String key, String value) {
+        runChecks();
+=======
+public String getSet(final String key, final String value) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public String getSet(String key, String value) {
+        runChecks();
+=======
+    public String getSet(final String key, final String value) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public List<String> mget(String... keys) {
+        runChecks();
+=======
+public List<String> mget(final String... keys) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public List<String> mget(String... keys) {
+        runChecks();
+=======
+    public List<String> mget(final String... keys) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer setnx(String key, String value) {
+        runChecks();
+=======
+public Integer setnx(final String key, final String value) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer setnx(String key, String value) {
+        runChecks();
+=======
+    public Integer setnx(final String key, final String value) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public String setex(String key, int seconds, String value) {
+        runChecks();
+=======
+public String setex(final String key, final int seconds, final String value) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public String setex(String key, int seconds, String value) {
+        runChecks();
+=======
+    public String setex(final String key, final int seconds, final String value) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public String mset(String... keysvalues) {
+        runChecks();
+=======
+public String mset(final String... keysvalues) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public String mset(String... keysvalues) {
+        runChecks();
+=======
+    public String mset(final String... keysvalues) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer msetnx(String... keysvalues) {
+        runChecks();
+=======
+public Integer msetnx(final String... keysvalues) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer msetnx(String... keysvalues) {
+        runChecks();
+=======
+    public Integer msetnx(final String... keysvalues) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer decrBy(String key, int integer) {
+        runChecks();
+=======
+public Integer decrBy(final String key, final int integer) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer decrBy(String key, int integer) {
+        runChecks();
+=======
+    public Integer decrBy(final String key, final int integer) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer decr(String key) {
+        runChecks();
+=======
+public Integer decr(final String key) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer decr(String key) {
+        runChecks();
+=======
+    public Integer decr(final String key) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer incrBy(String key, int integer) {
+        runChecks();
+=======
+public Integer incrBy(final String key, final int integer) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer incrBy(String key, int integer) {
+        runChecks();
+=======
+    public Integer incrBy(final String key, final int integer) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer incr(String key) {
+        runChecks();
+=======
+public Integer incr(final String key) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer incr(String key) {
+        runChecks();
+=======
+    public Integer incr(final String key) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer append(String key, String value) {
+        runChecks();
+=======
+public Integer append(final String key, final String value) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer append(String key, String value) {
+        runChecks();
+=======
+    public Integer append(final String key, final String value) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public String substr(String key, int start, int end) {
+        runChecks();
+=======
+public String substr(final String key, final int start, final int end) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public String substr(String key, int start, int end) {
+        runChecks();
+=======
+    public String substr(final String key, final int start, final int end) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer hset(String key, String field, String value) {
+        runChecks();
+=======
+public Integer hset(final String key, final String field, final String value) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer hset(String key, String field, String value) {
+        runChecks();
+=======
+    public Integer hset(final String key, final String field, final String value) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public String hget(String key, String field) {
+        runChecks();
+=======
+public String hget(final String key, final String field) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public String hget(String key, String field) {
+        runChecks();
+=======
+    public String hget(final String key, final String field) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer hsetnx(String key, String field, String value) {
+        runChecks();
+=======
+public Integer hsetnx(final String key, final String field, final String value) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer hsetnx(String key, String field, String value) {
+        runChecks();
+=======
+    public Integer hsetnx(final String key, final String field, final String value) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public String hmset(String key, Map<String, String> hash) {
+        runChecks();
+=======
+public String hmset(final String key, final Map<String, String> hash) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public String hmset(String key, Map<String, String> hash) {
+        runChecks();
+=======
+    public String hmset(final String key, final Map<String, String> hash) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public List<String> hmget(String key, String... fields) {
+        runChecks();
+=======
+public List<String> hmget(final String key, final String... fields) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public List<String> hmget(String key, String... fields) {
+        runChecks();
+=======
+    public List<String> hmget(final String key, final String... fields) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer hincrBy(String key, String field, int value) {
+        runChecks();
+=======
+public Integer hincrBy(final String key, final String field, final int value) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer hincrBy(String key, String field, int value) {
+        runChecks();
+=======
+    public Integer hincrBy(final String key, final String field, final int value) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer hexists(String key, String field) {
+        runChecks();
+=======
+public Integer hexists(final String key, final String field) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer hexists(String key, String field) {
+        runChecks();
+=======
+    public Integer hexists(final String key, final String field) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer hdel(String key, String field) {
+        runChecks();
+=======
+public Integer hdel(final String key, final String field) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer hdel(String key, String field) {
+        runChecks();
+=======
+    public Integer hdel(final String key, final String field) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer hlen(String key) {
+        runChecks();
+=======
+public Integer hlen(final String key) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer hlen(String key) {
+        runChecks();
+=======
+    public Integer hlen(final String key) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public List<String> hkeys(String key) {
+        runChecks();
+=======
+public Set<String> hkeys(final String key) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public List<String> hkeys(String key) {
+        runChecks();
+=======
+    public Set<String> hkeys(final String key) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public List<String> hvals(String key) {
+        runChecks();
+=======
+public Collection<String> hvals(final String key) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public List<String> hvals(String key) {
+        runChecks();
+=======
+    public Collection<String> hvals(final String key) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Map<String, String> hgetAll(String key) {
+        runChecks();
+=======
+public Map<String, String> hgetAll(final String key) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Map<String, String> hgetAll(String key) {
+        runChecks();
+=======
+    public Map<String, String> hgetAll(final String key) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer rpush(String key, String string) {
+        runChecks();
+=======
+public Integer rpush(final String key, final String string) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer rpush(String key, String string) {
+        runChecks();
+=======
+    public Integer rpush(final String key, final String string) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer lpush(String key, String string) {
+        runChecks();
+=======
+public Integer lpush(final String key, final String string) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer lpush(String key, String string) {
+        runChecks();
+=======
+    public Integer lpush(final String key, final String string) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer llen(String key) {
+        runChecks();
+=======
+public Integer llen(final String key) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer llen(String key) {
+        runChecks();
+=======
+    public Integer llen(final String key) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public List<String> lrange(String key, int start, int end) {
+        runChecks();
+=======
+public List<String> lrange(final String key, final int start, final int end) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public List<String> lrange(String key, int start, int end) {
+        runChecks();
+=======
+    public List<String> lrange(final String key, final int start, final int end) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public String ltrim(String key, int start, int end) {
+        runChecks();
+=======
+public String ltrim(final String key, final int start, final int end) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public String ltrim(String key, int start, int end) {
+        runChecks();
+=======
+    public String ltrim(final String key, final int start, final int end) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public String lindex(String key, int index) {
+        runChecks();
+=======
+public String lindex(final String key, final int index) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public String lindex(String key, int index) {
+        runChecks();
+=======
+    public String lindex(final String key, final int index) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public String lset(String key, int index, String value) {
+        runChecks();
+=======
+public String lset(final String key, final int index, final String value) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public String lset(String key, int index, String value) {
+        runChecks();
+=======
+    public String lset(final String key, final int index, final String value) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer lrem(String key, int count, String value) {
+        runChecks();
+=======
+public Integer lrem(final String key, final int count, final String value) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer lrem(String key, int count, String value) {
+        runChecks();
+=======
+    public Integer lrem(final String key, final int count, final String value) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public String lpop(String key) {
+        runChecks();
+=======
+public String lpop(final String key) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public String lpop(String key) {
+        runChecks();
+=======
+    public String lpop(final String key) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public String rpop(String key) {
+        runChecks();
+=======
+public String rpop(final String key) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public String rpop(String key) {
+        runChecks();
+=======
+    public String rpop(final String key) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public String rpoplpush(String srckey, String dstkey) {
+        runChecks();
+=======
+public String rpoplpush(final String srckey, final String dstkey) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public String rpoplpush(String srckey, String dstkey) {
+        runChecks();
+=======
+    public String rpoplpush(final String srckey, final String dstkey) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer sadd(String key, String member) {
+        runChecks();
+=======
+public Integer sadd(final String key, final String member) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer sadd(String key, String member) {
+        runChecks();
+=======
+    public Integer sadd(final String key, final String member) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Set<String> smembers(String key) {
+        runChecks();
+=======
+public Set<String> smembers(final String key) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Set<String> smembers(String key) {
+        runChecks();
+=======
+    public Set<String> smembers(final String key) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer srem(String key, String member) {
+        runChecks();
+=======
+public Integer srem(final String key, final String member) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer srem(String key, String member) {
+        runChecks();
+=======
+    public Integer srem(final String key, final String member) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public String spop(String key) {
+        runChecks();
+=======
+public String spop(final String key) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public String spop(String key) {
+        runChecks();
+=======
+    public String spop(final String key) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer smove(String srckey, String dstkey, String member) {
+        runChecks();
+=======
+public Integer smove(final String srckey, final String dstkey, final String member) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer smove(String srckey, String dstkey, String member) {
+        runChecks();
+=======
+    public Integer smove(final String srckey, final String dstkey, final String member) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer scard(String key) {
+        runChecks();
+=======
+public Integer scard(final String key) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer scard(String key) {
+        runChecks();
+=======
+    public Integer scard(final String key) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer sismember(String key, String member) {
+        runChecks();
+=======
+public Integer sismember(final String key, final String member) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer sismember(String key, String member) {
+        runChecks();
+=======
+    public Integer sismember(final String key, final String member) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Set<String> sinter(String... keys) {
+        runChecks();
+=======
+public Set<String> sinter(final String... keys) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Set<String> sinter(String... keys) {
+        runChecks();
+=======
+    public Set<String> sinter(final String... keys) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer sinterstore(String dstkey, String... keys) {
+        runChecks();
+=======
+public Integer sinterstore(final String dstkey, final String... keys) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer sinterstore(String dstkey, String... keys) {
+        runChecks();
+=======
+    public Integer sinterstore(final String dstkey, final String... keys) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Set<String> sunion(String... keys) {
+        runChecks();
+=======
+public Set<String> sunion(final String... keys) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Set<String> sunion(String... keys) {
+        runChecks();
+=======
+    public Set<String> sunion(final String... keys) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer sunionstore(String dstkey, String... keys) {
+        runChecks();
+=======
+public Integer sunionstore(final String dstkey, final String... keys) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer sunionstore(String dstkey, String... keys) {
+        runChecks();
+=======
+    public Integer sunionstore(final String dstkey, final String... keys) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Set<String> sdiff(String... keys) {
+        runChecks();
+=======
+public Set<String> sdiff(final String... keys) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Set<String> sdiff(String... keys) {
+        runChecks();
+=======
+    public Set<String> sdiff(final String... keys) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer sdiffstore(String dstkey, String... keys) {
+        runChecks();
+=======
+public Integer sdiffstore(final String dstkey, final String... keys) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer sdiffstore(String dstkey, String... keys) {
+        runChecks();
+=======
+    public Integer sdiffstore(final String dstkey, final String... keys) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public String srandmember(String key) {
+        runChecks();
+=======
+public String srandmember(final String key) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public String srandmember(String key) {
+        runChecks();
+=======
+    public String srandmember(final String key) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer zadd(String key, double score, String member) {
+        runChecks();
+=======
+public Integer zadd(final String key, final double score, final String member) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer zadd(String key, double score, String member) {
+        runChecks();
+=======
+    public Integer zadd(final String key, final double score, final String member) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Set<String> zrange(String key, int start, int end) {
+        runChecks();
+=======
+public Set<String> zrange(final String key, final int start, final int end) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Set<String> zrange(String key, int start, int end) {
+        runChecks();
+=======
+    public Set<String> zrange(final String key, final int start, final int end) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer zrem(String key, String member) {
+        runChecks();
+=======
+public Integer zrem(final String key, final String member) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer zrem(String key, String member) {
+        runChecks();
+=======
+    public Integer zrem(final String key, final String member) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Double zincrby(String key, double score, String member) {
+        runChecks();
+=======
+public Double zincrby(final String key, final double score, final String member) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Double zincrby(String key, double score, String member) {
+        runChecks();
+=======
+    public Double zincrby(final String key, final double score, final String member) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer zrank(String key, String member) {
+        runChecks();
+=======
+public Integer zrank(final String key, final String member) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer zrank(String key, String member) {
+        runChecks();
+=======
+    public Integer zrank(final String key, final String member) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer zrevrank(String key, String member) {
+        runChecks();
+=======
+public Integer zrevrank(final String key, final String member) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer zrevrank(String key, String member) {
+        runChecks();
+=======
+    public Integer zrevrank(final String key, final String member) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Set<String> zrevrange(String key, int start, int end) {
+        runChecks();
+=======
+public Set<String> zrevrange(final String key, final int start, final int end) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Set<String> zrevrange(String key, int start, int end) {
+        runChecks();
+=======
+    public Set<String> zrevrange(final String key, final int start, final int end) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Set<Tuple> zrangeWithScores(String key, int start, int end) {
+        runChecks();
+=======
+public Set<Tuple> zrangeWithScores(final String key, final int start, final int end) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Set<Tuple> zrangeWithScores(String key, int start, int end) {
+        runChecks();
+=======
+    public Set<Tuple> zrangeWithScores(final String key, final int start, final int end) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Set<Tuple> zrevrangeWithScores(String key, int start, int end) {
+        runChecks();
+=======
+public Set<Tuple> zrevrangeWithScores(final String key, final int start, final int end) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Set<Tuple> zrevrangeWithScores(String key, int start, int end) {
+        runChecks();
+=======
+    public Set<Tuple> zrevrangeWithScores(final String key, final int start, final int end) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer zcard(String key) {
+        runChecks();
+=======
+public Integer zcard(final String key) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer zcard(String key) {
+        runChecks();
+=======
+    public Integer zcard(final String key) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Double zscore(String key, String member) {
+        runChecks();
+=======
+public Double zscore(final String key, final String member) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Double zscore(String key, String member) {
+        runChecks();
+=======
+    public Double zscore(final String key, final String member) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public List<String> sort(String key) {
+        runChecks();
+=======
+public List<String> sort(final String key) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public List<String> sort(String key) {
+        runChecks();
+=======
+    public List<String> sort(final String key) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public List<String> sort(String key, SortingParams sortingParameters) {
+        runChecks();
+=======
+public List<String> sort(final String key, final SortingParams sortingParameters) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public List<String> sort(String key, SortingParams sortingParameters) {
+        runChecks();
+=======
+    public List<String> sort(final String key, final SortingParams sortingParameters) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public List<String> blpop(int timeout, String... keys) {
+        runChecks();
+        List<String> args = new ArrayList<String>();
+        for (String arg : keys) {
+=======
+public List<String> blpop(final int timeout, final String... keys) {
+        checkIsInMulti();
+        final List<String> args = new ArrayList<String>();
+        for (final String arg : keys) {
+>>>>>>> YOURS;<<<<<<< MINE
+    public List<String> blpop(int timeout, String... keys) {
+        runChecks();
+        List<String> args = new ArrayList<String>();
+        for (String arg : keys) {
+=======
+    public List<String> blpop(final int timeout, final String... keys) {
+        checkIsInMulti();
+        final List<String> args = new ArrayList<String>();
+        for (final String arg : keys) {
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer sort(String key, SortingParams sortingParameters,
+            String dstkey) {
+        runChecks();
+=======
+public Integer sort(final String key, final SortingParams sortingParameters,
+    		final String dstkey) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer sort(String key, SortingParams sortingParameters,
+            String dstkey) {
+        runChecks();
+=======
+    public Integer sort(final String key, final SortingParams sortingParameters,
+    		final String dstkey) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer sort(String key, String dstkey) {
+        runChecks();
+=======
+public Integer sort(final String key, final String dstkey) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer sort(String key, String dstkey) {
+        runChecks();
+=======
+    public Integer sort(final String key, final String dstkey) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public List<String> brpop(int timeout, String... keys) {
+        runChecks();
+=======
+public List<String> brpop(final int timeout, final String... keys) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public List<String> brpop(int timeout, String... keys) {
+        runChecks();
+=======
+    public List<String> brpop(final int timeout, final String... keys) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Set<String> zrangeByScore(String key, double min, double max) {
+        runChecks();
+=======
+public Set<String> zrangeByScore(final String key, final double min, final double max) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Set<String> zrangeByScore(String key, double min, double max) {
+        runChecks();
+=======
+    public Set<String> zrangeByScore(final String key, final double min, final double max) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Set<String> zrangeByScore(String key, String min, String max) {
+        runChecks();
+=======
+public Set<String> zrangeByScore(final String key, final String min, final String max) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Set<String> zrangeByScore(String key, String min, String max) {
+        runChecks();
+=======
+    public Set<String> zrangeByScore(final String key, final String min, final String max) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Set<String> zrangeByScore(String key, double min, double max,
+            int offset, int count) {
+        runChecks();
+=======
+public Set<String> zrangeByScore(final String key, final double min, final double max,
+    		final int offset, final int count) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Set<String> zrangeByScore(String key, double min, double max,
+            int offset, int count) {
+        runChecks();
+=======
+    public Set<String> zrangeByScore(final String key, final double min, final double max,
+    		final int offset, final int count) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Set<Tuple> zrangeByScoreWithScores(String key, double min, double max) {
+        runChecks();
+=======
+public Set<Tuple> zrangeByScoreWithScores(final String key, final double min, final double max) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Set<Tuple> zrangeByScoreWithScores(String key, double min, double max) {
+        runChecks();
+=======
+    public Set<Tuple> zrangeByScoreWithScores(final String key, final double min, final double max) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Set<Tuple> zrangeByScoreWithScores(String key, double min,
+            double max, int offset, int count) {
+        runChecks();
+=======
+public Set<Tuple> zrangeByScoreWithScores(final String key, final double min,
+    		final double max, final int offset, final int count) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Set<Tuple> zrangeByScoreWithScores(String key, double min,
+            double max, int offset, int count) {
+        runChecks();
+=======
+    public Set<Tuple> zrangeByScoreWithScores(final String key, final double min,
+    		final double max, final int offset, final int count) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer zremrangeByRank(String key, int start, int end) {
+        runChecks();
+=======
+public Integer zremrangeByRank(final String key, final int start, final int end) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer zremrangeByRank(String key, int start, int end) {
+        runChecks();
+=======
+    public Integer zremrangeByRank(final String key, final int start, final int end) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer zremrangeByScore(String key, double start, double end) {
+        runChecks();
+=======
+public Integer zremrangeByScore(final String key, final double start, final double end) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer zremrangeByScore(String key, double start, double end) {
+        runChecks();
+=======
+    public Integer zremrangeByScore(final String key, final double start, final double end) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer zunionstore(String dstkey, String... sets) {
+        runChecks();
+=======
+public Integer zunionstore(final String dstkey, final String... sets) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer zunionstore(String dstkey, String... sets) {
+        runChecks();
+=======
+    public Integer zunionstore(final String dstkey, final String... sets) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer zunionstore(String dstkey, ZParams params, String... sets) {
+        runChecks();
+=======
+public Integer zunionstore(final String dstkey, final ZParams params, final String... sets) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer zunionstore(String dstkey, ZParams params, String... sets) {
+        runChecks();
+=======
+    public Integer zunionstore(final String dstkey, final ZParams params, final String... sets) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer zinterstore(String dstkey, String... sets) {
+        runChecks();
+=======
+public Integer zinterstore(final String dstkey, final String... sets) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer zinterstore(String dstkey, String... sets) {
+        runChecks();
+=======
+    public Integer zinterstore(final String dstkey, final String... sets) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Integer zinterstore(String dstkey, ZParams params, String... sets) {
+        runChecks();
+=======
+public Integer zinterstore(final String dstkey, final ZParams params, final String... sets) {
+        checkIsInMulti();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Integer zinterstore(String dstkey, ZParams params, String... sets) {
+        runChecks();
+=======
+    public Integer zinterstore(final String dstkey, final ZParams params, final String... sets) {
+        checkIsInMulti();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_c787445_6c942ae/rev_c787445-6c942ae/src/main/java/junit/runner/Version.java;<<<<<<< MINE
+		return "4.7-SNAPSHOT";
+=======
+		return "4.7-SNAPSHOT-20090428-1600";
+>>>>>>> YOURS;<<<<<<< MINE
+		return "4.7-SNAPSHOT";
+=======
+		return "4.7-SNAPSHOT-20090428-1600";
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_333a9bc_e7e4c4c/rev_333a9bc-e7e4c4c/src/main/java/redis/clients/jedis/Transaction.java;<<<<<<< MINE
+public boolean getbit(String key, long offset) {
+=======
+public void getbit(String key, long offset) {
+>>>>>>> YOURS;<<<<<<< MINE
+    public boolean getbit(String key, long offset) {
+=======
+    public void getbit(String key, long offset) {
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_b737131_ff2ff91/rev_b737131-ff2ff91/src/main/java/org/junit/runners/ParentRunner.java;<<<<<<< MINE
+		for (final T each : getFilteredChildren())
+			fRunnerInterceptor.runChild(new Runnable() {			
+				public void run() {
+					ParentRunner.this.runChild(each, notifier);
+				}
+			});
+		fRunnerInterceptor.finished();
+=======
+		fDecorator.runAll(new SafeStatement() {
+			public void execute() {
+				for (final T each : getFilteredChildren())
+					fDecorator.runChild(new SafeStatement() {
+						public void execute() {
+							runChild(each, notifier);
+						}
+					});
+			}
+		});
+>>>>>>> YOURS;<<<<<<< MINE
+		for (final T each : getFilteredChildren())
+			fRunnerInterceptor.runChild(new Runnable() {			
+				public void run() {
+					ParentRunner.this.runChild(each, notifier);
+				}
+			});
+		fRunnerInterceptor.finished();
+=======
+		fDecorator.runAll(new SafeStatement() {
+			public void execute() {
+				for (final T each : getFilteredChildren())
+					fDecorator.runChild(new SafeStatement() {
+						public void execute() {
+							runChild(each, notifier);
+						}
+					});
+			}
+		});
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_9577910_f2594e3/rev_9577910-f2594e3/src/main/java/org/junit/runners/ParentRunner.java;<<<<<<< MINE
+		for (final T each : getFilteredChildren())
+			fRunnerInterceptor.runChild(new Runnable() {			
+				public void run() {
+					ParentRunner.this.runChild(each, notifier);
+				}
+			});
+		fRunnerInterceptor.finished();
+=======
+		fDecorator.runAll(new SafeStatement() {
+			public void execute() {
+				for (final T each : getFilteredChildren())
+					fDecorator.runChild(new SafeStatement() {
+						public void execute() {
+							runChild(each, notifier);
+						}
+					});
+			}
+		});
+>>>>>>> YOURS;<<<<<<< MINE
+		for (final T each : getFilteredChildren())
+			fRunnerInterceptor.runChild(new Runnable() {			
+				public void run() {
+					ParentRunner.this.runChild(each, notifier);
+				}
+			});
+		fRunnerInterceptor.finished();
+=======
+		fDecorator.runAll(new SafeStatement() {
+			public void execute() {
+				for (final T each : getFilteredChildren())
+					fDecorator.runChild(new SafeStatement() {
+						public void execute() {
+							runChild(each, notifier);
+						}
+					});
+			}
+		});
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910/src/main/java/junit/runner/Version.java;<<<<<<< MINE
+		return "4.7-SNAPSHOT-20090527-0039";
+=======
+		return "4.7-SNAPSHOT-20090511-2347";
+>>>>>>> YOURS;<<<<<<< MINE
+		return "4.7-SNAPSHOT-20090527-0039";
+=======
+		return "4.7-SNAPSHOT-20090511-2347";
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_a402014_3f05aac/rev_a402014-3f05aac/src/main/java/junit/runner/Version.java;<<<<<<< MINE
+		return "4.7-SNAPSHOT-20090601-1258";
+=======
+		return "4.7-SNAPSHOT-20090529-1159";
+>>>>>>> YOURS;<<<<<<< MINE
+		return "4.7-SNAPSHOT-20090601-1258";
+=======
+		return "4.7-SNAPSHOT-20090529-1159";
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_a402014_3f05aac/rev_a402014-3f05aac/src/main/java/org/junit/Assert.java;<<<<<<< MINE
+		MatcherAssert.assertThat(reason, actual, matcher);
+=======
+		if (!matcher.matches(actual)) {
+            Description description = new StringDescription();
+            description.appendText(reason)
+                       .appendText("\nExpected: ")
+                       .appendDescriptionOf(matcher)
+                       .appendText("\n     but: ");
+            matcher.describeMismatch(actual, description);
+			throw new java.lang.AssertionError(description.toString());
+		}
+>>>>>>> YOURS;<<<<<<< MINE
+		MatcherAssert.assertThat(reason, actual, matcher);
+=======
+		if (!matcher.matches(actual)) {
+            Description description = new StringDescription();
+            description.appendText(reason)
+                       .appendText("\nExpected: ")
+                       .appendDescriptionOf(matcher)
+                       .appendText("\n     but: ");
+            matcher.describeMismatch(actual, description);
+			throw new java.lang.AssertionError(description.toString());
+		}
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/runners/BlockJUnit4ClassRunner.java;<<<<<<< MINE
+		for (FrameworkField each : ruleFields())
+			validateRuleField(each.getField(), errors);
+=======
+		for (FrameworkField each : ruleFields())
+			validateInterceptorField(each.getField(), errors);
+>>>>>>> YOURS;<<<<<<< MINE
+		for (FrameworkField each : ruleFields())
+			validateRuleField(each.getField(), errors);
+=======
+		for (FrameworkField each : ruleFields())
+			validateInterceptorField(each.getField(), errors);
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_b33b4b0_c3873cf/rev_b33b4b0-c3873cf/src/main/java/junit/framework/JUnit4TestAdapterCache.java;<<<<<<< MINE
+				result.addError(asSingleTest(failure.getDescription()), failure.getException());
+=======
+				result.addError(asTestCase(failure.getDescription()), failure
+						.getException());
+>>>>>>> YOURS;<<<<<<< MINE
+				result.addError(asSingleTest(failure.getDescription()), failure.getException());
+=======
+				result.addError(asTestCase(failure.getDescription()), failure
+						.getException());
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_b33b4b0_c3873cf/rev_b33b4b0-c3873cf/src/main/java/junit/framework/JUnit4TestAdapterCache.java;<<<<<<< MINE
+			public void testFinished(Description description)
+					throws Exception {
+				result.endTest(asSingleTest(description));
+=======
+			public void testFinished(Description description) throws Exception {
+				result.endTest(asTestCase(description));
+>>>>>>> YOURS;<<<<<<< MINE
+			public void testFinished(Description description)
+					throws Exception {
+				result.endTest(asSingleTest(description));
+=======
+			public void testFinished(Description description) throws Exception {
+				result.endTest(asTestCase(description));
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_b33b4b0_c3873cf/rev_b33b4b0-c3873cf/src/main/java/junit/framework/JUnit4TestAdapterCache.java;<<<<<<< MINE
+			public void testStarted(Description description)
+					throws Exception {
+				// TODO: this needs to test that the test is created if not seen before
+				result.startTest(asSingleTest(description));
+=======
+			public void testStarted(Description description) throws Exception {
+				result.startTest(asTestCase(description));
+>>>>>>> YOURS;<<<<<<< MINE
+			public void testStarted(Description description)
+					throws Exception {
+				// TODO: this needs to test that the test is created if not seen before
+				result.startTest(asSingleTest(description));
+=======
+			public void testStarted(Description description) throws Exception {
+				result.startTest(asTestCase(description));
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_b33b4b0_c3873cf/rev_b33b4b0-c3873cf/src/main/java/org/junit/runner/manipulation/Filter.java;<<<<<<< MINE
+				// TODO: DUP!
+				return description.isSuite() || desiredDescription.equals(description);
+=======
+				if (description.isTest())
+					return desiredDescription.equals(description);
+				return true;
+>>>>>>> YOURS;<<<<<<< MINE
+				// TODO: DUP!
+				return description.isSuite() || desiredDescription.equals(description);
+=======
+				if (description.isTest())
+					return desiredDescription.equals(description);
+				return true;
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_63f40a8_ab51452/rev_63f40a8-ab51452/src/main/java/junit/runner/Version.java;<<<<<<< MINE
+		return "4.7.1-SNAPSHOT";
+=======
+		return "4.8.2";
+>>>>>>> YOURS;<<<<<<< MINE
+		return "4.7.1-SNAPSHOT";
+=======
+		return "4.8.2";
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_28ef5cb_74bb7d8/rev_28ef5cb-74bb7d8/src/main/java/junit/runner/Version.java;<<<<<<< MINE
+		return "4.8.2";
+=======
+		return "4.7.1-SNAPSHOT";
+>>>>>>> YOURS;<<<<<<< MINE
+		return "4.8.2";
+=======
+		return "4.7.1-SNAPSHOT";
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_7803f5b_e9644a4/rev_7803f5b-e9644a4/src/main/java/redis/clients/jedis/JedisPool.java;<<<<<<< MINE
+public JedisPool(String host, int port) {
+        this(new Config(), host, port, Protocol.DEFAULT_TIMEOUT, null, Protocol.DEFAULT_DATABASE);
+=======
+public JedisPool(final String host, final int port) {
+        super(new Config(), new JedisFactory(host, port,
+                Protocol.DEFAULT_TIMEOUT, null));
+>>>>>>> YOURS;<<<<<<< MINE
+    public JedisPool(String host, int port) {
+        this(new Config(), host, port, Protocol.DEFAULT_TIMEOUT, null, Protocol.DEFAULT_DATABASE);
+=======
+    public JedisPool(final String host, final int port) {
+        super(new Config(), new JedisFactory(host, port,
+                Protocol.DEFAULT_TIMEOUT, null));
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e857122_9d8bb06/rev_e857122-9d8bb06/src/main/java/org/junit/runners/ParentRunner.java;<<<<<<< MINE
+		List<TestRule> classRules= classRules();
+		return classRules.isEmpty() ? statement :
+		    new RunRules(statement, classRules, getDescription());
+=======
+		final List<TestRule> classRules= classRules();
+		if (classRules.isEmpty()) {
+			return statement;
+		}
+		Statement next = statement;
+		for (final TestRule classRule : classRules) {
+			next = classRule.apply(next, getDescription());
+		}
+		return next;
+>>>>>>> YOURS;<<<<<<< MINE
+		List<TestRule> classRules= classRules();
+		return classRules.isEmpty() ? statement :
+		    new RunRules(statement, classRules, getDescription());
+=======
+		final List<TestRule> classRules= classRules();
+		if (classRules.isEmpty()) {
+			return statement;
+		}
+		Statement next = statement;
+		for (final TestRule classRule : classRules) {
+			next = classRule.apply(next, getDescription());
+		}
+		return next;
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e857122_9d8bb06/rev_e857122-9d8bb06/src/main/java/org/junit/runners/BlockJUnit4ClassRunner.java;<<<<<<< MINE
+			Statement statement) {
+		List<TestRule> testRules= getTestRules(target);
+		return testRules.isEmpty() ? statement :
+			new RunRules(statement, testRules, describeChild(method));
+=======
+			Statement result) {
+		for (TestRule each : getTestRules(target))
+			result= each.apply(result, describeChild(method));
+		return result;
+>>>>>>> YOURS;<<<<<<< MINE
+			Statement statement) {
+		List<TestRule> testRules= getTestRules(target);
+		return testRules.isEmpty() ? statement :
+			new RunRules(statement, testRules, describeChild(method));
+=======
+			Statement result) {
+		for (TestRule each : getTestRules(target))
+			result= each.apply(result, describeChild(method));
+		return result;
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_3da2f2d_dd88c51/rev_3da2f2d-dd88c51/src/main/java/redis/clients/jedis/ShardedJedis.java;<<<<<<< MINE
+public Long rpush(String key, String... string) {
+=======
+public Long rpush(String key, String... strings) {
+>>>>>>> YOURS;<<<<<<< MINE
+    public Long rpush(String key, String... string) {
+=======
+    public Long rpush(String key, String... strings) {
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_3da2f2d_dd88c51/rev_3da2f2d-dd88c51/src/main/java/redis/clients/jedis/ShardedJedis.java;<<<<<<< MINE
+public Long lpush(String key, String... string) {
+=======
+public Long lpush(String key, String... strings) {
+>>>>>>> YOURS;<<<<<<< MINE
+    public Long lpush(String key, String... string) {
+=======
+    public Long lpush(String key, String... strings) {
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_3da2f2d_dd88c51/rev_3da2f2d-dd88c51/src/main/java/redis/clients/jedis/BinaryJedis.java;<<<<<<< MINE
+public Long hdel(final byte[] key, final byte[] field) {
+	checkIsInMulti();
+	client.hdel(key, field);
+	return client.getIntegerReply();
+=======
+public Long hdel(final byte[] key, final byte[]... fields) {
+        checkIsInMulti();
+        client.hdel(key, fields);
+        return client.getIntegerReply();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Long hdel(final byte[] key, final byte[] field) {
+	checkIsInMulti();
+	client.hdel(key, field);
+	return client.getIntegerReply();
+=======
+    public Long hdel(final byte[] key, final byte[]... fields) {
+        checkIsInMulti();
+        client.hdel(key, fields);
+        return client.getIntegerReply();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_3da2f2d_dd88c51/rev_3da2f2d-dd88c51/src/main/java/redis/clients/jedis/BinaryJedis.java;<<<<<<< MINE
+public Long rpush(final byte[] key, final byte[]... string) {
+	checkIsInMulti();
+	client.rpush(key, string);
+	return client.getIntegerReply();
+=======
+public Long rpush(final byte[] key, final byte[]... strings) {
+        checkIsInMulti();
+        client.rpush(key, strings);
+        return client.getIntegerReply();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Long rpush(final byte[] key, final byte[]... string) {
+	checkIsInMulti();
+	client.rpush(key, string);
+	return client.getIntegerReply();
+=======
+    public Long rpush(final byte[] key, final byte[]... strings) {
+        checkIsInMulti();
+        client.rpush(key, strings);
+        return client.getIntegerReply();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_3da2f2d_dd88c51/rev_3da2f2d-dd88c51/src/main/java/redis/clients/jedis/BinaryJedis.java;<<<<<<< MINE
+public Long lpush(final byte[] key, final byte[]... string) {
+	checkIsInMulti();
+	client.lpush(key, string);
+	return client.getIntegerReply();
+=======
+public Long lpush(final byte[] key, final byte[]... strings) {
+        checkIsInMulti();
+        client.lpush(key, strings);
+        return client.getIntegerReply();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Long lpush(final byte[] key, final byte[]... string) {
+	checkIsInMulti();
+	client.lpush(key, string);
+	return client.getIntegerReply();
+=======
+    public Long lpush(final byte[] key, final byte[]... strings) {
+        checkIsInMulti();
+        client.lpush(key, strings);
+        return client.getIntegerReply();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_3da2f2d_dd88c51/rev_3da2f2d-dd88c51/src/main/java/redis/clients/jedis/BinaryJedis.java;<<<<<<< MINE
+public Long sadd(final byte[] key, final byte[] member) {
+	checkIsInMulti();
+	client.sadd(key, member);
+	return client.getIntegerReply();
+=======
+public Long sadd(final byte[] key, final byte[]... members) {
+        checkIsInMulti();
+        client.sadd(key, members);
+        return client.getIntegerReply();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Long sadd(final byte[] key, final byte[] member) {
+	checkIsInMulti();
+	client.sadd(key, member);
+	return client.getIntegerReply();
+=======
+    public Long sadd(final byte[] key, final byte[]... members) {
+        checkIsInMulti();
+        client.sadd(key, members);
+        return client.getIntegerReply();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_3da2f2d_dd88c51/rev_3da2f2d-dd88c51/src/main/java/redis/clients/jedis/BinaryJedis.java;<<<<<<< MINE
+public Long srem(final byte[] key, final byte[] member) {
+	checkIsInMulti();
+	client.srem(key, member);
+	return client.getIntegerReply();
+=======
+public Long srem(final byte[] key, final byte[]... member) {
+        checkIsInMulti();
+        client.srem(key, member);
+        return client.getIntegerReply();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Long srem(final byte[] key, final byte[] member) {
+	checkIsInMulti();
+	client.srem(key, member);
+	return client.getIntegerReply();
+=======
+    public Long srem(final byte[] key, final byte[]... member) {
+        checkIsInMulti();
+        client.srem(key, member);
+        return client.getIntegerReply();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_3da2f2d_dd88c51/rev_3da2f2d-dd88c51/src/main/java/redis/clients/jedis/BinaryJedis.java;<<<<<<< MINE
+public Long zrem(final byte[] key, final byte[] member) {
+	checkIsInMulti();
+	client.zrem(key, member);
+	return client.getIntegerReply();
+=======
+public Long zrem(final byte[] key, final byte[]... members) {
+        checkIsInMulti();
+        client.zrem(key, members);
+        return client.getIntegerReply();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Long zrem(final byte[] key, final byte[] member) {
+	checkIsInMulti();
+	client.zrem(key, member);
+	return client.getIntegerReply();
+=======
+    public Long zrem(final byte[] key, final byte[]... members) {
+        checkIsInMulti();
+        client.zrem(key, members);
+        return client.getIntegerReply();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_3da2f2d_dd88c51/rev_3da2f2d-dd88c51/src/main/java/redis/clients/jedis/BinaryClient.java;<<<<<<< MINE
+public void hdel(final byte[] key, final byte[] field) {
+	sendCommand(HDEL, key, field);
+=======
+public void hdel(final byte[] key, final byte[]... fields) {
+        sendCommand(HDEL, joinParameters(key, fields));
+>>>>>>> YOURS;<<<<<<< MINE
+    public void hdel(final byte[] key, final byte[] field) {
+	sendCommand(HDEL, key, field);
+=======
+    public void hdel(final byte[] key, final byte[]... fields) {
+        sendCommand(HDEL, joinParameters(key, fields));
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_3da2f2d_dd88c51/rev_3da2f2d-dd88c51/src/main/java/redis/clients/jedis/BinaryClient.java;<<<<<<< MINE
+public void rpush(final byte[] key, final byte[]... vals) {
+	byte[][] args = new byte[vals.length + 1][];
+	args[0] = key;
+	System.arraycopy(vals, 0, args, 1, vals.length);
+	sendCommand(RPUSH, args);
+=======
+public void rpush(final byte[] key, final byte[]... strings) {
+        sendCommand(RPUSH, joinParameters(key, strings));
+>>>>>>> YOURS;<<<<<<< MINE
+    public void rpush(final byte[] key, final byte[]... vals) {
+	byte[][] args = new byte[vals.length + 1][];
+	args[0] = key;
+	System.arraycopy(vals, 0, args, 1, vals.length);
+	sendCommand(RPUSH, args);
+=======
+    public void rpush(final byte[] key, final byte[]... strings) {
+        sendCommand(RPUSH, joinParameters(key, strings));
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_3da2f2d_dd88c51/rev_3da2f2d-dd88c51/src/main/java/redis/clients/jedis/BinaryClient.java;<<<<<<< MINE
+public void lpush(final byte[] key, final byte[]... vals) {
+	byte[][] args = new byte[vals.length + 1][];
+	args[0] = key;
+	System.arraycopy(vals, 0, args, 1, vals.length);
+	sendCommand(LPUSH, args);
+=======
+public void lpush(final byte[] key, final byte[]... strings) {
+        sendCommand(LPUSH, joinParameters(key, strings));
+>>>>>>> YOURS;<<<<<<< MINE
+    public void lpush(final byte[] key, final byte[]... vals) {
+	byte[][] args = new byte[vals.length + 1][];
+	args[0] = key;
+	System.arraycopy(vals, 0, args, 1, vals.length);
+	sendCommand(LPUSH, args);
+=======
+    public void lpush(final byte[] key, final byte[]... strings) {
+        sendCommand(LPUSH, joinParameters(key, strings));
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_3da2f2d_dd88c51/rev_3da2f2d-dd88c51/src/main/java/redis/clients/jedis/BinaryClient.java;<<<<<<< MINE
+public void sadd(final byte[] key, final byte[] member) {
+	sendCommand(SADD, key, member);
+=======
+public void sadd(final byte[] key, final byte[]... members) {
+        sendCommand(SADD, joinParameters(key, members));
+>>>>>>> YOURS;<<<<<<< MINE
+    public void sadd(final byte[] key, final byte[] member) {
+	sendCommand(SADD, key, member);
+=======
+    public void sadd(final byte[] key, final byte[]... members) {
+        sendCommand(SADD, joinParameters(key, members));
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_3da2f2d_dd88c51/rev_3da2f2d-dd88c51/src/main/java/redis/clients/jedis/BinaryClient.java;<<<<<<< MINE
+public void srem(final byte[] key, final byte[] member) {
+	sendCommand(SREM, key, member);
+=======
+public void srem(final byte[] key, final byte[]... members) {
+        sendCommand(SREM, joinParameters(key, members));
+>>>>>>> YOURS;<<<<<<< MINE
+    public void srem(final byte[] key, final byte[] member) {
+	sendCommand(SREM, key, member);
+=======
+    public void srem(final byte[] key, final byte[]... members) {
+        sendCommand(SREM, joinParameters(key, members));
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_3da2f2d_dd88c51/rev_3da2f2d-dd88c51/src/main/java/redis/clients/jedis/BinaryClient.java;<<<<<<< MINE
+public void zrem(final byte[] key, final byte[] member) {
+	sendCommand(ZREM, key, member);
+=======
+public void zrem(final byte[] key, final byte[]... members) {
+        sendCommand(ZREM, joinParameters( key, members));
+>>>>>>> YOURS;<<<<<<< MINE
+    public void zrem(final byte[] key, final byte[] member) {
+	sendCommand(ZREM, key, member);
+=======
+    public void zrem(final byte[] key, final byte[]... members) {
+        sendCommand(ZREM, joinParameters( key, members));
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_3da2f2d_dd88c51/rev_3da2f2d-dd88c51/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Long hdel(final String key, final String field) {
+	checkIsInMulti();
+	client.hdel(key, field);
+	return client.getIntegerReply();
+=======
+public Long hdel(final String key, final String... fields) {
+        checkIsInMulti();
+        client.hdel(key, fields);
+        return client.getIntegerReply();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Long hdel(final String key, final String field) {
+	checkIsInMulti();
+	client.hdel(key, field);
+	return client.getIntegerReply();
+=======
+    public Long hdel(final String key, final String... fields) {
+        checkIsInMulti();
+        client.hdel(key, fields);
+        return client.getIntegerReply();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_3da2f2d_dd88c51/rev_3da2f2d-dd88c51/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Long rpush(final String key, final String... string) {
+	checkIsInMulti();
+	client.rpush(key, string);
+	return client.getIntegerReply();
+=======
+public Long rpush(final String key, final String... strings) {
+        checkIsInMulti();
+        client.rpush(key, strings);
+        return client.getIntegerReply();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Long rpush(final String key, final String... string) {
+	checkIsInMulti();
+	client.rpush(key, string);
+	return client.getIntegerReply();
+=======
+    public Long rpush(final String key, final String... strings) {
+        checkIsInMulti();
+        client.rpush(key, strings);
+        return client.getIntegerReply();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_3da2f2d_dd88c51/rev_3da2f2d-dd88c51/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Long lpush(final String key, final String... string) {
+	checkIsInMulti();
+	client.lpush(key, string);
+	return client.getIntegerReply();
+=======
+public Long lpush(final String key, final String... strings) {
+        checkIsInMulti();
+        client.lpush(key, strings);
+        return client.getIntegerReply();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Long lpush(final String key, final String... string) {
+	checkIsInMulti();
+	client.lpush(key, string);
+	return client.getIntegerReply();
+=======
+    public Long lpush(final String key, final String... strings) {
+        checkIsInMulti();
+        client.lpush(key, strings);
+        return client.getIntegerReply();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_3da2f2d_dd88c51/rev_3da2f2d-dd88c51/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Long sadd(final String key, final String member) {
+	checkIsInMulti();
+	client.sadd(key, member);
+	return client.getIntegerReply();
+=======
+public Long sadd(final String key, final String... members) {
+        checkIsInMulti();
+        client.sadd(key, members);
+        return client.getIntegerReply();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Long sadd(final String key, final String member) {
+	checkIsInMulti();
+	client.sadd(key, member);
+	return client.getIntegerReply();
+=======
+    public Long sadd(final String key, final String... members) {
+        checkIsInMulti();
+        client.sadd(key, members);
+        return client.getIntegerReply();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_3da2f2d_dd88c51/rev_3da2f2d-dd88c51/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Long srem(final String key, final String member) {
+	checkIsInMulti();
+	client.srem(key, member);
+	return client.getIntegerReply();
+=======
+public Long srem(final String key, final String... members) {
+        checkIsInMulti();
+        client.srem(key, members);
+        return client.getIntegerReply();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Long srem(final String key, final String member) {
+	checkIsInMulti();
+	client.srem(key, member);
+	return client.getIntegerReply();
+=======
+    public Long srem(final String key, final String... members) {
+        checkIsInMulti();
+        client.srem(key, members);
+        return client.getIntegerReply();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_3da2f2d_dd88c51/rev_3da2f2d-dd88c51/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+public Long zrem(final String key, final String member) {
+	checkIsInMulti();
+	client.zrem(key, member);
+	return client.getIntegerReply();
+=======
+public Long zrem(final String key, final String... members) {
+        checkIsInMulti();
+        client.zrem(key, members);
+        return client.getIntegerReply();
+>>>>>>> YOURS;<<<<<<< MINE
+    public Long zrem(final String key, final String member) {
+	checkIsInMulti();
+	client.zrem(key, member);
+	return client.getIntegerReply();
+=======
+    public Long zrem(final String key, final String... members) {
+        checkIsInMulti();
+        client.zrem(key, members);
+        return client.getIntegerReply();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_3da2f2d_dd88c51/rev_3da2f2d-dd88c51/src/main/java/redis/clients/jedis/Client.java;<<<<<<< MINE
+public void rpush(final String key, final String... vals) {
+        final byte[][] bvals = new byte[vals.length][];
+        for (int i = 0; i < bvals.length; i++) {
+            bvals[i] = SafeEncoder.encode(vals[i]);
+        }
+        rpush(SafeEncoder.encode(key), bvals);
+=======
+public void rpush(final String key, final String... string) {
+        rpush(SafeEncoder.encode(key), SafeEncoder.encodeMany(string));
+>>>>>>> YOURS;<<<<<<< MINE
+
+    public void rpush(final String key, final String... vals) {
+        final byte[][] bvals = new byte[vals.length][];
+        for (int i = 0; i < bvals.length; i++) {
+            bvals[i] = SafeEncoder.encode(vals[i]);
+        }
+        rpush(SafeEncoder.encode(key), bvals);
+=======
+    public void rpush(final String key, final String... string) {
+        rpush(SafeEncoder.encode(key), SafeEncoder.encodeMany(string));
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_3da2f2d_dd88c51/rev_3da2f2d-dd88c51/src/main/java/redis/clients/jedis/Client.java;<<<<<<< MINE
+public void lpush(final String key, final String... vals) {
+        final byte[][] bvals = new byte[vals.length][];
+        for (int i = 0; i < bvals.length; i++) {
+            bvals[i] = SafeEncoder.encode(vals[i]);
+        }
+        lpush(SafeEncoder.encode(key), bvals);
+=======
+public void lpush(final String key, final String... string) {
+        lpush(SafeEncoder.encode(key), SafeEncoder.encodeMany(string));
+>>>>>>> YOURS;<<<<<<< MINE
+
+    public void lpush(final String key, final String... vals) {
+        final byte[][] bvals = new byte[vals.length][];
+        for (int i = 0; i < bvals.length; i++) {
+            bvals[i] = SafeEncoder.encode(vals[i]);
+        }
+        lpush(SafeEncoder.encode(key), bvals);
+=======
+    public void lpush(final String key, final String... string) {
+        lpush(SafeEncoder.encode(key), SafeEncoder.encodeMany(string));
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_3da2f2d_dd88c51/rev_3da2f2d-dd88c51/src/main/java/redis/clients/jedis/Commands.java;<<<<<<< MINE
+public void rpush(final String key, final String... string);
+=======
+public void rpush(final String key, final String... strings);
+>>>>>>> YOURS;<<<<<<< MINE
+    public void rpush(final String key, final String... string);
+=======
+    public void rpush(final String key, final String... strings);
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_3da2f2d_dd88c51/rev_3da2f2d-dd88c51/src/main/java/redis/clients/jedis/Commands.java;<<<<<<< MINE
+public void lpush(final String key, final String... string);
+=======
+public void lpush(final String key, final String... strings);
+>>>>>>> YOURS;<<<<<<< MINE
+    public void lpush(final String key, final String... string);
+=======
+    public void lpush(final String key, final String... strings);
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_3da2f2d_dd88c51/rev_3da2f2d-dd88c51/src/main/java/redis/clients/jedis/BinaryShardedJedis.java;<<<<<<< MINE
+public Long rpush(byte[] key, byte[]... string) {
+=======
+public Long rpush(byte[] key, byte[]... strings) {
+>>>>>>> YOURS;<<<<<<< MINE
+    public Long rpush(byte[] key, byte[]... string) {
+=======
+    public Long rpush(byte[] key, byte[]... strings) {
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_3da2f2d_dd88c51/rev_3da2f2d-dd88c51/src/main/java/redis/clients/jedis/BinaryShardedJedis.java;<<<<<<< MINE
+public Long lpush(byte[] key, byte[]... string) {
+=======
+public Long lpush(byte[] key, byte[]... strings) {
+>>>>>>> YOURS;<<<<<<< MINE
+    public Long lpush(byte[] key, byte[]... string) {
+=======
+    public Long lpush(byte[] key, byte[]... strings) {
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_f341213_f472307/rev_f341213-f472307/src/main/java/junit/runner/Version.java;<<<<<<< MINE
+		return "4.9";
+=======
+		return "4.10snapshot";
+>>>>>>> YOURS;<<<<<<< MINE
+		return "4.9";
+=======
+		return "4.10snapshot";
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_c396cff_95f6c41/rev_c396cff-95f6c41/src/main/java/org/junit/rules/TemporaryFolder.java;<<<<<<< MINE
+public File newFolder(String... folderNames) {
+		File file = folder;
+		for (String folderName : folderNames) {
+			file = new File(file, folderName);
+			file.mkdir();
+		}
+=======
+public File newFolder(String folderName) {
+		File file= new File(getRoot(), folderName);
+		file.mkdir();
+>>>>>>> YOURS;<<<<<<< MINE
+	public File newFolder(String... folderNames) {
+		File file = folder;
+		for (String folderName : folderNames) {
+			file = new File(file, folderName);
+			file.mkdir();
+		}
+=======
+	public File newFolder(String folderName) {
+		File file= new File(getRoot(), folderName);
+		file.mkdir();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_610f7d4_69f5340/rev_610f7d4-69f5340/src/test/java/redis/clients/jedis/tests/commands/ScriptingCommandsTest.java;<<<<<<< MINE
+		try {
+			jedis.scriptKill();
+		}
+		catch(JedisDataException e) {
+			assertTrue(e.getMessage().contains("No scripts in execution right now."));
+		}
+=======
+	try {
+	    jedis.scriptKill();
+	} catch (JedisDataException e) {
+	    assertTrue(e.getMessage().contains(
+		    "No scripts in execution right now."));
+>>>>>>> YOURS;<<<<<<< MINE
+		try {
+			jedis.scriptKill();
+		}
+		catch(JedisDataException e) {
+			assertTrue(e.getMessage().contains("No scripts in execution right now."));
+		}
+=======
+	try {
+	    jedis.scriptKill();
+	} catch (JedisDataException e) {
+	    assertTrue(e.getMessage().contains(
+		    "No scripts in execution right now."));
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_05fe0fb_96df21c/rev_05fe0fb-96df21c/src/main/java/junit/runner/Version.java;<<<<<<< MINE
+		return "4.9.1-SNAPSHOT";
+=======
+		return "4.10-SNAPSHOT";
+>>>>>>> YOURS;<<<<<<< MINE
+		return "4.9.1-SNAPSHOT";
+=======
+		return "4.10-SNAPSHOT";
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_bbb8677_7e1a1a7/rev_bbb8677-7e1a1a7/src/test/java/redis/clients/jedis/tests/commands/TransactionCommandsTest.java;<<<<<<< MINE
+	nj = new Jedis(hnp.host, hnp.port, 500);
+	nj.connect();
+	nj.auth("foobared");
+	nj.flushAll();
+=======
+        nj = new Jedis(hnp.getHost(), hnp.getPort(), 500);
+        nj.connect();
+        nj.auth("foobared");
+        nj.flushAll();
+>>>>>>> YOURS;<<<<<<< MINE
+	nj = new Jedis(hnp.host, hnp.port, 500);
+	nj.connect();
+	nj.auth("foobared");
+	nj.flushAll();
+=======
+        nj = new Jedis(hnp.getHost(), hnp.getPort(), 500);
+        nj.connect();
+        nj.auth("foobared");
+        nj.flushAll();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_bbb8677_7e1a1a7/rev_bbb8677-7e1a1a7/src/test/java/redis/clients/jedis/tests/benchmark/PoolBenchmark.java;<<<<<<< MINE
+	Jedis j = new Jedis(hnp.host, hnp.port);
+	j.connect();
+	j.auth("foobared");
+	j.flushAll();
+	j.quit();
+	j.disconnect();
+	long t = System.currentTimeMillis();
+	// withoutPool();
+	withPool();
+	long elapsed = System.currentTimeMillis() - t;
+	System.out.println(((1000 * 2 * TOTAL_OPERATIONS) / elapsed) + " ops");
+=======
+        Jedis j = new Jedis(hnp.getHost(), hnp.getPort());
+        j.connect();
+        j.auth("foobared");
+        j.flushAll();
+        j.quit();
+        j.disconnect();
+        long t = System.currentTimeMillis();
+        // withoutPool();
+        withPool();
+        long elapsed = System.currentTimeMillis() - t;
+        System.out.println(((1000 * 2 * TOTAL_OPERATIONS) / elapsed) + " ops");
+>>>>>>> YOURS;<<<<<<< MINE
+	Jedis j = new Jedis(hnp.host, hnp.port);
+	j.connect();
+	j.auth("foobared");
+	j.flushAll();
+	j.quit();
+	j.disconnect();
+	long t = System.currentTimeMillis();
+	// withoutPool();
+	withPool();
+	long elapsed = System.currentTimeMillis() - t;
+	System.out.println(((1000 * 2 * TOTAL_OPERATIONS) / elapsed) + " ops");
+=======
+        Jedis j = new Jedis(hnp.getHost(), hnp.getPort());
+        j.connect();
+        j.auth("foobared");
+        j.flushAll();
+        j.quit();
+        j.disconnect();
+        long t = System.currentTimeMillis();
+        // withoutPool();
+        withPool();
+        long elapsed = System.currentTimeMillis() - t;
+        System.out.println(((1000 * 2 * TOTAL_OPERATIONS) / elapsed) + " ops");
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_bbb8677_7e1a1a7/rev_bbb8677-7e1a1a7/src/test/java/redis/clients/jedis/tests/JedisPoolTest.java;<<<<<<< MINE
+	JedisPool pool = new JedisPool(new JedisPoolConfig(), hnp.host,
+		hnp.port, 2000);
+	Jedis jedis = pool.getResource();
+	jedis.auth("foobared");
+	jedis.set("foo", "bar");
+	assertEquals("bar", jedis.get("foo"));
+	pool.returnResource(jedis);
+	pool.destroy();
+=======
+        JedisPool pool = new JedisPool(new JedisPoolConfig(), hnp.getHost(), 
+        		hnp.getPort(), 2000);
+        Jedis jedis = pool.getResource();
+        jedis.auth("foobared");
+        jedis.set("foo", "bar");
+        assertEquals("bar", jedis.get("foo"));
+        pool.returnResource(jedis);
+        pool.destroy();
+>>>>>>> YOURS;<<<<<<< MINE
+	JedisPool pool = new JedisPool(new JedisPoolConfig(), hnp.host,
+		hnp.port, 2000);
+	Jedis jedis = pool.getResource();
+	jedis.auth("foobared");
+	jedis.set("foo", "bar");
+	assertEquals("bar", jedis.get("foo"));
+	pool.returnResource(jedis);
+	pool.destroy();
+=======
+        JedisPool pool = new JedisPool(new JedisPoolConfig(), hnp.getHost(), 
+        		hnp.getPort(), 2000);
+        Jedis jedis = pool.getResource();
+        jedis.auth("foobared");
+        jedis.set("foo", "bar");
+        assertEquals("bar", jedis.get("foo"));
+        pool.returnResource(jedis);
+        pool.destroy();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_bbb8677_7e1a1a7/rev_bbb8677-7e1a1a7/src/test/java/redis/clients/jedis/tests/JedisPoolTest.java;<<<<<<< MINE
+	JedisPool pool = new JedisPool(new JedisPoolConfig(), hnp.host,
+		hnp.port);
+	Jedis jedis = pool.getResource();
+	jedis.auth("foobared");
+	jedis.set("foo", "bar");
+	assertEquals("bar", jedis.get("foo"));
+	pool.returnResource(jedis);
+	pool.destroy();
+=======
+        JedisPool pool = new JedisPool(new JedisPoolConfig(), hnp.getHost(), 
+        		hnp.getPort());
+        Jedis jedis = pool.getResource();
+        jedis.auth("foobared");
+        jedis.set("foo", "bar");
+        assertEquals("bar", jedis.get("foo"));
+        pool.returnResource(jedis);
+        pool.destroy();
+>>>>>>> YOURS;<<<<<<< MINE
+	JedisPool pool = new JedisPool(new JedisPoolConfig(), hnp.host,
+		hnp.port);
+	Jedis jedis = pool.getResource();
+	jedis.auth("foobared");
+	jedis.set("foo", "bar");
+	assertEquals("bar", jedis.get("foo"));
+	pool.returnResource(jedis);
+	pool.destroy();
+=======
+        JedisPool pool = new JedisPool(new JedisPoolConfig(), hnp.getHost(), 
+        		hnp.getPort());
+        Jedis jedis = pool.getResource();
+        jedis.auth("foobared");
+        jedis.set("foo", "bar");
+        assertEquals("bar", jedis.get("foo"));
+        pool.returnResource(jedis);
+        pool.destroy();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_bbb8677_7e1a1a7/rev_bbb8677-7e1a1a7/src/test/java/redis/clients/jedis/tests/JedisPoolTest.java;<<<<<<< MINE
+	JedisPoolConfig config = new JedisPoolConfig();
+	config.setTestOnBorrow(true);
+	JedisPool pool = new JedisPool(config, hnp.host, hnp.port, 2000,
+		"foobared");
+	Jedis jedis = pool.getResource();
+	jedis.set("foo", "bar");
+	pool.returnResource(jedis);
+	pool.destroy();
+=======
+        JedisPoolConfig config = new JedisPoolConfig();
+        config.setTestOnBorrow(true);
+        JedisPool pool = new JedisPool(config, hnp.getHost(), hnp.getPort(), 
+        		2000, "foobared");
+        Jedis jedis = pool.getResource();
+        jedis.set("foo", "bar");
+        pool.returnResource(jedis);
+        pool.destroy();
+>>>>>>> YOURS;<<<<<<< MINE
+	JedisPoolConfig config = new JedisPoolConfig();
+	config.setTestOnBorrow(true);
+	JedisPool pool = new JedisPool(config, hnp.host, hnp.port, 2000,
+		"foobared");
+	Jedis jedis = pool.getResource();
+	jedis.set("foo", "bar");
+	pool.returnResource(jedis);
+	pool.destroy();
+=======
+        JedisPoolConfig config = new JedisPoolConfig();
+        config.setTestOnBorrow(true);
+        JedisPool pool = new JedisPool(config, hnp.getHost(), hnp.getPort(), 
+        		2000, "foobared");
+        Jedis jedis = pool.getResource();
+        jedis.set("foo", "bar");
+        pool.returnResource(jedis);
+        pool.destroy();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_bbb8677_7e1a1a7/rev_bbb8677-7e1a1a7/src/test/java/redis/clients/jedis/tests/JedisPoolTest.java;<<<<<<< MINE
+	JedisPool pool0 = new JedisPool(new JedisPoolConfig(), hnp.host,
+		hnp.port, 2000, "foobared", 0, "my_shiny_client_name");
+=======
+        JedisPool pool0 = new JedisPool(new JedisPoolConfig(), hnp.getHost(), 
+        		hnp.getPort(), 2000, "foobared", 0, "my_shiny_client_name");
+>>>>>>> YOURS;<<<<<<< MINE
+	JedisPool pool0 = new JedisPool(new JedisPoolConfig(), hnp.host,
+		hnp.port, 2000, "foobared", 0, "my_shiny_client_name");
+=======
+        JedisPool pool0 = new JedisPool(new JedisPoolConfig(), hnp.getHost(), 
+        		hnp.getPort(), 2000, "foobared", 0, "my_shiny_client_name");
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_bbb8677_7e1a1a7/rev_bbb8677-7e1a1a7/src/test/java/redis/clients/jedis/tests/ShardedJedisPoolTest.java;<<<<<<< MINE
+	shards = new ArrayList<JedisShardInfo>();
+	shards.add(new JedisShardInfo(redis1.host, redis1.port));
+	shards.add(new JedisShardInfo(redis2.host, redis2.port));
+	shards.get(0).setPassword("foobared");
+	shards.get(1).setPassword("foobared");
+	Jedis j = new Jedis(shards.get(0));
+	j.connect();
+	j.flushAll();
+	j.disconnect();
+	j = new Jedis(shards.get(1));
+	j.connect();
+	j.flushAll();
+	j.disconnect();
+=======
+        shards = new ArrayList<JedisShardInfo>();
+        shards.add(new JedisShardInfo(redis1.getHost(), redis1.getPort()));
+        shards.add(new JedisShardInfo(redis2.getHost(), redis2.getPort()));
+        shards.get(0).setPassword("foobared");
+        shards.get(1).setPassword("foobared");
+        Jedis j = new Jedis(shards.get(0));
+        j.connect();
+        j.flushAll();
+        j.disconnect();
+        j = new Jedis(shards.get(1));
+        j.connect();
+        j.flushAll();
+        j.disconnect();
+>>>>>>> YOURS;<<<<<<< MINE
+	shards = new ArrayList<JedisShardInfo>();
+	shards.add(new JedisShardInfo(redis1.host, redis1.port));
+	shards.add(new JedisShardInfo(redis2.host, redis2.port));
+	shards.get(0).setPassword("foobared");
+	shards.get(1).setPassword("foobared");
+	Jedis j = new Jedis(shards.get(0));
+	j.connect();
+	j.flushAll();
+	j.disconnect();
+	j = new Jedis(shards.get(1));
+	j.connect();
+	j.flushAll();
+	j.disconnect();
+=======
+        shards = new ArrayList<JedisShardInfo>();
+        shards.add(new JedisShardInfo(redis1.getHost(), redis1.getPort()));
+        shards.add(new JedisShardInfo(redis2.getHost(), redis2.getPort()));
+        shards.get(0).setPassword("foobared");
+        shards.get(1).setPassword("foobared");
+        Jedis j = new Jedis(shards.get(0));
+        j.connect();
+        j.flushAll();
+        j.disconnect();
+        j = new Jedis(shards.get(1));
+        j.connect();
+        j.flushAll();
+        j.disconnect();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_3b55eac_38c12ee/rev_3b55eac-38c12ee/src/main/java/junit/runner/Version.java;<<<<<<< MINE
+		return "4.11-SNAPSHOT";
+=======
+		return "4.10";
+>>>>>>> YOURS;<<<<<<< MINE
+		return "4.11-SNAPSHOT";
+=======
+		return "4.10";
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_e4de670_bfa4a80/rev_e4de670-bfa4a80/src/main/java/redis/clients/jedis/JedisSlotBasedConnectionHandler.java;<<<<<<< MINE
+	return  connectionPool.getResource();
+=======
+	currentConnection = connectionPool.getResource();
+	return currentConnection;
+>>>>>>> YOURS;<<<<<<< MINE
+	return  connectionPool.getResource();
+=======
+	currentConnection = connectionPool.getResource();
+	return currentConnection;
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_cf2a11a_d955958/rev_cf2a11a-d955958/src/main/java/org/junit/internal/MethodSorter.java;<<<<<<< MINE
+        Method[] methods = clazz.getDeclaredMethods();
+        Arrays.sort(methods, new Comparator<Method>() {
+            public int compare(Method m1, Method m2) {
+                int i1 = m1.getName().hashCode();
+                int i2 = m2.getName().hashCode();
+                return i1 != i2 ? i1 - i2 : m1.toString().compareTo(m2.toString());
+            }
+        });
+=======
+        Comparator<Method> comparator= getSorter(clazz.getAnnotation(FixMethodOrder.class));
+        
+        Method[] methods= clazz.getDeclaredMethods();
+        if (comparator != null) {
+            Arrays.sort(methods, comparator);
+        }
+
+>>>>>>> YOURS;<<<<<<< MINE
+        Method[] methods = clazz.getDeclaredMethods();
+        Arrays.sort(methods, new Comparator<Method>() {
+            public int compare(Method m1, Method m2) {
+                int i1 = m1.getName().hashCode();
+                int i2 = m2.getName().hashCode();
+                return i1 != i2 ? i1 - i2 : m1.toString().compareTo(m2.toString());
+            }
+        });
+=======
+        Comparator<Method> comparator= getSorter(clazz.getAnnotation(FixMethodOrder.class));
+        
+        Method[] methods= clazz.getDeclaredMethods();
+        if (comparator != null) {
+            Arrays.sort(methods, comparator);
+        }
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_db76522_e7bc4f5/rev_db76522-e7bc4f5/src/main/java/redis/clients/jedis/JedisClusterConnectionHandler.java;<<<<<<< MINE
+private void initializeSlotsCache(Set<HostAndPort> nodes) {
+	for (HostAndPort hostAndPort : nodes) {
+	    JedisPool jp = new JedisPool(poolConfig, hostAndPort.getHost(),
+=======
+private void initializeSlotsCache(Set<HostAndPort> startNodes) {
+	for (HostAndPort hostAndPort : startNodes) {
+	    JedisPool jp = new JedisPool(hostAndPort.getHost(),
+>>>>>>> YOURS;<<<<<<< MINE
+    private void initializeSlotsCache(Set<HostAndPort> nodes) {
+	for (HostAndPort hostAndPort : nodes) {
+	    JedisPool jp = new JedisPool(poolConfig, hostAndPort.getHost(),
+=======
+    private void initializeSlotsCache(Set<HostAndPort> startNodes) {
+	for (HostAndPort hostAndPort : startNodes) {
+	    JedisPool jp = new JedisPool(hostAndPort.getHost(),
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_db76522_e7bc4f5/rev_db76522-e7bc4f5/src/main/java/redis/clients/jedis/JedisClusterConnectionHandler.java;<<<<<<< MINE
+	    JedisPool nodePool = new JedisPool(poolConfig, node.getHost(), node.getPort());
+	    this.nodes.put(node.getHost() + node.getPort(), nodePool);
+=======
+	    setNodeIfNotExist(node);
+	    
+	    JedisPool nodePool = nodes.get(getNodeKey(node));
+>>>>>>> YOURS;<<<<<<< MINE
+	    JedisPool nodePool = new JedisPool(poolConfig, node.getHost(), node.getPort());
+	    this.nodes.put(node.getHost() + node.getPort(), nodePool);
+=======
+	    setNodeIfNotExist(node);
+	    
+	    JedisPool nodePool = nodes.get(getNodeKey(node));
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_8d783ef_28938e9/rev_8d783ef-28938e9/src/main/java/org/junit/Assert.java;<<<<<<< MINE
+		MatcherAssert.assertThat(reason, actual, matcher);
+=======
+		if (!matcher.matches(actual)) {
+			Description description= new StringDescription();
+			description.appendText(reason);
+			description.appendText("\nExpected: ");
+			description.appendDescriptionOf(matcher);
+			description.appendText("\n     got: ");
+			description.appendValue(actual);
+			description.appendText("\n");
+			java.lang.AssertionError assertionError= new java.lang.AssertionError(
+					description.toString());
+			if (actual instanceof Throwable)
+				assertionError.initCause((Throwable) actual);
+			throw assertionError;
+		}
+>>>>>>> YOURS;<<<<<<< MINE
+		MatcherAssert.assertThat(reason, actual, matcher);
+=======
+		if (!matcher.matches(actual)) {
+			Description description= new StringDescription();
+			description.appendText(reason);
+			description.appendText("\nExpected: ");
+			description.appendDescriptionOf(matcher);
+			description.appendText("\n     got: ");
+			description.appendValue(actual);
+			description.appendText("\n");
+			java.lang.AssertionError assertionError= new java.lang.AssertionError(
+					description.toString());
+			if (actual instanceof Throwable)
+				assertionError.initCause((Throwable) actual);
+			throw assertionError;
+		}
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_8d783ef_28938e9/rev_8d783ef-28938e9/src/test/java/org/junit/tests/experimental/rules/ExpectedExceptionTest.java;<<<<<<< MINE
+						hasSingleFailureWithMessage(startsWith("\nExpected: (an instance of java.lang.IllegalArgumentException and exception with message a string containing \"Ack!\")")) } });
+=======
+						hasSingleFailureWithMessage(startsWith("\nExpected: (exception with message a string containing \"Ack!\" and an instance of java.lang.IllegalArgumentException)")) },
+				{	ThrowExceptionWithMatchingCause.class, everyTestRunSuccessful() },
+				{	ThrowExpectedNullCause.class, everyTestRunSuccessful() },
+				{
+					ThrowUnexpectedCause.class,
+						hasSingleFailureWithMessage(startsWith("\nExpected: (exception with cause")) }
+        });
+>>>>>>> YOURS;<<<<<<< MINE
+						hasSingleFailureWithMessage(startsWith("\nExpected: (an instance of java.lang.IllegalArgumentException and exception with message a string containing \"Ack!\")")) } });
+=======
+						hasSingleFailureWithMessage(startsWith("\nExpected: (exception with message a string containing \"Ack!\" and an instance of java.lang.IllegalArgumentException)")) },
+				{	ThrowExceptionWithMatchingCause.class, everyTestRunSuccessful() },
+				{	ThrowExpectedNullCause.class, everyTestRunSuccessful() },
+				{
+					ThrowUnexpectedCause.class,
+						hasSingleFailureWithMessage(startsWith("\nExpected: (exception with cause")) }
+        });
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_360e25e_03c0af2/rev_360e25e-03c0af2/src/main/java/redis/clients/jedis/BinaryJedis.java;<<<<<<< MINE
+	try {
+	    client.multi();
+	    client.getOne();	// expected OK
+	    jedisTransaction.execute();
+	    results = jedisTransaction.exec();
+	} catch (Exception ex) {
+	    jedisTransaction.discard();
+	}
+=======
+	client.multi();
+	jedisTransaction.execute();
+	results = jedisTransaction.exec();
+>>>>>>> YOURS;<<<<<<< MINE
+	try {
+	    client.multi();
+	    client.getOne();	// expected OK
+	    jedisTransaction.execute();
+	    results = jedisTransaction.exec();
+	} catch (Exception ex) {
+	    jedisTransaction.discard();
+	}
+=======
+	client.multi();
+	jedisTransaction.execute();
+	results = jedisTransaction.exec();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_360e25e_03c0af2/rev_360e25e-03c0af2/src/main/java/redis/clients/jedis/Pipeline.java;<<<<<<< MINE
+    	List<Object> unformatted = client.getMany(getPipelinedResponseLength());
+    	
+    	for (Object resp : unformatted)
+    		generateResponse(resp);
+=======
+	List<Object> unformatted = client.getAll();
+	for (Object o : unformatted) {
+	    generateResponse(o);
+	}
+>>>>>>> YOURS;<<<<<<< MINE
+    	List<Object> unformatted = client.getMany(getPipelinedResponseLength());
+    	
+    	for (Object resp : unformatted)
+    		generateResponse(resp);
+=======
+	List<Object> unformatted = client.getAll();
+	for (Object o : unformatted) {
+	    generateResponse(o);
+	}
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_360e25e_03c0af2/rev_360e25e-03c0af2/src/main/java/redis/clients/jedis/Pipeline.java;<<<<<<< MINE
+    	List<Object> unformatted = client.getMany(getPipelinedResponseLength());
+        List<Object> formatted = new ArrayList<Object>();
+        
+    	for (Object resp : unformatted)
+    		formatted.add(generateResponse(resp).get());
+        
+        return formatted;
+=======
+	List<Object> unformatted = client.getAll();
+	List<Object> formatted = new ArrayList<Object>();
+
+	for (Object o : unformatted) {
+	    try {
+		formatted.add(generateResponse(o).get());
+	    } catch (JedisDataException e) {
+		formatted.add(e);
+	    }
+	}
+	return formatted;
+>>>>>>> YOURS;<<<<<<< MINE
+    	List<Object> unformatted = client.getMany(getPipelinedResponseLength());
+        List<Object> formatted = new ArrayList<Object>();
+        
+    	for (Object resp : unformatted)
+    		formatted.add(generateResponse(resp).get());
+        
+        return formatted;
+=======
+	List<Object> unformatted = client.getAll();
+	List<Object> formatted = new ArrayList<Object>();
+
+	for (Object o : unformatted) {
+	    try {
+		formatted.add(generateResponse(o).get());
+	    } catch (JedisDataException e) {
+		formatted.add(e);
+	    }
+	}
+	return formatted;
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_360e25e_03c0af2/rev_360e25e-03c0af2/src/main/java/redis/clients/jedis/Transaction.java;<<<<<<< MINE
+    	// Discard QUEUED or ERROR
+    	client.getMany(getPipelinedResponseLength());
+    	
+        client.exec();
+=======
+	client.exec();
+	client.getAll(1); // Discard all but the last reply
+>>>>>>> YOURS;<<<<<<< MINE
+    	// Discard QUEUED or ERROR
+    	client.getMany(getPipelinedResponseLength());
+    	
+        client.exec();
+=======
+	client.exec();
+	client.getAll(1); // Discard all but the last reply
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_360e25e_03c0af2/rev_360e25e-03c0af2/src/main/java/redis/clients/jedis/Transaction.java;<<<<<<< MINE
+    	// Discard QUEUED or ERROR
+    	client.getMany(getPipelinedResponseLength());
+    	
+        client.exec();
+=======
+	client.exec();
+	client.getAll(1); // Discard all but the last reply
+>>>>>>> YOURS;<<<<<<< MINE
+    	// Discard QUEUED or ERROR
+    	client.getMany(getPipelinedResponseLength());
+    	
+        client.exec();
+=======
+	client.exec();
+	client.getAll(1); // Discard all but the last reply
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_360e25e_03c0af2/rev_360e25e-03c0af2/src/main/java/redis/clients/jedis/Transaction.java;<<<<<<< MINE
+    	client.getMany(getPipelinedResponseLength());
+        client.discard();
+        inTransaction = false;
+        clean();
+        return client.getStatusCodeReply();
+=======
+	client.discard();
+	client.getAll(1); // Discard all but the last reply
+	inTransaction = false;
+	clean();
+	return client.getStatusCodeReply();
+>>>>>>> YOURS;<<<<<<< MINE
+    	client.getMany(getPipelinedResponseLength());
+        client.discard();
+        inTransaction = false;
+        clean();
+        return client.getStatusCodeReply();
+=======
+	client.discard();
+	client.getAll(1); // Discard all but the last reply
+	inTransaction = false;
+	clean();
+	return client.getStatusCodeReply();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_360e25e_03c0af2/rev_360e25e-03c0af2/src/main/java/redis/clients/jedis/TransactionBlock.java;<<<<<<< MINE
+	    super.setClient(client);
+=======
+	this.client = client;
+>>>>>>> YOURS;<<<<<<< MINE
+	    super.setClient(client);
+=======
+	this.client = client;
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_360e25e_03c0af2/rev_360e25e-03c0af2/src/main/java/redis/clients/jedis/Connection.java;<<<<<<< MINE
+        connect();
+        Protocol.sendCommand(outputStream, cmd, args);
+        return this;
+=======
+	try {
+	    connect();
+	    Protocol.sendCommand(outputStream, cmd, args);
+	    pipelinedCommands++;
+	    return this;
+	} catch (JedisConnectionException ex) {
+	    // Any other exceptions related to connection?
+	    broken = true;
+	    throw ex;
+	}
+>>>>>>> YOURS;<<<<<<< MINE
+        connect();
+        Protocol.sendCommand(outputStream, cmd, args);
+        return this;
+=======
+	try {
+	    connect();
+	    Protocol.sendCommand(outputStream, cmd, args);
+	    pipelinedCommands++;
+	    return this;
+	} catch (JedisConnectionException ex) {
+	    // Any other exceptions related to connection?
+	    broken = true;
+	    throw ex;
+	}
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_360e25e_03c0af2/rev_360e25e-03c0af2/src/main/java/redis/clients/jedis/Connection.java;<<<<<<< MINE
+        connect();
+        Protocol.sendCommand(outputStream, cmd, new byte[0][]);
+        return this;
+=======
+	try {
+	    connect();
+	    Protocol.sendCommand(outputStream, cmd, new byte[0][]);
+	    pipelinedCommands++;
+	    return this;
+	} catch (JedisConnectionException ex) {
+	    // Any other exceptions related to connection?
+	    broken = true;
+	    throw ex;
+	}
+>>>>>>> YOURS;<<<<<<< MINE
+        connect();
+        Protocol.sendCommand(outputStream, cmd, new byte[0][]);
+        return this;
+=======
+	try {
+	    connect();
+	    Protocol.sendCommand(outputStream, cmd, new byte[0][]);
+	    pipelinedCommands++;
+	    return this;
+	} catch (JedisConnectionException ex) {
+	    // Any other exceptions related to connection?
+	    broken = true;
+	    throw ex;
+	}
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_360e25e_03c0af2/rev_360e25e-03c0af2/src/main/java/redis/clients/jedis/Connection.java;<<<<<<< MINE
+        flush();
+        final byte[] resp = (byte[]) Protocol.read(inputStream);
+        if (null == resp) {
+            return null;
+        } else {
+            return SafeEncoder.encode(resp);
+        }
+=======
+	flush();
+	pipelinedCommands--;
+	final byte[] resp = (byte[]) readProtocolWithCheckingBroken();
+	if (null == resp) {
+	    return null;
+	} else {
+	    return SafeEncoder.encode(resp);
+	}
+>>>>>>> YOURS;<<<<<<< MINE
+        flush();
+        final byte[] resp = (byte[]) Protocol.read(inputStream);
+        if (null == resp) {
+            return null;
+        } else {
+            return SafeEncoder.encode(resp);
+        }
+=======
+	flush();
+	pipelinedCommands--;
+	final byte[] resp = (byte[]) readProtocolWithCheckingBroken();
+	if (null == resp) {
+	    return null;
+	} else {
+	    return SafeEncoder.encode(resp);
+	}
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_360e25e_03c0af2/rev_360e25e-03c0af2/src/main/java/redis/clients/jedis/Connection.java;<<<<<<< MINE
+        flush();
+        return (byte[]) Protocol.read(inputStream);
+=======
+	flush();
+	pipelinedCommands--;
+	return (byte[]) readProtocolWithCheckingBroken();
+>>>>>>> YOURS;<<<<<<< MINE
+        flush();
+        return (byte[]) Protocol.read(inputStream);
+=======
+	flush();
+	pipelinedCommands--;
+	return (byte[]) readProtocolWithCheckingBroken();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_360e25e_03c0af2/rev_360e25e-03c0af2/src/main/java/redis/clients/jedis/Connection.java;<<<<<<< MINE
+        flush();
+        return (Long) Protocol.read(inputStream);
+=======
+	flush();
+	pipelinedCommands--;
+	return (Long) readProtocolWithCheckingBroken();
+>>>>>>> YOURS;<<<<<<< MINE
+        flush();
+        return (Long) Protocol.read(inputStream);
+=======
+	flush();
+	pipelinedCommands--;
+	return (Long) readProtocolWithCheckingBroken();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_360e25e_03c0af2/rev_360e25e-03c0af2/src/main/java/redis/clients/jedis/Connection.java;<<<<<<< MINE
+        flush();
+        return (List<Long>) Protocol.read(inputStream);
+=======
+	flush();
+	pipelinedCommands--;
+	return (List<Long>) readProtocolWithCheckingBroken();
+>>>>>>> YOURS;<<<<<<< MINE
+        flush();
+        return (List<Long>) Protocol.read(inputStream);
+=======
+	flush();
+	pipelinedCommands--;
+	return (List<Long>) readProtocolWithCheckingBroken();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_26d1f4a_0aacd48/rev_26d1f4a-0aacd48/src/main/java/redis/clients/jedis/ScanResult.java;<<<<<<< MINE
+@Deprecated
+    /**
+     * This method is deprecated due to bug (scan cursor should be unsigned long)
+     * And will be removed on next major release
+     * @see https://github.com/xetorthio/jedis/issues/531 
+     */
+    public ScanResult(int cursor, List<T> results) {
+	this(Protocol.toByteArray(cursor), results);
+    }
+=======
+>>>>>>> YOURS;<<<<<<< MINE
+    @Deprecated
+    /**
+     * This method is deprecated due to bug (scan cursor should be unsigned long)
+     * And will be removed on next major release
+     * @see https://github.com/xetorthio/jedis/issues/531 
+     */
+    public ScanResult(int cursor, List<T> results) {
+	this(Protocol.toByteArray(cursor), results);
+    }
+
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_3495402_3ebc25e/rev_3495402-3ebc25e/src/main/java/redis/clients/jedis/BinaryJedis.java;<<<<<<< MINE
+@Deprecated
+    /**
+     * This method is deprecated due to its error prone
+     * and will be removed on next major release
+     * You can use multi() instead
+     * @see https://github.com/xetorthio/jedis/pull/498
+     */
+    public List<Object> multi(final TransactionBlock jedisTransaction) {
+	List<Object> results = null;
+	jedisTransaction.setClient(client);
+	client.multi();
+	client.getOne(); // expected OK
+	jedisTransaction.execute();
+	results = jedisTransaction.exec();
+	return results;
+    }
+=======
+>>>>>>> YOURS;<<<<<<< MINE
+    @Deprecated
+    /**
+     * This method is deprecated due to its error prone
+     * and will be removed on next major release
+     * You can use multi() instead
+     * @see https://github.com/xetorthio/jedis/pull/498
+     */
+    public List<Object> multi(final TransactionBlock jedisTransaction) {
+	List<Object> results = null;
+	jedisTransaction.setClient(client);
+	client.multi();
+	client.getOne(); // expected OK
+	jedisTransaction.execute();
+	results = jedisTransaction.exec();
+	return results;
+    }
+
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f9fb884_076df8c/rev_f9fb884-076df8c/src/main/java/redis/clients/jedis/BinaryJedis.java;<<<<<<< MINE
+=======
+@Deprecated
+    /**
+     * This method is deprecated due to its error prone
+     * and will be removed on next major release
+     * You can use multi() instead
+     * @see https://github.com/xetorthio/jedis/pull/498
+     */
+    public List<Object> multi(final TransactionBlock jedisTransaction) {
+	jedisTransaction.setClient(client);
+	client.multi();
+	client.getOne();	// expected OK
+	jedisTransaction.execute();
+	return jedisTransaction.exec();
+    }
+>>>>>>> YOURS;<<<<<<< MINE
+=======
+    @Deprecated
+    /**
+     * This method is deprecated due to its error prone
+     * and will be removed on next major release
+     * You can use multi() instead
+     * @see https://github.com/xetorthio/jedis/pull/498
+     */
+    public List<Object> multi(final TransactionBlock jedisTransaction) {
+	jedisTransaction.setClient(client);
+	client.multi();
+	client.getOne();	// expected OK
+	jedisTransaction.execute();
+	return jedisTransaction.exec();
+    }
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_53e7dc2_d33bd40/rev_53e7dc2-d33bd40/src/main/java/redis/clients/jedis/JedisCluster.java;<<<<<<< MINE
+public JedisCluster(Set<HostAndPort> nodes,
+        final GenericObjectPoolConfig poolConfig) {
+	this(nodes, DEFAULT_TIMEOUT, DEFAULT_MAX_REDIRECTIONS, poolConfig);
+    }
+=======
+public JedisCluster(Set<HostAndPort> nodes, final GenericObjectPoolConfig poolConfig) {
+    this(nodes, DEFAULT_TIMEOUT, DEFAULT_MAX_REDIRECTIONS, poolConfig);
+  }
+>>>>>>> YOURS;<<<<<<< MINE
+    public JedisCluster(Set<HostAndPort> nodes,
+        final GenericObjectPoolConfig poolConfig) {
+	this(nodes, DEFAULT_TIMEOUT, DEFAULT_MAX_REDIRECTIONS, poolConfig);
+    }
+=======
+  public JedisCluster(Set<HostAndPort> nodes, final GenericObjectPoolConfig poolConfig) {
+    this(nodes, DEFAULT_TIMEOUT, DEFAULT_MAX_REDIRECTIONS, poolConfig);
+  }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_53e7dc2_d33bd40/rev_53e7dc2-d33bd40/src/main/java/redis/clients/jedis/JedisCluster.java;<<<<<<< MINE
+public JedisCluster(Set<HostAndPort> nodes, int timeout,
+        final GenericObjectPoolConfig poolConfig) {
+	this(nodes, timeout, DEFAULT_MAX_REDIRECTIONS, poolConfig);
+    }
+=======
+public JedisCluster(Set<HostAndPort> nodes, int timeout, final GenericObjectPoolConfig poolConfig) {
+    this(nodes, timeout, DEFAULT_MAX_REDIRECTIONS, poolConfig);
+  }
+>>>>>>> YOURS;<<<<<<< MINE
+    public JedisCluster(Set<HostAndPort> nodes, int timeout,
+        final GenericObjectPoolConfig poolConfig) {
+	this(nodes, timeout, DEFAULT_MAX_REDIRECTIONS, poolConfig);
+    }
+=======
+  public JedisCluster(Set<HostAndPort> nodes, int timeout, final GenericObjectPoolConfig poolConfig) {
+    this(nodes, timeout, DEFAULT_MAX_REDIRECTIONS, poolConfig);
+  }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_8d7f5cc_38d9130/rev_8d7f5cc-38d9130/src/main/java/org/junit/experimental/theories/internal/AllMembersSupplier.java;<<<<<<< MINE
+            Class<?> returnType = dataPointsMethod.getReturnType();
+            
+            if (returnType.isArray() && sig.canPotentiallyAcceptType(returnType.getComponentType())) {
+                try {
+                    addArrayValues(sig, dataPointsMethod.getName(), list, dataPointsMethod.invokeExplosively(null));
+                } catch (Throwable e) {
+                    // ignore and move on
+                }
+=======
+            try {
+                addMultiPointArrayValues(sig, dataPointsMethod.getName(), list, dataPointsMethod.invokeExplosively(null));
+            } catch (Throwable t) {
+                DataPoints annotation = dataPointsMethod.getAnnotation(DataPoints.class);
+                if (annotation != null) {
+                    for (Class<? extends Throwable> ignored : annotation.ignoredExceptions()) {
+                        if (ignored.isAssignableFrom(t.getClass())) {
+                            return;
+                        }
+                    }
+                }
+                throw t;
+>>>>>>> YOURS;<<<<<<< MINE
+            Class<?> returnType = dataPointsMethod.getReturnType();
+            
+            if (returnType.isArray() && sig.canPotentiallyAcceptType(returnType.getComponentType())) {
+                try {
+                    addArrayValues(sig, dataPointsMethod.getName(), list, dataPointsMethod.invokeExplosively(null));
+                } catch (Throwable e) {
+                    // ignore and move on
+                }
+=======
+            try {
+                addMultiPointArrayValues(sig, dataPointsMethod.getName(), list, dataPointsMethod.invokeExplosively(null));
+            } catch (Throwable t) {
+                DataPoints annotation = dataPointsMethod.getAnnotation(DataPoints.class);
+                if (annotation != null) {
+                    for (Class<? extends Throwable> ignored : annotation.ignoredExceptions()) {
+                        if (ignored.isAssignableFrom(t.getClass())) {
+                            return;
+                        }
+                    }
+                }
+                throw t;
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_80d2827_d1842a2/rev_80d2827-d1842a2/src/main/java/redis/clients/jedis/JedisCluster.java;<<<<<<< MINE
+    super(jedisClusterNode, timeout, maxRedirections, poolConfig);
+=======
+    this.connectionHandler = new JedisSlotBasedConnectionHandler(jedisClusterNode, poolConfig,
+        timeout);
+    this.maxRedirections = maxRedirections;
+>>>>>>> YOURS;<<<<<<< MINE
+    super(jedisClusterNode, timeout, maxRedirections, poolConfig);
+=======
+    this.connectionHandler = new JedisSlotBasedConnectionHandler(jedisClusterNode, poolConfig,
+        timeout);
+    this.maxRedirections = maxRedirections;
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_80d2827_d1842a2/rev_80d2827-d1842a2/src/main/java/redis/clients/jedis/JedisCluster.java;<<<<<<< MINE
+    // note that it'll be run from arbitary node
+    return new JedisClusterCommand<String>(connectionHandler, timeout, maxRedirections) {
+=======
+    return new JedisClusterCommand<String>(connectionHandler, maxRedirections) {
+>>>>>>> YOURS;<<<<<<< MINE
+    // note that it'll be run from arbitary node
+    return new JedisClusterCommand<String>(connectionHandler, timeout, maxRedirections) {
+=======
+    return new JedisClusterCommand<String>(connectionHandler, maxRedirections) {
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_adeec7e_454f783/rev_adeec7e-454f783/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+@Override
+  public String set(final String key, final String value, final String nxxx) {
+    checkIsInMultiOrPipeline();
+    client.set(key, value, nxxx);
+    return client.getStatusCodeReply();
+  }
+=======
+>>>>>>> YOURS;<<<<<<< MINE
+  @Override
+  public String set(final String key, final String value, final String nxxx) {
+    checkIsInMultiOrPipeline();
+    client.set(key, value, nxxx);
+    return client.getStatusCodeReply();
+  }
+
+=======
+>>>>>>> YOURS

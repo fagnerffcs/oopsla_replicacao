@@ -1,0 +1,210 @@
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDS.java;<<<<<<< MINE
+     * @throws DBSecurityGroupQuotaExceededException
+     * @throws DBSecurityGroupAlreadyExistsException
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDS.java;<<<<<<< MINE
+     * @throws ReservedDBInstancesOfferingNotFoundException
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDS.java;<<<<<<< MINE
+     * @throws DBParameterGroupNotFoundException
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDS.java;<<<<<<< MINE
+     * @throws DBParameterGroupNotFoundException
+     * @throws InstanceQuotaExceededException
+     * @throws DBSubnetGroupNotFoundException
+     * @throws DBInstanceAlreadyExistsException
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDS.java;<<<<<<< MINE
+     * @throws StorageQuotaExceededException
+     * @throws InvalidVPCNetworkStateException
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDS.java;<<<<<<< MINE
+     * @throws OptionGroupAlreadyExistsException
+     * @throws OptionGroupQuotaExceededException
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDS.java;<<<<<<< MINE
+     * @throws DBInstanceNotFoundException
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDSClient.java;<<<<<<< MINE
+        exceptionUnmarshallers.add(new DBSubnetGroupListDoesNotCoverAllAzExceptionUnmarshaller());
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDSClient.java;<<<<<<< MINE
+     * @throws DBSecurityGroupQuotaExceededException
+     * @throws DBSecurityGroupAlreadyExistsException
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDSClient.java;<<<<<<< MINE
+     * @throws ReservedDBInstancesOfferingNotFoundException
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDSClient.java;<<<<<<< MINE
+     * @throws DBParameterGroupNotFoundException
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDSClient.java;<<<<<<< MINE
+     * @throws DBParameterGroupNotFoundException
+     * @throws InstanceQuotaExceededException
+     * @throws DBSubnetGroupNotFoundException
+     * @throws DBInstanceAlreadyExistsException
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDSClient.java;<<<<<<< MINE
+     * @throws StorageQuotaExceededException
+     * @throws InvalidVPCNetworkStateException
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDSClient.java;<<<<<<< MINE
+     * @throws OptionGroupAlreadyExistsException
+     * @throws OptionGroupQuotaExceededException
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDSClient.java;<<<<<<< MINE
+     * @throws DBInstanceNotFoundException
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/UpdateSnapshotScheduleRequest.java;<<<<<<< MINE
+     * <p><i>Valid Values</i>: <code>1</code>, <code>2</code>,
+     * <code>4</code>, <code>8</code>, <code>12</code>, <code>24</code>.
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/UpdateSnapshotScheduleRequest.java;<<<<<<< MINE
+     * <p><i>Valid Values</i>: <code>1</code>, <code>2</code>,
+     * <code>4</code>, <code>8</code>, <code>12</code>, <code>24</code>.
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/UpdateSnapshotScheduleRequest.java;<<<<<<< MINE
+     *         <p><i>Valid Values</i>: <code>1</code>, <code>2</code>,
+     *         <code>4</code>, <code>8</code>, <code>12</code>, <code>24</code>.
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/UpdateSnapshotScheduleRequest.java;<<<<<<< MINE
+     * <p><i>Valid Values</i>: <code>1</code>, <code>2</code>,
+     * <code>4</code>, <code>8</code>, <code>12</code>, <code>24</code>.
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/UpdateSnapshotScheduleRequest.java;<<<<<<< MINE
+     *         <p><i>Valid Values</i>: <code>1</code>, <code>2</code>,
+     *         <code>4</code>, <code>8</code>, <code>12</code>, <code>24</code>.
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/UpdateSnapshotScheduleRequest.java;<<<<<<< MINE
+     * <p><i>Valid Values</i>: <code>1</code>, <code>2</code>,
+     * <code>4</code>, <code>8</code>, <code>12</code>, <code>24</code>.
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/UpdateSnapshotScheduleRequest.java;<<<<<<< MINE
+     *         <p><i>Valid Values</i>: <code>1</code>, <code>2</code>,
+     *         <code>4</code>, <code>8</code>, <code>12</code>, <code>24</code>.
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/DiskAllocationType.java;<<<<<<< MINE
+        } else if ("AVAILABLE".equals(value)) {
+            return DiskAllocationType.AVAILABLE;
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/CreateStorediSCSIVolumeRequest.java;<<<<<<< MINE
+     * <p>Length: Minimum length of 1. Maximum length of 200. <p>Constraints:
+     * The name can contain lower case letters, numbers, periods (.), and
+     * hyphens (-).
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/CreateStorediSCSIVolumeRequest.java;<<<<<<< MINE
+     * <p>Length: Minimum length of 1. Maximum length of 200. <p>Constraints:
+     * The name can contain lower case letters, numbers, periods (.), and
+     * hyphens (-).
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/CreateStorediSCSIVolumeRequest.java;<<<<<<< MINE
+     *         <p>Length: Minimum length of 1. Maximum length of 200. <p>Constraints:
+     *         The name can contain lower case letters, numbers, periods (.), and
+     *         hyphens (-).
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/CreateStorediSCSIVolumeRequest.java;<<<<<<< MINE
+     * <p>Length: Minimum length of 1. Maximum length of 200. <p>Constraints:
+     * The name can contain lower case letters, numbers, periods (.), and
+     * hyphens (-).
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/CreateStorediSCSIVolumeRequest.java;<<<<<<< MINE
+     *         <p>Length: Minimum length of 1. Maximum length of 200. <p>Constraints:
+     *         The name can contain lower case letters, numbers, periods (.), and
+     *         hyphens (-).
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/CreateStorediSCSIVolumeRequest.java;<<<<<<< MINE
+     * <p>Length: Minimum length of 1. Maximum length of 200. <p>Constraints:
+     * The name can contain lower case letters, numbers, periods (.), and
+     * hyphens (-).
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/CreateStorediSCSIVolumeRequest.java;<<<<<<< MINE
+     *         <p>Length: Minimum length of 1. Maximum length of 200. <p>Constraints:
+     *         The name can contain lower case letters, numbers, periods (.), and
+     *         hyphens (-).
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/UpdateBandwidthRateLimitRequest.java;<<<<<<< MINE
+     * <p>Constraint: Minimum value of 51200.
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/UpdateBandwidthRateLimitRequest.java;<<<<<<< MINE
+     * <p>Constraint: Minimum value of 102400.
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/UpdateBandwidthRateLimitRequest.java;<<<<<<< MINE
+     * <p>Constraint: Minimum value of 51200.
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/UpdateBandwidthRateLimitRequest.java;<<<<<<< MINE
+     *         <p>Constraint: Minimum value of 51200.
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/UpdateBandwidthRateLimitRequest.java;<<<<<<< MINE
+     * <p>Constraint: Minimum value of 51200.
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/UpdateBandwidthRateLimitRequest.java;<<<<<<< MINE
+     *         <p>Constraint: Minimum value of 51200.
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/UpdateBandwidthRateLimitRequest.java;<<<<<<< MINE
+     * <p>Constraint: Minimum value of 51200.
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/UpdateBandwidthRateLimitRequest.java;<<<<<<< MINE
+     *         <p>Constraint: Minimum value of 51200.
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/UpdateBandwidthRateLimitRequest.java;<<<<<<< MINE
+     * <p>Constraint: Minimum value of 102400.
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/UpdateBandwidthRateLimitRequest.java;<<<<<<< MINE
+     *         <p>Constraint: Minimum value of 102400.
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/UpdateBandwidthRateLimitRequest.java;<<<<<<< MINE
+     * <p>Constraint: Minimum value of 102400.
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/UpdateBandwidthRateLimitRequest.java;<<<<<<< MINE
+     *         <p>Constraint: Minimum value of 102400.
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/UpdateBandwidthRateLimitRequest.java;<<<<<<< MINE
+     * <p>Constraint: Minimum value of 102400.
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/UpdateBandwidthRateLimitRequest.java;<<<<<<< MINE
+     *         <p>Constraint: Minimum value of 102400.
+=======
+>>>>>>> YOURS

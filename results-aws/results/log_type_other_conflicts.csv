@@ -1,0 +1,196 @@
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/AmazonRDS.java;<<<<<<< MINE
+    public DescribeDBInstancesResult describeDBInstances() throws AmazonServiceException, AmazonClientException;
+=======
+    public DescribeEventsResult describeEvents() throws AmazonServiceException, AmazonClientException;
+    
+    /**
+     * <p>
+     * Returns a list of DBParameterGroup descriptions. If a
+     * DBParameterGroupName is specified, the list will contain only the
+     * description of the specified DBParameterGroup.
+     * </p>
+     * 
+     * @return The response from the DescribeDBParameterGroups service
+     *         method, as returned by AmazonRDS.
+     * 
+     * @throws DBParameterGroupNotFoundException
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonRDS indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public DescribeDBParameterGroupsResult describeDBParameterGroups() throws AmazonServiceException, AmazonClientException;
+    
+    /**
+     * <p>
+     * Returns a list of the available DB engines.
+     * </p>
+     * 
+     * @return The response from the DescribeDBEngineVersions service method,
+     *         as returned by AmazonRDS.
+     * 
+     *
+     * @throws AmazonClientException
+     *             If any internal errors are encountered inside the client while
+     *             attempting to make the request or handle the response.  For example
+     *             if a network connection is not available.
+     * @throws AmazonServiceException
+     *             If an error response is returned by AmazonRDS indicating
+     *             either a problem with the data in the request, or a server side issue.
+     */
+    public DescribeDBEngineVersionsResult describeDBEngineVersions() throws AmazonServiceException, AmazonClientException;
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/RestoreDBInstanceFromDBSnapshotRequest.java;<<<<<<< MINE
+=======
+    /**
+     * The amount of Provisioned IOPS (input/output operations per second) to
+     * be initially allocated for the DB Instance. <p> Constraints: Must be
+     * an integer greater than 1000.
+     */
+    private Integer iops;
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/OrderableDBInstanceOption.java;<<<<<<< MINE
+    private Boolean vpcCapable;
+
+    /**
+     * Indicates whether this orderable DB Instance is VPC multi-AZ capable.
+     */
+    private Boolean vpcMultiAZCapable;
+
+    /**
+     * Indicates whether this orderable DB Instance can have a VPC read
+     * replica.
+     */
+    private Boolean vpcReadReplicaCapable;
+=======
+    private Boolean vpc;
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/RestoreDBInstanceToPointInTimeRequest.java;<<<<<<< MINE
+=======
+    /**
+     * The amount of Provisioned IOPS (input/output operations per second) to
+     * be initially allocated for the DB Instance. <p> Constraints: Must be
+     * an integer greater than 1000.
+     */
+    private Integer iops;
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/rds/model/CreateDBInstanceReadReplicaRequest.java;<<<<<<< MINE
+=======
+    /**
+     * The amount of Provisioned IOPS (input/output operations per second) to
+     * be initially allocated for the DB Instance.
+     */
+    private Integer iops;
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/sqs/AmazonSQSClient.java;<<<<<<< MINE
+=======
+    /**
+     * Overrides the default endpoint for this client ("sqs.us-east-1.amazonaws.com") and explicitly provides
+     * an AWS region ID and AWS service name to use when the client calculates a signature
+     * for requests.  In almost all cases, this region ID and service name
+     * are automatically determined from the endpoint, and callers should use the simpler
+     * one-argument form of setEndpoint instead of this method.
+     * <p>
+     * <b>This method is not threadsafe. Endpoints should be configured when the
+     * client is created and before any service requests are made. Changing it
+     * afterwards creates inevitable race conditions for any service requests in
+     * transit.</b>
+     * <p>
+     * Callers can pass in just the endpoint (ex: "sqs.us-east-1.amazonaws.com") or a full
+     * URL, including the protocol (ex: "sqs.us-east-1.amazonaws.com"). If the
+     * protocol is not specified here, the default protocol from this client's
+     * {@link ClientConfiguration} will be used, which by default is HTTPS.
+     * <p>
+     * For more information on using AWS regions with the AWS SDK for Java, and
+     * a complete list of all available endpoints for all AWS services, see:
+     * <a href="http://developer.amazonwebservices.com/connect/entry.jspa?externalID=3912">
+     * http://developer.amazonwebservices.com/connect/entry.jspa?externalID=3912</a>
+     *
+     * @param endpoint
+     *            The endpoint (ex: "sqs.us-east-1.amazonaws.com") or a full URL,
+     *            including the protocol (ex: "sqs.us-east-1.amazonaws.com") of
+     *            the region specific AWS endpoint this client will communicate
+     *            with.
+     * @param serviceName
+     *            The name of the AWS service to use when signing requests.
+     * @param regionId
+     *            The ID of the region in which this service resides.
+     *
+     * @throws IllegalArgumentException
+     *             If any problems are detected with the specified endpoint.
+     */
+    public void setEndpoint(String endpoint, String serviceName, String regionId) throws IllegalArgumentException {
+        setEndpoint(endpoint);
+        signer.setServiceName(serviceName);
+        signer.setRegionName(regionId);
+    }
+    
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/model/GatewayType.java;<<<<<<< MINE
+=======
+/*
+ * Copyright 2010-2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License").
+ * You may not use this file except in compliance with the License.
+ * A copy of the License is located at
+ * 
+ *  http://aws.amazon.com/apache2.0
+ * 
+ * or in the "license" file accompanying this file. This file is distributed
+ * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+ * express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+package com.amazonaws.services.storagegateway.model;
+
+/**
+ * Gateway Type
+ */
+public enum GatewayType {
+    
+    STORED("STORED"),
+    CACHED("CACHED");
+
+    private String value;
+
+    private GatewayType(String value) {
+        this.value = value;
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    /**
+     * Use this in place of valueOf.
+     *
+     * @param value
+     *            real value
+     * @return GatewayType corresponding to the value
+     */
+    public static GatewayType fromValue(String value) {
+        if (value == null || "".equals(value)) {
+            throw new IllegalArgumentException("Value cannot be null or empty!");
+        
+        } else if ("STORED".equals(value)) {
+            return GatewayType.STORED;
+        } else if ("CACHED".equals(value)) {
+            return GatewayType.CACHED;
+        } else {
+            throw new IllegalArgumentException("Cannot create enum from " + value + " value!");
+        }
+    }
+}>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/aws-sdk-java/revisions/rev_50eeb45_8cee0c9/rev_50eeb45-8cee0c9/src/main/java/com/amazonaws/services/storagegateway/AWSStorageGatewayAsyncClient.java;<<<<<<< MINE
+
+=======
+>>>>>>> YOURS

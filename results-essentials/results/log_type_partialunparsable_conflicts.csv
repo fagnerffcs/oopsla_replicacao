@@ -1,0 +1,1158 @@
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_a84be6a_08e0412/rev_a84be6a-08e0412/eureka-core/src/main/java/com/netflix/eureka/EurekaServerConfig.java;<<<<<<< MINE
+=======
+     * Get a map of region name against remote region discovery url.
+     *
+     * @return - An unmodifiable map of remote region name against remote region discovery url. Empty map if no remote region url
+     * is defined.
+     */
+    Map<String, String> getRemoteRegionUrlsWithName();
+
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_a84be6a_08e0412/rev_a84be6a-08e0412/eureka-core/src/main/java/com/netflix/eureka/EurekaServerConfig.java;<<<<<<< MINE
+=======
+     * @deprecated Use {@link #getRemoteRegionUrlsWithName()}
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_a84be6a_08e0412/rev_a84be6a-08e0412/eureka-client/src/main/java/com/netflix/discovery/shared/Application.java;<<<<<<< MINE
+        List<InstanceInfo> instanceInfoList = null;
+=======
+        _shuffleAndStoreInstances(filterUpInstances, false, null, null, null);
+    }
+
+    public void shuffleAndStoreInstances(Map<String, Applications> remoteRegionsRegistry,
+                                         EurekaClientConfig clientConfig, InstanceRegionChecker instanceRegionChecker) {
+        _shuffleAndStoreInstances(clientConfig.shouldFilterOnlyUpInstances(), true, remoteRegionsRegistry, clientConfig,
+                                  instanceRegionChecker);
+    }
+
+    private void _shuffleAndStoreInstances(boolean filterUpInstances, boolean indexByRemoteRegions,
+                                           @Nullable Map<String, Applications> remoteRegionsRegistry,
+                                           @Nullable EurekaClientConfig clientConfig,
+                                           @Nullable InstanceRegionChecker instanceRegionChecker) {
+        List<InstanceInfo> instanceInfoList;
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_a84be6a_08e0412/rev_a84be6a-08e0412/eureka-client/src/main/java/com/netflix/discovery/shared/Application.java;<<<<<<< MINE
+=======
+                } else if (indexByRemoteRegions && null != instanceRegionChecker && null != clientConfig
+                           && null != remoteRegionsRegistry) {
+                    String instanceRegion = instanceRegionChecker.getInstanceRegion(instanceInfo);
+                    if (!instanceRegionChecker.isLocalRegion(instanceRegion)) {
+                        Applications appsForRemoteRegion = remoteRegionsRegistry.get(instanceRegion);
+                        if (null == appsForRemoteRegion) {
+                            appsForRemoteRegion = new Applications();
+                            remoteRegionsRegistry.put(instanceRegion, appsForRemoteRegion);
+                        }
+
+                        Application remoteApp = appsForRemoteRegion.getRegisteredApplications(instanceInfo.getAppName());
+                        if (null == remoteApp) {
+                            remoteApp = new Application(instanceInfo.getAppName());
+                            appsForRemoteRegion.addApplication(remoteApp);
+                        }
+
+                        remoteApp.addInstance(instanceInfo);
+                        this.removeInstance(instanceInfo, false);
+                        it.remove();
+                    }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_a84be6a_08e0412/rev_a84be6a-08e0412/eureka-client/src/main/java/com/netflix/discovery/shared/Applications.java;<<<<<<< MINE
+        Map<String, AtomicInteger> instanceCountMap = new TreeMap<String, AtomicInteger>();
+=======
+        TreeMap<String, AtomicInteger> instanceCountMap = new TreeMap<String, AtomicInteger>();
+        populateInstanceCountMap(instanceCountMap);
+        return getReconcileHashCode(instanceCountMap);
+    }
+
+    public void populateInstanceCountMap(TreeMap<String, AtomicInteger> instanceCountMap) {
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_a84be6a_08e0412/rev_a84be6a-08e0412/eureka-client/src/main/java/com/netflix/discovery/shared/Applications.java;<<<<<<< MINE
+=======
+    }
+
+    public static String getReconcileHashCode(TreeMap<String, AtomicInteger> instanceCountMap) {
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_a84be6a_08e0412/rev_a84be6a-08e0412/eureka-client/src/main/java/com/netflix/discovery/shared/Applications.java;<<<<<<< MINE
+=======
+        _shuffleInstances(filterUpInstances, false, null, null, null);
+    }
+
+    public void shuffleAndIndexInstances(Map<String, Applications> remoteRegionsRegistry, EurekaClientConfig clientConfig,
+                                         InstanceRegionChecker instanceRegionChecker) {
+        _shuffleInstances(clientConfig.shouldFilterOnlyUpInstances(), true, remoteRegionsRegistry, clientConfig,
+                          instanceRegionChecker);
+    }
+
+    private void _shuffleInstances(boolean filterUpInstances, boolean indexByRemoteRegions,
+                                   @Nullable Map<String, Applications> remoteRegionsRegistry,
+                                   @Nullable EurekaClientConfig clientConfig,
+                                   @Nullable InstanceRegionChecker instanceRegionChecker) {
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_a84be6a_08e0412/rev_a84be6a-08e0412/eureka-client/src/main/java/com/netflix/discovery/EurekaClientConfig.java;<<<<<<< MINE
+=======
+     * Comma separated list of regions for which the eureka registry information will be fetched. It is mandatory to
+     * define the availability zones for each of these regions as returned by {@link #getAvailabilityZones(String)}.
+     * Failing to do so, will result in failure of discovery client startup.
+     *
+     * @return Comma separated list of regions for which the eureka registry information will be fetched.
+     * <code>null</code> if no remote region has to be fetched.
+     */
+    @Nullable
+    String fetchRegistryForRemoteRegions();
+
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_a84be6a_08e0412/rev_a84be6a-08e0412/eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java;<<<<<<< MINE
+
+=======
+            remoteRegionsToFetch = clientConfig.fetchRegistryForRemoteRegions();
+            instanceRegionChecker = new InstanceRegionChecker(remoteRegionsToFetch, clientConfig);
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_a84be6a_08e0412/rev_a84be6a-08e0412/eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java;<<<<<<< MINE
+=======
+        Applications applications;
+        if (instanceRegionChecker.isLocalRegion(region)) {
+            applications = this.localRegionApps.get();
+        } else {
+            applications = remoteRegionVsApps.get(region);
+            if (null == region) {
+                logger.debug("No applications are defined for region {}, so returning an empty instance list for vip address {}.",
+                             region, vipAddress);
+                return Collections.emptyList();
+            }
+        }
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_a84be6a_08e0412/rev_a84be6a-08e0412/eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java;<<<<<<< MINE
+=======
+                Applications applications = getApplications();
+                String instanceRegion = instanceRegionChecker.getInstanceRegion(instance);
+                if (!instanceRegionChecker.isLocalRegion(instanceRegion)) {
+                    Applications remoteApps = remoteRegionVsApps.get(instanceRegion);
+                    if (null == remoteApps) {
+                        remoteApps = new Applications();
+                        remoteRegionVsApps.put(instanceRegion, remoteApps);
+                    }
+                    applications = remoteApps;
+                }
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_a84be6a_08e0412/rev_a84be6a-08e0412/eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java;<<<<<<< MINE
+=======
+                if (isFetchingRemoteRegionRegistries()) {
+                    urlPath += "?regions=" + remoteRegionsToFetch;
+                }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_a84be6a_08e0412/rev_a84be6a-08e0412/eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java;<<<<<<< MINE
+=======
+                if (isFetchingRemoteRegionRegistries()) {
+                    urlPath += "?regions=" + remoteRegionsToFetch;
+                }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_b7e1825_f0dec22/rev_b7e1825-f0dec22/eureka-client/src/test/java/com/netflix/discovery/DiscoveryClientRegistryTest.java;<<<<<<< MINE
+        mockLocalEurekaServer = new MockRemoteEurekaServer(eurekaPort, localRegionApps, localRegionAppsDelta,
+                                                           remoteRegionApps, remoteRegionAppsDelta);
+        mockLocalEurekaServer.start();
+
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_526d3b1_6333a71/rev_526d3b1-6333a71/eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java;<<<<<<< MINE
+=======
+                logger.info("Single vip registry refresh property : {}", clientConfig.getRegistryRefreshSingleVipAddress());
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_526d3b1_6333a71/rev_526d3b1-6333a71/eureka-client/src/test/java/com/netflix/discovery/AbstractDiscoveryClientTester.java;<<<<<<< MINE
+=======
+        setupDiscoveryClient();
+    }
+
+    protected void setupDiscoveryClient() {
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_526d3b1_6333a71/rev_526d3b1-6333a71/eureka-client/src/test/java/com/netflix/discovery/AbstractDiscoveryClientTester.java;<<<<<<< MINE
+        instanceBuilder.setAppName(appName);
+        instanceBuilder.setVIPAddress(vipAddress);
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_526d3b1_6333a71/rev_526d3b1-6333a71/eureka-client/src/test/java/com/netflix/discovery/DiscoveryClientRegistryTest.java;<<<<<<< MINE
+=======
+    public void testCacheRefreshSingleAppForLocalRegion() throws Exception {
+        final String propertyName = "eureka.registryRefreshSingleVipAddress";
+        try {
+            if (client != null) {
+                client.shutdown();  // shutdown and restart the client to pick up the config
+            }
+
+            ConfigurationManager.getConfigInstance().setProperty(propertyName, ALL_REGIONS_VIP1_ADDR);
+            setupDiscoveryClient();
+
+            List<Application> registeredApps = client.getApplications().getRegisteredApplications();
+            Assert.assertEquals(1, registeredApps.size());
+
+            Application app = registeredApps.get(0);
+            Assert.assertEquals(LOCAL_REGION_APP1_NAME, app.getName());
+
+            List<InstanceInfo> instances = app.getInstances();
+            Assert.assertEquals(1, instances.size());
+        } finally {
+            ConfigurationManager.getConfigInstance().clearProperty(propertyName);
+        }
+    }
+
+    @Test
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_526d3b1_6333a71/rev_526d3b1-6333a71/eureka-client/src/test/java/com/netflix/discovery/MockRemoteEurekaServer.java;<<<<<<< MINE
+=======
+                } else if (pathInfo.startsWith("vips/")) {
+                    String vipAddress = pathInfo.substring("vips/".length());
+                    Applications apps = new Applications();
+                    apps.setVersion(-1l);
+                    for (Application application : applicationMap.values()) {
+                        Application retApp = new Application(application.getName());
+                        for (InstanceInfo instance : application.getInstances()) {
+                            if (vipAddress.equals(instance.getVIPAddress())) {
+                                retApp.addInstance(instance);
+                            }
+                        }
+
+                        if (retApp.getInstances().size() > 0) {
+                            apps.addApplication(retApp);
+                        }
+                    }
+
+                    apps.setAppsHashCode(apps.getReconcileHashCode());
+                    sendOkResponseWithContent((Request) request, response, apps);
+                    handled = true;
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-core/src/main/java/com/netflix/eureka/EurekaBootStrap.java;<<<<<<< MINE
+=======
+            } catch (Throwable e) {
+                logger.error("Cannot bind to EIP", e);
+                Thread.sleep(EIP_BIND_SLEEP_TIME_MS);
+            }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-core/src/main/java/com/netflix/eureka/cluster/PeerEurekaNode.java;<<<<<<< MINE
+=======
+                logger.warn(
+                        "Peer wants us to take the instance information from it, since the timestamp differs,"
+                                + "Id : {} My Timestamp : {}, Peer's timestamp: {}", args);
+                if ((infoFromPeer.getOverriddenStatus() != null)
+                        && !(InstanceStatus.UNKNOWN.equals(infoFromPeer
+                        .getOverriddenStatus()))) {
+                    Object[] args1 = {id, info.getOverriddenStatus(), infoFromPeer.getOverriddenStatus()};
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-core/src/main/java/com/netflix/eureka/cluster/PeerEurekaNode.java;<<<<<<< MINE
+=======
+                            } catch (Throwable e) {
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-core/src/main/java/com/netflix/eureka/cluster/PeerEurekaNode.java;<<<<<<< MINE
+                                    + "_tries");
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_9b180dc_1c2989d/rev_9b180dc-1c2989d/eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java;<<<<<<< MINE
+=======
+        }
+
+        public void setHealthCheckCallbackProvider(Provider<HealthCheckCallback> healthCheckCallbackProvider) {
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_9b180dc_1c2989d/rev_9b180dc-1c2989d/eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java;<<<<<<< MINE
+=======
+        }
+
+        public void setHealthCheckHandlerProvider(Provider<HealthCheckHandler> healthCheckHandlerProvider) {
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_90eea3b_1837e04/rev_90eea3b-1837e04/eureka-client/src/main/java/com/netflix/discovery/shared/EurekaJerseyClientImpl.java;<<<<<<< MINE
+            jerseyClientConfig.getClasses().add(DiscoveryJerseyProvider.class);
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-core/src/main/java/com/netflix/eureka/ServerRequestAuthFilter.java;<<<<<<< MINE
+=======
+@Singleton
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-core/src/main/java/com/netflix/eureka/EurekaBootStrap.java;<<<<<<< MINE
+=======
+    @Override
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-core/src/main/java/com/netflix/eureka/EurekaBootStrap.java;<<<<<<< MINE
+        EurekaServerConfig eurekaServerConfig = new DefaultEurekaServerConfig();
+        EurekaServerConfigurationManager.getInstance().setConfiguration(
+                eurekaServerConfig);
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-core/src/main/java/com/netflix/eureka/EurekaBootStrap.java;<<<<<<< MINE
+=======
+    @Override
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-core/src/main/java/com/netflix/eureka/RateLimitingFilter.java;<<<<<<< MINE
+=======
+@Singleton
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-core/src/main/java/com/netflix/eureka/RateLimitingFilter.java;<<<<<<< MINE
+=======
+        if (serverConfig == null) {
+            EurekaServerContext serverContext = (EurekaServerContext) filterConfig.getServletContext()
+                    .getAttribute(EurekaServerContext.class.getName());
+            serverConfig = serverContext.getServerConfig();
+        }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-core/src/main/java/com/netflix/eureka/EurekaServerConfig.java;<<<<<<< MINE
+=======
+     * Get the wait/sleep time between each retry sync attempts, if the prev retry failed and there are
+     * more retries to attempt.
+     *
+     * @return the wait time in ms between each sync retries
+     */
+    long getRegistrySyncRetryWaitMs();
+
+    /**
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-core/src/main/java/com/netflix/eureka/cluster/JerseyReplicationClient.java;<<<<<<< MINE
+=======
+                    .withEncoderWrapper(serverCodecs.getFullJsonCodec())
+                    .withDecoderWrapper(serverCodecs.getFullJsonCodec())
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-core/src/main/java/com/netflix/eureka/StatusFilter.java;<<<<<<< MINE
+=======
+@Singleton
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-core/src/main/java/com/netflix/eureka/resources/StatusResource.java;<<<<<<< MINE
+    @GET
+    public StatusInfo getStatusInfo() {
+        Builder builder = Builder.newBuilder();
+        // Add application level status
+        StringBuilder upReplicas = new StringBuilder();
+        StringBuilder downReplicas = new StringBuilder();
+
+        StringBuilder replicaHostNames = new StringBuilder();
+        String myAppName = ApplicationInfoManager.getInstance().getInfo()
+                .getAppName();
+
+        for (PeerEurekaNode node : registry.getReplicaNodes()) {
+            if (replicaHostNames.length() > 0) {
+                replicaHostNames.append(", ");
+            }
+            replicaHostNames.append(node.getServiceUrl());
+            if (isReplicaAvailable(myAppName, node.getServiceUrl())) {
+                upReplicas.append(node.getServiceUrl()).append(',');
+            } else {
+                downReplicas.append(node.getServiceUrl()).append(',');
+            }
+        }
+
+        builder.add("registered-replicas", replicaHostNames.toString());
+        builder.add("available-replicas", upReplicas.toString());
+        builder.add("unavailable-replicas", downReplicas.toString());
+=======
+    @Inject
+    StatusResource(EurekaServerContext server) {
+        this.statusUtil = new StatusUtil(server);
+    }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-core/src/main/java/com/netflix/eureka/resources/InstanceResource.java;<<<<<<< MINE
+=======
+        this.serverConfig = serverConfig;
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-core/src/main/java/com/netflix/eureka/resources/ASGResource.java;<<<<<<< MINE
+=======
+        if (awsAsgUtil == null) {
+            return Response.status(400).build();
+        }
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-core/src/main/java/com/netflix/eureka/resources/ApplicationResource.java;<<<<<<< MINE
+=======
+        this.serverConfig = serverConfig;
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-core/src/main/java/com/netflix/eureka/DefaultEurekaServerConfig.java;<<<<<<< MINE
+=======
+@Singleton
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-core/src/main/java/com/netflix/eureka/DefaultEurekaServerConfig.java;<<<<<<< MINE
+=======
+    public long getRegistrySyncRetryWaitMs() {
+        return configInstance.getIntProperty(
+                namespace + "registrySyncRetryWaitMs", 30 * 1000).get();
+    }
+
+    @Override
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-client/src/main/java/com/netflix/discovery/shared/EurekaJerseyClientImpl.java;<<<<<<< MINE
+            jerseyClientConfig.getClasses().add(DiscoveryJerseyProvider.class);
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-client/src/main/java/com/netflix/discovery/EurekaClient.java;<<<<<<< MINE
+=======
+    @Deprecated
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-client/src/main/java/com/netflix/discovery/EurekaClient.java;<<<<<<< MINE
+=======
+     * @deprecated see {@link com.netflix.discovery.endpoint.EndpointUtils} for replacement
+     *
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-client/src/main/java/com/netflix/discovery/EurekaClient.java;<<<<<<< MINE
+=======
+    @Deprecated
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-client/src/main/java/com/netflix/discovery/EurekaClient.java;<<<<<<< MINE
+=======
+     * @deprecated see {@link com.netflix.discovery.endpoint.EndpointUtils} for replacement
+     *
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-client/src/main/java/com/netflix/discovery/EurekaClient.java;<<<<<<< MINE
+=======
+    @Deprecated
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java;<<<<<<< MINE
+            instanceInfo = myInfo;
+            if (myInfo != null) {
+                appPathIdentifier = instanceInfo.getAppName() + "/"
+                        + instanceInfo.getId();
+            } else {
+                logger.warn("Setting instanceInfo to a passed in null value");
+            }
+
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java;<<<<<<< MINE
+=======
+     * @deprecated see replacement in {@link com.netflix.discovery.endpoint.EndpointUtils}
+     *
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java;<<<<<<< MINE
+=======
+    @Deprecated
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java;<<<<<<< MINE
+=======
+     * @deprecated see replacement in {@link com.netflix.discovery.endpoint.EndpointUtils}
+     *
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java;<<<<<<< MINE
+=======
+    @Deprecated
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java;<<<<<<< MINE
+=======
+    /**
+     * @deprecated see replacement in {@link com.netflix.discovery.endpoint.EndpointUtils}
+     */
+    @Deprecated
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java;<<<<<<< MINE
+=======
+        return EndpointUtils.getDiscoveryServiceUrls(clientConfig, zone, urlRandomizer);
+    }
+
+    private List<String> timedGetDiscoveryServiceUrls(String zone) {
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java;<<<<<<< MINE
+        return getServiceUrlsFromConfig(zone, clientConfig.shouldPreferSameZoneEureka());
+    }
+
+    public enum DiscoveryUrlType {
+        CNAME, A
+=======
+        return EndpointUtils.getServiceUrlsFromConfig(clientConfig, zone, clientConfig.shouldPreferSameZoneEureka());
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java;<<<<<<< MINE
+=======
+     * @deprecated see replacement in {@link com.netflix.discovery.endpoint.EndpointUtils}
+     *
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java;<<<<<<< MINE
+=======
+    @Deprecated
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java;<<<<<<< MINE
+     * @param region
+     *            - The region for which the zone names need to be retrieved
+     * @return - The list of CNAMES from which the zone-related information can
+     *         be retrieved
+     */
+    static Map<String, List<String>> getZoneBasedDiscoveryUrlsFromRegion(
+            String region) {
+        String discoveryDnsName = null;
+        try {
+            discoveryDnsName = "txt." + region + "."
+                    + clientConfig.getEurekaServerDNSName();
+
+            logger.debug("The region url to be looked up is {} :",
+                    discoveryDnsName);
+            Set<String> zoneCnamesForRegion = new TreeSet<String>(
+                    DnsResolver.getCNamesFromTxtRecord(discoveryDnsName));
+            Map<String, List<String>> zoneCnameMapForRegion = new TreeMap<String, List<String>>();
+            for (String zoneCname : zoneCnamesForRegion) {
+                String zone = null;
+                if (isEC2Url(zoneCname)) {
+                    throw new RuntimeException(
+                            "Cannot find the right DNS entry for "
+                                    + discoveryDnsName
+                                    + ". "
+                                    + "Expected mapping of the format <aws_zone>.<domain_name>");
+                } else {
+                    String[] cnameTokens = zoneCname.split("\\.");
+                    zone = cnameTokens[0];
+                    logger.debug("The zoneName mapped to region {} is {}",
+                            region, zone);
+                }
+                List<String> zoneCnamesSet = zoneCnameMapForRegion.get(zone);
+                if (zoneCnamesSet == null) {
+                    zoneCnamesSet = new ArrayList<String>();
+                    zoneCnameMapForRegion.put(zone, zoneCnamesSet);
+                }
+                zoneCnamesSet.add(zoneCname);
+            }
+            return zoneCnameMapForRegion;
+        } catch (Throwable e) {
+            throw new RuntimeException("Cannot get cnames bound to the region:"
+                    + discoveryDnsName, e);
+        }
+    }
+
+    private static boolean isEC2Url(String zoneCname) {
+        return zoneCname.startsWith("ec2");
+    }
+
+    /**
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java;<<<<<<< MINE
+=======
+    @Deprecated
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_2529120_333a91e/rev_2529120-333a91e/eureka-core/src/main/java/com/netflix/eureka/cluster/ReplicationTaskProcessor.java;<<<<<<< MINE
+
+        Action action = list.getReplicationList().get(0).getAction();
+        DynamicCounter.increment("Batch_" + action + "_tries");
+
+        long lastNetworkErrorTime = 0;
+        boolean done;
+        do {
+            done = true;
+            try {
+                EurekaHttpResponse<ReplicationListResponse> response = replicationClient.submitBatchUpdates(list);
+                int statusCode = response.getStatusCode();
+                if (!isSuccess(statusCode)) {
+                    if (statusCode == 503) {
+                        logger.warn("Server busy (503) HTTP status code received from the peer {}; rescheduling tasks after delay", peerId);
+                        rescheduleAfterDelay(tasks);
+                    } else {
+                        // Unexpected error returned from the server. This should ideally never happen.
+                        logger.error("Batch update failure with HTTP status code {}; discarding {} replication tasks", statusCode, tasks.size());
+                    }
+                    return;
+                }
+                DynamicCounter.increment("Batch_" + action + "_success");
+
+                handleBatchResponse(tasks, response.getEntity().getResponseList());
+            } catch (Throwable e) {
+                if (isNetworkConnectException(e)) {
+                    long now = System.currentTimeMillis();
+                    // We want to retry eagerly, but without flooding log file with tons of error entries.
+                    // As tasks are executed by a pool of threads the error logging multiplies. For example:
+                    // 20 threads * 100ms delay == 200 error entries / sec worst case
+                    // Still we would like to see the exception samples, so we print samples at regular intervals
+                    if (now - lastNetworkErrorTime > 10000) {
+                        lastNetworkErrorTime = now;
+                        logger.error("Network level connection to peer " + peerId + "; retrying after delay", e);
+                    }
+
+                    try {
+                        Thread.sleep(retrySleepTimeMs);
+                    } catch (InterruptedException ignore) {
+                    }
+                    done = false;
+                    DynamicCounter.increment("Batch_" + action + "_retries");
+                } else {
+                    logger.error("Not re-trying this exception because it does not seem to be a network exception", e);
+                }
+            }
+        } while (!done);
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_203fa01_9950fce/rev_203fa01-9950fce/eureka-core/src/main/java/com/netflix/eureka/util/StatusUtil.java;<<<<<<< MINE
+            givenHostName = new URI(url).getHost();
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_29233cb_52f8582/rev_29233cb-52f8582/Essentials/src/com/earth2me/essentials/commands/Commandhelp.java;<<<<<<< MINE
+			page = 1;
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_1a715bd_455fbd8/rev_1a715bd-455fbd8/Essentials/src/com/earth2me/essentials/commands/Commandspawnmob.java;<<<<<<< MINE
+		WorldServer world = ((CraftWorld)user.getWorld()).getHandle();
+		try
+		{
+			spawnedMob = mob.spawn(user, server);
+		}
+		catch (MobException e)
+		{
+			user.sendMessage(Util.i18n("unableToSpawnMob"));
+			return;
+		}
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_1a715bd_455fbd8/rev_1a715bd-455fbd8/Essentials/src/com/earth2me/essentials/Mob.java;<<<<<<< MINE
+		this.craftClass = n;
+		this.entityClass = n;
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_1a715bd_455fbd8/rev_1a715bd-455fbd8/Essentials/src/com/earth2me/essentials/Mob.java;<<<<<<< MINE
+=======
+		this.bukkitType = type;
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_1a715bd_455fbd8/rev_1a715bd-455fbd8/Essentials/src/com/earth2me/essentials/Mob.java;<<<<<<< MINE
+		this.craftClass = n;
+		this.entityClass = n;
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_1a715bd_455fbd8/rev_1a715bd-455fbd8/Essentials/src/com/earth2me/essentials/Mob.java;<<<<<<< MINE
+=======
+		this.bukkitType = type;
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_1a715bd_455fbd8/rev_1a715bd-455fbd8/Essentials/src/com/earth2me/essentials/Mob.java;<<<<<<< MINE
+=======
+		return entity;
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_34e23e6_daaf966/rev_34e23e6-daaf966/Essentials/src/com/earth2me/essentials/DescParseTickFormat.java;<<<<<<< MINE
+	// =======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_34e23e6_daaf966/rev_34e23e6-daaf966/Essentials/src/com/earth2me/essentials/DescParseTickFormat.java;<<<<<<< MINE
+=======
+		
+		if (desc.endsWith("pm") && hours != 12)
+		{
+			hours += 12;
+		}
+		
+		if (desc.endsWith("am") && hours == 12)
+		{
+			hours -= 12;
+		}
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_ffe19e6_85bf61f/rev_ffe19e6-85bf61f/Essentials/src/com/earth2me/essentials/commands/Commandspawnmob.java;<<<<<<< MINE
+		Location loc = (new TargetBlock(user, 300, 0.2, ignore)).getTargetBlock().getLocation();
+=======
+		Block block = (new TargetBlock(user, 300, 0.2, ignore)).getTargetBlock();
+		if(block == null) {
+			user.sendMessage(Util.i18n("unableToSpawnMob"));
+			return;
+		}
+		Location loc = block.getLocation();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_ffe19e6_85bf61f/rev_ffe19e6-85bf61f/Essentials/src/com/earth2me/essentials/commands/Commandrepair.java;<<<<<<< MINE
+			if (armor.length() > 0)
+			{
+				if (itemList.length() > 0)
+				{
+					itemList.append(", ");
+				}
+
+				itemList.append(armor);
+			}
+
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_ffe19e6_85bf61f/rev_ffe19e6-85bf61f/Essentials/src/com/earth2me/essentials/Util.java;<<<<<<< MINE
+		final StringBuilder buf = new StringBuilder();
+		boolean first = true;
+=======
+		return joinList(", ", list);
+	}
+	
+	public static String joinList(String seperator, Object... list)
+	{
+		StringBuilder buf = new StringBuilder();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_ffe19e6_85bf61f/rev_ffe19e6-85bf61f/Essentials/src/com/earth2me/essentials/Util.java;<<<<<<< MINE
+			first = false;
+			buf.append(each);
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_8aba67f_d3dace3/rev_8aba67f-d3dace3/Essentials/src/com/earth2me/essentials/Settings.java;<<<<<<< MINE
+	public boolean getNetherPortalsEnabled()
+	{
+		return isNetherEnabled() && config.getBoolean("nether.portals-enabled", false);
+	}
+
+	@Override
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_8aba67f_d3dace3/rev_8aba67f-d3dace3/Essentials/src/com/earth2me/essentials/Settings.java;<<<<<<< MINE
+	public String getNetherName()
+	{
+		return config.getString("nether.folder", "nether");
+	}
+
+	@Override
+	public boolean isNetherEnabled()
+	{
+		return config.getBoolean("nether.enabled", false);
+	}
+
+	@Override
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_8aba67f_d3dace3/rev_8aba67f-d3dace3/Essentials/src/com/earth2me/essentials/Settings.java;<<<<<<< MINE
+	public boolean getGenerateExitPortals()
+	{
+		return config.getBoolean("nether.generate-exit-portals", true);
+	}
+
+	@Override
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_8aba67f_d3dace3/rev_8aba67f-d3dace3/Essentials/src/com/earth2me/essentials/Settings.java;<<<<<<< MINE
+	public boolean use1to1RatioInNether()
+	{
+		return config.getBoolean("nether.use-1to1-ratio", false);
+	}
+
+	@Override
+	public double getNetherRatio()
+	{
+		if (config.getBoolean("nether.use-1to1-ratio", false))
+		{
+			return 1.0;
+		}
+		return config.getDouble("nether.ratio", 8.0);
+	}
+
+	@Override
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_8aba67f_d3dace3/rev_8aba67f-d3dace3/Essentials/src/com/earth2me/essentials/commands/Commandworld.java;<<<<<<< MINE
+=======
+			}
+			if (nether == null)
+			{
+				return;
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_8aba67f_d3dace3/rev_8aba67f-d3dace3/Essentials/src/com/earth2me/essentials/commands/Commandworld.java;<<<<<<< MINE
+		Location loc = user.getLocation();
+		loc = new Location(world, loc.getBlockX() * factor + .5, loc.getBlockY(), loc.getBlockZ() * factor + .5);
+=======
+		final Location loc = user.getLocation();
+		final Location target = new Location(world, loc.getBlockX() * factor + .5, loc.getBlockY(), loc.getBlockZ() * factor + .5);
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_8aba67f_d3dace3/rev_8aba67f-d3dace3/Essentials/src/com/earth2me/essentials/Essentials.java;<<<<<<< MINE
+		if (settings.isNetherEnabled() && getServer().getWorlds().size() < 2)
+		{
+			getServer().createWorld(settings.getNetherName(), World.Environment.NETHER);
+		}
+
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_8aba67f_d3dace3/rev_8aba67f-d3dace3/Essentials/src/com/earth2me/essentials/EssentialsPlayerListener.java;<<<<<<< MINE
+
+		if (!ess.getSettings().getNetherPortalsEnabled())
+		{
+			return;
+		}
+
+		final Block block = event.getPlayer().getWorld().getBlockAt(event.getTo().getBlockX(), event.getTo().getBlockY(), event.getTo().getBlockZ());
+		final List<World> worlds = server.getWorlds();
+
+		if (block.getType() == Material.PORTAL && worlds.size() > 1 && user.isAuthorized("essentials.portal"))
+		{
+			if (user.getJustPortaled())
+			{
+				return;
+			}
+
+			World nether = server.getWorld(ess.getSettings().getNetherName());
+			if (nether == null)
+			{
+				for (World world : worlds)
+				{
+					if (world.getEnvironment() == World.Environment.NETHER)
+					{
+						nether = world;
+						break;
+					}
+				}
+				if (nether == null)
+				{
+					return;
+				}
+			}
+			final World world = user.getWorld() == nether ? worlds.get(0) : nether;
+
+			double factor;
+			if (user.getWorld().getEnvironment() == World.Environment.NETHER && world.getEnvironment() == World.Environment.NORMAL)
+			{
+				factor = ess.getSettings().getNetherRatio();
+			}
+			else if (user.getWorld().getEnvironment() == World.Environment.NORMAL && world.getEnvironment() == World.Environment.NETHER)
+			{
+				factor = 1.0 / ess.getSettings().getNetherRatio();
+			}
+			else
+			{
+				factor = 1.0;
+			}
+
+			Location loc = event.getTo();
+			int x = loc.getBlockX();
+			int y = loc.getBlockY();
+			int z = loc.getBlockZ();
+
+			if (user.getWorld().getBlockAt(x, y, z - 1).getType() == Material.PORTAL)
+			{
+				z--;
+			}
+			if (user.getWorld().getBlockAt(x - 1, y, z).getType() == Material.PORTAL)
+			{
+				x--;
+			}
+
+			x = (int)(x * factor);
+			z = (int)(z * factor);
+			loc = new Location(world, x + .5, y, z + .5);
+
+			Block dest = world.getBlockAt(x, y, z);
+			NetherPortal portal = NetherPortal.findPortal(dest);
+			if (portal == null)
+			{
+				if (world.getEnvironment() == World.Environment.NETHER || ess.getSettings().getGenerateExitPortals())
+				{
+					portal = NetherPortal.createPortal(dest);
+					LOGGER.info(Util.format("userCreatedPortal", event.getPlayer().getName()));
+					user.sendMessage(Util.i18n("generatingPortal"));
+					loc = portal.getSpawn();
+				}
+			}
+			else
+			{
+				LOGGER.info(Util.format("userUsedPortal", event.getPlayer().getName()));
+				user.sendMessage(Util.i18n("usingPortal"));
+				loc = portal.getSpawn();
+			}
+
+			event.setFrom(loc);
+			event.setTo(loc);
+			try
+			{
+				user.getTeleport().now(loc, new Trade("portal", ess));
+			}
+			catch (Exception ex)
+			{
+				user.sendMessage(ex.getMessage());
+			}
+			user.setJustPortaled(true);
+			user.sendMessage(Util.i18n("teleportingPortal"));
+
+			event.setCancelled(true);
+			return;
+		}
+
+		user.setJustPortaled(false);
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_a5a2307_293e7b0/rev_a5a2307-293e7b0/Essentials/src/com/earth2me/essentials/textreader/KeywordReplacer.java;<<<<<<< MINE
+=======
+			worldTime12 = DescParseTickFormat.format12(user.getWorld().getTime());
+			worldTime24 = DescParseTickFormat.format24(user.getWorld().getTime());
+			worldDate = DateFormat.getDateInstance(DateFormat.MEDIUM, ess.getI18n().getCurrentLocale()).format(DescParseTickFormat.ticksToDate(user.getWorld().getTime()));
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_a5a2307_293e7b0/rev_a5a2307-293e7b0/Essentials/src/com/earth2me/essentials/textreader/KeywordReplacer.java;<<<<<<< MINE
+=======
+		final StringBuilder pluginlistBuilder = new StringBuilder();
+		for (Plugin p : ess.getServer().getPluginManager().getPlugins())
+		{
+			if (pluginlistBuilder.length() > 0)
+			{
+				pluginlistBuilder.append(", ");
+			}
+			pluginlistBuilder.append(p.getDescription().getName());
+		}
+		plugins = pluginlistBuilder.toString();
+
+		date = DateFormat.getDateInstance(DateFormat.MEDIUM, ess.getI18n().getCurrentLocale()).format(new Date());
+		time = DateFormat.getTimeInstance(DateFormat.MEDIUM, ess.getI18n().getCurrentLocale()).format(new Date());
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_a5a2307_293e7b0/rev_a5a2307-293e7b0/Essentials/src/com/earth2me/essentials/textreader/KeywordReplacer.java;<<<<<<< MINE
+=======
+			line = line.replace("{TIME}", time);
+			line = line.replace("{DATE}", date);
+			line = line.replace("{WORLDTIME12}", worldTime12);
+			line = line.replace("{WORLDTIME24}", worldTime24);
+			line = line.replace("{WORLDDATE}", worldDate);
+			line = line.replace("{PLUGINS}", plugins);
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_ecbbc9f_6f9654e/rev_ecbbc9f-6f9654e/EssentialsSpawn/src/com/earth2me/essentials/spawn/EssentialsSpawnPlayerListener.java;<<<<<<< MINE
+=======
+		if (user.isJailed() && user.getJail() != null && !user.getJail().isEmpty())
+		{
+			return;
+		}
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_ecbbc9f_6f9654e/rev_ecbbc9f-6f9654e/Essentials/src/com/earth2me/essentials/api/Economy.java;<<<<<<< MINE
+=======
+		if (balance < ess.getSettings().getMinMoney())
+		{
+			throw new NoLoanPermittedException();
+		}
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_ecbbc9f_6f9654e/rev_ecbbc9f-6f9654e/Essentials/src/com/earth2me/essentials/commands/Commandeco.java;<<<<<<< MINE
+=======
+					if (!player.canAfford(amount, false))
+					{
+						throw new Exception(_("notEnoughMoney"));
+					}
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_ecbbc9f_6f9654e/rev_ecbbc9f-6f9654e/Essentials/src/com/earth2me/essentials/commands/Commandeco.java;<<<<<<< MINE
+=======
+				if (!player.canAfford(amount, false))
+				{
+					throw new Exception(_("notEnoughMoney"));
+				}
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_ecbbc9f_6f9654e/rev_ecbbc9f-6f9654e/Essentials/src/com/earth2me/essentials/User.java;<<<<<<< MINE
+=======
+		return canAfford(cost, true);
+	}
+
+	public boolean canAfford(final double cost, final boolean permcheck)
+	{
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_ecbbc9f_6f9654e/rev_ecbbc9f-6f9654e/Essentials/src/com/earth2me/essentials/User.java;<<<<<<< MINE
+=======
+		Trade.log("Update", "Set", "API", getName(), new Trade(value, ess), null, null, null, ess);
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_d83437e_af43197/rev_d83437e-af43197/EssentialsSpawn/src/com/earth2me/essentials/spawn/EssentialsSpawnPlayerListener.java;<<<<<<< MINE
+=======
+		final String kitName = ess.getSettings().getNewPlayerKit();
+		if (!kitName.isEmpty())
+		{
+			try
+			{
+				final Map<String, Object> kit = ess.getSettings().getKit(kitName.toLowerCase(Locale.ENGLISH));
+				final List<String> items = Kit.getItems(user, kit);
+				Kit.expandItems(ess, user, items);
+			}
+			catch (Exception ex)
+			{
+				LOGGER.log(Level.WARNING, ex.getMessage());
+			}
+		}
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_d83437e_af43197/rev_d83437e-af43197/Essentials/src/com/earth2me/essentials/Settings.java;<<<<<<< MINE
+		name = name.replace('.', '_').replace('/', '_');
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_d83437e_af43197/rev_d83437e-af43197/Essentials/src/com/earth2me/essentials/Settings.java;<<<<<<< MINE
+=======
+			return newSection;
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_d83437e_af43197/rev_d83437e-af43197/Essentials/src/com/earth2me/essentials/Settings.java;<<<<<<< MINE
+=======
+		return kits;
+	}
+
+	@Override
+	public Map<String, Object> getKit(String name)
+	{
+		name = name.replace('.', '_').replace('/', '_');
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_d83437e_af43197/rev_d83437e-af43197/Essentials/src/com/earth2me/essentials/Settings.java;<<<<<<< MINE
+=======
+	public String getNewPlayerKit()
+	{
+		return config.getString("newbies.kit", "");
+	}
+
+	@Override
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_d83437e_af43197/rev_d83437e-af43197/Essentials/src/com/earth2me/essentials/commands/Commandessentials.java;<<<<<<< MINE
+=======
+		else if (args[0].equalsIgnoreCase("moo"))
+		{
+			run_moo(server, sender, commandLabel, args);
+		}
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_d83437e_af43197/rev_d83437e-af43197/Essentials/src/com/earth2me/essentials/commands/Commandessentials.java;<<<<<<< MINE
+			return;
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_d83437e_af43197/rev_d83437e-af43197/Essentials/src/com/earth2me/essentials/EssentialsPlayerListener.java;<<<<<<< MINE
+=======
+		case ALLOWED:
+		case KICK_FULL:
+		case KICK_BANNED:
+			break;
+		default:
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_d83437e_af43197/rev_d83437e-af43197/Essentials/src/com/earth2me/essentials/EssentialsPlayerListener.java;<<<<<<< MINE
+		if (ess.getSettings().changeDisplayName())
+		{
+			user.setDisplayNick();
+		}
+		updateCompass(user);
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_d83437e_af43197/rev_d83437e-af43197/Essentials/src/com/earth2me/essentials/EssentialsPlayerListener.java;<<<<<<< MINE
+=======
+		final User user = ess.getUser(event.getPlayer());
+		if (ess.getSettings().changeDisplayName())
+		{
+			user.setDisplayNick();
+		}
+		updateCompass(user);
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_d83437e_af43197/rev_d83437e-af43197/Essentials/src/com/earth2me/essentials/EssentialsPlayerListener.java;<<<<<<< MINE
+=======
+		final User user = ess.getUser(event.getPlayer());
+		user.updateActivity(true);
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_d83437e_af43197/rev_d83437e-af43197/Essentials/src/com/earth2me/essentials/Kit.java;<<<<<<< MINE
+=======
+		if (kit == null)
+		{
+			throw new Exception(_("kitError2"));
+		}
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_d83437e_af43197/rev_d83437e-af43197/Essentials/src/com/earth2me/essentials/UserData.java;<<<<<<< MINE
+=======
+		nickname = _getNickname();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_d83437e_af43197/rev_d83437e-af43197/Essentials/src/com/earth2me/essentials/UserData.java;<<<<<<< MINE
+=======
+		nickname = nick;
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_d83437e_af43197/rev_d83437e-af43197/Essentials/src/com/earth2me/essentials/User.java;<<<<<<< MINE
+=======
+	@Override
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_d83437e_af43197/rev_d83437e-af43197/Essentials/src/com/earth2me/essentials/EssentialsEntityListener.java;<<<<<<< MINE
+=======
+	}
+
+	@EventHandler(priority = EventPriority.LOWEST)
+	public void onEntityDamage(final EntityDamageEvent event)
+	{
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_136d60e_f3a2b27/rev_136d60e-f3a2b27/Essentials/src/com/earth2me/essentials/EssentialsEntityListener.java;<<<<<<< MINE
+=======
+			event.setDroppedExp(0);
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_eed0edd_b37b165/rev_eed0edd-b37b165/Essentials/src/com/earth2me/essentials/commands/Commandtpaccept.java;<<<<<<< MINE
+=======
+		throw new NoChargeException();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_22ee57c_eabbd39/rev_22ee57c-eabbd39/Essentials/src/com/earth2me/essentials/storage/BukkitConstructor.java;<<<<<<< MINE
+=======
+		@Override
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_a579845_d73bbd4/rev_a579845-d73bbd4/Essentials/src/com/earth2me/essentials/commands/Commandtpaccept.java;<<<<<<< MINE
+		if (user.isTpRequestHere())
+		{
+			charge.isAffordableFor(user);
+		}
+		else
+		{
+			charge.isAffordableFor(target);
+		}
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_d3ca002_df1e4a2/rev_d3ca002-df1e4a2/Essentials/src/com/earth2me/essentials/commands/Commandbook.java;<<<<<<< MINE
+=======
+			BookMeta bmeta = (BookMeta)meta;
+			bmeta.setAuthor(player);
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_7bc16a6_8962ce6/rev_7bc16a6-8962ce6/Essentials/src/com/earth2me/essentials/commands/Commandclearinventory.java;<<<<<<< MINE
+					return;
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_7bc16a6_8962ce6/rev_7bc16a6-8962ce6/Essentials/src/com/earth2me/essentials/commands/Commandclearinventory.java;<<<<<<< MINE
+				return;
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_6ee21e1_e766377/rev_6ee21e1-e766377/Essentials/src/com/earth2me/essentials/commands/Commandpotion.java;<<<<<<< MINE
+=======
+		
+		if (args.length < 3)
+		{
+			throw new NotEnoughArgumentsException();
+		}
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_6ee21e1_e766377/rev_6ee21e1-e766377/Essentials/src/com/earth2me/essentials/MetaItemStack.java;<<<<<<< MINE
+=======
+					if (power > 0 && power < 4)
+					{
+						power -= 1;
+					}
+				}
+				else
+				{
+					throw new Exception(_("invalidPotionMeta", split[1]));
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_6ee21e1_e766377/rev_6ee21e1-e766377/Essentials/src/com/earth2me/essentials/MetaItemStack.java;<<<<<<< MINE
+=======
+				else
+				{
+					throw new Exception(_("invalidPotionMeta", split[1]));
+				}
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_8d359a2_f2cb9d8/rev_8d359a2-f2cb9d8/Essentials/src/com/earth2me/essentials/commands/Commandbanip.java;<<<<<<< MINE
+=======
+			catch (PlayerNotFoundException ex)
+			{
+				ipAddress = args[0];
+			}
+		}
+
+		if (ipAddress.isEmpty())
+		{
+			throw new PlayerNotFoundException();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_8d359a2_f2cb9d8/rev_8d359a2-f2cb9d8/Essentials/src/com/earth2me/essentials/commands/Commandunbanip.java;<<<<<<< MINE
+=======
+			catch (PlayerNotFoundException ex)
+			{
+				ipAddress = args[0];
+			}
+		}
+
+		if (ipAddress.isEmpty())
+		{
+			throw new PlayerNotFoundException();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_8d359a2_f2cb9d8/rev_8d359a2-f2cb9d8/Essentials/src/com/earth2me/essentials/perm/PermissionsHandler.java;<<<<<<< MINE
+			final String bVer = bPermPlugin.getDescription().getVersion().replace(".", "");
+			if (NumberUtil.isInt(bVer) && Integer.parseInt(bVer) < 284)
+			{
+				if (!(handler instanceof BPermissionsHandler))
+				{
+					LOGGER.log(Level.INFO, "Essentials: Using bPermissions based permissions.");
+					handler = new BPermissionsHandler();
+				}
+				return;
+			}
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_8d359a2_f2cb9d8/rev_8d359a2-f2cb9d8/Essentials/src/com/earth2me/essentials/perm/PermissionsHandler.java;<<<<<<< MINE
+
+		}
+		final Plugin permPlugin = pluginManager.getPlugin("Permissions");
+		if (permPlugin != null && permPlugin.isEnabled())
+		{
+			if (permPlugin.getDescription().getVersion().charAt(0) == '3')
+			{
+				if (!(handler instanceof Permissions3Handler))
+				{
+					LOGGER.log(Level.INFO, "Essentials: Using Permissions 3 based permissions.");
+					handler = new Permissions3Handler(permPlugin);
+				}
+			}
+			else
+			{
+				if (!(handler instanceof Permissions2Handler))
+				{
+					LOGGER.log(Level.INFO, "Essentials: Using Permissions 2 based permissions.");
+					handler = new Permissions2Handler(permPlugin);
+				}
+			}
+			return;
+=======
+>>>>>>> YOURS

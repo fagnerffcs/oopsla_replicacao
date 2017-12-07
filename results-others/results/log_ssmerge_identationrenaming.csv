@@ -1,0 +1,674 @@
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_b737131_ff2ff91/rev_b737131-ff2ff91;/src/main/java/org/junit/experimental/ParallelComputer;getRunner(RunnerBuilder,Class<?>);;@Override
+	protected Runner getRunner(RunnerBuilder builder, Class<?> testClass)
+			throws Throwable {
+		// TODO (May 4, 2009 4:09:16 PM): no guarantees here
+		BlockJUnit4ClassRunner runner= (BlockJUnit4ClassRunner) super.getRunner(builder, testClass);
+		return fMethods ? parallelize(runner) : runner;
+	};@Override
+	protected Runner getRunner(RunnerBuilder builder, Class<?> testClass)
+			throws Throwable {
+		// TODO (May 4, 2009 4:09:16 PM): no guarantees here
+		BlockJUnit4ClassRunner runner= (BlockJUnit4ClassRunner) super
+				.getRunner(builder, testClass);
+		return fMethods ? parallelize(runner) : runner;
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_9577910_f2594e3/rev_9577910-f2594e3;/src/main/java/org/junit/experimental/ParallelComputer;getRunner(RunnerBuilder,Class<?>);;@Override
+	protected Runner getRunner(RunnerBuilder builder, Class<?> testClass)
+			throws Throwable {
+		// TODO (May 4, 2009 4:09:16 PM): no guarantees here
+		BlockJUnit4ClassRunner runner= (BlockJUnit4ClassRunner) super.getRunner(builder, testClass);
+		return fMethods ? parallelize(runner) : runner;
+	};@Override
+	protected Runner getRunner(RunnerBuilder builder, Class<?> testClass)
+			throws Throwable {
+		// TODO (May 4, 2009 4:09:16 PM): no guarantees here
+		BlockJUnit4ClassRunner runner= (BlockJUnit4ClassRunner) super
+				.getRunner(builder, testClass);
+		return fMethods ? parallelize(runner) : runner;
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737;/src/main/java/org/junit/experimental/interceptor/TestName;starting(FrameworkMethod);;@Override
+	public void starting(FrameworkMethod method) {
+		fName = method.getName();
+	};@Override
+	public void starting(FrameworkMethod method) {
+		fName= method.getName();
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737;/src/main/java/org/junit/experimental/interceptor/ExpectedException;expect(Matcher<?>);;public void expect(Matcher<?> matcher) {
+		if (fMatcher == null)
+			fMatcher = matcher;
+		else
+			fMatcher = both(fMatcher).and(matches(matcher));
+	};public void expect(Matcher<?> matcher) {
+		if (fMatcher == null)
+			fMatcher= matcher;
+		else
+			fMatcher= both(fMatcher).and(matches(matcher));
+	}
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_f27f809_d97f30a/rev_f27f809-d97f30a;/src/test/java/redis/clients/jedis/tests/SharedJedisPipelineTest;pipeline();;@Test
+    public void pipeline() throws UnsupportedEncodingException {
+        ShardedJedisPipeline p = jedis.pipelined();
+        p.set("foo", "bar");
+        p.get("foo");
+        List<Object> results = p.syncAndReturnAll();
+
+        assertEquals(2, results.size());
+        assertEquals("OK", results.get(0));
+        assertEquals("bar", results.get(1));
+
+    };@Test
+    public void pipeline() throws UnsupportedEncodingException {
+        ShardedJedisPipeline p = jedis.pipelined();
+        p.set("foo", "bar");
+        p.get("foo");
+        List<Object> results = p.syncAndReturnAll();
+
+        assertEquals(2, results.size());
+        assertEquals("OK", results.get(0));
+        assertEquals("bar", results.get(1));
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_457cccc_088f84b/rev_457cccc-088f84b;/src/main/java/redis/clients/jedis/ShardedJedis;zrange(String,int,int);;public Set<String> zrange(String key, int start, int end) {
+        Jedis j = getShard(key);
+        return j.zrange(key, start, end);
+    };public Set<String> zrange(String key, int start, int end) {
+	Jedis j = getShard(key);
+	return j.zrange(key, start, end);
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_457cccc_088f84b/rev_457cccc-088f84b;/src/main/java/redis/clients/jedis/ShardedJedis;zrevrange(String,int,int);;public Set<String> zrevrange(String key, int start, int end) {
+        Jedis j = getShard(key);
+        return j.zrevrange(key, start, end);
+    };public Set<String> zrevrange(String key, int start, int end) {
+	Jedis j = getShard(key);
+	return j.zrevrange(key, start, end);
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_457cccc_088f84b/rev_457cccc-088f84b;/src/main/java/redis/clients/jedis/ShardedJedis;zrangeWithScores(String,int,int);;public Set<Tuple> zrangeWithScores(String key, int start, int end) {
+        Jedis j = getShard(key);
+        return j.zrangeWithScores(key, start, end);
+    };public Set<Tuple> zrangeWithScores(String key, int start, int end) {
+	Jedis j = getShard(key);
+	return j.zrangeWithScores(key, start, end);
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_457cccc_088f84b/rev_457cccc-088f84b;/src/main/java/redis/clients/jedis/ShardedJedis;zrevrangeWithScores(String,int,int);;public Set<Tuple> zrevrangeWithScores(String key, int start, int end) {
+        Jedis j = getShard(key);
+        return j.zrevrangeWithScores(key, start, end);
+    };public Set<Tuple> zrevrangeWithScores(String key, int start, int end) {
+	Jedis j = getShard(key);
+	return j.zrevrangeWithScores(key, start, end);
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_457cccc_088f84b/rev_457cccc-088f84b;/src/main/java/redis/clients/jedis/ShardedJedis;zremrangeByRank(String,int,int);;public Long zremrangeByRank(String key, int start, int end) {
+        Jedis j = getShard(key);
+        return j.zremrangeByRank(key, start, end);
+    };public Long zremrangeByRank(String key, int start, int end) {
+	Jedis j = getShard(key);
+	return j.zremrangeByRank(key, start, end);
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_457cccc_088f84b/rev_457cccc-088f84b;/src/main/java/redis/clients/jedis/BinaryClient;zrange(byte[],int,int);;public void zrange(final byte[] key, final int start, final int end) {
+        sendCommand(ZRANGE, key, toByteArray(start), toByteArray(end));
+    };public void zrange(final byte[] key, final int start, final int end) {
+	sendCommand(ZRANGE, key, toByteArray(start), toByteArray(end));
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_457cccc_088f84b/rev_457cccc-088f84b;/src/main/java/redis/clients/jedis/BinaryClient;zrevrange(byte[],int,int);;public void zrevrange(final byte[] key, final int start, final int end) {
+        sendCommand(ZREVRANGE, key, toByteArray(start), toByteArray(end));
+    };public void zrevrange(final byte[] key, final int start, final int end) {
+	sendCommand(ZREVRANGE, key, toByteArray(start), toByteArray(end));
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_457cccc_088f84b/rev_457cccc-088f84b;/src/main/java/redis/clients/jedis/BinaryClient;zrangeWithScores(byte[],int,int);;public void zrangeWithScores(final byte[] key, final int start,
+            final int end) {
+        sendCommand(ZRANGE, key, toByteArray(start), toByteArray(end),
+                WITHSCORES.raw);
+    };public void zrangeWithScores(final byte[] key, final int start,
+	    final int end) {
+	sendCommand(ZRANGE, key, toByteArray(start), toByteArray(end),
+		WITHSCORES.raw);
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_457cccc_088f84b/rev_457cccc-088f84b;/src/main/java/redis/clients/jedis/BinaryClient;zrevrangeWithScores(byte[],int,int);;public void zrevrangeWithScores(final byte[] key, final int start,
+            final int end) {
+        sendCommand(ZREVRANGE, key, toByteArray(start), toByteArray(end),
+                WITHSCORES.raw);
+    };public void zrevrangeWithScores(final byte[] key, final int start,
+	    final int end) {
+	sendCommand(ZREVRANGE, key, toByteArray(start), toByteArray(end),
+		WITHSCORES.raw);
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_457cccc_088f84b/rev_457cccc-088f84b;/src/main/java/redis/clients/jedis/BinaryClient;zremrangeByRank(byte[],int,int);;public void zremrangeByRank(final byte[] key, final int start, final int end) {
+        sendCommand(ZREMRANGEBYRANK, key, toByteArray(start), toByteArray(end));
+    };public void zremrangeByRank(final byte[] key, final int start, final int end) {
+	sendCommand(ZREMRANGEBYRANK, key, toByteArray(start), toByteArray(end));
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_457cccc_088f84b/rev_457cccc-088f84b;/src/main/java/redis/clients/jedis/Jedis;zrange(String,int,int);;public Set<String> zrange(final String key, final int start, final int end) {
+        checkIsInMulti();
+        client.zrange(key, start, end);
+        final List<String> members = client.getMultiBulkReply();
+        return new LinkedHashSet<String>(members);
+    };public Set<String> zrange(final String key, final int start, final int end) {
+	checkIsInMulti();
+	client.zrange(key, start, end);
+	final List<String> members = client.getMultiBulkReply();
+	return new LinkedHashSet<String>(members);
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_457cccc_088f84b/rev_457cccc-088f84b;/src/main/java/redis/clients/jedis/Jedis;zrevrange(String,int,int);;public Set<String> zrevrange(final String key, final int start,
+            final int end) {
+        checkIsInMulti();
+        client.zrevrange(key, start, end);
+        final List<String> members = client.getMultiBulkReply();
+        return new LinkedHashSet<String>(members);
+    };public Set<String> zrevrange(final String key, final int start,
+	    final int end) {
+	checkIsInMulti();
+	client.zrevrange(key, start, end);
+	final List<String> members = client.getMultiBulkReply();
+	return new LinkedHashSet<String>(members);
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_457cccc_088f84b/rev_457cccc-088f84b;/src/main/java/redis/clients/jedis/Jedis;zrangeWithScores(String,int,int);;public Set<Tuple> zrangeWithScores(final String key, final int start,
+            final int end) {
+        checkIsInMulti();
+        client.zrangeWithScores(key, start, end);
+        Set<Tuple> set = getTupledSet();
+        return set;
+    };public Set<Tuple> zrangeWithScores(final String key, final int start,
+	    final int end) {
+	checkIsInMulti();
+	client.zrangeWithScores(key, start, end);
+	Set<Tuple> set = getTupledSet();
+	return set;
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_457cccc_088f84b/rev_457cccc-088f84b;/src/main/java/redis/clients/jedis/Jedis;zrevrangeWithScores(String,int,int);;public Set<Tuple> zrevrangeWithScores(final String key, final int start,
+            final int end) {
+        checkIsInMulti();
+        client.zrevrangeWithScores(key, start, end);
+        Set<Tuple> set = getTupledSet();
+        return set;
+    };public Set<Tuple> zrevrangeWithScores(final String key, final int start,
+	    final int end) {
+	checkIsInMulti();
+	client.zrevrangeWithScores(key, start, end);
+	Set<Tuple> set = getTupledSet();
+	return set;
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_457cccc_088f84b/rev_457cccc-088f84b;/src/main/java/redis/clients/jedis/Jedis;zremrangeByRank(String,int,int);;public Long zremrangeByRank(final String key, final int start, final int end) {
+        checkIsInMulti();
+        client.zremrangeByRank(key, start, end);
+        return client.getIntegerReply();
+    };public Long zremrangeByRank(final String key, final int start, final int end) {
+	checkIsInMulti();
+	client.zremrangeByRank(key, start, end);
+	return client.getIntegerReply();
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_457cccc_088f84b/rev_457cccc-088f84b;/src/main/java/redis/clients/jedis/Client;zrange(String,int,int);;public void zrange(final String key, final int start, final int end) {
+        zrange(SafeEncoder.encode(key), start, end);
+    };public void zrange(final String key, final int start, final int end) {
+	zrange(SafeEncoder.encode(key), start, end);
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_457cccc_088f84b/rev_457cccc-088f84b;/src/main/java/redis/clients/jedis/Client;zrevrange(String,int,int);;public void zrevrange(final String key, final int start, final int end) {
+        zrevrange(SafeEncoder.encode(key), start, end);
+    };public void zrevrange(final String key, final int start, final int end) {
+	zrevrange(SafeEncoder.encode(key), start, end);
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_457cccc_088f84b/rev_457cccc-088f84b;/src/main/java/redis/clients/jedis/Client;zrangeWithScores(String,int,int);;public void zrangeWithScores(final String key, final int start,
+            final int end) {
+        zrangeWithScores(SafeEncoder.encode(key), start, end);
+    };public void zrangeWithScores(final String key, final int start,
+	    final int end) {
+	zrangeWithScores(SafeEncoder.encode(key), start, end);
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_457cccc_088f84b/rev_457cccc-088f84b;/src/main/java/redis/clients/jedis/Client;zrevrangeWithScores(String,int,int);;public void zrevrangeWithScores(final String key, final int start,
+            final int end) {
+        zrevrangeWithScores(SafeEncoder.encode(key), start, end);
+    };public void zrevrangeWithScores(final String key, final int start,
+	    final int end) {
+	zrevrangeWithScores(SafeEncoder.encode(key), start, end);
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_457cccc_088f84b/rev_457cccc-088f84b;/src/main/java/redis/clients/jedis/Client;zremrangeByRank(String,int,int);;public void zremrangeByRank(final String key, final int start, final int end) {
+        zremrangeByRank(SafeEncoder.encode(key), start, end);
+    };public void zremrangeByRank(final String key, final int start, final int end) {
+	zremrangeByRank(SafeEncoder.encode(key), start, end);
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_457cccc_088f84b/rev_457cccc-088f84b;/src/main/java/redis/clients/jedis/Commands;zrangeWithScores(String,int,int);;public void zrangeWithScores(final String key, final int start,
+            final int end);;public void zrangeWithScores(final String key, final int start,
+	    final int end);
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_457cccc_088f84b/rev_457cccc-088f84b;/src/main/java/redis/clients/jedis/Commands;zrevrangeWithScores(String,int,int);;public void zrevrangeWithScores(final String key, final int start,
+            final int end);;public void zrevrangeWithScores(final String key, final int start,
+	    final int end);
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_360e25e_03c0af2/rev_360e25e-03c0af2;/src/main/java/redis/clients/jedis/Connection;getAll();;public List<Object> getAll() {
+        return getAll(0);
+    };public List<Object> getAll() {
+	return getAll(0);
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_19fc1f8_fc594db/rev_19fc1f8-fc594db;/src/main/java/redis/clients/jedis/JedisClusterConnectionHandler;discoverClusterNodesAndSlots(Jedis);;private void discoverClusterNodesAndSlots(Jedis jedis) {
+	String localNodes = jedis.clusterNodes();
+	for (String nodeInfo : localNodes.split("\n")) {
+	    ClusterNodeInformation clusterNodeInfo = nodeInfoParser.parse(
+		    nodeInfo, new HostAndPort(jedis.getClient().getHost(),
+			    jedis.getClient().getPort()));
+
+	    HostAndPort targetNode = clusterNodeInfo.getNode();
+	    setNodeIfNotExist(targetNode);
+	    assignSlotsToNode(clusterNodeInfo.getAvailableSlots(), targetNode);
+	}
+    };private void discoverClusterNodesAndSlots(Jedis jedis) {
+        String localNodes = jedis.clusterNodes();
+        for (String nodeInfo : localNodes.split("\n")) {
+            ClusterNodeInformation clusterNodeInfo = nodeInfoParser.parse(
+                    nodeInfo, new HostAndPort(jedis.getClient().getHost(),
+                    jedis.getClient().getPort()));
+
+            HostAndPort targetNode = clusterNodeInfo.getNode();
+            setNodeIfNotExist(targetNode);
+            assignSlotsToNode(clusterNodeInfo.getAvailableSlots(), targetNode);
+        }
+    }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_53e7dc2_d33bd40/rev_53e7dc2-d33bd40;/src/main/java/redis/clients/jedis/JedisCluster;close();;@Override
+    public void close() {
+	if (connectionHandler != null) {
+	    for (JedisPool pool : connectionHandler.getNodes().values()) {
+		try {
+		    if (pool != null) {
+			pool.destroy();
+		    }
+		} catch (Exception e) {
+		    // pass
+		}
+	    }
+	}
+    };@Override
+  public void close() {
+    if (connectionHandler != null) {
+      for (JedisPool pool : connectionHandler.getNodes().values()) {
+        try {
+          if (pool != null) {
+            pool.destroy();
+          }
+        } catch (Exception e) {
+          // pass
+        }
+      }
+    }
+  }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_53e7dc2_d33bd40/rev_53e7dc2-d33bd40;/src/main/java/redis/clients/jedis/JedisCluster;ping();;@Override
+    public String ping() {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.ping();
+	    }
+	}.run(null);
+    };@Override
+  public String ping() {
+    return new JedisClusterCommand<String>(connectionHandler, timeout, maxRedirections) {
+      @Override
+      public String execute(Jedis connection) {
+        return connection.ping();
+      }
+    }.run(null);
+  }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_53e7dc2_d33bd40/rev_53e7dc2-d33bd40;/src/main/java/redis/clients/jedis/JedisCluster;quit();;@Override
+    public String quit() {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.quit();
+	    }
+	}.run(null);
+    };@Override
+  public String quit() {
+    return new JedisClusterCommand<String>(connectionHandler, timeout, maxRedirections) {
+      @Override
+      public String execute(Jedis connection) {
+        return connection.quit();
+      }
+    }.run(null);
+  }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_53e7dc2_d33bd40/rev_53e7dc2-d33bd40;/src/main/java/redis/clients/jedis/JedisCluster;flushDB();;@Override
+    public String flushDB() {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.flushDB();
+	    }
+	}.run(null);
+    };@Override
+  public String flushDB() {
+    return new JedisClusterCommand<String>(connectionHandler, timeout, maxRedirections) {
+      @Override
+      public String execute(Jedis connection) {
+        return connection.flushDB();
+      }
+    }.run(null);
+  }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_53e7dc2_d33bd40/rev_53e7dc2-d33bd40;/src/main/java/redis/clients/jedis/JedisCluster;dbSize();;@Override
+    public Long dbSize() {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.dbSize();
+	    }
+	}.run(null);
+    };@Override
+  public Long dbSize() {
+    return new JedisClusterCommand<Long>(connectionHandler, timeout, maxRedirections) {
+      @Override
+      public Long execute(Jedis connection) {
+        return connection.dbSize();
+      }
+    }.run(null);
+  }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_53e7dc2_d33bd40/rev_53e7dc2-d33bd40;/src/main/java/redis/clients/jedis/JedisCluster;select(int);;@Override
+    public String select(final int index) {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.select(index);
+	    }
+	}.run(null);
+    };@Override
+  public String select(final int index) {
+    return new JedisClusterCommand<String>(connectionHandler, timeout, maxRedirections) {
+      @Override
+      public String execute(Jedis connection) {
+        return connection.select(index);
+      }
+    }.run(null);
+  }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_53e7dc2_d33bd40/rev_53e7dc2-d33bd40;/src/main/java/redis/clients/jedis/JedisCluster;flushAll();;@Override
+    public String flushAll() {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.flushAll();
+	    }
+	}.run(null);
+    };@Override
+  public String flushAll() {
+    return new JedisClusterCommand<String>(connectionHandler, timeout, maxRedirections) {
+      @Override
+      public String execute(Jedis connection) {
+        return connection.flushAll();
+      }
+    }.run(null);
+  }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_53e7dc2_d33bd40/rev_53e7dc2-d33bd40;/src/main/java/redis/clients/jedis/JedisCluster;auth(String);;@Override
+    public String auth(final String password) {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.auth(password);
+	    }
+	}.run(null);
+    };@Override
+  public String auth(final String password) {
+    return new JedisClusterCommand<String>(connectionHandler, timeout, maxRedirections) {
+      @Override
+      public String execute(Jedis connection) {
+        return connection.auth(password);
+      }
+    }.run(null);
+  }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_53e7dc2_d33bd40/rev_53e7dc2-d33bd40;/src/main/java/redis/clients/jedis/JedisCluster;save();;@Override
+    public String save() {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.save();
+	    }
+	}.run(null);
+    };@Override
+  public String save() {
+    return new JedisClusterCommand<String>(connectionHandler, timeout, maxRedirections) {
+      @Override
+      public String execute(Jedis connection) {
+        return connection.save();
+      }
+    }.run(null);
+  }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_53e7dc2_d33bd40/rev_53e7dc2-d33bd40;/src/main/java/redis/clients/jedis/JedisCluster;bgsave();;@Override
+    public String bgsave() {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.bgsave();
+	    }
+	}.run(null);
+    };@Override
+  public String bgsave() {
+    return new JedisClusterCommand<String>(connectionHandler, timeout, maxRedirections) {
+      @Override
+      public String execute(Jedis connection) {
+        return connection.bgsave();
+      }
+    }.run(null);
+  }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_53e7dc2_d33bd40/rev_53e7dc2-d33bd40;/src/main/java/redis/clients/jedis/JedisCluster;bgrewriteaof();;@Override
+    public String bgrewriteaof() {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.bgrewriteaof();
+	    }
+	}.run(null);
+    };@Override
+  public String bgrewriteaof() {
+    return new JedisClusterCommand<String>(connectionHandler, timeout, maxRedirections) {
+      @Override
+      public String execute(Jedis connection) {
+        return connection.bgrewriteaof();
+      }
+    }.run(null);
+  }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_53e7dc2_d33bd40/rev_53e7dc2-d33bd40;/src/main/java/redis/clients/jedis/JedisCluster;lastsave();;@Override
+    public Long lastsave() {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.lastsave();
+	    }
+	}.run(null);
+    };@Override
+  public Long lastsave() {
+    return new JedisClusterCommand<Long>(connectionHandler, timeout, maxRedirections) {
+      @Override
+      public Long execute(Jedis connection) {
+        return connection.lastsave();
+      }
+    }.run(null);
+  }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_53e7dc2_d33bd40/rev_53e7dc2-d33bd40;/src/main/java/redis/clients/jedis/JedisCluster;shutdown();;@Override
+    public String shutdown() {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.shutdown();
+	    }
+	}.run(null);
+    };@Override
+  public String shutdown() {
+    return new JedisClusterCommand<String>(connectionHandler, timeout, maxRedirections) {
+      @Override
+      public String execute(Jedis connection) {
+        return connection.shutdown();
+      }
+    }.run(null);
+  }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_53e7dc2_d33bd40/rev_53e7dc2-d33bd40;/src/main/java/redis/clients/jedis/JedisCluster;info();;@Override
+    public String info() {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.info();
+	    }
+	}.run(null);
+    };@Override
+  public String info() {
+    return new JedisClusterCommand<String>(connectionHandler, timeout, maxRedirections) {
+      @Override
+      public String execute(Jedis connection) {
+        return connection.info();
+      }
+    }.run(null);
+  }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_53e7dc2_d33bd40/rev_53e7dc2-d33bd40;/src/main/java/redis/clients/jedis/JedisCluster;info(String);;@Override
+    public String info(final String section) {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.info(section);
+	    }
+	}.run(null);
+    };@Override
+  public String info(final String section) {
+    return new JedisClusterCommand<String>(connectionHandler, timeout, maxRedirections) {
+      @Override
+      public String execute(Jedis connection) {
+        return connection.info(section);
+      }
+    }.run(null);
+  }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_53e7dc2_d33bd40/rev_53e7dc2-d33bd40;/src/main/java/redis/clients/jedis/JedisCluster;slaveof(String,int);;@Override
+    public String slaveof(final String host, final int port) {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.slaveof(host, port);
+	    }
+	}.run(null);
+    };@Override
+  public String slaveof(final String host, final int port) {
+    return new JedisClusterCommand<String>(connectionHandler, timeout, maxRedirections) {
+      @Override
+      public String execute(Jedis connection) {
+        return connection.slaveof(host, port);
+      }
+    }.run(null);
+  }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_53e7dc2_d33bd40/rev_53e7dc2-d33bd40;/src/main/java/redis/clients/jedis/JedisCluster;slaveofNoOne();;@Override
+    public String slaveofNoOne() {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.slaveofNoOne();
+	    }
+	}.run(null);
+    };@Override
+  public String slaveofNoOne() {
+    return new JedisClusterCommand<String>(connectionHandler, timeout, maxRedirections) {
+      @Override
+      public String execute(Jedis connection) {
+        return connection.slaveofNoOne();
+      }
+    }.run(null);
+  }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_53e7dc2_d33bd40/rev_53e7dc2-d33bd40;/src/main/java/redis/clients/jedis/JedisCluster;getDB();;@Override
+    public Long getDB() {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.getDB();
+	    }
+	}.run(null);
+    };@Override
+  public Long getDB() {
+    return new JedisClusterCommand<Long>(connectionHandler, timeout, maxRedirections) {
+      @Override
+      public Long execute(Jedis connection) {
+        return connection.getDB();
+      }
+    }.run(null);
+  }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_53e7dc2_d33bd40/rev_53e7dc2-d33bd40;/src/main/java/redis/clients/jedis/JedisCluster;debug(DebugParams);;@Override
+    public String debug(final DebugParams params) {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.debug(params);
+	    }
+	}.run(null);
+    };@Override
+  public String debug(final DebugParams params) {
+    return new JedisClusterCommand<String>(connectionHandler, timeout, maxRedirections) {
+      @Override
+      public String execute(Jedis connection) {
+        return connection.debug(params);
+      }
+    }.run(null);
+  }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_53e7dc2_d33bd40/rev_53e7dc2-d33bd40;/src/main/java/redis/clients/jedis/JedisCluster;configResetStat();;@Override
+    public String configResetStat() {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.configResetStat();
+	    }
+	}.run(null);
+    };@Override
+  public String configResetStat() {
+    return new JedisClusterCommand<String>(connectionHandler, timeout, maxRedirections) {
+      @Override
+      public String execute(Jedis connection) {
+        return connection.configResetStat();
+      }
+    }.run(null);
+  }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_53e7dc2_d33bd40/rev_53e7dc2-d33bd40;/src/main/java/redis/clients/jedis/JedisCluster;waitReplicas(int,long);;@Override
+    public Long waitReplicas(int replicas, long timeout) {
+	// TODO Auto-generated method stub
+	return null;
+    };@Override
+  public Long waitReplicas(int replicas, long timeout) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_53e7dc2_d33bd40/rev_53e7dc2-d33bd40;/src/test/java/redis/clients/jedis/tests/JedisClusterTest;testThrowExceptionWithoutKey();;@Test(expected = JedisClusterException.class)
+    public void testThrowExceptionWithoutKey() {
+	Set<HostAndPort> jedisClusterNode = new HashSet<HostAndPort>();
+	jedisClusterNode.add(new HostAndPort("127.0.0.1", 7379));
+	JedisCluster jc = new JedisCluster(jedisClusterNode);
+	jc.ping();
+    };@Test(expected = JedisClusterException.class)
+  public void testThrowExceptionWithoutKey() {
+    Set<HostAndPort> jedisClusterNode = new HashSet<HostAndPort>();
+    jedisClusterNode.add(new HostAndPort("127.0.0.1", 7379));
+    JedisCluster jc = new JedisCluster(jedisClusterNode);
+    jc.ping();
+  }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_2510e34_d33bd40/rev_2510e34-d33bd40;/src/main/java/redis/clients/jedis/PipelineBase;eval(String,List<String>,List<String>);;public Response<String> eval(String script, List<String> keys,
+	    List<String> args) {
+	String[] argv = Jedis.getParams(keys, args);
+	return this.eval(script, keys.size(), argv);
+    };public Response<String> eval(String script, List<String> keys, List<String> args) {
+    String[] argv = Jedis.getParams(keys, args);
+    return this.eval(script, keys.size(), argv);
+  }
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_2510e34_d33bd40/rev_2510e34-d33bd40;/src/main/java/redis/clients/jedis/PipelineBase;evalsha(String,List<String>,List<String>);;public Response<String> evalsha(String sha1, List<String> keys,
+	    List<String> args) {
+	String[] argv = Jedis.getParams(keys, args);
+	return this.evalsha(sha1, keys.size(), argv);
+    };public Response<String> evalsha(String sha1, List<String> keys, List<String> args) {
+    String[] argv = Jedis.getParams(keys, args);
+    return this.evalsha(sha1, keys.size(), argv);
+  }
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_ae1ffc9_6dd24ff/rev_ae1ffc9-6dd24ff;/src/test/java/org/junit/tests/running/classes/TestClassTest;methodToBeMatched();;@Ignore
+    	@Test
+    	public String methodToBeMatched() { 
+    		return "jupiter";
+    	};@Ignore
+    	@Test
+    	public String methodToBeMatched() {
+    		return "jupiter";
+    	}

@@ -1,0 +1,15 @@
+revision;file;methodsignature;leftbody;basebody;rightbody
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_b694d77_fcffccb/rev_b694d77-fcffccb;/eureka-core/src/main/java/com/netflix/eureka/RemoteRegionRegistry;RemoteRegionRegistry(String,URL);        this.fetchRegistryTimer = Monitors.newTimer(this.remoteRegionURL
+                .toString() + "_" + "FetchRegistry");
+
+        String jerseyClientName;;        this.fetchRegistryTimer = Monitors.newTimer(this.remoteRegionURL
+                .toString() + "_" + "FetchRegistry");
+        String jerseyClientName;;        this.fetchRegistryTimer = Monitors.newTimer(this.remoteRegionURL.toString() + "_FetchRegistry");
+
+        EurekaJerseyClientBuilder clientBuilder = new EurekaJerseyClientBuilder()
+                .withUserAgent("Java EurekaClient (remote region)")
+                .withConnectionTimeout(EUREKA_SERVER_CONFIG.getRemoteRegionConnectTimeoutMs())
+                .withReadTimeout(EUREKA_SERVER_CONFIG.getRemoteRegionReadTimeoutMs())
+                .withMaxConnectionsPerHost(EUREKA_SERVER_CONFIG.getRemoteRegionTotalConnectionsPerHost())
+                .withMaxTotalConnections(EUREKA_SERVER_CONFIG.getRemoteRegionTotalConnections())
+                .withConnectionIdleTimeout(EUREKA_SERVER_CONFIG.getRemoteRegionConnectionIdleTimeoutSeconds());

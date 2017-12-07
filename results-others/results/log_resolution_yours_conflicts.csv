@@ -1,0 +1,375 @@
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_f2ec67e_28fb91a/rev_f2ec67e-28fb91a/src/main/java/org/junit/runner/Result.java;<<<<<<< MINE
+			fIgnoredDuringExecution= true;
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_f3c2114_8e20f52/rev_f3c2114-8e20f52/src/test/java/org/junit/tests/experimental/max/MaxStarterTest.java;<<<<<<< MINE
+	public void remember() throws CouldNotReadCoreException {
+		Request request= Request.aClass(TwoUnEqualTests.class);
+		fMax.run(request);
+		MaxCore reincarnation= MaxCore.forFolder(fMax.getFolder());
+		try {
+			Description thing= reincarnation.sortedLeavesForTest(request).get(1);
+			assertEquals(Description.createTestDescription(TwoUnEqualTests.class, "slow"), thing);
+		} finally {
+			reincarnation.forget();
+		}
+	}
+
+	@Test
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e980c59_1bb1eaf/rev_e980c59-1bb1eaf/src/test/java/org/junit/tests/assertion/AssertionTest.java;<<<<<<< MINE
+		// TODO: add floats
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e980c59_1bb1eaf/rev_e980c59-1bb1eaf/src/test/java/org/junit/tests/assertion/AssertionTest.java;<<<<<<< MINE
+		// TODO: add floats
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_1708730_912e94c/rev_1708730-912e94c/src/main/java/org/junit/internal/runners/statements/FailOnTimeout.java;<<<<<<< MINE
+				return null;
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_1708730_912e94c/rev_1708730-912e94c/src/test/java/org/junit/tests/running/methods/TimeoutTest.java;<<<<<<< MINE
+	@Ignore("We would like this behavior to work but it may not be possible")
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+     * Ask the server to silently close the connection.
+     */
+    public void quit() {
+        runChecks();
+        client.quit();
+    }
+
+    /**
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+     * Delete all the keys of the currently selected DB. This command never
+     * fails.
+     * 
+     * @return Status code reply
+     */
+    public String flushDB() {
+        runChecks();
+        client.flushDB();
+        return client.getStatusCodeReply();
+    }
+
+    /**
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+     * Return the number of keys in the currently selected database.
+     * 
+     * @return Integer reply
+     */
+    public Integer dbSize() {
+        runChecks();
+        client.dbSize();
+        return client.getIntegerReply();
+    }
+
+    /**
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+     * Select the DB with having the specified zero-based numeric index. For
+     * default every new client connection is automatically selected to DB 0.
+     * 
+     * @param index
+     * @return Status code reply
+     */
+    public String select(int index) {
+        runChecks();
+        client.select(index);
+        return client.getStatusCodeReply();
+    }
+
+    /**
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_f625489_d3362da/rev_f625489-d3362da/src/main/java/redis/clients/jedis/Jedis.java;<<<<<<< MINE
+     * Delete all the keys of all the existing databases, not just the currently
+     * selected one. This command never fails.
+     * 
+     * @return Status code reply
+     */
+    public String flushAll() {
+        runChecks();
+        client.flushAll();
+        return client.getStatusCodeReply();
+    }
+
+    /**
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_333a9bc_e7e4c4c/rev_333a9bc-e7e4c4c/src/main/java/redis/clients/jedis/Transaction.java;<<<<<<< MINE
+        return client.getStatusCodeReply() == "1";
+    }
+
+    public long setrange(String key, long offset, String value) {
+        client.setrange(key, offset, value);
+        return client.getIntegerReply();
+    }
+
+    public String getrange(String key, long startOffset, long endOffset) {
+        client.getrange(key, startOffset, endOffset);
+        return client.getBulkReply();
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_219beb3_b77d9de/rev_219beb3-b77d9de/src/main/java/org/junit/internal/InexactComparisonCriteria.java;<<<<<<< MINE
+/**
+ * 
+ */
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_219beb3_b77d9de/rev_219beb3-b77d9de/src/main/java/org/junit/Assert.java;<<<<<<< MINE
+	// TODO (Mar 10, 2009 10:52:18 AM): fix javadoc
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_219beb3_b77d9de/rev_219beb3-b77d9de/src/test/java/org/junit/tests/experimental/max/MaxStarterTest.java;<<<<<<< MINE
+		@SuppressWarnings("unused")
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_2527d9a_2386579/rev_2527d9a-2386579/src/main/java/org/junit/experimental/interceptor/Interceptors.java;<<<<<<< MINE
+		// TODO Auto-generated method stub
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_2527d9a_2386579/rev_2527d9a-2386579/src/main/java/org/junit/experimental/ParallelComputer.java;<<<<<<< MINE
+	}
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_2527d9a_2386579/rev_2527d9a-2386579/src/test/java/org/junit/tests/experimental/max/MaxComputerTest.java;<<<<<<< MINE
+
+	// Description succeed= Description.createTestDescription(TwoTests.class,
+	// "succeed");
+	// Description dontSucceed= Description.createTestDescription(
+	// TwoTests.class, "dontSucceed");
+	// assertTrue(things.contains(succeed));
+	// assertTrue(things.contains(dontSucceed));
+	// assertEquals(2, things.size());
+	// }
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_dafc0ed_79b869e/rev_dafc0ed-79b869e/src/main/java/org/junit/experimental/interceptor/TestWatchman.java;<<<<<<< MINE
+/**
+ * 
+ */
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910/src/test/java/org/junit/tests/experimental/interceptor/InterceptorTest.java;<<<<<<< MINE
+	@RunWith(Interceptors.class)
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910/src/test/java/org/junit/tests/experimental/interceptor/InterceptorTest.java;<<<<<<< MINE
+			// TODO (Apr 28, 2009 10:31:18 PM): much better error if
+			// @Interceptor
+			// annotates a non-public field.
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910/src/test/java/org/junit/tests/experimental/interceptor/InterceptorTest.java;<<<<<<< MINE
+	@RunWith(Interceptors.class)
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910/src/test/java/org/junit/tests/experimental/interceptor/InterceptorTest.java;<<<<<<< MINE
+	@RunWith(Interceptors.class)
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910/src/test/java/org/junit/tests/experimental/interceptor/InterceptorTest.java;<<<<<<< MINE
+	@RunWith(Interceptors.class)
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910/src/test/java/org/junit/tests/experimental/interceptor/InterceptorTest.java;<<<<<<< MINE
+			// TODO (Apr 28, 2009 10:50:47 PM): is this right? Is
+			// FrameworkMethod too powerful?
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910/src/test/java/org/junit/tests/experimental/interceptor/InterceptorTest.java;<<<<<<< MINE
+	@RunWith(Interceptors.class)
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910/src/test/java/org/junit/tests/experimental/interceptor/InterceptorTest.java;<<<<<<< MINE
+	@RunWith(Interceptors.class)
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910/src/test/java/org/junit/tests/experimental/interceptor/TimeoutInterceptorTest.java;<<<<<<< MINE
+	@RunWith(Interceptors.class)
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_618d9ac_26a9910/rev_618d9ac-26a9910/src/test/java/org/junit/tests/experimental/interceptor/NameInterceptorTest.java;<<<<<<< MINE
+@RunWith(Interceptors.class)
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5/src/test/java/org/junit/tests/experimental/results/PrintableResultTest.java;<<<<<<< MINE
+	@SuppressWarnings("unchecked")
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_e35fb32_52e61a5/rev_e35fb32-52e61a5/src/test/java/org/junit/tests/AllTests.java;<<<<<<< MINE
+	EachTest.class,
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_a402014_3f05aac/rev_a402014-3f05aac/src/main/java/org/junit/matchers/JUnitMatchers.java;<<<<<<< MINE
+@Deprecated
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_a402014_3f05aac/rev_a402014-3f05aac/src/main/java/org/junit/matchers/JUnitMatchers.java;<<<<<<< MINE
+	 * @deprecated Use org.hamcrest.CoreMatchers.both
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_20dd074_2e9a239/rev_20dd074-2e9a239/src/main/java/org/junit/experimental/interceptor/ExpectedException.java;<<<<<<< MINE
+				complete = true;
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/internal/matchers/IsCollectionContaining.java;<<<<<<< MINE
+		// TODO Auto-generated constructor stub
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/internal/runners/JUnit38ClassRunner.java;<<<<<<< MINE
+//			// TODO (Feb 23, 2009 11:45:54 PM): Think hard about this. Didn't think hard enough. Throwing away information doesn't help error recovery.
+//			if ("warning".equals(getName(test)))
+//				try {
+//					return (Class<? extends Test>) Class.forName(fTest.toString());
+//				} catch (ClassNotFoundException e) {
+//					return test.getClass();
+//				}
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/internal/ExactComparisonCriteria.java;<<<<<<< MINE
+// TODO (Apr 29, 2009 4:17:49 PM): where should this live?
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/internal/ComparisonCriteria.java;<<<<<<< MINE
+	 * @param criteria TODO
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/runners/model/TestClass.java;<<<<<<< MINE
+	// TODO (May 25, 2009 9:46:48 PM): move to FrameworkMember
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/runners/BlockJUnit4ClassRunner.java;<<<<<<< MINE
+		// TODO (May 26, 2009 10:48:26 PM): don't override this
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/runner/JUnitCore.java;<<<<<<< MINE
+		// TODO(parallel) too many Executioner creations
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/experimental/max/MaxCore.java;<<<<<<< MINE
+			// TODO (Nov 18, 2008 2:04:09 PM): add a check if building a runner is possible
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/experimental/max/MaxHistory.java;<<<<<<< MINE
+				} catch (IOException e) {
+					throw new CouldNotReadCoreException(e);
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/main/java/org/junit/experimental/max/MaxHistory.java;<<<<<<< MINE
+			} catch (IOException e) {
+				// TODO can't imagine what's gone wrong here, but who cares?
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/test/java/org/junit/tests/experimental/parallel/ParallelClassTest.java;<<<<<<< MINE
+	// TODO(parallel) we need to push parallel execution down through suites (i.e. run a Suite with a parallel executioner and you get parallel execution)
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_99a84a5_c865737/rev_99a84a5-c865737/src/test/java/org/junit/tests/experimental/max/MaxStarterTest.java;<<<<<<< MINE
+		// TODO (Nov 18, 2008 2:03:06 PM): flaky?
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/main/java/org/junit/rules/ExternalResource.java;<<<<<<< MINE
+	 * 
+	 * TODO: can assume here.
+	 * 
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/main/java/org/junit/runners/ParentRunner.java;<<<<<<< MINE
+	 * 
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/main/java/org/junit/runner/manipulation/Filter.java;<<<<<<< MINE
+	 * 
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/main/java/org/junit/runner/Description.java;<<<<<<< MINE
+ * TODO: Make really clear how this has changed.
+ * 
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/main/java/org/junit/runner/Description.java;<<<<<<< MINE
+	// This is vestigial
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/main/java/org/junit/runner/Description.java;<<<<<<< MINE
+	 * @deprecated Description should not be used for walking the test tree.
+	 * Instead, call {@code Runner.getPlan} to get a {@code Plan}, and use
+	 * {@code Plan.getChildren}
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/main/java/org/junit/runner/notification/RunListener.java;<<<<<<< MINE
+	 * @deprecated override {@link RunListener#testRunStarted(Plan)} instead.
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/main/java/org/junit/runner/notification/RunListener.java;<<<<<<< MINE
+	@Deprecated
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_592b71c_5695469/rev_592b71c-5695469/src/main/java/org/junit/runner/notification/RunNotifier.java;<<<<<<< MINE
+	public void fireTestRunStarted(final Plan plan) {
+		new SafeNotifier() {
+			@SuppressWarnings("deprecation")
+			@Override
+			protected void notifyListener(RunListener each) throws Exception {
+				each.testRunStarted(plan);
+				each.testRunStarted(plan.getDescription());
+			};
+		}.run();
+	}
+	
+	/**
+	 * Do not invoke.  Really, don't!
+	 * @deprecated Call {@link RunNotifier#fireTestRunStarted(Plan)} if you must.
+	 *             But don't.
+	 */
+	@Deprecated
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_28ef5cb_74bb7d8/rev_28ef5cb-74bb7d8/src/main/java/org/junit/runners/BlockJUnit4ClassRunner.java;<<<<<<< MINE
+		if (!MethodRule.class.isAssignableFrom(field.getType()))
+			errors.add(new Exception("Field " + field.getName()
+					+ " must implement MethodRule"));
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_fb723db_72ca494/rev_fb723db-72ca494/src/main/java/redis/clients/jedis/Response.java;<<<<<<< MINE
+            response = builder.build(data);
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_80d2827_d1842a2/rev_80d2827-d1842a2/src/test/java/redis/clients/jedis/tests/ShardedJedisTest.java;<<<<<<< MINE
+
+    for (String clientInfo : deadClient.clientList().split("\n")) {
+      if (clientInfo.contains("DEAD")) {
+        // Ugly, but cmon, it's a test.
+        String[] hostAndPort = clientInfo.split(" ")[1].split("=")[1].split(":");
+        // It would be better if we kill the client by Id as it's safer but jedis doesn't implement
+        // the command yet.
+        deadClient.clientKill(hostAndPort[0] + ":" + hostAndPort[1]);
+      }
+    }
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/junit/revisions/rev_ae1ffc9_6dd24ff/rev_ae1ffc9-6dd24ff/src/main/java/org/junit/internal/runners/rules/RuleFieldValidator.java;<<<<<<< MINE
+    @SuppressWarnings("deprecation")
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/jedis/revisions/rev_1e5e10c_48170f7/rev_1e5e10c-48170f7/src/main/java/redis/clients/jedis/BinaryJedis.java;<<<<<<< MINE
+  @Override
+  public Long pexpire(final byte[] key, final long milliseconds) {
+    checkIsInMultiOrPipeline();
+    client.pexpire(key, milliseconds);
+    return client.getIntegerReply();
+  }
+
+  @Override
+=======
+>>>>>>> YOURS

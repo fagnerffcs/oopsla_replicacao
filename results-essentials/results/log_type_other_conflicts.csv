@@ -1,0 +1,542 @@
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_a84be6a_08e0412/rev_a84be6a-08e0412/eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java;<<<<<<< MINE
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_b7e1825_f0dec22/rev_b7e1825-f0dec22/eureka-client/src/test/java/com/netflix/discovery/DiscoveryClientRegistryTest.java;<<<<<<< MINE
+    
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_526d3b1_6333a71/rev_526d3b1-6333a71/eureka-client/src/main/java/com/netflix/discovery/EurekaClientConfig.java;<<<<<<< MINE
+=======
+
+    /**
+     * Indicates whether the client is only interested in the registry information for a single VIP.
+     *
+     * @return the address of the VIP (name:port).
+     * <code>null</code> if single VIP interest is not present.
+     */
+    @Nullable
+    String getRegistryRefreshSingleVipAddress();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_526d3b1_6333a71/rev_526d3b1-6333a71/eureka-client/src/test/java/com/netflix/discovery/AbstractDiscoveryClientTester.java;<<<<<<< MINE
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_526d3b1_6333a71/rev_526d3b1-6333a71/eureka-client/src/test/java/com/netflix/discovery/DiscoveryClientRegistryTest.java;<<<<<<< MINE
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_526d3b1_6333a71/rev_526d3b1-6333a71/eureka-client/src/test/java/com/netflix/discovery/MockRemoteEurekaServer.java;<<<<<<< MINE
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-core/src/main/java/com/netflix/eureka/InstanceRegistry.java;<<<<<<< MINE
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-core/src/main/java/com/netflix/eureka/InstanceRegistry.java;<<<<<<< MINE
+
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-core/src/main/java/com/netflix/eureka/InstanceRegistry.java;<<<<<<< MINE
+
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-core/src/main/java/com/netflix/eureka/resources/PeerReplicationResource.java;<<<<<<< MINE
+
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-client/src/main/java/com/netflix/appinfo/AmazonInfo.java;<<<<<<< MINE
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-client/src/main/java/com/netflix/appinfo/providers/EurekaConfigBasedInstanceInfoProvider.java;<<<<<<< MINE
+    
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-client/src/main/java/com/netflix/appinfo/providers/EurekaConfigBasedInstanceInfoProvider.java;<<<<<<< MINE
+    
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-client/src/main/java/com/netflix/appinfo/providers/EurekaConfigBasedInstanceInfoProvider.java;<<<<<<< MINE
+    
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-client/src/main/java/com/netflix/appinfo/providers/EurekaConfigBasedInstanceInfoProvider.java;<<<<<<< MINE
+    
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-client/src/main/java/com/netflix/appinfo/providers/EurekaConfigBasedInstanceInfoProvider.java;<<<<<<< MINE
+    
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-client/src/main/java/com/netflix/appinfo/CloudInstanceConfig.java;<<<<<<< MINE
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-client/src/main/java/com/netflix/appinfo/PropertiesInstanceConfig.java;<<<<<<< MINE
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-client/src/main/java/com/netflix/discovery/shared/EurekaJerseyClient.java;<<<<<<< MINE
+    
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-client/src/main/java/com/netflix/discovery/shared/EurekaJerseyClient.java;<<<<<<< MINE
+    
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-client/src/main/java/com/netflix/discovery/shared/EurekaJerseyClient.java;<<<<<<< MINE
+    
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-client/src/main/java/com/netflix/discovery/shared/EurekaJerseyClient.java;<<<<<<< MINE
+    
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-client/src/main/java/com/netflix/discovery/EurekaUpStatusResolver.java;<<<<<<< MINE
+    
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-client/src/main/java/com/netflix/discovery/EurekaUpStatusResolver.java;<<<<<<< MINE
+            
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-client/src/main/java/com/netflix/discovery/EurekaUpStatusResolver.java;<<<<<<< MINE
+    
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-client/src/main/java/com/netflix/discovery/EurekaClientConfig.java;<<<<<<< MINE
+    
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-client/src/test/java/com/netflix/discovery/shared/ApplicationsTest.java;<<<<<<< MINE
+
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-client/src/test/java/com/netflix/discovery/DiscoveryStatusCheckerTest.java;<<<<<<< MINE
+    
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-client/src/test/java/com/netflix/discovery/DiscoveryStatusCheckerTest.java;<<<<<<< MINE
+    
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-client/src/test/java/com/netflix/discovery/DiscoveryStatusCheckerTest.java;<<<<<<< MINE
+    
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-client/src/test/java/com/netflix/discovery/DiscoveryStatusCheckerTest.java;<<<<<<< MINE
+        
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-client/src/test/java/com/netflix/discovery/DiscoveryStatusCheckerTest.java;<<<<<<< MINE
+    
+    
+=======
+
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-client/src/test/java/com/netflix/discovery/DiscoveryStatusCheckerTest.java;<<<<<<< MINE
+        
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-client/src/test/java/com/netflix/discovery/DiscoveryStatusCheckerTest.java;<<<<<<< MINE
+            
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-client/src/test/java/com/netflix/discovery/DiscoveryStatusCheckerTest.java;<<<<<<< MINE
+        
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-client/src/test/java/com/netflix/discovery/DiscoveryStatusCheckerTest.java;<<<<<<< MINE
+    
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-client/src/test/java/com/netflix/discovery/DiscoveryStatusCheckerTest.java;<<<<<<< MINE
+        
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-client/src/test/java/com/netflix/discovery/DiscoveryStatusCheckerTest.java;<<<<<<< MINE
+        
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-client/src/test/java/com/netflix/discovery/DiscoveryStatusCheckerTest.java;<<<<<<< MINE
+        
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-client/src/test/java/com/netflix/discovery/DiscoveryStatusCheckerTest.java;<<<<<<< MINE
+    
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-client/src/test/java/com/netflix/discovery/DiscoveryStatusCheckerTest.java;<<<<<<< MINE
+    
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-client/src/test/java/com/netflix/discovery/MockRemoteEurekaServer.java;<<<<<<< MINE
+
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-client/src/test/java/com/netflix/discovery/MockRemoteEurekaServer.java;<<<<<<< MINE
+    
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7afa7b0_9711533/rev_7afa7b0-9711533/eureka-client/src/test/java/com/netflix/discovery/MockRemoteEurekaServer.java;<<<<<<< MINE
+        
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_9b180dc_1c2989d/rev_9b180dc-1c2989d/eureka-client/src/main/java/com/netflix/discovery/DiscoveryClient.java;<<<<<<< MINE
+
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-core/src/main/java/com/netflix/eureka/ServerRequestAuthFilter.java;<<<<<<< MINE
+=======
+    private EurekaServerConfig serverConfig;
+
+    @Inject
+    public ServerRequestAuthFilter(EurekaServerContext server) {
+        this.serverConfig = server.getServerConfig();
+    }
+
+    // for non-DI use
+    public ServerRequestAuthFilter() {
+    }
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-core/src/main/java/com/netflix/eureka/RateLimitingFilter.java;<<<<<<< MINE
+=======
+    private EurekaServerConfig serverConfig;
+
+    @Inject
+    public RateLimitingFilter(EurekaServerContext server) {
+        this.serverConfig = server.getServerConfig();
+    }
+
+    // for non-DI use
+    public RateLimitingFilter() {
+    }
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-core/src/main/java/com/netflix/eureka/resources/ASGResource.java;<<<<<<< MINE
+
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-core/src/main/java/com/netflix/eureka/resources/InstancesResource.java;<<<<<<< MINE
+    private final AbstractInstanceRegistry registry = PeerAwareInstanceRegistryImpl
+            .getInstance();
+=======
+    private final PeerAwareInstanceRegistry registry;
+
+    @Inject
+    InstancesResource(EurekaServerContext server) {
+        this.registry = server.getRegistry();
+    }
+
+    public InstancesResource() {
+        this(EurekaServerContextHolder.getInstance().getServerContext());
+    }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-core/src/main/java/com/netflix/eureka/resources/ServerInfoResource.java;<<<<<<< MINE
+    private final AbstractInstanceRegistry registry = PeerAwareInstanceRegistryImpl.getInstance();
+=======
+    private final PeerAwareInstanceRegistry registry;
+
+    @Inject
+    ServerInfoResource(EurekaServerContext server) {
+        this.registry = server.getRegistry();
+    }
+
+    public ServerInfoResource() {
+        this(EurekaServerContextHolder.getInstance().getServerContext());
+    }
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-core/src/main/java/com/netflix/eureka/resources/PeerReplicationResource.java;<<<<<<< MINE
+=======
+    private final EurekaServerConfig serverConfig;
+    private final PeerAwareInstanceRegistry registry;
+
+    @Inject
+    PeerReplicationResource(EurekaServerContext server) {
+        this.serverConfig = server.getServerConfig();
+        this.registry = server.getRegistry();
+    }
+
+    public PeerReplicationResource() {
+        this(EurekaServerContextHolder.getInstance().getServerContext());
+    }
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-core/src/test/java/com/netflix/eureka/AbstractTester.java;<<<<<<< MINE
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_c1c4cbe_dd8d47d/rev_c1c4cbe-dd8d47d/eureka-client/src/main/java/com/netflix/discovery/shared/EurekaJerseyClientImpl.java;<<<<<<< MINE
+
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_7c47165_264020a/rev_7c47165-264020a/eureka-core/src/main/java/com/netflix/eureka/EurekaServerConfig.java;<<<<<<< MINE
+
+
+    /**
+     * Get the configured binding strategy EIP or Route53.
+     * @return the configured binding strategy
+     */
+    AwsBindingStrategy getBindingStrategy();
+
+    /**
+     *
+     * @return the ttl used to set up the route53 domain if new
+     */
+    long getRoute53DomainTTL();
+
+    /**
+     * Gets the number of times the server should try to bind to the candidate
+     * Route53 domain.
+     *
+     * <p>
+     * <em>The changes are effective at runtime.</em>
+     * </p>
+     *
+     * @return the number of times the server should try to bind to the
+     *         candidate Route53 domain.
+     */
+    int getRoute53BindRebindRetries();
+
+    /**
+     * Gets the interval with which the server should check if the Route53 domain is bound
+     * and should try to bind in the case if it is already not bound.
+     * <p>
+     * <em>The changes are effective at runtime.</em>
+     * </p>
+     *
+     * @return the time in milliseconds.
+     */
+    int getRoute53BindingRetryIntervalMs();
+=======
+
+    /**
+     * To avoid configuration API pollution when trying new/experimental or features or for the migration process,
+     * the corresponding configuration can be put into experimental configuration section.
+     *
+     * @return a property of experimental feature
+     */
+    String getExperimental(String name);
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_2529120_333a91e/rev_2529120-333a91e/eureka-core/src/main/java/com/netflix/eureka/EurekaServerConfig.java;<<<<<<< MINE
+
+    /**
+     * To avoid configuration API pollution when trying new/experimental or features or for the migration process,
+     * the corresponding configuration can be put into experimental configuration section.
+     *
+     * @return a property of experimental feature
+     */
+    String getExperimental(String name);
+=======
+
+    /**
+     * To avoid configuration API pollution when trying new/experimental or features or for the migration process,
+     * the corresponding configuration can be put into experimental configuration section.
+     *
+     * @return a property of experimental feature
+     */
+    String getExperimental(String name);
+
+
+    /**
+     * Get the configured binding strategy EIP or Route53.
+     * @return the configured binding strategy
+     */
+    AwsBindingStrategy getBindingStrategy();
+
+    /**
+     *
+     * @return the ttl used to set up the route53 domain if new
+     */
+    long getRoute53DomainTTL();
+
+    /**
+     * Gets the number of times the server should try to bind to the candidate
+     * Route53 domain.
+     *
+     * <p>
+     * <em>The changes are effective at runtime.</em>
+     * </p>
+     *
+     * @return the number of times the server should try to bind to the
+     *         candidate Route53 domain.
+     */
+    int getRoute53BindRebindRetries();
+
+    /**
+     * Gets the interval with which the server should check if the Route53 domain is bound
+     * and should try to bind in the case if it is already not bound.
+     * <p>
+     * <em>The changes are effective at runtime.</em>
+     * </p>
+     *
+     * @return the time in milliseconds.
+     */
+    int getRoute53BindingRetryIntervalMs();
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_2529120_333a91e/rev_2529120-333a91e/eureka-client-archaius2/src/main/java/com/netflix/discovery/EurekaArchaius2ClientConfig.java;<<<<<<< MINE
+    
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_2529120_333a91e/rev_2529120-333a91e/eureka-client-archaius2/src/main/java/com/netflix/discovery/EurekaArchaius2ClientConfig.java;<<<<<<< MINE
+    
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_2529120_333a91e/rev_2529120-333a91e/eureka-client-archaius2/src/main/java/com/netflix/discovery/EurekaArchaius2ClientConfig.java;<<<<<<< MINE
+    
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_2529120_333a91e/rev_2529120-333a91e/eureka-client-archaius2/src/main/java/com/netflix/discovery/EurekaArchaius2ClientConfig.java;<<<<<<< MINE
+        
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/eureka/revisions/rev_2529120_333a91e/rev_2529120-333a91e/eureka-client/src/main/java/com/netflix/discovery/EurekaClientConfig.java;<<<<<<< MINE
+=======
+
+    /**
+     * To avoid configuration API pollution when trying new/experimental or features or for the migration process,
+     * the corresponding configuration can be put into experimental configuration section.
+     *
+     * @return a property of experimental feature
+     */
+    String getExperimental(String name);
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_29233cb_52f8582/rev_29233cb-52f8582/Essentials/src/com/earth2me/essentials/Settings.java;<<<<<<< MINE
+
+=======
+        
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_1a715bd_455fbd8/rev_1a715bd-455fbd8/EssentialsSpawn/src/com/earth2me/essentials/spawn/EssentialsSpawnPlayerListener.java;<<<<<<< MINE
+		
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_1a715bd_455fbd8/rev_1a715bd-455fbd8/Essentials/src/com/earth2me/essentials/Mob.java;<<<<<<< MINE
+	private Mob(String n, String ec, Enemies en)
+	{
+		this.name = n;
+		this.craftClass = n;
+		this.entityClass = ec;
+		this.type = en;
+	}
+
+	private Mob(String n, String ec, String cc, Enemies en)
+	{
+		this.name = n;
+		this.entityClass = ec;
+		this.craftClass = cc;
+		this.type = en;
+	}
+	public String s = "s";
+	public String name;
+	public Enemies type;
+	private String entityClass;
+	private String craftClass;
+=======
+	public String suffix = "s";
+	final public String name;
+	final public Enemies type;
+	final private CreatureType bukkitType;
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_ecbbc9f_6f9654e/rev_ecbbc9f-6f9654e/Essentials/src/com/earth2me/essentials/Settings.java;<<<<<<< MINE
+=======
+	private final static double MINMONEY = -10000000000000.0;
+
+	@Override
+	public double getMinMoney()
+	{
+		double min = config.getDouble("min-money", MINMONEY);
+		if (min > 0)
+		{
+			min = -min;
+		}
+		if (min < MINMONEY)
+		{
+			min = MINMONEY;
+		}
+		return min;
+	}
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_d83437e_af43197/rev_d83437e-af43197/Essentials/src/com/earth2me/essentials/Settings.java;<<<<<<< MINE
+	
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_d83437e_af43197/rev_d83437e-af43197/Essentials/src/com/earth2me/essentials/EssentialsPlayerListener.java;<<<<<<< MINE
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_d83437e_af43197/rev_d83437e-af43197/Essentials/src/com/earth2me/essentials/UserData.java;<<<<<<< MINE
+=======
+	private String nickname;
+	
+	public String _getNickname()
+	{
+		return config.getString("nickname");
+	}
+	
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_d83437e_af43197/rev_d83437e-af43197/Essentials/src/com/earth2me/essentials/UserData.java;<<<<<<< MINE
+		
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_d83437e_af43197/rev_d83437e-af43197/Essentials/src/com/earth2me/essentials/ISettings.java;<<<<<<< MINE
+	
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_d83437e_af43197/rev_d83437e-af43197/Essentials/src/com/earth2me/essentials/ISettings.java;<<<<<<< MINE
+	
+=======
+
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_d83437e_af43197/rev_d83437e-af43197/Essentials/src/com/earth2me/essentials/User.java;<<<<<<< MINE
+
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_d3ca002_df1e4a2/rev_d3ca002-df1e4a2/Essentials/src/com/earth2me/essentials/commands/Commandbook.java;<<<<<<< MINE
+	
+=======
+>>>>>>> YOURS
+/home/paper219/Desktop/analysis/fullsample/projects/essentials/revisions/rev_8d359a2_f2cb9d8/rev_8d359a2-f2cb9d8/Essentials/src/com/earth2me/essentials/commands/Commandunbanip.java;<<<<<<< MINE
+=======
+		
+>>>>>>> YOURS

@@ -1,0 +1,39 @@
+revision;file;methodsignature;leftbody;basebody;rightbody
+/home/paper219/Desktop/analysis/fullsample//projects/eureka/revisions/rev_b694d77_fcffccb/rev_b694d77-fcffccb;/eureka-core/src/main/java/com/netflix/eureka/RemoteRegionRegistry;RemoteRegionRegistry(String,URL);        this.fetchRegistryTimer = Monitors.newTimer(this.remoteRegionURL
+                .toString() + "_" + "FetchRegistry");
+
+        String jerseyClientName;;        this.fetchRegistryTimer = Monitors.newTimer(this.remoteRegionURL
+                .toString() + "_" + "FetchRegistry");
+        String jerseyClientName;;        this.fetchRegistryTimer = Monitors.newTimer(this.remoteRegionURL.toString() + "_FetchRegistry");
+
+        EurekaJerseyClientBuilder clientBuilder = new EurekaJerseyClientBuilder()
+                .withUserAgent("Java EurekaClient (remote region)")
+                .withConnectionTimeout(EUREKA_SERVER_CONFIG.getRemoteRegionConnectTimeoutMs())
+                .withReadTimeout(EUREKA_SERVER_CONFIG.getRemoteRegionReadTimeoutMs())
+                .withMaxConnectionsPerHost(EUREKA_SERVER_CONFIG.getRemoteRegionTotalConnectionsPerHost())
+                .withMaxTotalConnections(EUREKA_SERVER_CONFIG.getRemoteRegionTotalConnections())
+                .withConnectionIdleTimeout(EUREKA_SERVER_CONFIG.getRemoteRegionConnectionIdleTimeoutSeconds());
+/home/paper219/Desktop/analysis/fullsample//projects/ghostdriver/revisions/rev_30d2ebf_3b872e9/rev_30d2ebf-3b872e9;/test/src/test/java/ghostdriver/CookieTest;shouldRetainCookieInfo();        Cookie addedCookie = new Cookie.Builder("fish", "cod")
+                        .expiresOn(new Date(System.currentTimeMillis() + 100 * 1000)) //< now + 100sec
+                        .path("/404")
+                        .isSecure(true)
+                        .domain("github.com")
+                        .build();
+        d.manage().addCookie(addedCookie);;        Cookie addedCookie =
+            new Cookie.Builder("fish", "cod")
+                .expiresOn(new Date(System.currentTimeMillis() + 100 * 1000)) //< now + 100sec
+                .path("/404")
+                .isSecure(true)
+                .domain("github.com")
+                .build();
+        d.manage().addCookie(addedCookie);;        Cookie addedCookie =
+            new Cookie.Builder("fish", "cod")
+                .expiresOn(new Date(System.currentTimeMillis() + 100 * 1000)) //< now + 100sec
+                .path("/404")
+                .domain("localhost")
+                .build();
+        driver.manage().addCookie(addedCookie);
+/home/paper219/Desktop/analysis/fullsample//projects/essentials/revisions/rev_8719518_ae6dedf/rev_8719518-ae6dedf;/Essentials/src/com/earth2me/essentials/commands/Commandgod;run(Server,User,String,String[]);		{
+			toggleOtherPlayers(server, user, args);;		{			
+			toggleOtherPlayers(server, user, args);;		{			
+			toggleOtherPlayers(server, user.getBase(), args);

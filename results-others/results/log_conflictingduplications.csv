@@ -1,0 +1,1413 @@
+revision;file;nodeIdentifier1;;nodeIdentifier2;conflict
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_2527d9a_2386579/rev_2527d9a-2386579.revisions;/src/main/java/org/junit/experimental/interceptor/TestWatchman.java;public void starting(FrameworkMethod method) throws Exception ;public void starting(FrameworkMethod method) ;
+
+	public void starting(FrameworkMethod method) throws Exception {
+	}
+
+	public void finished(FrameworkMethod method) {
+	}
+=======
+
+	public void starting(FrameworkMethod method) {
+	}
+
+	public void finished(FrameworkMethod method) {
+	}
+
+
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_2527d9a_2386579/rev_2527d9a-2386579.revisions;/src/main/java/org/junit/experimental/interceptor/TestWatchman.java;public void finished(FrameworkMethod method) ;public void finished(FrameworkMethod method) ;
+
+	public void starting(FrameworkMethod method) throws Exception {
+	}
+
+	public void finished(FrameworkMethod method) {
+	}
+=======
+
+	public void starting(FrameworkMethod method) {
+	}
+
+	public void finished(FrameworkMethod method) {
+	}
+
+
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_b737131_ff2ff91/rev_b737131-ff2ff91.revisions;/src/test/java/org/junit/tests/ParentRunnerTest.java;public static String log;private static StringBuffer log;
+package org.junit.tests;
+
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+import org.junit.runner.notification.RunNotifier;
+import org.junit.runners.BlockJUnit4ClassRunner;
+import org.junit.runners.ParentRunner;
+import org.junit.runners.model.InitializationError;
+import org.junit.runners.model.RunnerInterceptor;
+
+public class ParentRunnerTest {
+	public static String log= "";
+
+	public static class FruitTest {
+		@Test
+		public void apple() {
+			log+= "apple ";
+		}
+
+		@Test
+		public void banana() {
+			log+= "banana ";
+		}
+	}
+
+	@Test
+	public void useChildHarvester() throws InitializationError {
+		log= "";
+		ParentRunner<?> runner= new BlockJUnit4ClassRunner(FruitTest.class);
+		runner.setRunnerInterceptor(new RunnerInterceptor() {
+			public void runChild(Runnable childStatement) {
+				log+= "before ";
+				childStatement.run();
+				log+= "after ";
+			}
+
+			public void finished() {
+				log+= "afterAll ";
+			}
+		});
+
+		runner.run(new RunNotifier());
+		assertEquals("before apple after before banana after afterAll ", log);
+	}
+}=======
+package org.junit.tests;
+
+import static org.junit.Assert.assertEquals;
+
+import java.util.Comparator;
+
+import org.junit.Test;
+import org.junit.internal.builders.AllDefaultPossibilitiesBuilder;
+import org.junit.runner.Description;
+import org.junit.runner.manipulation.Sorter;
+import org.junit.runner.notification.RunNotifier;
+import org.junit.runners.BlockJUnit4ClassRunner;
+import org.junit.runners.ParentRunner;
+import org.junit.runners.model.FrameworkMethod;
+
+// TODO (May 11, 2009 2:42:38 PM): move package
+
+public class ParentRunnerTest {
+	private static StringBuffer log= new StringBuffer();
+
+	public static class FruitTests {
+		@Test
+		public void apple() {
+			log.append("apple ");
+		}
+
+		@Test
+		public void banana() {
+			log.append("banana ");
+		}
+
+		@Test
+		public void pear() {
+			log.append("pear ");
+		}
+	}
+
+	@Test
+	public void installDecorator() throws Throwable {
+		log.setLength(0);
+		ParentRunner<FrameworkMethod> runner= (BlockJUnit4ClassRunner) new AllDefaultPossibilitiesBuilder(
+				true).runnerForClass(FruitTests.class);
+		// TODO (May 11, 2009 2:58:11 PM): DUP?
+		runner.sort(new Sorter(new Comparator<Description>() {
+			public int compare(Description o1, Description o2) {
+				return o1.toString().compareTo(o2.toString());
+			}
+		}));
+		runner.installDecorator(new ParentRunner.Decorator() {
+			public void runChild(SafeStatement statement) {
+				log.append("before ");
+				statement.execute();
+				log.append("after ");
+			}
+
+			public void runAll(SafeStatement statement) {
+				log.append("beforeAll ");
+				statement.execute();
+				log.append("afterAll ");
+			}
+		});
+
+		runner.run(new RunNotifier());
+		assertEquals(
+				"beforeAll before apple after before banana after before pear after afterAll ",
+				log.toString());
+	}
+
+
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_9577910_f2594e3/rev_9577910-f2594e3.revisions;/src/test/java/org/junit/tests/ParentRunnerTest.java;public static String log;private static StringBuffer log;
+package org.junit.tests;
+
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+import org.junit.runner.notification.RunNotifier;
+import org.junit.runners.BlockJUnit4ClassRunner;
+import org.junit.runners.ParentRunner;
+import org.junit.runners.model.InitializationError;
+import org.junit.runners.model.RunnerInterceptor;
+
+public class ParentRunnerTest {
+	public static String log= "";
+
+	public static class FruitTest {
+		@Test
+		public void apple() {
+			log+= "apple ";
+		}
+
+		@Test
+		public void banana() {
+			log+= "banana ";
+		}
+	}
+
+	@Test
+	public void useChildHarvester() throws InitializationError {
+		log= "";
+		ParentRunner<?> runner= new BlockJUnit4ClassRunner(FruitTest.class);
+		runner.setRunnerInterceptor(new RunnerInterceptor() {
+			public void runChild(Runnable childStatement) {
+				log+= "before ";
+				childStatement.run();
+				log+= "after ";
+			}
+
+			public void finished() {
+				log+= "afterAll ";
+			}
+		});
+
+		runner.run(new RunNotifier());
+		assertEquals("before apple after before banana after afterAll ", log);
+	}
+}=======
+package org.junit.tests;
+
+import static org.junit.Assert.assertEquals;
+
+import java.util.Comparator;
+
+import org.junit.Test;
+import org.junit.internal.builders.AllDefaultPossibilitiesBuilder;
+import org.junit.runner.Description;
+import org.junit.runner.manipulation.Sorter;
+import org.junit.runner.notification.RunNotifier;
+import org.junit.runners.BlockJUnit4ClassRunner;
+import org.junit.runners.ParentRunner;
+import org.junit.runners.model.FrameworkMethod;
+
+// TODO (May 11, 2009 2:42:38 PM): move package
+
+public class ParentRunnerTest {
+	private static StringBuffer log= new StringBuffer();
+
+	public static class FruitTests {
+		@Test
+		public void apple() {
+			log.append("apple ");
+		}
+
+		@Test
+		public void banana() {
+			log.append("banana ");
+		}
+
+		@Test
+		public void pear() {
+			log.append("pear ");
+		}
+	}
+
+	@Test
+	public void installDecorator() throws Throwable {
+		log.setLength(0);
+		ParentRunner<FrameworkMethod> runner= (BlockJUnit4ClassRunner) new AllDefaultPossibilitiesBuilder(
+				true).runnerForClass(FruitTests.class);
+		// TODO (May 11, 2009 2:58:11 PM): DUP?
+		runner.sort(new Sorter(new Comparator<Description>() {
+			public int compare(Description o1, Description o2) {
+				return o1.toString().compareTo(o2.toString());
+			}
+		}));
+		runner.installDecorator(new ParentRunner.Decorator() {
+			public void runChild(SafeStatement statement) {
+				log.append("before ");
+				statement.execute();
+				log.append("after ");
+			}
+
+			public void runAll(SafeStatement statement) {
+				log.append("beforeAll ");
+				statement.execute();
+				log.append("afterAll ");
+			}
+		});
+
+		runner.run(new RunNotifier());
+		assertEquals(
+				"beforeAll before apple after before banana after before pear after afterAll ",
+				log.toString());
+	}
+
+
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_a402014_3f05aac/rev_a402014-3f05aac.revisions;/src/main/java/org/junit/matchers/JUnitMatchers.java;public static <T> Matcher<T> isOneOf(T... objects) ;public static <T> Matcher<T> isOneOf(T... objects) ;
+	}
+	
+	/**
+	 * This is sugar for the situation where you want to specify
+	 * a finite list of concrete objects that can match.
+	 * For example:
+	 * <pre>
+	 *   assertThat(string, isOneOf("a", "b", "c"));
+	 *   // is equivalent to
+	 *   assertThat(string, anyOf(is("a"), is("b"), is("c")))
+	 * </pre>
+	 */
+	public static <T> Matcher<T> isOneOf(T... objects) {
+		List<Matcher<? super T>> matchers = new ArrayList<Matcher<? super T>>();
+		for (T each : objects) {
+			matchers.add(equalTo(each));
+		}
+		return anyOf(matchers);
+	}
+	
+	/**
+	 * Loosens type parameter, in order to use a Matcher 
+	 * in a place where Java doesn't want to type-check:
+	 *
+	 * Goofy example:
+	 * <pre>
+	 *   assertThat(3, matches(containsString("a")));
+	 * </pre>
+	 * 
+	 * Real example:
+	 * <pre>
+	 *   assertThat(3, either(matches(is(String.class))).or(
+	 *		                  matches(is(Integer.class))));
+	 * </pre>
+	 */
+	@SuppressWarnings("unchecked")
+	public static <T> Matcher<T> matches(Matcher<?> matcher) {
+		return (Matcher<T>)matcher;
+	}
+=======
+	}
+	
+	/**
+	 * This is sugar for the situation where 
+	 * For example:
+	 * <pre>
+	 *   assertThat(string, eitherIs("a").or(is("b")));
+	 * </pre>
+	 */
+	public static <T> Matcher<T> isOneOf(T... objects) {
+		List<Matcher<? super T>> matchers = new ArrayList<Matcher<? super T>>();
+		for (T each : objects) {
+			matchers.add(is(each));
+		}
+		return anyOf(matchers);
+	}
+	
+	/**
+	 * Loosens type parameter, in order to use a Matcher 
+	 * in a place where Java doesn't want to typecheck:
+	 *
+	 * Goofy example:
+	 * <pre>
+	 *   assertThat(3, matches(containsString("a")));
+	 * </pre>
+	 * 
+	 * Real example:
+	 * <pre>
+	 *   assertThat(3, either(matches(is(String.class))).or(
+	 *		                  matches(is(Integer.class))));
+     *
+	 * </pre>
+	 */
+	@SuppressWarnings("unchecked")
+	public static <T> Matcher<T> matches(Matcher<?> matcher) {
+		return (Matcher<T>)matcher;
+	}
+
+
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_a402014_3f05aac/rev_a402014-3f05aac.revisions;/src/main/java/org/junit/matchers/JUnitMatchers.java;@SuppressWarnings("unchecked")	public static <T> Matcher<T> matches(Matcher<?> matcher) ;@SuppressWarnings("unchecked")	public static <T> Matcher<T> matches(Matcher<?> matcher) ;
+	}
+	
+	/**
+	 * This is sugar for the situation where you want to specify
+	 * a finite list of concrete objects that can match.
+	 * For example:
+	 * <pre>
+	 *   assertThat(string, isOneOf("a", "b", "c"));
+	 *   // is equivalent to
+	 *   assertThat(string, anyOf(is("a"), is("b"), is("c")))
+	 * </pre>
+	 */
+	public static <T> Matcher<T> isOneOf(T... objects) {
+		List<Matcher<? super T>> matchers = new ArrayList<Matcher<? super T>>();
+		for (T each : objects) {
+			matchers.add(equalTo(each));
+		}
+		return anyOf(matchers);
+	}
+	
+	/**
+	 * Loosens type parameter, in order to use a Matcher 
+	 * in a place where Java doesn't want to type-check:
+	 *
+	 * Goofy example:
+	 * <pre>
+	 *   assertThat(3, matches(containsString("a")));
+	 * </pre>
+	 * 
+	 * Real example:
+	 * <pre>
+	 *   assertThat(3, either(matches(is(String.class))).or(
+	 *		                  matches(is(Integer.class))));
+	 * </pre>
+	 */
+	@SuppressWarnings("unchecked")
+	public static <T> Matcher<T> matches(Matcher<?> matcher) {
+		return (Matcher<T>)matcher;
+	}
+=======
+	}
+	
+	/**
+	 * This is sugar for the situation where 
+	 * For example:
+	 * <pre>
+	 *   assertThat(string, eitherIs("a").or(is("b")));
+	 * </pre>
+	 */
+	public static <T> Matcher<T> isOneOf(T... objects) {
+		List<Matcher<? super T>> matchers = new ArrayList<Matcher<? super T>>();
+		for (T each : objects) {
+			matchers.add(is(each));
+		}
+		return anyOf(matchers);
+	}
+	
+	/**
+	 * Loosens type parameter, in order to use a Matcher 
+	 * in a place where Java doesn't want to typecheck:
+	 *
+	 * Goofy example:
+	 * <pre>
+	 *   assertThat(3, matches(containsString("a")));
+	 * </pre>
+	 * 
+	 * Real example:
+	 * <pre>
+	 *   assertThat(3, either(matches(is(String.class))).or(
+	 *		                  matches(is(Integer.class))));
+     *
+	 * </pre>
+	 */
+	@SuppressWarnings("unchecked")
+	public static <T> Matcher<T> matches(Matcher<?> matcher) {
+		return (Matcher<T>)matcher;
+	}
+
+
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_b33b4b0_c3873cf/rev_b33b4b0-c3873cf.revisions;/src/main/java/org/junit/runners/ParentRunner.java;public List<T> getCachedChildren() ;private List<T> getCachedChildren() ;
+	// TODO: public?
+	public List<T> getCachedChildren() {
+		if (fCachedChildren == null)
+			fCachedChildren= getChildren();
+		return fCachedChildren;
+=======
+	private List<T> getCachedChildren() {
+		if (fCachedChildren == null)
+			fCachedChildren= getChildren();
+		return fCachedChildren;
+
+
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_b33b4b0_c3873cf/rev_b33b4b0-c3873cf.revisions;/src/main/java/org/junit/runner/Runner.java;public Plan getPlan() ;public Plan getPlan() ;
+
+	public Plan getPlan() {
+		return Plan.fromDescription(getDescription());
+	}
+=======
+	
+	public Plan getPlan() {
+		return Plan.fromDescription(getDescription());
+	}
+
+
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_b33b4b0_c3873cf/rev_b33b4b0-c3873cf.revisions;/src/main/java/org/junit/runner/Plan.java;public abstract Description getDescription();public Description getDescription() ;
+package org.junit.runner;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class Plan {
+	public abstract Description getDescription();
+	public abstract List<Plan> getChildren();
+
+	public static Plan fromDescription(final Description description) {
+		return new Plan() {
+			@Override
+			public Description getDescription() {
+				return description;
+			}
+			
+			@Override
+			public List<Plan> getChildren() {
+				List<Description> childrenDescs= description.getChildrenInternal();
+				ArrayList<Plan> children= new ArrayList<Plan>();
+				for (Description each : childrenDescs)
+					children.add(Plan.fromDescription(each));
+				return children;
+			}
+		};
+	}
+	
+	public boolean isSuite() {
+		return getChildren().size() > 0;
+	}
+	
+	public boolean isTest() {
+		return !isSuite();
+	}
+}=======
+package org.junit.runner;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Plan {
+	private final Description fDescription;
+
+	private Plan(Description description) {
+		fDescription= description;
+	}
+
+	public Description getDescription() {
+		return fDescription;
+	}
+
+	public List<Plan> getChildren() {
+		ArrayList<Plan> results= new ArrayList<Plan>();
+		ArrayList<Description> children= fDescription.getChildren();
+		for (Description each : children)
+			results.add(Plan.fromDescription(each));
+		return results;
+	}
+
+	static Plan fromDescription(Description description) {
+		return new Plan(description);
+	}
+
+
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_b33b4b0_c3873cf/rev_b33b4b0-c3873cf.revisions;/src/main/java/org/junit/runner/Plan.java;public abstract List<Plan> getChildren();public List<Plan> getChildren() ;
+package org.junit.runner;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class Plan {
+	public abstract Description getDescription();
+	public abstract List<Plan> getChildren();
+
+	public static Plan fromDescription(final Description description) {
+		return new Plan() {
+			@Override
+			public Description getDescription() {
+				return description;
+			}
+			
+			@Override
+			public List<Plan> getChildren() {
+				List<Description> childrenDescs= description.getChildrenInternal();
+				ArrayList<Plan> children= new ArrayList<Plan>();
+				for (Description each : childrenDescs)
+					children.add(Plan.fromDescription(each));
+				return children;
+			}
+		};
+	}
+	
+	public boolean isSuite() {
+		return getChildren().size() > 0;
+	}
+	
+	public boolean isTest() {
+		return !isSuite();
+	}
+}=======
+package org.junit.runner;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Plan {
+	private final Description fDescription;
+
+	private Plan(Description description) {
+		fDescription= description;
+	}
+
+	public Description getDescription() {
+		return fDescription;
+	}
+
+	public List<Plan> getChildren() {
+		ArrayList<Plan> results= new ArrayList<Plan>();
+		ArrayList<Description> children= fDescription.getChildren();
+		for (Description each : children)
+			results.add(Plan.fromDescription(each));
+		return results;
+	}
+
+	static Plan fromDescription(Description description) {
+		return new Plan(description);
+	}
+
+
+/home/paper219/Desktop/analysis/fullsample//projects/junit/revisions/rev_b33b4b0_c3873cf/rev_b33b4b0-c3873cf.revisions;/src/main/java/org/junit/runner/Plan.java;public static Plan fromDescription(final Description description) ;static Plan fromDescription(Description description) ;
+package org.junit.runner;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class Plan {
+	public abstract Description getDescription();
+	public abstract List<Plan> getChildren();
+
+	public static Plan fromDescription(final Description description) {
+		return new Plan() {
+			@Override
+			public Description getDescription() {
+				return description;
+			}
+			
+			@Override
+			public List<Plan> getChildren() {
+				List<Description> childrenDescs= description.getChildrenInternal();
+				ArrayList<Plan> children= new ArrayList<Plan>();
+				for (Description each : childrenDescs)
+					children.add(Plan.fromDescription(each));
+				return children;
+			}
+		};
+	}
+	
+	public boolean isSuite() {
+		return getChildren().size() > 0;
+	}
+	
+	public boolean isTest() {
+		return !isSuite();
+	}
+}=======
+package org.junit.runner;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Plan {
+	private final Description fDescription;
+
+	private Plan(Description description) {
+		fDescription= description;
+	}
+
+	public Description getDescription() {
+		return fDescription;
+	}
+
+	public List<Plan> getChildren() {
+		ArrayList<Plan> results= new ArrayList<Plan>();
+		ArrayList<Description> children= fDescription.getChildren();
+		for (Description each : children)
+			results.add(Plan.fromDescription(each));
+		return results;
+	}
+
+	static Plan fromDescription(Description description) {
+		return new Plan(description);
+	}
+
+
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_0f76459_53e7dc2/rev_0f76459-53e7dc2.revisions;/src/main/java/redis/clients/jedis/JedisCluster.java;@Override    public List<String> blpop(final int timeout, final String... keys) ;@Override    public List<String> blpop(final int timeout, final String key) ;
+
+    @Override
+    public Long del(final String... keys) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.del(keys);
+	    }
+	}.run(keys.length, keys);
+    }
+
+    @Override
+    public List<String> blpop(final int timeout, final String... keys) {
+	return new JedisClusterCommand<List<String>>(connectionHandler,
+		timeout, maxRedirections) {
+	    @Override
+	    public List<String> execute(Jedis connection) {
+		return connection.blpop(timeout, keys);
+	    }
+	}.run(keys.length, keys);
+    }
+
+    @Override
+    public List<String> brpop(final int timeout, final String... keys) {
+	return new JedisClusterCommand<List<String>>(connectionHandler,
+		timeout, maxRedirections) {
+	    @Override
+	    public List<String> execute(Jedis connection) {
+		return connection.brpop(timeout, keys);
+	    }
+	}.run(keys.length, keys);
+    }
+
+    @Override
+    public List<String> mget(final String... keys) {
+	return new JedisClusterCommand<List<String>>(connectionHandler,
+		timeout, maxRedirections) {
+	    @Override
+	    public List<String> execute(Jedis connection) {
+		return connection.mget(keys);
+	    }
+	}.run(keys.length - 1, keys);
+    }
+
+    @Override
+    public String mset(final String... keysvalues) {
+	String[] keys = new String[keysvalues.length / 2];
+
+	for (int keyIdx = 0; keyIdx < keys.length; keyIdx++) {
+	    keys[keyIdx] = keysvalues[keyIdx * 2];
+	}
+
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.mset(keysvalues);
+	    }
+	}.run(keys.length, keys);
+    }
+
+    @Override
+    public Long msetnx(final String... keysvalues) {
+	String[] keys = new String[keysvalues.length / 2];
+
+	for (int keyIdx = 0; keyIdx < keys.length; keyIdx++) {
+	    keys[keyIdx] = keysvalues[keyIdx * 2];
+	}
+
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.msetnx(keysvalues);
+	    }
+	}.run(keys.length, keys);
+    }
+
+    @Override
+    public String rename(final String oldkey, final String newkey) {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.rename(oldkey, newkey);
+	    }
+	}.run(2, oldkey, newkey);
+    }
+
+    @Override
+    public Long renamenx(final String oldkey, final String newkey) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.renamenx(oldkey, newkey);
+	    }
+	}.run(2, oldkey, newkey);
+    }
+
+    @Override
+    public String rpoplpush(final String srckey, final String dstkey) {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.rpoplpush(srckey, dstkey);
+	    }
+	}.run(2, srckey, dstkey);
+    }
+
+    @Override
+    public Set<String> sdiff(final String... keys) {
+	return new JedisClusterCommand<Set<String>>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Set<String> execute(Jedis connection) {
+		return connection.sdiff(keys);
+	    }
+	}.run(keys.length, keys);
+    }
+
+    @Override
+    public Long sdiffstore(final String dstkey, final String... keys) {
+	String[] mergedKeys = KeyMergeUtil.merge(dstkey, keys);
+
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.sdiffstore(dstkey, keys);
+	    }
+	}.run(mergedKeys.length, mergedKeys);
+    }
+
+    @Override
+    public Set<String> sinter(final String... keys) {
+	return new JedisClusterCommand<Set<String>>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Set<String> execute(Jedis connection) {
+		return connection.sinter(keys);
+	    }
+	}.run(keys.length, keys);
+    }
+
+    @Override
+    public Long sinterstore(final String dstkey, final String... keys) {
+	String[] mergedKeys = KeyMergeUtil.merge(dstkey, keys);
+
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.sinterstore(dstkey, keys);
+	    }
+	}.run(mergedKeys.length, mergedKeys);
+    }
+
+    @Override
+    public Long smove(final String srckey, final String dstkey,
+	    final String member) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.smove(srckey, dstkey, member);
+	    }
+	}.run(2, srckey, dstkey);
+    }
+
+    @Override
+    public Long sort(final String key, final SortingParams sortingParameters,
+	    final String dstkey) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.sort(key, sortingParameters, dstkey);
+	    }
+	}.run(2, key, dstkey);
+    }
+
+    @Override
+    public Long sort(final String key, final String dstkey) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.sort(key, dstkey);
+	    }
+	}.run(2, key, dstkey);
+    }
+
+    @Override
+    public Set<String> sunion(final String... keys) {
+	return new JedisClusterCommand<Set<String>>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Set<String> execute(Jedis connection) {
+		return connection.sunion(keys);
+	    }
+	}.run(keys.length, keys);
+    }
+
+    @Override
+    public Long sunionstore(final String dstkey, final String... keys) {
+	String[] wholeKeys = KeyMergeUtil.merge(dstkey, keys);
+
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.sunionstore(dstkey, keys);
+	    }
+	}.run(wholeKeys.length, wholeKeys);
+    }
+
+    @Override
+    public Long zinterstore(final String dstkey, final String... sets) {
+	String[] wholeKeys = KeyMergeUtil.merge(dstkey, sets);
+
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.zinterstore(dstkey, sets);
+	    }
+	}.run(wholeKeys.length, wholeKeys);
+    }
+
+    @Override
+    public Long zinterstore(final String dstkey, final ZParams params,
+	    final String... sets) {
+	String[] mergedKeys = KeyMergeUtil.merge(dstkey, sets);
+
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.zinterstore(dstkey, params, sets);
+	    }
+	}.run(mergedKeys.length, mergedKeys);
+    }
+
+    @Override
+    public Long zunionstore(final String dstkey, final String... sets) {
+	String[] mergedKeys = KeyMergeUtil.merge(dstkey, sets);
+
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.zunionstore(dstkey, sets);
+	    }
+	}.run(mergedKeys.length, mergedKeys);
+    }
+
+    @Override
+    public Long zunionstore(final String dstkey, final ZParams params,
+	    final String... sets) {
+	String[] mergedKeys = KeyMergeUtil.merge(dstkey, sets);
+
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.zunionstore(dstkey, params, sets);
+	    }
+	}.run(mergedKeys.length, mergedKeys);
+    }
+
+    @Override
+    public String brpoplpush(final String source, final String destination,
+	    final int timeout) {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.brpoplpush(source, destination, timeout);
+	    }
+	}.run(2, source, destination);
+    }
+
+    @Override
+    public Long publish(final String channel, final String message) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.publish(channel, message);
+	    }
+	}.runWithAnyNode();
+    }
+
+    @Override
+    public void subscribe(final JedisPubSub jedisPubSub,
+	    final String... channels) {
+	new JedisClusterCommand<Integer>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Integer execute(Jedis connection) {
+		connection.subscribe(jedisPubSub, channels);
+		return 0;
+	    }
+	}.runWithAnyNode();
+    }
+
+    @Override
+    public void psubscribe(final JedisPubSub jedisPubSub,
+	    final String... patterns) {
+	new JedisClusterCommand<Integer>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Integer execute(Jedis connection) {
+		connection.subscribe(jedisPubSub, patterns);
+		return 0;
+	    }
+	}.runWithAnyNode();
+    }
+
+    @Override
+    public Long bitop(final BitOP op, final String destKey,
+	    final String... srcKeys) {
+	String[] mergedKeys = KeyMergeUtil.merge(destKey, srcKeys);
+
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.bitop(op, destKey, srcKeys);
+	    }
+	}.run(mergedKeys.length, mergedKeys);
+    }
+
+    @Override
+    public String pfmerge(final String destkey, final String... sourcekeys) {
+	String[] mergedKeys = KeyMergeUtil.merge(destkey, sourcekeys);
+
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.pfmerge(destkey, sourcekeys);
+	    }
+	}.run(mergedKeys.length, mergedKeys);
+    }
+
+    @Override
+    public long pfcount(final String... keys) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.pfcount(keys);
+	    }
+	}.run(keys.length, keys);
+    }
+=======
+
+    @Override
+    public List<String> blpop(final int timeout, final String key) {
+	return new JedisClusterCommand<List<String>>(connectionHandler,
+		timeout, maxRedirections) {
+	    @Override
+	    public List<String> execute(Jedis connection) {
+		return connection.blpop(timeout,key);
+	    }
+	}.run(null);
+    }
+
+    @Override
+    public List<String> brpop(final int timeout, final String key) {
+	return new JedisClusterCommand<List<String>>(connectionHandler,
+		timeout, maxRedirections) {
+	    @Override
+	    public List<String> execute(Jedis connection) {
+		return connection.brpop(timeout,key);
+	    }
+	}.run(null);
+    }
+
+
+/home/paper219/Desktop/analysis/fullsample//projects/jedis/revisions/rev_0f76459_53e7dc2/rev_0f76459-53e7dc2.revisions;/src/main/java/redis/clients/jedis/JedisCluster.java;@Override    public List<String> brpop(final int timeout, final String... keys) ;@Override    public List<String> brpop(final int timeout, final String key) ;
+
+    @Override
+    public Long del(final String... keys) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.del(keys);
+	    }
+	}.run(keys.length, keys);
+    }
+
+    @Override
+    public List<String> blpop(final int timeout, final String... keys) {
+	return new JedisClusterCommand<List<String>>(connectionHandler,
+		timeout, maxRedirections) {
+	    @Override
+	    public List<String> execute(Jedis connection) {
+		return connection.blpop(timeout, keys);
+	    }
+	}.run(keys.length, keys);
+    }
+
+    @Override
+    public List<String> brpop(final int timeout, final String... keys) {
+	return new JedisClusterCommand<List<String>>(connectionHandler,
+		timeout, maxRedirections) {
+	    @Override
+	    public List<String> execute(Jedis connection) {
+		return connection.brpop(timeout, keys);
+	    }
+	}.run(keys.length, keys);
+    }
+
+    @Override
+    public List<String> mget(final String... keys) {
+	return new JedisClusterCommand<List<String>>(connectionHandler,
+		timeout, maxRedirections) {
+	    @Override
+	    public List<String> execute(Jedis connection) {
+		return connection.mget(keys);
+	    }
+	}.run(keys.length - 1, keys);
+    }
+
+    @Override
+    public String mset(final String... keysvalues) {
+	String[] keys = new String[keysvalues.length / 2];
+
+	for (int keyIdx = 0; keyIdx < keys.length; keyIdx++) {
+	    keys[keyIdx] = keysvalues[keyIdx * 2];
+	}
+
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.mset(keysvalues);
+	    }
+	}.run(keys.length, keys);
+    }
+
+    @Override
+    public Long msetnx(final String... keysvalues) {
+	String[] keys = new String[keysvalues.length / 2];
+
+	for (int keyIdx = 0; keyIdx < keys.length; keyIdx++) {
+	    keys[keyIdx] = keysvalues[keyIdx * 2];
+	}
+
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.msetnx(keysvalues);
+	    }
+	}.run(keys.length, keys);
+    }
+
+    @Override
+    public String rename(final String oldkey, final String newkey) {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.rename(oldkey, newkey);
+	    }
+	}.run(2, oldkey, newkey);
+    }
+
+    @Override
+    public Long renamenx(final String oldkey, final String newkey) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.renamenx(oldkey, newkey);
+	    }
+	}.run(2, oldkey, newkey);
+    }
+
+    @Override
+    public String rpoplpush(final String srckey, final String dstkey) {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.rpoplpush(srckey, dstkey);
+	    }
+	}.run(2, srckey, dstkey);
+    }
+
+    @Override
+    public Set<String> sdiff(final String... keys) {
+	return new JedisClusterCommand<Set<String>>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Set<String> execute(Jedis connection) {
+		return connection.sdiff(keys);
+	    }
+	}.run(keys.length, keys);
+    }
+
+    @Override
+    public Long sdiffstore(final String dstkey, final String... keys) {
+	String[] mergedKeys = KeyMergeUtil.merge(dstkey, keys);
+
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.sdiffstore(dstkey, keys);
+	    }
+	}.run(mergedKeys.length, mergedKeys);
+    }
+
+    @Override
+    public Set<String> sinter(final String... keys) {
+	return new JedisClusterCommand<Set<String>>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Set<String> execute(Jedis connection) {
+		return connection.sinter(keys);
+	    }
+	}.run(keys.length, keys);
+    }
+
+    @Override
+    public Long sinterstore(final String dstkey, final String... keys) {
+	String[] mergedKeys = KeyMergeUtil.merge(dstkey, keys);
+
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.sinterstore(dstkey, keys);
+	    }
+	}.run(mergedKeys.length, mergedKeys);
+    }
+
+    @Override
+    public Long smove(final String srckey, final String dstkey,
+	    final String member) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.smove(srckey, dstkey, member);
+	    }
+	}.run(2, srckey, dstkey);
+    }
+
+    @Override
+    public Long sort(final String key, final SortingParams sortingParameters,
+	    final String dstkey) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.sort(key, sortingParameters, dstkey);
+	    }
+	}.run(2, key, dstkey);
+    }
+
+    @Override
+    public Long sort(final String key, final String dstkey) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.sort(key, dstkey);
+	    }
+	}.run(2, key, dstkey);
+    }
+
+    @Override
+    public Set<String> sunion(final String... keys) {
+	return new JedisClusterCommand<Set<String>>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Set<String> execute(Jedis connection) {
+		return connection.sunion(keys);
+	    }
+	}.run(keys.length, keys);
+    }
+
+    @Override
+    public Long sunionstore(final String dstkey, final String... keys) {
+	String[] wholeKeys = KeyMergeUtil.merge(dstkey, keys);
+
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.sunionstore(dstkey, keys);
+	    }
+	}.run(wholeKeys.length, wholeKeys);
+    }
+
+    @Override
+    public Long zinterstore(final String dstkey, final String... sets) {
+	String[] wholeKeys = KeyMergeUtil.merge(dstkey, sets);
+
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.zinterstore(dstkey, sets);
+	    }
+	}.run(wholeKeys.length, wholeKeys);
+    }
+
+    @Override
+    public Long zinterstore(final String dstkey, final ZParams params,
+	    final String... sets) {
+	String[] mergedKeys = KeyMergeUtil.merge(dstkey, sets);
+
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.zinterstore(dstkey, params, sets);
+	    }
+	}.run(mergedKeys.length, mergedKeys);
+    }
+
+    @Override
+    public Long zunionstore(final String dstkey, final String... sets) {
+	String[] mergedKeys = KeyMergeUtil.merge(dstkey, sets);
+
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.zunionstore(dstkey, sets);
+	    }
+	}.run(mergedKeys.length, mergedKeys);
+    }
+
+    @Override
+    public Long zunionstore(final String dstkey, final ZParams params,
+	    final String... sets) {
+	String[] mergedKeys = KeyMergeUtil.merge(dstkey, sets);
+
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.zunionstore(dstkey, params, sets);
+	    }
+	}.run(mergedKeys.length, mergedKeys);
+    }
+
+    @Override
+    public String brpoplpush(final String source, final String destination,
+	    final int timeout) {
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.brpoplpush(source, destination, timeout);
+	    }
+	}.run(2, source, destination);
+    }
+
+    @Override
+    public Long publish(final String channel, final String message) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.publish(channel, message);
+	    }
+	}.runWithAnyNode();
+    }
+
+    @Override
+    public void subscribe(final JedisPubSub jedisPubSub,
+	    final String... channels) {
+	new JedisClusterCommand<Integer>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Integer execute(Jedis connection) {
+		connection.subscribe(jedisPubSub, channels);
+		return 0;
+	    }
+	}.runWithAnyNode();
+    }
+
+    @Override
+    public void psubscribe(final JedisPubSub jedisPubSub,
+	    final String... patterns) {
+	new JedisClusterCommand<Integer>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Integer execute(Jedis connection) {
+		connection.subscribe(jedisPubSub, patterns);
+		return 0;
+	    }
+	}.runWithAnyNode();
+    }
+
+    @Override
+    public Long bitop(final BitOP op, final String destKey,
+	    final String... srcKeys) {
+	String[] mergedKeys = KeyMergeUtil.merge(destKey, srcKeys);
+
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.bitop(op, destKey, srcKeys);
+	    }
+	}.run(mergedKeys.length, mergedKeys);
+    }
+
+    @Override
+    public String pfmerge(final String destkey, final String... sourcekeys) {
+	String[] mergedKeys = KeyMergeUtil.merge(destkey, sourcekeys);
+
+	return new JedisClusterCommand<String>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public String execute(Jedis connection) {
+		return connection.pfmerge(destkey, sourcekeys);
+	    }
+	}.run(mergedKeys.length, mergedKeys);
+    }
+
+    @Override
+    public long pfcount(final String... keys) {
+	return new JedisClusterCommand<Long>(connectionHandler, timeout,
+		maxRedirections) {
+	    @Override
+	    public Long execute(Jedis connection) {
+		return connection.pfcount(keys);
+	    }
+	}.run(keys.length, keys);
+    }
+=======
+
+    @Override
+    public List<String> blpop(final int timeout, final String key) {
+	return new JedisClusterCommand<List<String>>(connectionHandler,
+		timeout, maxRedirections) {
+	    @Override
+	    public List<String> execute(Jedis connection) {
+		return connection.blpop(timeout,key);
+	    }
+	}.run(null);
+    }
+
+    @Override
+    public List<String> brpop(final int timeout, final String key) {
+	return new JedisClusterCommand<List<String>>(connectionHandler,
+		timeout, maxRedirections) {
+	    @Override
+	    public List<String> execute(Jedis connection) {
+		return connection.brpop(timeout,key);
+	    }
+	}.run(null);
+    }
+
+
